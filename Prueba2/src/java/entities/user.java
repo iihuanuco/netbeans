@@ -6,23 +6,23 @@ import java.sql.Date;
 public class user {
     
     
-    private int nivel,userc,userm,registro,dni;
-    private String usuario,password,nombre,email;
+    private int nivel,userc,userm,registro;
+    private String usuario,password,nombre,email,dni;
     private Date fechac,fecham;
 
     public user() {
     }
 
-    public user(int nivel, int userc, int userm, int registro, int dni, String usuario, String password, String nombre, String email, Date fechac, Date fecham) {
+    public user(int nivel, int userc, int userm, int registro, String usuario, String password, String nombre, String email, String dni, Date fechac, Date fecham) {
         this.nivel = nivel;
         this.userc = userc;
         this.userm = userm;
         this.registro = registro;
-        this.dni = dni;
         this.usuario = usuario;
         this.password = password;
         this.nombre = nombre;
         this.email = email;
+        this.dni = dni;
         this.fechac = fechac;
         this.fecham = fecham;
     }
@@ -59,14 +59,6 @@ public class user {
         this.registro = registro;
     }
 
-    public int getDni() {
-        return dni;
-    }
-
-    public void setDni(int dni) {
-        this.dni = dni;
-    }
-
     public String getUsuario() {
         return usuario;
     }
@@ -99,6 +91,14 @@ public class user {
         this.email = email;
     }
 
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
     public Date getFechac() {
         return fechac;
     }
@@ -114,7 +114,6 @@ public class user {
     public void setFecham(Date fecham) {
         this.fecham = fecham;
     }
-    
     
     
 }

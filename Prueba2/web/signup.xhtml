@@ -18,12 +18,8 @@ and open the template in the editor.
     
     <body>
         <div>TODO write content</div>
+        <p:panelGrid>
         <h:form>
-            <tr>
-                <td>
-                    <p:inputText value="#{user.registro}" placeholder="Registro"></p:inputText>
-                </td>
-            </tr>
             <tr>
                 <td>
                     <p:inputText value="#{user.usuario}" placeholder="Usuario"></p:inputText>
@@ -53,11 +49,17 @@ and open the template in the editor.
                 <td>
                     <p:selectOneMenu value="#{nivel.id}">
                         <f:selectItem itemLabel="-Seleccionar Nievel-" itemValue="0" />
-                        <f:selectItems value="#{userVista.lista}" />
+                        <f:selectItem itemLabel="Administrador" itemValue="1" />
+                        <f:selectItem itemLabel="Supervisor" itemValue="2" />
+                        <f:selectItem itemLabel="Operador" itemValue="3" />
+                        <f:selectItem itemLabel="Profesor" itemValue="4" />
+                        <f:selectItem itemLabel="Alumno" itemValue="5" />
+                        <f:selectItem itemLabel="Padre de Familia" itemValue="6" />
+                        <f:selectItem itemLabel="Supervisor Externo" itemValue="7" />
                     </p:selectOneMenu>
                 </td>
             </tr>
         </h:form>
-        
+        </p:panelGrid>
     </body>
 </html>

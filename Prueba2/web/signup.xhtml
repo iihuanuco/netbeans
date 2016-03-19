@@ -18,35 +18,14 @@ and open the template in the editor.
     
     <h:body>
         <div>Registrar Usurio Nuevo</div>
-        <p:panelGrid>
-        <h:form>
-            <tr>
-                <td>
+           <h:form>
+               <p:panelGrid columns="1">
+ 
                     <p:inputText value="#{user.usuario}" placeholder="Usuario"></p:inputText>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     <p:password value="#{user.password}" placeholder="Password"></p:password>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     <p:inputText value="#{user.dni}" placeholder="DNI"></p:inputText>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     <p:inputText value="#{user.nombre}" placeholder="Nombre"></p:inputText>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     <p:inputText value="#{user.email}" placeholder="Email"></p:inputText>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     <p:selectOneMenu value="#{nivel.id}">
                         <f:selectItem itemLabel="-Seleccionar Nievel-" itemValue="0" />
                         <f:selectItem itemLabel="Administrador" itemValue="1" />
@@ -57,9 +36,7 @@ and open the template in the editor.
                         <f:selectItem itemLabel="Padre de Familia" itemValue="6" />
                         <f:selectItem itemLabel="Supervisor Externo" itemValue="7" />
                     </p:selectOneMenu>
-                </td>
-            </tr>
-        </h:form>
         </p:panelGrid>
+        </h:form>
     </h:body>
 </html>

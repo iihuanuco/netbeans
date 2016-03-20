@@ -1,8 +1,15 @@
 
 package entities;
 
+import util.Postgresql;
 import dao.SqlUsers;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Users {
     
@@ -126,8 +133,7 @@ public class Users {
     }
 
     
-       public void registrar()
-    {
+    public void registrar(){
         SqlUsers su= new SqlUsers();
         Users u= new Users();
         u.setUsuario(usuario);
@@ -139,10 +145,33 @@ public class Users {
         u.setEmail(email);
         u.setSexo(sexo);
         su.InsertarUsers(u);
-         
     }   
        
- 
+   public void validarDatos(){
+       try {
+           Connection conn=Postgresql.conexion();
+           String sql="select u.registro,u.nivel,u.nombre from users u" +
+                      " where u.usuario=? and u.password=crypt(?,u.password) ";
+           PreparedStatement pst=conn.prepareStatement(sql);
+           
+           pst.setString(1, usuario);
+           pst.setString(2, password);
+           
+           ResultSet rs=pst.executeQuery();
+           
+           while (rs.next()) {
+               registro=rs.getInt("registro");
+               nivel=rs.getInt("nivel");
+               nombre=rs.getString("nombre");
+           }
+           
+           Postgresql.cerrar(conn);
+           
+       } catch (SQLException e) {
+           Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, e);
+       }
+       }
+       
     
     
 }

@@ -13,8 +13,8 @@ public class Postgresql {
         Connection conn=null;
         String driver = "org.postgresql.Driver";
         String connectString = "jdbc:postgresql://iihuanuco.no-ip.org:5432/prueba01";
-        String user = "omar";
-        String password = "omar1234";
+        String user = "deivy";
+        String password = "deivy1234";
              
         try {
              Class.forName(driver);

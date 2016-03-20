@@ -12,7 +12,7 @@ public class SqlUsers implements DaoUsers {
         try {
             Connection cn = Postgresql.conexion();
             String sql = "insert into users (usuario,password,nombre,nivel,fechac,userc,fecham,userm,dni,email) values "
-                    + "(?,crypt(?, gen_salt('md5')),?,encrypt(?,'iihuanuco2016','bf'),?,?,?,?,?,?)";
+                    + "(?,crypt(?, gen_salt('md5')),?,encrypt(?,'iihuanuco2016','bf'),now(),?,?,?,?,?)";
 
             PreparedStatement pst = null;
             pst = cn.prepareStatement(sql);
@@ -20,13 +20,13 @@ public class SqlUsers implements DaoUsers {
             pst.setString(2, users.getPassword());
             pst.setString(3, users.getNombre());
             pst.setInt(4, users.getNivel());
-            pst.setDate(5, util.util.dateutil2sql(users.getFechac()));
-            pst.setInt(6, users.getUserc());
-            pst.setDate(7, util.util.dateutil2sql(users.getFecham()));
-            pst.setInt(8, users.getUserm());
-            pst.setString(9, users.getDni());
-            pst.setString(10, users.getEmail());
+            pst.setInt(5, users.getUserc());
+            pst.setDate(6, util.util.dateutil2sql(users.getFecham()));
+            pst.setInt(7, users.getUserm());
+            pst.setString(8, users.getDni());
+            pst.setString(9, users.getEmail());
             
+            util.util.creararchivotexto(sql);
 
             pst.executeUpdate();
 

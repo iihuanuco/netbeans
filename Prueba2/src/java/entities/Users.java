@@ -3,7 +3,6 @@ package entities;
 
 import dao.SqlUsers;
 import java.sql.Date;
-import javax.xml.registry.infomodel.User;
 
 public class Users {
     
@@ -125,12 +124,13 @@ public class Users {
         u.setPassword(password);
         u.setNombre(nombre);
         u.setNivel(nivel);
-        u.setFechac(fechac);
         u.setUserc(userc);
         u.setFecham(fecham);
         u.setUserm(userm);
-        
+        su.InsertarUsers(u);
     }   
+       
+ 
     
     
 }

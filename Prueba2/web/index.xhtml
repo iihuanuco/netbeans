@@ -11,6 +11,7 @@
     
     <h:body>
         <div>
+            
             <h:panelGrid columns="1" border="1" bgcolor="#7ebab5" title="Ingresar">
             <h:form>
                 <p:growl id="messages" showDetail="true" />
@@ -26,6 +27,8 @@
                         <p:commandButton value="Ingresar" action="#{login.validardatos()}" update="messages" />
                     </td>
                 </tr>
+                
+                <p:commandButton value="Registrar nuevo usuario" action="signup" />
             </h:form>
             
         </h:panelGrid>

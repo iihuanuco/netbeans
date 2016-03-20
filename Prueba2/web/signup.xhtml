@@ -10,33 +10,34 @@ and open the template in the editor.
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
+
     <h:head>
         <title>Registrar Usuario</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
-    
+
     <h:body>
         <div>Registrar Usurio Nuevo</div>
-           <h:form>
-               <p:panelGrid columns="1">
- 
-                    <p:inputText value="#{user.usuario}" placeholder="Usuario"></p:inputText>
-                    <p:password value="#{user.password}" placeholder="Password"></p:password>
-                    <p:inputText value="#{user.dni}" placeholder="DNI"></p:inputText>
-                    <p:inputText value="#{user.nombre}" placeholder="Nombre"></p:inputText>
-                    <p:inputText value="#{user.email}" placeholder="Email"></p:inputText>
-                    <p:selectOneMenu value="#{nivel.id}">
-                        <f:selectItem itemLabel="-Seleccionar Nievel-" itemValue="0" />
-                        <f:selectItem itemLabel="Administrador" itemValue="1" />
-                        <f:selectItem itemLabel="Supervisor" itemValue="2" />
-                        <f:selectItem itemLabel="Operador" itemValue="3" />
-                        <f:selectItem itemLabel="Profesor" itemValue="4" />
-                        <f:selectItem itemLabel="Alumno" itemValue="5" />
-                        <f:selectItem itemLabel="Padre de Familia" itemValue="6" />
-                        <f:selectItem itemLabel="Supervisor Externo" itemValue="7" />
-                    </p:selectOneMenu>
-        </p:panelGrid>
+        <h:form>
+            <p:panelGrid columns="1">
+
+                <p:inputText value="#{usersBean.user.usuario}" placeholder="Usuario"></p:inputText>
+                <p:password value="#{usersBean.user.password}" placeholder="Password"></p:password>
+                <p:inputText value="#{usersBean.user.dni}" placeholder="DNI"></p:inputText>
+                <p:inputText value="#{usersBean.user.nombre}" placeholder="Nombre"></p:inputText>
+                <p:inputText value="#{usersBean.user.email}" placeholder="Email"></p:inputText>
+                <p:selectOneMenu value="#{usersBean.user.nivel}">
+                    <f:selectItem itemLabel="-Seleccionar Nievel-" itemValue="0" />
+                    <f:selectItem itemLabel="Administrador" itemValue="1" />
+                    <f:selectItem itemLabel="Supervisor" itemValue="2" />
+                    <f:selectItem itemLabel="Operador" itemValue="3" />
+                    <f:selectItem itemLabel="Profesor" itemValue="4" />
+                    <f:selectItem itemLabel="Alumno" itemValue="5" />
+                    <f:selectItem itemLabel="Padre de Familia" itemValue="6" />
+                    <f:selectItem itemLabel="Supervisor Externo" itemValue="7" />
+                </p:selectOneMenu>
+                <h:commandButton value="REGISTRAR" actionListener="#{usersBean.user.registrar()}" class="guardar"/>
+            </p:panelGrid>
         </h:form>
     </h:body>
 </html>

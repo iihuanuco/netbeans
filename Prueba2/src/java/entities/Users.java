@@ -1,7 +1,9 @@
 
 package entities;
 
+import dao.SqlUsers;
 import java.sql.Date;
+import javax.xml.registry.infomodel.User;
 
 public class Users {
     
@@ -114,6 +116,21 @@ public class Users {
     public void setFecham(Date fecham) {
         this.fecham = fecham;
     }
+    
+       public void registrar()
+    {
+        SqlUsers su= new SqlUsers();
+        Users u= new Users();
+        u.setUsuario(usuario);
+        u.setPassword(password);
+        u.setNombre(nombre);
+        u.setNivel(nivel);
+        u.setFechac(fechac);
+        u.setUserc(userc);
+        u.setFecham(fecham);
+        u.setUserm(userm);
+        
+    }   
     
     
 }

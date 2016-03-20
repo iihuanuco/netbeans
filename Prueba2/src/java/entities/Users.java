@@ -116,6 +116,8 @@ public class Users {
         this.fecham = fecham;
     }
     
+    
+    
        public void registrar()
     {
         SqlUsers su= new SqlUsers();
@@ -125,8 +127,8 @@ public class Users {
         u.setNombre(nombre);
         u.setNivel(nivel);
         u.setUserc(userc);
-        u.setFecham(fecham);
-        u.setUserm(userm);
+        u.setDni(dni);
+        u.setEmail(email);
         su.InsertarUsers(u);
          
     }   

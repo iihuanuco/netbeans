@@ -128,6 +128,7 @@ public class Users {
         u.setFecham(fecham);
         u.setUserm(userm);
         su.InsertarUsers(u);
+         
     }   
        
  

@@ -9,15 +9,19 @@ public class SqlUsers implements DaoUsers {
 
     @Override
     public void InsertarUsers(Users users) {
+        Connection cn=null;
         try {
-            Connection cn = Postgresql.conexion();
+             cn= Postgresql.conexion();
             String sql = "insert into users (usuario,password,nombre,nivel,fechac,userc,fecham,userm,dni,email) "+
                      "values (?,crypt(?, gen_salt('md5')),?,encrypt(?,'iihuanuco2016','bf'),now(),?,?,?,?,?)";
 
             PreparedStatement pst = null;
             pst = cn.prepareStatement(sql);
+            util.util.creararchivotexto("pst:"+pst.toString());
             pst.setString(1, users.getUsuario());
+            util.util.creararchivotexto("pst:"+pst.toString());
             pst.setString(2, users.getPassword());
+            util.util.creararchivotexto("pst:"+pst.toString());
             pst.setString(3, users.getNombre());
             pst.setInt(4, users.getNivel());
             pst.setInt(5, users.getUserc());
@@ -33,6 +37,7 @@ public class SqlUsers implements DaoUsers {
             //CIERRO LA CONEXION
             cn.close();
         } catch (Exception e) {
+            util.util.creararchivotexto("La conexion:"+cn.toString()+ " error:"+e.toString());
         }
     }
 

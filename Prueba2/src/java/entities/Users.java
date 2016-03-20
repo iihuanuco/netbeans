@@ -7,18 +7,19 @@ import java.sql.Date;
 public class Users {
     
     
-    private int nivel,userc,userm,registro;
+    private int nivel,userc,userm,registro,sexo;
     private String usuario,password,nombre,email,dni;
     private Date fechac,fecham;
 
     public Users() {
     }
 
-    public Users(int nivel, int userc, int userm, int registro, String usuario, String password, String nombre, String email, String dni, Date fechac, Date fecham) {
+    public Users(int nivel, int userc, int userm, int registro, int sexo, String usuario, String password, String nombre, String email, String dni, Date fechac, Date fecham) {
         this.nivel = nivel;
         this.userc = userc;
         this.userm = userm;
         this.registro = registro;
+        this.sexo = sexo;
         this.usuario = usuario;
         this.password = password;
         this.nombre = nombre;
@@ -58,6 +59,14 @@ public class Users {
 
     public void setRegistro(int registro) {
         this.registro = registro;
+    }
+
+    public int getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(int sexo) {
+        this.sexo = sexo;
     }
 
     public String getUsuario() {
@@ -115,8 +124,7 @@ public class Users {
     public void setFecham(Date fecham) {
         this.fecham = fecham;
     }
-    
-    
+
     
        public void registrar()
     {
@@ -129,6 +137,7 @@ public class Users {
         u.setUserc(userc);
         u.setDni(dni);
         u.setEmail(email);
+        u.setSexo(sexo);
         su.InsertarUsers(u);
          
     }   

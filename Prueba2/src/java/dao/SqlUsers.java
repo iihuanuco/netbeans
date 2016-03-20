@@ -12,8 +12,8 @@ public class SqlUsers implements DaoUsers {
         Connection cn=null;
         try {
              cn= Postgresql.conexion();
-            String sql = "insert into users (usuario,password,nombre,nivel,userc,dni,email) "+
-                     "values (?,crypt(?, gen_salt('md5')),?,encrypt(?,'iihuanuco2016'::bytea,'bf'),NULLIF(?,0),?,?)";
+            String sql = "insert into users (usuario,password,nombre,nivel,userc,dni,email,sexo) "+
+                     "values (?,crypt(?, gen_salt('md5')),?,encrypt(?,'iihuanuco2016'::bytea,'bf'),NULLIF(?,0),?,?,?)";
 
             PreparedStatement pst = null;
             pst = cn.prepareStatement(sql);
@@ -24,7 +24,8 @@ public class SqlUsers implements DaoUsers {
             pst.setInt(5, users.getUserc());
             pst.setString(6, users.getDni());
             pst.setString(7, users.getEmail());
-
+            pst.setInt(8,users.getSexo());
+            
             pst.executeUpdate();
 
             //CIERRO LA CONEXION

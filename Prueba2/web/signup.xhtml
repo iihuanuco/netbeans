@@ -25,6 +25,11 @@ and open the template in the editor.
                 <p:password value="#{usersBean.user.password}" placeholder="Password"></p:password>
                 <p:inputText value="#{usersBean.user.dni}" placeholder="DNI"></p:inputText>
                 <p:inputText value="#{usersBean.user.nombre}" placeholder="Nombre"></p:inputText>
+                <p:outputLabel for="sexo" value="Sexo: " />
+                <p:selectOneRadio id="sexo" value="#{usersBean.user.sexo}">
+                    <f:selectItem itemLabel="Masculino" itemValue="1" />
+                    <f:selectItem itemLabel="Femenino" itemValue="2" />
+                </p:selectOneRadio>
                 <p:inputText value="#{usersBean.user.email}" placeholder="Email"></p:inputText>
                 <p:selectOneMenu value="#{usersBean.user.nivel}">
                     <f:selectItem itemLabel="-Seleccionar Nievel-" itemValue="0" itemDisabled="true" />

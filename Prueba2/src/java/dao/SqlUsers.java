@@ -3,6 +3,10 @@ package dao;
 import entities.Users;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import util.Postgresql;
 
 public class SqlUsers implements DaoUsers {
@@ -35,4 +39,28 @@ public class SqlUsers implements DaoUsers {
         }
     }
 
+    public void validarDatos(){
+        Users u=new Users();
+        try {
+           Connection conn=Postgresql.conexion();
+           String sql="select u.registro,u.nivel,u.nombre from users u" +
+                      " where u.usuario=? and u.password=crypt(?,u.password) ";
+           PreparedStatement pst=conn.prepareStatement(sql);
+           pst.setString(1, u.getUsuario());
+           pst.setString(2, u.getPassword());
+           
+           ResultSet rs=pst.executeQuery();
+           
+           while (rs.next()) {
+               u.setRegistro(rs.getInt("registro"));
+               u.setNivel(rs.getInt("nivel"));
+               
+           }
+           
+           Postgresql.cerrar(conn);
+           
+       } catch (SQLException e) {
+           Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, e);
+       }
+       }
 }

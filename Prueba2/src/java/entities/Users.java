@@ -146,7 +146,7 @@ public class Users {
         u.setSexo(sexo);
         su.InsertarUsers(u);
     }   
-       
+   /*
    public void validarDatos(){
        try {
            Connection conn=Postgresql.conexion();
@@ -171,7 +171,8 @@ public class Users {
            Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, e);
        }
        }
-       
+    
+    */   
     
     
 }

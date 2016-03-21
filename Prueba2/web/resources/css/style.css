@@ -1,0 +1,17 @@
+@import url(https://fonts.googleapis.com/css?family=Dosis);
+.login{
+    position: relative;
+}
+
+.boton-salir{
+    background-color: rgba(0,0,0,0);
+    text-shadow: none !important;
+       font-family: "Dosis",sans-serif !important;
+}
+
+.boton-salir:hover{
+    -webkit-box-shadow:  none !important;
+    -moz-box-shadow:  none !important;
+    box-shadow:  none !important;
+    border:1px solid red !important;
+}

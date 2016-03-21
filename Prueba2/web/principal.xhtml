@@ -1,43 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <title>Inicio</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <h:outputStylesheet library="css" name="menu.css"  />
+       <h:outputStylesheet library="css" name="style.css"  />
+      <h:outputStylesheet library="resources" name="fonts.css"  />
+       <h:outputScript library="js" name="bg.js"   />
+
     </h:head>
-
+   
     <h:body onload="#{login.user.load()}">
-        <h:form style="display: #{login.user.off};" >
+        <h:graphicImage id="bg" alt="Fondo de pantalla" value="resources/img/fondo.jpg" style="display: #{login.user.off};"/>
+         <h:form style="display: #{login.user.off};" >
+              <p:growl id="messages" showDetail="true" />
+         <header >
+
+                   <nav>
+                          <ul >
+                         <li><a href="#"   ><span class="c1"><i class="icon icon-home"></i></span>Inicio</a></li>
+                         <li><a href="#"  ><span class="c2"><i class="icon icon-matricula"></i></span>Matricula</a></li>
+                         <li><a href="#"   ><span class="c3"><i class="icon icon-user"></i></span>Registrar</a></li>
+                          <li><a href="#"  ><span class="c4"><i class="icon icon-id"></i></span> User: <h:outputText value="#{login.user.nombre}"/></a></li>
+                          <li><p:commandButton value="Salir" action="#{login.signout()}" icon="ui-icon-close" class="boton-salir"/></li>
+                       </ul>
+
+                   </nav>
+             </header>
+
+   
+        </h:form  >
+        
+        
+        <h:form style="display: #{login.user.on};" class="login">
+
             <p:growl id="messages" showDetail="true" />
-            <h:outputLabel value="Bienvenido: "/>
-            <h:outputText value="#{login.user.nombre}"/>
-            <p:commandButton value="Salir" action="#{login.signout()}" />
+            <h:panelGrid columns="3"  title="Ingresar">
+                <p:inputText value="#{login.user.usuario}" placeholder="Usuario" ></p:inputText>
 
-        </h:form >
-        <h:form style="display: #{login.user.on};">
+                <p:password value="#{login.user.password}" placeholder="Password" ></p:password>
 
-        <p:growl id="messages" showDetail="true" />
-                 <h:panelGrid columns="3"  title="Ingresar">
-                    <p:inputText value="#{login.user.usuario}" placeholder="Usuario" ></p:inputText>
+                <p:commandButton value="Ingresar" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages" />
 
-                    <p:password value="#{login.user.password}" placeholder="Password" ></p:password>
+                <p:commandLink value="Registrar nuevo usuario" action="signup" />
 
-                    <p:commandButton value="Ingresar" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages" />
+            </h:panelGrid>
 
-                    <p:commandLink value="Registrar nuevo usuario" action="signup" />
-
-                </h:panelGrid>
-     
         </h:form>
     </h:body>
 

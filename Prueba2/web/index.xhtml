@@ -8,32 +8,26 @@
     <h:head>
         <title>Ingresar</title>
     </h:head>
-    
+
     <h:body>
         <div>
-            
-            <h:panelGrid columns="1" border="1" bgcolor="#7ebab5" title="Ingresar">
             <h:form>
-                <p:growl id="messages" showDetail="true" />
-                               
-                <tr>
-                    <td>
-                        <p:inputText value="#{login.user.usuario}" placeholder="Usuario" ></p:inputText>
-                    </td>
-                    <td>
-                        <p:password value="#{login.user.password}" placeholder="Password" ></p:password>
-                    </td>
-                    <td>
-                        <p:commandButton value="Ingresar" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages" />
-                    </td>
-                </tr>
-                
-                <p:commandButton value="Registrar nuevo usuario" action="signup" />
+                <h:panelGrid columns="1"  title="Ingresar">
+
+                    <p:growl id="messages" showDetail="true" />
+
+                    <p:inputText value="#{login.user.usuario}" placeholder="Usuario" ></p:inputText>
+
+                    <p:password value="#{login.user.password}" placeholder="Password" ></p:password>
+
+                    <p:commandButton value="Ingresar" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages" />
+
+                    <p:commandButton value="Registrar nuevo usuario" action="signup" />
+
+                </h:panelGrid>
             </h:form>
-            
-        </h:panelGrid>
         </div>
-        
+
     </h:body>
 </html>
 

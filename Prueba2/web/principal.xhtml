@@ -16,12 +16,29 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     
-    <h:body>
-        <h:form>
+    <h:body onload="#{login.user.load()}">
+        <h:form style="display: #{login.user.off};" >
           <p:growl id="messages" showDetail="true" />
           <h:outputLabel value="Bienvenido: "/>
           <h:outputText value="#{login.user.nombre}"/>
-        </h:form>
+          <p:commandButton value="Salir" action="#{login.signout()}" />
+          
+        </h:form >
+         <h:form style="display: #{login.user.on};">
+                <h:panelGrid columns="1"  title="Ingresar">
+
+                    <p:growl id="messages" showDetail="true" />
+
+                    <p:inputText value="#{login.user.usuario}" placeholder="Usuario" ></p:inputText>
+
+                    <p:password value="#{login.user.password}" placeholder="Password" ></p:password>
+
+                    <p:commandButton value="Ingresar" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages" />
+
+                    <p:commandButton value="Registrar nuevo usuario" action="signup" />
+
+                </h:panelGrid>
+            </h:form>
     </h:body>
     
 </html>

@@ -11,8 +11,10 @@ public class Users {
     private int nivel,userc,userm,registro,sexo;
     private String usuario,password,nombre,email,dni;
     private Date fechac,fecham;
+    private String on,off;
 
     public Users() {
+    
     }
 
     public Users(int nivel, int userc, int userm, int registro, int sexo, String usuario, String password, String nombre, String email, String dni, Date fechac, Date fecham) {
@@ -126,6 +128,24 @@ public class Users {
         this.fecham = fecham;
     }
 
+    public String getOn() {
+        return on;
+    }
+
+    public void setOn(String on) {
+        this.on = on;
+    }
+
+    public String getOff() {
+        return off;
+    }
+
+    public void setOff(String off) {
+        this.off = off;
+    }
+
+  
+    
     
     public void registrar(){
         SqlUsers su= new SqlUsers();
@@ -141,6 +161,19 @@ public class Users {
         su.InsertarUsers(u);
     }   
     
-   
+     public void load(){
+       
+        if(nombre==null)
+        {
+        off="none";
+        on="inline";
+        }
+        else{
+        off="inline";
+        on="none";
+        }
+    
+    }
+ 
     
 }

@@ -18,14 +18,16 @@ import javax.faces.context.FacesContext;
  *
  * @author Deyvi
  */
-
-@ManagedBean(name="login")
+@ManagedBean(name = "login")
 @SessionScoped
 
 public class Login {
-    private Users user=new Users();
 
-    
+    private Users user = new Users();
+
+    public Login() {
+    }
+
     public Users getUser() {
         return user;
     }
@@ -33,61 +35,38 @@ public class Login {
     public void setUser(Users user) {
         this.user = user;
     }
-    
- 
-    
-    public String validardatos(String us,String pass){
-     
-         SqlUsers pu= new SqlUsers();
-        List<Users> listaUsuario  = pu.ValidarUsers(us,pass); 
+
+    public String validardatos(String us, String pass) {
+
+        SqlUsers pu = new SqlUsers();
+        List<Users> listaUsuario = pu.ValidarUsers(us, pass);
         Iterator<Users> iter = listaUsuario.iterator();
         while (iter.hasNext()) {
-            Users  e = iter.next();
-             if (e.getRegistro()>0) {
-                 user.setNombre(e.getNombre());
-            FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO,"Informacion", "Conectado"));
-            return "principal";
+            Users e = iter.next();
+            if (e.getRegistro() > 0) {
+                user.setNombre(e.getNombre());
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Informacion", "Conectado"));
+                return "principal?faces-redirect=true";
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Datos Incorrectos"));
+                return "index";
+            }
+
         }
-        
-        else{
-            FacesContext.getCurrentInstance().addMessage(null,
-            new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error", "Datos Incorrectos"));
-            return "index";
-        }
-            
-        }
-        return  null;
-    }
-    
-    /*
-    private Users user=new Users();
-    
-    public Users getUser() {
-        return user;
+        return null;
     }
 
-    public void setUser(Users user) {
-        this.user = user;
+    public String signout() {
+
+        user.setNombre(null);
+
+        return "index?faces-redirect=true";
     }
     
-    public String validardatos(){
-        user.validarDatos();
-        if (user.getRegistro()>0) {
-            FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO,"Informacion", "Acceso permitido."));
-            return "principal";
-        }
-        
-        else{
-            FacesContext.getCurrentInstance().addMessage(null,
-            new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error", "Acceso denegado."));
-            return "index";
-        }
+  
     
     }
-    */
-    
-    
-    
-}
+
+

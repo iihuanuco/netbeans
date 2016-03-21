@@ -46,16 +46,19 @@ public class SqlUsers implements DaoUsers {
             Connection cn=null;
         try {
             cn=Postgresql.conexion();
-           String sql="select u.registro,u.nombre,decrypt(u.nivel,'iihuanuco2016'::bytea,'bf') from users u" +
+           String sql="select u.registro,u.nombre,"
+           + "convert_from(decrypt(u.nivel,'iihuanuco2016'::bytea,'bf'),'SQL_ASCII')::int4 as admin "
+                   + "from users as u" +
                       " where u.usuario='"+user+"' and u.password=crypt('"+password+"',u.password) ";
-           
-            Statement st=cn.createStatement();       
+            Statement st=cn.createStatement();
+            util.util.creararchivotexto("Comando:"+sql);
             ResultSet rs=st.executeQuery(sql);
             while(rs.next()) {                
                 Users c=new Users();
                 c.setRegistro(rs.getInt(1));
                 c.setNombre(rs.getString(2));
-                c.setNivel(rs.getByte(3));
+                util.util.creararchivotexto("Admin:"+rs.getInt("admin"));
+           //     c.setNivel(rs.getByte(3));
                
                listaUsuario.add(c);
             }

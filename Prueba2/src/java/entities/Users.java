@@ -146,33 +146,6 @@ public class Users {
         u.setSexo(sexo);
         su.InsertarUsers(u);
     }   
-   /*
-   public void validarDatos(){
-       try {
-           Connection conn=Postgresql.conexion();
-           String sql="select u.registro,u.nivel,u.nombre from users u" +
-                      " where u.usuario=? and u.password=crypt(?,u.password) ";
-           PreparedStatement pst=conn.prepareStatement(sql);
-           
-           pst.setString(1, usuario);
-           pst.setString(2, password);
-           
-           ResultSet rs=pst.executeQuery();
-           
-           while (rs.next()) {
-               registro=rs.getInt("registro");
-               nivel=rs.getInt("nivel");
-               nombre=rs.getString("nombre");
-           }
-           
-           Postgresql.cerrar(conn);
-           
-       } catch (SQLException e) {
-           Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, e);
-       }
-       }
-    
-    */   
-    
+ 
     
 }

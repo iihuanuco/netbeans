@@ -4,9 +4,9 @@ import entities.Users;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import util.Postgresql;
 
 public class SqlUsers implements DaoUsers {
@@ -39,28 +39,32 @@ public class SqlUsers implements DaoUsers {
         }
     }
 
-    public void validarDatos(){
-        Users u=new Users();
+
+    @Override
+    public List<Users> ValidarUsers(String user, String password) {
+         List<Users> listaUsuario =new ArrayList<Users>();
+            Connection cn=null;
         try {
-           Connection conn=Postgresql.conexion();
-           String sql="select u.registro,u.nivel,u.nombre from users u" +
-                      " where u.usuario=? and u.password=crypt(?,u.password) ";
-           PreparedStatement pst=conn.prepareStatement(sql);
-           pst.setString(1, u.getUsuario());
-           pst.setString(2, u.getPassword());
+            cn=Postgresql.conexion();
+           String sql="select u.registro,u.nombre,decrypt(u.nivel,'iihuanuco2016'::bytea,'bf') from users u" +
+                      " where u.usuario='"+user+"' and u.password=crypt('"+password+"',u.password) ";
            
-           ResultSet rs=pst.executeQuery();
-           
-           while (rs.next()) {
-               u.setRegistro(rs.getInt("registro"));
-               u.setNivel(rs.getInt("nivel"));
+            Statement st=cn.createStatement();       
+            ResultSet rs=st.executeQuery(sql);
+            while(rs.next()) {                
+                Users c=new Users();
+                c.setRegistro(rs.getInt(1));
+                c.setNombre(rs.getString(2));
+                c.setNivel(rs.getByte(3));
                
-           }
-           
-           Postgresql.cerrar(conn);
-           
-       } catch (SQLException e) {
-           Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, e);
-       }
-       }
+               listaUsuario.add(c);
+            }
+                  
+            
+        } catch (Exception e) {
+              util.util.creararchivotexto("La conexion:"+cn.toString()+ " error:"+e.toString());
+        }
+        
+        return listaUsuario;
+    }
 }

@@ -24,7 +24,7 @@
                         <p:password value="#{login.user.password}" placeholder="Password" ></p:password>
                     </td>
                     <td>
-                        <p:commandButton value="Ingresar" action="#{login.validardatos()}" update="messages" />
+                        <p:commandButton value="Ingresar" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages" />
                     </td>
                 </tr>
                 

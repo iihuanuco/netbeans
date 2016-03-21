@@ -7,10 +7,13 @@ package bean;
 
 import dao.SqlUsers;
 import entities.Users;
+import java.util.Iterator;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -21,8 +24,11 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 
 public class Login {
-    private SqlUsers sqlu=new SqlUsers();
     private Users user=new Users();
+
+
+    
+    
     
     public Users getUser() {
         return user;
@@ -32,17 +38,16 @@ public class Login {
         this.user = user;
     }
     
-    public SqlUsers getSqlUser() {
-        return sqlu;
-    }
-
-    public void setSqlUser(SqlUsers sqlUsers) {
-        this.sqlu = sqlu;
-    }
+ 
     
-    public String validardatos(){
-        sqlu.validarDatos();
-        if (user.getRegistro()>0) {
+    public String validardatos(String us,String pass){
+     
+         SqlUsers pu= new SqlUsers();
+        List<Users> listaUsuario  = pu.ValidarUsers(us,pass); 
+        Iterator<Users> iter = listaUsuario.iterator();
+        while (iter.hasNext()) {
+            Users  e = iter.next();
+             if (e.getRegistro()>0) {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO,"Informacion", "Acceso permitido."));
             return "principal";
@@ -53,7 +58,9 @@ public class Login {
             new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error", "Acceso denegado."));
             return "index";
         }
-    
+            
+        }
+        return  null;
     }
     
     /*

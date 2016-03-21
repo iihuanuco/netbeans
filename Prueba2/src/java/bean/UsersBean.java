@@ -21,7 +21,5 @@ private Users user=new Users();
     public void setUser(Users user) {
         this.user = user;
     }
-    
-    
           
 }

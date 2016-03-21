@@ -8,11 +8,14 @@
     font-family: "Dosis",sans-serif !important;
     height: 30px;
     text-align: center;
+    border: 2px solid #333333;
 }
 .texto:valid{
     box-shadow: none !important;
 }
-
+.texto:focus{
+   border: 2px solid #99cc00;
+}
 .panel-login{
     margin: 20% auto ;
 }
@@ -41,6 +44,5 @@
 .link-regsitrar{
     text-decoration: none; 
     font-family: "Dosis",sans-serif !important ;
-    font-style:  10px;
     color: #99cc00;
 }

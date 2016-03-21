@@ -17,7 +17,11 @@ and open the template in the editor.
     </h:head>
     
     <h:body>
-        <div>pagina principal ......</div>
+        <h:form>
+          <p:growl id="messages" showDetail="true" />
+          <h:outputLabel value="Bienvenido: "/>
+          <h:outputText value="#{login.user.nombre}"/>
+        </h:form>
     </h:body>
     
 </html>

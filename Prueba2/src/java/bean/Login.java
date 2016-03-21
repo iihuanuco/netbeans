@@ -13,7 +13,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -26,9 +25,6 @@ import javax.servlet.http.HttpServletRequest;
 public class Login {
     private Users user=new Users();
 
-
-    
-    
     
     public Users getUser() {
         return user;
@@ -48,14 +44,15 @@ public class Login {
         while (iter.hasNext()) {
             Users  e = iter.next();
              if (e.getRegistro()>0) {
+                 user.setNombre(e.getNombre());
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO,"Informacion", "Acceso permitido."));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO,"Informacion", "Conectado"));
             return "principal";
         }
         
         else{
             FacesContext.getCurrentInstance().addMessage(null,
-            new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error", "Acceso denegado."));
+            new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error", "Datos Incorrectos"));
             return "index";
         }
             

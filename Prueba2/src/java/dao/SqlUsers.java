@@ -57,8 +57,7 @@ public class SqlUsers implements DaoUsers {
                 Users c=new Users();
                 c.setRegistro(rs.getInt(1));
                 c.setNombre(rs.getString(2));
-                util.util.creararchivotexto("Admin:"+rs.getInt("admin"));
-           //     c.setNivel(rs.getByte(3));
+                c.setNivel(rs.getInt("admin"));
                
                listaUsuario.add(c);
             }

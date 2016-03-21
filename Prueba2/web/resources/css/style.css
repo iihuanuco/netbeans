@@ -1,5 +1,46 @@
 @import url(https://fonts.googleapis.com/css?family=Dosis);
 .login{
     position: relative;
+    margin: 0 auto;
+    
+}
+.texto{
+    font-family: "Dosis",sans-serif !important;
+    height: 30px;
+    text-align: center;
+}
+.texto:valid{
+    box-shadow: none !important;
 }
 
+.panel-login{
+    margin: 20% auto ;
+}
+
+.boton-ingresar{
+    background: #333333 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+    text-shadow: none !important;
+    font-family: "Dosis",sans-serif !important;
+    box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    color: white;
+}
+
+.boton-ingresar:hover{
+    -webkit-box-shadow:  none !important;
+    -moz-box-shadow:  none !important;
+    box-shadow:  none !important;
+    border:1px solid #99cc00 !important;
+    background: #99cc00 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+    color: white;
+}
+.link-regsitrar{
+    text-decoration: none; 
+    font-family: "Dosis",sans-serif !important ;
+    font-style:  10px;
+    color: #99cc00;
+}

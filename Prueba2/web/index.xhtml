@@ -17,14 +17,14 @@
         <div>
             <h:form class="login">
                  <p:growl id="messages" showDetail="true" />
-                 <h:panelGrid columns="3"  title="Ingresar">
-                    <p:inputText value="#{login.user.usuario}" placeholder="Usuario" ></p:inputText>
+                 <h:panelGrid columns="3"  title="Ingresar" class="panel-login">
+                    <p:inputText value="#{login.user.usuario}" placeholder="Usuario" class="texto" ></p:inputText>
 
-                    <p:password value="#{login.user.password}" placeholder="Password" ></p:password>
+                    <p:password value="#{login.user.password}" placeholder="Password" class="texto"></p:password>
 
-                    <p:commandButton value="Ingresar" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages" />
+                    <p:commandButton value="Ingresar" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages"  class="boton-ingresar"  />
 
-                    <p:commandLink value="Registrar nuevo usuario" action="signup"    />
+                    <p:commandLink value="Registrar nuevo usuario" action="signup" class="link-regsitrar" />
 
                 </h:panelGrid>
             </h:form>

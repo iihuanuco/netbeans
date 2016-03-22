@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Dosis);
+@import url(https://fonts.googleapis.com/css?family=Jura:300);
 .login{
     position: relative;
     margin: 0 auto;
@@ -76,5 +77,24 @@
     width: 100%;
 }
 .btn-img{
+font-family: 'Jura', sans-serif;
+   padding: 10px !important;
+     background: rgba(0,0,0,.3) -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
     top: -60%;
+     box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
+     border:2px solid rgba(255,255,255,1) !important;
+     font-size:20px;
+     color:rgba(255,255,255,1);
+     text-shadow: none !important;
+     -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+
+}
+
+.btn-img:hover{
+      background: rgba(0,0,0,.5) -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+        font-size:22px;
 }

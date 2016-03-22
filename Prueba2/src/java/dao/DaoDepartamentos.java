@@ -7,4 +7,5 @@ public interface DaoDepartamentos {
 
     void InsertarDepartamentos(Departamentos departamentos);
     
+    
 }

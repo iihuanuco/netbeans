@@ -52,6 +52,10 @@ public class DepartamentosBean {
         this.d = d;
     }
     
+    public void registrar(int reg){
+        departamentos.registrar(reg);
+        departamentos.setNombredep("");
+    }
     
     
     

@@ -40,6 +40,11 @@ public class ProvinciasBean {
         return listaProvincias;
     }
 
+    public void registrar(int reg){
+    provincias.registrar(reg);
+    provincias.setNombrepro("");
+    }
+    
    
     
     

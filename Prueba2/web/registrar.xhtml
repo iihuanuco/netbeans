@@ -31,9 +31,9 @@ and open the template in the editor.
             
             
             <p:dialog  header="Registrar departamentos"  widgetVar="departamentos" rendered="true" height="100" width="400" modal="true" draggable="false" resizable="false" >
-                 <h:panelGrid columns="2">
-                     <p:inputText   placeholder="Departamento" value="#{departamentosBean.departamentos.nombredep}" class="texto" ></p:inputText>
-                     <p:commandButton value="Guardar" actionListener="#{departamentosBean.departamentos.registrar(login.user.registro)}" class="boton-ingresar"  />
+                <h:panelGrid columns="2" id="panel-departamento">
+                    <p:inputText id="txtdepartamento"  placeholder="Departamento" value="#{departamentosBean.departamentos.nombredep}" class="texto" ></p:inputText>
+                    <p:commandButton value="Guardar" actionListener="#{departamentosBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtdepartamento" />
             </h:panelGrid>       
             </p:dialog>
             
@@ -45,9 +45,8 @@ and open the template in the editor.
                                 </p:selectOneMenu>
                  </h:panelGrid>       
                  <h:panelGrid columns="2">
-                     <p:inputText   placeholder="Provincia" value="#{provinciasBean.provincias.nombrepro}" class="texto" ></p:inputText>
-                     
-                               <p:commandButton value="Guardar" actionListener="#{provinciasBean.provincias.registrar(login.user.registro)}" class="boton-ingresar"  />
+                     <p:inputText  id="txtprovincia" placeholder="Provincia" value="#{provinciasBean.provincias.nombrepro}" class="texto" ></p:inputText>
+                     <p:commandButton value="Guardar" actionListener="#{provinciasBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtprovincia"  />
                  </h:panelGrid>  
                  <h:panelGrid columns="1">
                      <p:dataTable >
@@ -72,9 +71,9 @@ and open the template in the editor.
                                 </p:selectOneMenu>
                  </h:panelGrid>       
                  <h:panelGrid columns="2">
-                     <p:inputText   placeholder="Distrito" value="#{distritosBean.distritos.nombredis}" class="texto" ></p:inputText>
-                     <p:inputText   placeholder="Capital" value="#{distritosBean.distritos.capitaldis}" class="texto" ></p:inputText>
-                     <p:commandButton value="Guardar" actionListener="#{distritosBean.distritos.registrar(login.user.registro)}"  class="boton-ingresar"  />
+                     <p:inputText id="txtdistrito"  placeholder="Distrito" value="#{distritosBean.distritos.nombredis}" class="texto" ></p:inputText>
+                     <p:inputText id="txtcapital"  placeholder="Capital" value="#{distritosBean.distritos.capitaldis}" class="texto" ></p:inputText>
+                     <p:commandButton value="Guardar" actionListener="#{distritosBean.registrar(login.user.registro)}"  class="boton-ingresar" update="txtdistrito,txtcapital" />
                  </h:panelGrid>  
                  <h:panelGrid columns="1">
                      <p:dataTable >

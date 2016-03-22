@@ -23,7 +23,11 @@ public class DistritosBean {
         this.distritos = distritos;
     }
 
-   
+   public void registrar(int reg){
+   distritos.registrar(reg);
+   distritos.setNombredis("");
+   distritos.setCapitaldis("");
+   }
     
     
 }

@@ -77,7 +77,7 @@ public class Departamentos {
             Departamentos d= new Departamentos();
             d.setNombredep(nombredep);
             d.setUserc(reg);
-            sd.InsertarDepartamentos(d);
+            sd.InsertarDepartamentos(d); 
     }  
 
     

@@ -16,7 +16,7 @@ public class SqlEmpresas implements DaoEmpresas{
             conn=Postgresql.conexion();
             
             String sql="insert into empresas(nombre,fechac,userc,ruc)"
-                    + " values(?,now(),?,?)";
+                    + " values(?,now(),?,?)" ;
             
             PreparedStatement pst=null;
             pst=conn.prepareStatement(sql);

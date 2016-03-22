@@ -1,6 +1,7 @@
 
 package entities;
 
+import dao.SqlEmpresas;
 import java.sql.Date;
 
 public class Empresas {
@@ -72,5 +73,18 @@ public class Empresas {
         this.rucemp = rucemp;
     }
     
+    public void registrar(int reg) {
+        SqlEmpresas se=new SqlEmpresas();
+        Empresas e=new Empresas();
+        e.setNombreemp(nombreemp);
+        e.setUserc(reg);
+        e.setRucemp(rucemp);
+        
+        System.out.println(""+nombreemp);
+        System.out.println(""+reg);
+        System.out.println(""+rucemp);
+        
+        se.InsertarEmpresas(e);
+    }
     
 }

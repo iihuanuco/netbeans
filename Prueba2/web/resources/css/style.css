@@ -46,3 +46,35 @@
     font-family: "Dosis",sans-serif !important ;
     color: #99cc00;
 }
+
+#iframe-custom{
+    width: 100%;
+    position: relative;
+}
+
+.submenu{
+    height: 250px;
+    width: 25%;
+    background-color: #5f5e5e;
+    display: block;
+    float: left;
+    text-align: center;
+}
+
+ 
+.registro{
+     position: relative;
+    margin: 0 auto;
+}
+
+.registro-menu{
+    margin: 0 auto ;
+    width: 100%;
+}
+.imagen-reg{
+    height: 100%;
+    width: 100%;
+}
+.btn-img{
+    top: -60%;
+}

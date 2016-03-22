@@ -8,48 +8,48 @@
 
     <h:head>
         <title>Inicio</title>
-      <h:outputStylesheet library="css" name="menu.css"  />
-       <h:outputStylesheet library="css" name="style.css"  />
-      <h:outputStylesheet library="resources" name="fonts.css"  />
-       <h:outputScript library="js" name="bg.js"   />
+        <h:outputStylesheet library="css" name="menu.css"  />
+        <h:outputStylesheet library="css" name="style.css"  />
+        <h:outputStylesheet library="resources" name="fonts.css"  />
+        <h:outputScript library="js" name="bg.js"   />
 
     </h:head>
-   
+
     <h:body onload="#{login.user.load()}">
         <h:graphicImage id="bg" alt="Fondo de pantalla" value="resources/img/fondo.jpg" style="display: #{login.user.off};"/>
-         <h:form style="display: #{login.user.off};" >
-              <p:growl id="messages" showDetail="true" />
-         <header >
+        <h:form style="display: #{login.user.off};" >
+            <p:growl id="messages" showDetail="true" />
+            <header >
 
-                   <nav>
-                          <ul >
-                         <li><a href="#"   ><span class="c1"><i class="icon icon-home"></i></span>Inicio</a></li>
-                         <li><a href="#"  ><span class="c2"><i class="icon icon-matricula"></i></span>Matricula</a></li>
-                         <li><a href="#"   ><span class="c3"><i class="icon icon-user"></i></span>Registrar</a></li>
-                          <li><a href="#"  ><span class="c4"><i class="icon icon-id"></i></span>User: #{login.user.nombre}</a></li>
-                          <li class="menu-salir"><p:commandButton value="Salir" action="#{login.signout()}" icon="ui-icon-close" class="boton-salir"/></li>
-                       </ul>
+                <nav>
+                    <ul >
+                        <li><a href="inicio.xhtml" target="academico"  ><span class="c1"><i class="icon icon-home"></i></span>Inicio</a></li>
+                        <li><a href="registrar.xhtml"  target="academico" ><span class="c3"><i class="icon icon-user"></i></span>Registrar</a></li>
+                        <li><a href="#"  target="academico" ><span class="c2"><i class="icon icon-matricula"></i></span>Matricula</a></li>
+                        <li><a href="#"  target="academico"><span class="c4"><i class="icon icon-id"></i></span>User: #{login.user.nombre}</a></li>
+                        <li class="menu-salir"><p:commandButton value="Salir" action="#{login.signout()}" icon="ui-icon-close" class="boton-salir"/></li>
+                    </ul>
 
-                   </nav>
-             </header>
+                </nav>
+            </header>
+            <iframe src="inicio.xhtml" frameborder="0" name="academico"  scrolling="no" id="iframe-custom" ></iframe>
 
-   
         </h:form  >
-        
-        
+
+
         <h:form style="display: #{login.user.on};" class="login">
 
-           <p:growl id="messages" showDetail="true" />
-                 <h:panelGrid columns="3"  title="Ingresar" class="panel-login">
-                    <p:inputText value="#{login.user.usuario}" placeholder="Usuario" class="texto" ></p:inputText>
+            <p:growl id="messages" showDetail="true" />
+            <h:panelGrid columns="3"  title="Ingresar" class="panel-login">
+                <p:inputText value="#{login.user.usuario}" placeholder="Usuario" class="texto" ></p:inputText>
 
-                    <p:password value="#{login.user.password}" placeholder="Password" class="texto"></p:password>
+                <p:password value="#{login.user.password}" placeholder="Password" class="texto"></p:password>
 
-                    <p:commandButton value="Ingresar" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages"  class="boton-ingresar"  />
+                <p:commandButton value="Ingresar" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages"  class="boton-ingresar"  />
 
-                    <p:commandLink value="Registrar nuevo usuario" action="signup" class="link-regsitrar" />
+                <p:commandLink value="Registrar nuevo usuario" action="signup" class="link-regsitrar" />
 
-                </h:panelGrid>
+            </h:panelGrid>
         </h:form>
     </h:body>
 

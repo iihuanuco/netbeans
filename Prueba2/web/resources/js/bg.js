@@ -2,9 +2,7 @@
                         screenWidth = $(window).width();
                         screenHeight = $(window).height();
                         var bg = jQuery("#bg");
-                        //var sign = jQuery("#sign");
-                        // var sign2 = jQuery("#sign2");
-                       // var reg = jQuery(".reg");
+                        var iframe = jQuery("#iframe-custom");
 
                         // Proporcion horizontal/vertical. En este caso la imagen es cuadrada
                         ratio = 1;
@@ -21,9 +19,7 @@
                         if ($(bg).width() > 0) {
                               $(bg).css('left', (screenWidth - $(bg).width()) / 2);
                         }
-                        //$(sign).css('top',(screenHeight/3)).css('left',(screenWidth/3));
-                         // $(sign2).css('top',(screenHeight/3)).css('left',(screenWidth/3));
-                         //$(reg).css('top',(screenHeight/3.4));
+                         $(iframe).css('height',(screenHeight)); 
                           
                         }
     $(document).ready(function() {

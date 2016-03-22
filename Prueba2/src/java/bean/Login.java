@@ -45,6 +45,8 @@ public class Login {
             Users e = iter.next();
             if (e.getRegistro() > 0) {
                 user.setNombre(e.getNombre());
+                user.setUsuario(us);
+                user.setRegistro(e.getRegistro());
                 FacesContext.getCurrentInstance().addMessage(null,
                         new FacesMessage(FacesMessage.SEVERITY_INFO, "Informacion", "Conectado"));
                 return "principal?faces-redirect=true";

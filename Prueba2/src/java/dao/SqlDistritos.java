@@ -13,15 +13,16 @@ public class SqlDistritos implements DaoDistritos{
         try {
             conn=Postgresql.conexion();
             
-            String sql="insert into distritos(nombre,capital,provincia,fechac)"   //,userc,fecham,userm
-                     + " values(?,?,?,now())" ; //,?,?,?
+            String sql="insert into distritos(nombre,capital,provincia,fechac,userc)"   //,userc,fecham,userm
+                     + " values(?,?,?,now(),?)" ; //,?,?,?
             
             PreparedStatement pst=null; 
             pst = conn.prepareStatement(sql);
             
             pst.setString(1, distritos.getNombredis());
             pst.setString(2, distritos.getCapitaldis());
-            pst.setInt(3, distritos.getProvincia().getRegistropro());
+            pst.setInt(3, distritos.getProvincia());
+            pst.setInt(4, distritos.getUserc());
             
             pst.executeUpdate();
             

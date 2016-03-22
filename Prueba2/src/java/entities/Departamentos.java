@@ -1,5 +1,6 @@
 package entities;
 
+import dao.SqlDepartamentos;
 import java.sql.Date;
 
 public class Departamentos {
@@ -70,6 +71,14 @@ public class Departamentos {
     public void setNombredep(String nombredep) {
         this.nombredep = nombredep;
     }
+    
+        public void registrar(int reg){
+           SqlDepartamentos sd= new SqlDepartamentos();
+            Departamentos d= new Departamentos();
+            d.setNombredep(nombredep);
+            d.setUserc(reg);
+            sd.InsertarDepartamentos(d);
+    }  
 
     
 }

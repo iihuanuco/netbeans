@@ -1,6 +1,7 @@
 
 package entities;
 
+import dao.SqlProvincias;
 import java.sql.Date;
 
 public class Provincias {
@@ -11,19 +12,9 @@ public class Provincias {
     private int registropro;
     private String nombrepro;
     //atributo foraneo
-    private Departamentos departamento;
+    private int departamento;
 
     public Provincias() {
-    }
-
-    public Provincias(int userc, int userm, Date fechac, Date fecham, int registropro, String nombrepro, Departamentos departamento) {
-        this.userc = userc;
-        this.userm = userm;
-        this.fechac = fechac;
-        this.fecham = fecham;
-        this.registropro = registropro;
-        this.nombrepro = nombrepro;
-        this.departamento = departamento;
     }
 
     public int getUserc() {
@@ -74,13 +65,22 @@ public class Provincias {
         this.nombrepro = nombrepro;
     }
 
-    public Departamentos getDepartamento() {
+    public int getDepartamento() {
         return departamento;
     }
 
-    public void setDepartamento(Departamentos departamento) {
+    public void setDepartamento(int departamento) {
         this.departamento = departamento;
     }
+
+     public void registrar(int reg){
+         SqlProvincias sp= new SqlProvincias();
+         Provincias p= new Provincias();
+         p.setNombrepro(nombrepro);
+         p.setDepartamento(departamento);
+         p.setUserc(reg);
+         sp.InsertarProvincias(p);
+     }
     
     
 }

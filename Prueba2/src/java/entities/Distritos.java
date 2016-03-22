@@ -1,6 +1,7 @@
 
 package entities;
 
+import dao.SqlDistritos;
 import java.sql.Date;
 
 public class Distritos {
@@ -13,20 +14,9 @@ public class Distritos {
     private String nombredis;
     private String capitaldis;
     //atributo foraneo
-    private Provincias provincia;
+    private int provincia;
 
     public Distritos() {
-    }
-
-    public Distritos(int userc, int userm, Date fechac, Date fecham, int registrodis, String nombredis, String capitaldis, Provincias provincia) {
-        this.userc = userc;
-        this.userm = userm;
-        this.fechac = fechac;
-        this.fecham = fecham;
-        this.registrodis = registrodis;
-        this.nombredis = nombredis;
-        this.capitaldis = capitaldis;
-        this.provincia = provincia;
     }
 
     public int getUserc() {
@@ -85,13 +75,23 @@ public class Distritos {
         this.capitaldis = capitaldis;
     }
 
-    public Provincias getProvincia() {
+    public int getProvincia() {
         return provincia;
     }
 
-    public void setProvincia(Provincias provincia) {
+    public void setProvincia(int provincia) {
         this.provincia = provincia;
     }
-      
-    
+
+    public void registrar(int reg){
+        SqlDistritos sd= new SqlDistritos();
+        Distritos d= new Distritos();
+        d.setNombredis(nombredis);
+        d.setCapitaldis(capitaldis);
+        d.setUserc(reg);
+        d.setProvincia(provincia);
+        sd.InsertarDistritos(d);
+        
+    }
+     
 }

@@ -23,11 +23,12 @@ public class SqlUserxSucu implements DaoUserxSucu{
             pst.setInt(1, userxSucu.getUsuario());
             pst.setInt(2, userxSucu.getSucursal());
             pst.setInt(3, userxSucu.getUserc());
-            
+            util.util.creararchivotexto(pst.toString());
             pst.executeUpdate();
             
             conn.close();
         } catch (Exception e) {
+            
         }
         
         

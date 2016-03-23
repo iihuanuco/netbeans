@@ -12,6 +12,7 @@ public class Users {
     private String usuario,password,nombre,email,dni;
     private Date fechac,fecham;
     private String on,off;
+    private boolean flag=true;
 
     public Users() {
     
@@ -144,17 +145,28 @@ public class Users {
         this.off = off;
     }
 
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
+  
+    
+
   
     
     
-    public void registrar(){
+    public void registrar(int reg){
         SqlUsers su= new SqlUsers();
         Users u= new Users();
         u.setUsuario(usuario);
         u.setPassword(password);
         u.setNombre(nombre);
         u.setNivel(nivel);
-        u.setUserc(userc);
+        u.setUserc(reg);
         u.setDni(dni);
         u.setEmail(email);
         u.setSexo(sexo);
@@ -167,11 +179,22 @@ public class Users {
         {
         off="none";
         on="inline";
+        flag=false;
         }
         else{
-        off="inline";
-        on="none";
+          
+             off = "inline";
+             on = "none";
+            if(nivel==1){
+                flag = true;
+         
+            }
+             if(nivel!=1){
+                flag = false;
+                
+            }
         }
+        
     
     }
  

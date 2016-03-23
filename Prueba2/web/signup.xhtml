@@ -35,11 +35,8 @@
                     <f:selectItem itemLabel="Padre de Familia" itemValue="6" />
                     <f:selectItem itemLabel="Supervisor Externo" itemValue="7" />
                 </p:selectOneMenu>
-                 <p:selectOneMenu  >
-                    <f:selectItem itemLabel="-Seleccionar sucursal-" itemValue="0" itemDisabled="true" />
-                    <f:selectItems  value="#{sucursalesBean.listaSucursales}" />
-                </p:selectOneMenu>
-                <p:commandButton value="Registrar" actionListener="#{usersBean.user.registrar()}" class="boton-ingresar" />
+              
+                <p:commandButton value="Registrar" actionListener="#{usersBean.registrar(login.user.registro)}" class="boton-ingresar" />
              </h:panelGrid>
         </h:form>
             </f:view>

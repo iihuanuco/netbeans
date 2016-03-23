@@ -6,12 +6,12 @@ import entities.Users;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 
  
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class UsersBean {
     private Users user=new Users();
     private List<SelectItem> listausuarios;
@@ -27,6 +27,8 @@ public class UsersBean {
         this.user = user;
     }
 
+  
+   
     public List<SelectItem> getListausuarios() {
         this.listausuarios=new ArrayList<SelectItem>();
         SqlUsers su=new SqlUsers();
@@ -40,6 +42,10 @@ public class UsersBean {
         }
             
         return listausuarios;
+    }
+    
+    public void registrar(int reg){
+        user.registrar(reg);
     }
      
 }

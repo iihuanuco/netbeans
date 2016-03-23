@@ -87,16 +87,9 @@ public class UserxSucu {
     public void registrar(int reg) {
         SqlUserxSucu sus=new SqlUserxSucu();
         UserxSucu us=new UserxSucu();
-        
         us.setUsuario(usuario);
         us.setSucursal(sucursal);
         us.setUserc(reg);
-        
-        System.out.println(""+usuario);
-        System.out.println(""+sucursal);
-        System.out.println(""+reg);
-        System.out.println(""+userc);
-        
         sus.InsertarUserxSucu(us);
     }
     

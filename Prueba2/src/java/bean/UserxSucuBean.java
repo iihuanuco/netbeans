@@ -2,10 +2,10 @@ package bean;
 
 import entities.UserxSucu;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class UserxSucuBean {
 
     private UserxSucu userxsucu=new UserxSucu();
@@ -22,7 +22,8 @@ public class UserxSucuBean {
     }
     
     public void registrar(int reg){
-    userxsucu.registrar(reg);
-    }
+        userxsucu.registrar(reg);
+    } 
+   
     
 }

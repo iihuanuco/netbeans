@@ -24,6 +24,7 @@ and open the template in the editor.
                 <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/distr.jpg"/><p:commandButton value="Distritos" oncomplete="PF('distritos').show();" class="  btn-img"  /></div>
                 <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/empr.jpg"/><p:commandButton value="Empresas" oncomplete="PF('empresas').show();" class="  btn-img"  /></div>
                   <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/sucur.jpg"/><p:commandButton value="Sucursales" oncomplete="PF('sucursales').show();"  class=" btn-img"  /></div>
+                   <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/uxs.jpg"/><p:commandButton value="Asignar Usuario" oncomplete="PF('sxu').show();"  class=" btn-img"  /></div>
             </div>
             
             
@@ -95,7 +96,7 @@ and open the template in the editor.
                  </h:panelGrid>  
             </p:dialog>
             
-            <p:dialog  header="Registrar sucursales"  rendered="true" height="300" width="800" modal="true" draggable="false" resizable="false" >
+            <p:dialog  header="Registrar sucursales" widgetVar="sucursales" rendered="true" height="300" width="800" modal="true" draggable="false" resizable="false" >
                  <h:panelGrid columns="2">
                      <p:selectOneMenu value="#{sucursalesBean.sucursales.distrito}"> 
                                     <f:selectItem itemLabel="-Seleccione Distrito- "   itemValue="0" itemDisabled="true"/>
@@ -146,8 +147,8 @@ and open the template in the editor.
                  </h:panelGrid>  
             </p:dialog>
             
-            <p:dialog header="Registrar Usuario a Sucursal"  widgetVar="sucursales" rendered="true" height="100" width="600" modal="true" draggable="false" resizable="false" >
-                <h:panelGrid columns="3">
+            <p:dialog header="Registrar Usuario a Sucursal"  widgetVar="sxu" rendered="true" height="100" width="600" modal="true" draggable="false" resizable="false" >
+                <h:panelGrid columns="2">
                     <p:selectOneMenu value="#{userxSucuBean.userxsucu.usuario}">
                         <f:selectItem itemLabel="-Seleccione Usuario- "   itemValue="0" itemDisabled="true"/>
                         <f:selectItems value="#{usersBean.listausuarios}" />
@@ -155,7 +156,7 @@ and open the template in the editor.
                     <p:selectOneMenu value="#{userxSucuBean.userxsucu.sucursal}">
                         <f:selectItem itemLabel="-Seleccione Sucursal- "   itemValue="0" itemDisabled="true"/>
                         <f:selectItems value="#{sucursalesBean.listaSucursales}" />
-                    </p:selectOneMenu>
+                    </p:selectOneMenu>  
                     <p:commandButton value="Registrar" actionListener="#{userxSucuBean.registrar(login.user.registro)}" class="boton-ingresar" />
                 </h:panelGrid>
             </p:dialog>

@@ -69,4 +69,27 @@ public class SqlUsers implements DaoUsers {
         
         return listaUsuario;
     }
+
+    @Override
+    public List<Users> MostrarUsers() {
+        List<Users> listausers=new ArrayList<Users>();
+        try {
+            Connection conn=Postgresql.conexion();
+            String sql="select registro,nombre from users";
+            Statement st=conn.createStatement();
+            ResultSet rs=null;
+            rs=st.executeQuery(sql);
+            while (rs.next()) {
+                Users u=new Users();
+                u.setRegistro(rs.getInt(1));
+                u.setNombre(rs.getString(2));
+                
+                listausers.add(u);
+            }
+            
+        } catch (Exception e) {
+        }
+        
+        return listausers;
+    }
 }

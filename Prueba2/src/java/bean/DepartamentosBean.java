@@ -16,10 +16,8 @@ public class DepartamentosBean {
 
          private Departamentos departamentos= new Departamentos();
          private List <SelectItem> listaDepartamento;
-         private Departamentos d;
    
     public DepartamentosBean() {
-        d=new Departamentos();
     }
 
     public Departamentos getDepartamentos() {
@@ -44,13 +42,6 @@ public class DepartamentosBean {
         return listaDepartamento;
     }
 
-    public Departamentos getD() {
-        return d;
-    }
-
-    public void setD(Departamentos d) {
-        this.d = d;
-    }
     
     public void registrar(int reg){
         departamentos.registrar(reg);

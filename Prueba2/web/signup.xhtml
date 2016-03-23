@@ -7,24 +7,24 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Registrar Usuario</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+         <h:outputStylesheet library="css" name="style.css"  />
+        <h:outputStylesheet library="resources" name="fonts.css"  />
     </h:head>
 
-    <h:body>
-        <div>Registrar Usuario Nuevo</div>
+    <h:body style="background-color:white;">
+        <f:view>
         <h:form>
-            <p:panelGrid columns="1">
-
-                <p:inputText value="#{usersBean.user.usuario}" placeholder="Usuario"></p:inputText>
-                <p:password value="#{usersBean.user.password}" placeholder="Password"></p:password>
-                <p:inputText value="#{usersBean.user.dni}" placeholder="DNI"></p:inputText>
-                <p:inputText value="#{usersBean.user.nombre}" placeholder="Nombre"></p:inputText>
+            <h:panelGrid columns="1" class="signup">
+                <p:inputText value="#{usersBean.user.usuario}" placeholder="Usuario" class="texto"></p:inputText>
+                <p:password value="#{usersBean.user.password}" placeholder="Password" class="texto"></p:password>
+                <p:inputText value="#{usersBean.user.dni}" placeholder="DNI" class="texto"></p:inputText>
+                <p:inputText value="#{usersBean.user.nombre}" placeholder="Nombre" class="texto"></p:inputText>
                 <p:outputLabel for="sexo" value="Sexo: " />
                 <p:selectOneRadio id="sexo" value="#{usersBean.user.sexo}">
                     <f:selectItem itemLabel="Masculino" itemValue="1" />
                     <f:selectItem itemLabel="Femenino" itemValue="2" />
                 </p:selectOneRadio>
-                <p:inputText value="#{usersBean.user.email}" placeholder="Email"></p:inputText>
+                <p:inputText value="#{usersBean.user.email}" placeholder="Email" class="texto"></p:inputText>
                 <p:selectOneMenu value="#{usersBean.user.nivel}">
                     <f:selectItem itemLabel="-Seleccionar Nievel-" itemValue="0" itemDisabled="true" />
                     <f:selectItem itemLabel="Administrador" itemValue="1" />
@@ -35,8 +35,13 @@
                     <f:selectItem itemLabel="Padre de Familia" itemValue="6" />
                     <f:selectItem itemLabel="Supervisor Externo" itemValue="7" />
                 </p:selectOneMenu>
-                <h:commandButton value="Registrar" actionListener="#{usersBean.user.registrar()}"  />
-            </p:panelGrid>
+                 <p:selectOneMenu  >
+                    <f:selectItem itemLabel="-Seleccionar sucursal-" itemValue="0" itemDisabled="true" />
+                    <f:selectItems  value="#{sucursalesBean.listaSucursales}" />
+                </p:selectOneMenu>
+                <p:commandButton value="Registrar" actionListener="#{usersBean.user.registrar()}" class="boton-ingresar" />
+             </h:panelGrid>
         </h:form>
+            </f:view>
     </h:body>
 </html>

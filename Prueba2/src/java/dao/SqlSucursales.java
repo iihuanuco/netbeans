@@ -4,6 +4,10 @@ import entities.Sucursales;
 import util.util;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import util.Postgresql;
 
 public class SqlSucursales implements DaoSucursales{
@@ -41,6 +45,31 @@ public class SqlSucursales implements DaoSucursales{
         }
         
         
+    }
+
+    @Override
+    public List<Sucursales> MostrarSucursales() {
+       List<Sucursales> listaSucur=new ArrayList<Sucursales>();
+        try {
+            Connection cn=Postgresql.conexion();
+            String sql="select registro,nombre from sucursales";
+            
+            Statement st=cn.createStatement(); 
+            ResultSet rs=null;
+            rs=st.executeQuery(sql);
+            while(rs.next()) {                
+                Sucursales c=new Sucursales();
+                c.setRegistrosuc(rs.getInt(1));
+                c.setNombresuc(rs.getString(2));
+
+               listaSucur.add(c);
+            }      
+            
+        } catch (Exception e) {
+        }
+        
+       
+        return listaSucur;
     }
     
 }

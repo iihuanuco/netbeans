@@ -14,7 +14,7 @@ import javax.faces.model.SelectItem;
 public class ProvinciasBean {
         
     private Provincias provincias= new Provincias();
-     private List <SelectItem> listaProvincias;
+    private List <SelectItem> listaProvincias;
     
     public ProvinciasBean() {
     }

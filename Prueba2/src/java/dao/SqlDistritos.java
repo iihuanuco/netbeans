@@ -3,6 +3,10 @@ package dao;
 import entities.Distritos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import util.Postgresql;
 
 public class SqlDistritos implements DaoDistritos{
@@ -29,6 +33,29 @@ public class SqlDistritos implements DaoDistritos{
             conn.close();
         } catch (Exception e) {
         }
+    }
+
+    @Override
+    public List<Distritos> MostrarDistritos() {
+        List<Distritos> listadis=new ArrayList<Distritos>();
+        try {
+            Connection conn=Postgresql.conexion();
+            String sql="select registro,nombre from distritos";
+            Statement st=conn.createStatement();
+            ResultSet rs=null;
+            rs=st.executeQuery(sql);
+            while (rs.next()) {
+                Distritos d=new Distritos();
+                d.setRegistrodis(rs.getInt(1));
+                d.setNombredis(rs.getString(2));
+                
+                listadis.add(d);
+            }
+            
+        } catch (Exception e) {
+        }
+        
+        return listadis;
     }
     
     

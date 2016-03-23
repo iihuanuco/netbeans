@@ -1,7 +1,8 @@
 
 package entities;
 
-import java.sql.Date;
+import dao.SqlSucursales;
+import java.util.Date;
 
 public class Sucursales {
  
@@ -163,5 +164,25 @@ public class Sucursales {
         this.distrito = distrito;
     }
     
+    public void registrar(int reg){
+        SqlSucursales ss=new SqlSucursales();
+        Sucursales s=new Sucursales();
+        s.setNombresuc(nombresuc);
+        s.setEmpresa(empresa);
+        s.setDireccionsuc(direccionsuc);
+        s.setDistrito(distrito);
+        s.setAlcancesuc(alcancesuc);
+        s.setCodigomodularsuc(codigomodularsuc);
+        s.setAutorizacionsuc(autorizacionsuc);
+        s.setFechaautorizacionsuc(fechaautorizacionsuc);
+        s.setRevalidacionsuc(revalidacionsuc);
+        s.setTipodegestionsuc(tipodegestionsuc);
+        s.setUserc(reg);
+        
+        ss.InsertarSucursales(s);
+        
+    }
+    
+      
     
 }

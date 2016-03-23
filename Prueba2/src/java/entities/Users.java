@@ -175,5 +175,10 @@ public class Users {
     
     }
  
+      public String signout() {
+
+        this.nombre=null;
+        return "index";
+    }
     
 }

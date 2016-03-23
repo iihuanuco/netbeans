@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Dosis);
-@import url(https://fonts.googleapis.com/css?family=Jura:300);
+@import url(https://fonts.googleapis.com/css?family=Glegoo);
 .login{
     position: relative;
     margin: 0 auto;
@@ -18,7 +18,12 @@
    border: 2px solid #99cc00;
 }
 .panel-login{
-    margin: 20% auto ;
+    margin:10% auto ;
+   padding: 50px;
+   border-radius: 50px;
+   background-color: #272727 ;
+   -webkit-box-shadow: 1px 1px 2px 0 #000000;
+box-shadow: 1px 1px 2px 0 #000000;
 }
 
 .boton-ingresar{
@@ -54,8 +59,8 @@
 }
 
 .submenu{
-    height: 250px;
-    width: 25%;
+    height:300px;
+    width: 20%;
     background-color: #5f5e5e;
     display: block;
     float: left;
@@ -77,15 +82,17 @@
     width: 100%;
 }
 .btn-img{
-font-family: 'Jura', sans-serif;
+  font-family: "Dosis",sans-serif !important;
    padding: 10px !important;
      background: rgba(0,0,0,.3) -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
     top: -60%;
      box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
-     border:2px solid rgba(255,255,255,1) !important;
+     border:2px solid rgba(255,255,255,0) !important;
      font-size:20px;
      color:rgba(255,255,255,1);
      text-shadow: none !important;
+      width: 80%;
+      height: 60px;
      -webkit-transition: all .5s ease-in-out;
     -moz-transition: all .5s ease-in-out;
     -ms-transition: all .5s ease-in-out;
@@ -95,6 +102,45 @@ font-family: 'Jura', sans-serif;
 }
 
 .btn-img:hover{
-      background: rgba(0,0,0,.5) -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
-        font-size:22px;
+    border:1px solid #99cc00 !important; 
+      background:  rgba(51,51,51,.95) -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+       top: -100%;
+       margin-top: -1%;
+      width: 100%;
+      height: 100%;
+        font-size:25px;
+        
+}
+
+.boton-login{
+        background: #99cc00 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+    text-shadow: none !important;
+    font-family: "Dosis",sans-serif !important;
+    box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
+      color: #212121 !important;
+    width: 60%;
+    margin-top: 4px;
+    height: 50px;
+    margin-left: 20%;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+  
+}
+
+.boton-login:hover{
+      color: white !important;
+}
+.texto-login{
+        width: 300px;
+        height: 40px;
+        background-color: #212121 ;
+        color: white;
+        border-radius: 5px;
+}
+.label-login{
+     font-family: "Dosis",sans-serif !important;
+    color: white;
 }

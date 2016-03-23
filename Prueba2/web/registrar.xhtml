@@ -19,14 +19,11 @@ and open the template in the editor.
     <h:body style="background-color:white;">
         <h:form class="registro" >
             <div columns="1" class="registro-menu">
-                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/depa.jpg"/><p:commandButton value="DEPARTAMENTOS" oncomplete="PF('departamentos').show();"  class="  btn-img"  /></div>
-                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/pro.jpg"/><p:commandButton value="PROVINCIAS" oncomplete="PF('provincias').show();"  class="  btn-img"  /></div>
-                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/dist.JPG"/><p:commandButton value="DISTRITOS" oncomplete="PF('distritos').show();" class="  btn-img"  /></div>
-                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/emp.jpg"/><p:commandButton value="EMPRESAS" oncomplete="PF('empresas').show();" class="  btn-img"  /></div>
-                  <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/suc.jpg"/><p:commandButton value="SUCURSALES" oncomplete="PF('sucursales').show();"  class=" btn-img"  /></div>
-                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/flag.png"/><p:commandButton value="#"    class="boton-ingresar btn-img"  /></div>
-                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/flag.png"/><p:commandButton value="#"   class="boton-ingresar btn-img"  /></div>
-                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/flag.png"/><p:commandButton value="#"   class="boton-ingresar btn-img"  /></div>
+                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/depar.jpg"/><p:commandButton value="Departamentos" oncomplete="PF('departamentos').show();"  class="  btn-img"  /></div>
+                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/prov.jpg"/><p:commandButton value="Provincias" oncomplete="PF('provincias').show();"  class="  btn-img"  /></div>
+                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/distr.jpg"/><p:commandButton value="Distritos" oncomplete="PF('distritos').show();" class="  btn-img"  /></div>
+                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/empr.jpg"/><p:commandButton value="Empresas" oncomplete="PF('empresas').show();" class="  btn-img"  /></div>
+                  <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/sucur.jpg"/><p:commandButton value="Sucursales" oncomplete="PF('sucursales').show();"  class=" btn-img"  /></div>
             </div>
             
             
@@ -90,7 +87,7 @@ and open the template in the editor.
                  </h:panelGrid>  
             </p:dialog>
             
-                   <p:dialog  header="Registrar empresas"  widgetVar="empresas" rendered="true" height="100" width="400" modal="true" draggable="false" resizable="false" >
+                   <p:dialog  header="Registrar empresas"  widgetVar="empresas" rendered="true" height="100" width="600" modal="true" draggable="false" resizable="false" >
                  <h:panelGrid columns="2">
                      <p:inputText  id="txtnombreemp" placeholder="RUC" value="#{empresasBean.empresas.rucemp}" class="texto" ></p:inputText>
                      <p:inputText  id="txtrucemp" placeholder="Nombre" value="#{empresasBean.empresas.nombreemp}" class="texto" ></p:inputText>

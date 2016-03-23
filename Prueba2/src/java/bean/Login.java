@@ -60,12 +60,7 @@ public class Login {
         return null;
     }
 
-    public String signout() {
-
-        user.setNombre(null);
-
-        return "index?faces-redirect=true";
-    }
+   
     
   
     

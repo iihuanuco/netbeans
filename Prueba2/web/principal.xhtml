@@ -15,7 +15,7 @@
 
     </h:head>
 
-    <h:body onload="#{login.user.load()}">
+    <h:body onload="#{login.user.load()}" style="background-color: rgba(51,51,51,1)">
         <h:graphicImage id="bg" alt="Fondo de pantalla" value="resources/img/fondo.jpg" style="display: #{login.user.off};"/>
         <h:form style="display: #{login.user.off};" >
             <p:growl id="messages" showDetail="true" />
@@ -27,7 +27,7 @@
                         <li><a href="registrar.xhtml"  target="academico" ><span class="c3"><i class="icon icon-user"></i></span>Registrar</a></li>
                         <li><a href="#"  target="academico" ><span class="c2"><i class="icon icon-matricula"></i></span>Matricula</a></li>
                         <li><a href="#"  target="academico"><span class="c4"><i class="icon icon-id"></i></span>User: #{login.user.usuario}</a></li>
-                        <li class="menu-salir"><p:commandButton value="Salir" action="#{login.signout()}" icon="ui-icon-close" class="boton-salir"/></li>
+                        <li class="menu-salir"><p:commandButton value="Salir" action="#{login.user.signout()}" icon="ui-icon-close"  class="boton-salir"/></li>
                     </ul>
 
                 </nav>
@@ -38,18 +38,16 @@
 
 
         <h:form style="display: #{login.user.on};" class="login">
-
             <p:growl id="messages" showDetail="true" />
-            <h:panelGrid columns="3"  title="Ingresar" class="panel-login">
-                <p:inputText value="#{login.user.usuario}" placeholder="Usuario" class="texto" ></p:inputText>
-
-                <p:password value="#{login.user.password}" placeholder="Password" class="texto"></p:password>
-
-                <p:commandButton value="Ingresar" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages"  class="boton-ingresar"  />
-
-                <p:commandLink value="Registrar nuevo usuario" action="signup" class="link-regsitrar" />
-
-            </h:panelGrid>
+                 <h:panelGrid columns="1"  title="Ingresar" class="panel-login">
+                     <p:outputLabel value="Usuario: "  class="label-login"/>
+                    <p:inputText value="#{login.user.usuario}"   class="texto texto-login" ></p:inputText>
+                    <p:outputLabel value="Contraseña: " class="label-login"/>
+                    <p:password value="#{login.user.password}"   class="texto texto-login"></p:password>
+                     <p:commandButton value="Ingresar" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages"  class=" boton-login"  />
+  <p:commandLink value="Registrar  usuario" action="signup" class="link-regsitrar" />
+                   
+  </h:panelGrid>
         </h:form>
     </h:body>
 

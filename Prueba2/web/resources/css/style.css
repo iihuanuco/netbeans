@@ -150,3 +150,13 @@ box-shadow: 1px 1px 5px 0 #000000;
      font-family: "Dosis",sans-serif !important;
     color: white;
 }
+
+.c0{
+    width: 50px;
+}
+.lista-sucursales{
+        font-family: "Dosis",sans-serif !important;
+}
+[id="menu:listasucursales"] thead {
+    display:none;
+}

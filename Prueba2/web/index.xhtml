@@ -14,20 +14,20 @@
 
     <h:body style="background-color: rgba(51,51,51,1)">
         <f:view>
-        <div>
+
             <h:form class="login">
                  <p:growl id="messages" showDetail="true" />
-                 <h:panelGrid columns="1"  title="Ingresar" class="panel-login">
-                     <p:outputLabel value="Usuario: "  class="label-login"/>
-                    <p:inputText value="#{login.user.usuario}"   class="texto texto-login" ></p:inputText>
-                    <p:outputLabel value="Contraseña: " class="label-login"/>
-                    <p:password value="#{login.user.password}"   class="texto texto-login"></p:password>
-                     <p:commandButton value="Ingresar" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages"  class=" boton-login"  />
-                   
-  </h:panelGrid>
- 
+            <h:panelGrid columns="1"  title="Ingresar" class="panel-login">
+                <p:outputLabel value="Usuario: "  class="label-login"/>
+                <p:inputText value="#{login.user.usuario}"   class="texto texto-login" ></p:inputText>
+                <p:outputLabel value="Contraseña: " class="label-login"/>
+                <p:password value="#{login.user.password}"   class="texto texto-login"></p:password>
+                <p:commandButton value="Ingresar" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages"  class=" boton-login"  />
+
+            </h:panelGrid>
+
             </h:form>
-        </div>
+
 </f:view>
     </h:body>
 </html>

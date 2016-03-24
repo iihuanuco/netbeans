@@ -71,5 +71,36 @@ public class SqlSucursales implements DaoSucursales{
        
         return listaSucur;
     }
+
+    @Override
+    public List<Sucursales> MostrarSucursales(int user) {
+           List<Sucursales> listaSucur=new ArrayList<Sucursales>();
+        try {
+            Connection cn=Postgresql.conexion();
+            String sql="select s.registro,s.nombre " +
+            "from usersxsucu us " +
+            "inner join users u " +
+            "on u.registro=us.usuario " +
+            "inner join sucursales s " +
+            "on us.sucursal=s.registro " +
+            "where u.registro ="+user;
+            
+            Statement st=cn.createStatement(); 
+            ResultSet rs=null;
+            rs=st.executeQuery(sql);
+            while(rs.next()) {                
+                Sucursales c=new Sucursales();
+                c.setRegistrosuc(rs.getInt(1));
+                c.setNombresuc(rs.getString(2));
+
+               listaSucur.add(c);
+            }      
+            
+        } catch (Exception e) {
+        }
+        
+       
+        return listaSucur;
+    }
     
 }

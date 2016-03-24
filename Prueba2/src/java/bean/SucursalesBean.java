@@ -57,6 +57,5 @@ public class SucursalesBean {
         sucursales.setTipodegestionsuc(0);     
     }
     
-
     
 }

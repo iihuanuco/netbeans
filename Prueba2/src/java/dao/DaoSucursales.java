@@ -8,5 +8,6 @@ public interface DaoSucursales {
 
     void InsertarSucursales(Sucursales sucursales);
     List<Sucursales> MostrarSucursales();
+     List<Sucursales> MostrarSucursales(int user);
     
 }

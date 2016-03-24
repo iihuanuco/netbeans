@@ -2,7 +2,10 @@
 package entities;
 
 import dao.SqlSucursales;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 public class Sucursales {
  
@@ -22,6 +25,10 @@ public class Sucursales {
     //atributos foraneos
     private int empresa;
     private int distrito;
+    private List<Sucursales> lista;
+    private List<Sucursales> lista2;
+    //session
+    private String nombre;
 
     public Sucursales() {
     }
@@ -163,6 +170,35 @@ public class Sucursales {
     public void setDistrito(int distrito) {
         this.distrito = distrito;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+
+    public List<Sucursales> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Sucursales> lista) {
+        this.lista = lista;
+    }
+
+    public List<Sucursales> getLista2() {
+        return lista2;
+    }
+
+    public void setLista2(List<Sucursales> lista2) {
+        this.lista2 = lista2;
+    }
+
+        
+ 
+    
     
     public void registrar(int reg){
         SqlSucursales ss=new SqlSucursales();
@@ -182,6 +218,34 @@ public class Sucursales {
         ss.InsertarSucursales(s);
         
     }
+    public void mostrar(){
+         lista = new ArrayList();
+        SqlSucursales pu = new SqlSucursales();
+        List<Sucursales> listaSucur = pu.MostrarSucursales();
+        Iterator<Sucursales> iter = listaSucur.iterator();
+        while (iter.hasNext()) {
+            Sucursales e = iter.next();
+            lista.add(e);
+        }
+
+    }
+    public void mostrar2(int user){
+         lista2 = new ArrayList();
+        SqlSucursales pu = new SqlSucursales();
+        List<Sucursales> listaSucur = pu.MostrarSucursales(user);
+        Iterator<Sucursales> iter = listaSucur.iterator();
+        while (iter.hasNext()) {
+            Sucursales e = iter.next();
+            lista2.add(e);
+        }
+
+    }
+    
+    public void obtener(int cod,String nom){
+        this.registrosuc=cod;
+        this.nombre=nom;
+    }
+    
     
       
     

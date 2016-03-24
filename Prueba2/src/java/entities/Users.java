@@ -12,7 +12,7 @@ public class Users {
     private String usuario,password,nombre,email,dni;
     private Date fechac,fecham;
     private String on,off;
-    private boolean flag=true;
+    private boolean flag=true,flag2=true;
 
     public Users() {
     
@@ -153,6 +153,15 @@ public class Users {
         this.flag = flag;
     }
 
+    public boolean isFlag2() {
+        return flag2;
+    }
+
+    public void setFlag2(boolean flag2) {
+        this.flag2 = flag2;
+    }
+
+    
   
     
 
@@ -180,6 +189,7 @@ public class Users {
         off="none";
         on="inline";
         flag=false;
+         flag2=false;
         }
         else{
           
@@ -187,9 +197,11 @@ public class Users {
              on = "none";
             if(nivel==1){
                 flag = true;
+                flag2 = false;
          
             }
              if(nivel!=1){
+                 flag2=true;
                 flag = false;
             }
         }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <title>Operaciones Academicas</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h:panelGrid columns="1" >
+                    <p:selectOneMenu value="#{carrerasBean.carreras.sucursal}" >
+                        <f:selectItem itemLabel="-Seleccionar Sucursal-" itemValue="0" itemDisabled="true" />
+                        <f:selectItems value="#{sucursalesBean.listaSucursales}" />
+                    </p:selectOneMenu>
+                    <p:inputText id="txtcodigocarrera" value="#{carrerasBean.carreras.codigocarrera}" placeholder="Codigo" class="texto" ></p:inputText>
+                    <p:inputText id="txtnombrecarrera" value="#{carrerasBean.carreras.nombrecarrera}" placeholder="Nombre" class="texto" ></p:inputText>
+                    <p:inputText id="txtsemestrescarrera" value="#{carrerasBean.carreras.semestrescarrera}" placeholder="Semestre" class="texto" ></p:inputText>
+                    <p:commandButton value="Guardar" actionListener="#{carrerasBean.registrar(login.user.registro)}" class="boton-ingresar"
+                                     update="txtcodigocarrera,txtnombrecarrera,txtsemestrescarrera" ></p:commandButton>
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+        
+    </h:body>
+</html>

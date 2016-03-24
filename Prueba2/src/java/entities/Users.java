@@ -191,7 +191,6 @@ public class Users {
             }
              if(nivel!=1){
                 flag = false;
-                
             }
         }
         
@@ -199,7 +198,6 @@ public class Users {
     }
  
       public String signout() {
-
         this.nombre=null;
         return "index";
     }

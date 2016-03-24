@@ -4,7 +4,6 @@ package bean;
 import dao.SqlDistritos;
 import entities.Distritos;
 import java.util.ArrayList;
-import java.util.Iterator;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import java.util.List;

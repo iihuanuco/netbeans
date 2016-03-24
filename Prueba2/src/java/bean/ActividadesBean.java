@@ -5,11 +5,11 @@ import entities.Actividades;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class ActividadesBean {
     private Actividades actividades=new Actividades();
     private List<SelectItem> listaactividades;

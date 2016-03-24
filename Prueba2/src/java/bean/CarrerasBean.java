@@ -1,13 +1,9 @@
 package bean;
 
-import dao.SqlCarreras;
-import entities.Carreras;
-import entities.Sucursales;
-import java.util.ArrayList;
-import java.util.List;
+
+import entities.Carreras; 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.model.SelectItem;
 
 @ManagedBean
 @ViewScoped
@@ -27,9 +23,6 @@ public class CarrerasBean {
     }
 
   
-    
-  
-
    
     public void registrar(int reg,int suc){
         carreras.registrar(reg,suc);

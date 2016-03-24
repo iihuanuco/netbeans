@@ -21,8 +21,8 @@ public class CarrerasBean {
     }
     
     
-    public void registrar(int reg){
-        carreras.registrar(reg);
+    public void registrar(int reg,int suc){
+        carreras.registrar(reg,suc);
         carreras.setCodigocarrera("");
         carreras.setNombrecarrera("");
         carreras.setSemestrescarrera(0);

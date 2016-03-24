@@ -114,16 +114,16 @@ public class Carreras {
     }
     
     
-    public void registrar(int reg){
+    public void registrar(int reg,int suc){
         SqlCarreras sc=new SqlCarreras();
         Carreras c=new Carreras();
         c.setCodigocarrera(codigocarrera);
         c.setNombrecarrera(nombrecarrera);
         c.setSemestrescarrera(semestrescarrera);
-        c.setSucursal(sucursal);
+        c.setSucursal(suc);
         c.setUserc(reg);
-        
         sc.InsertarCarreras(c);
+        System.out.println(""+suc+reg);
         
     }
     

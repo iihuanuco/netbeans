@@ -20,14 +20,10 @@ and open the template in the editor.
         <f:view>
             <h:form>
                 <h:panelGrid columns="1" >
-                    <p:selectOneMenu value="#{carrerasBean.carreras.sucursal}" >
-                        <f:selectItem itemLabel="-Seleccionar Sucursal-" itemValue="0" itemDisabled="true" />
-                        <f:selectItems value="#{sucursalesBean.listaSucursales}" />
-                    </p:selectOneMenu>
                     <p:inputText id="txtcodigocarrera" value="#{carrerasBean.carreras.codigocarrera}" placeholder="Codigo" class="texto" ></p:inputText>
                     <p:inputText id="txtnombrecarrera" value="#{carrerasBean.carreras.nombrecarrera}" placeholder="Nombre" class="texto" ></p:inputText>
                     <p:inputText id="txtsemestrescarrera" value="#{carrerasBean.carreras.semestrescarrera}" placeholder="Semestre" class="texto" ></p:inputText>
-                    <p:commandButton value="Guardar" actionListener="#{carrerasBean.registrar(login.user.registro)}" class="boton-ingresar"
+                    <p:commandButton value="Guardar" actionListener="#{carrerasBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar"
                                      update="txtcodigocarrera,txtnombrecarrera,txtsemestrescarrera" ></p:commandButton>
                 </h:panelGrid>
             </h:form>

@@ -6,6 +6,7 @@ import entities.Users;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 
@@ -15,10 +16,24 @@ import javax.faces.model.SelectItem;
 public class UsersBean {
     private Users user=new Users();
     private List<SelectItem> listausuarios;
+    @ManagedProperty("#{login}")
+    private Login login;  
+
+    public Login getLogin() {
+        return login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }
     
     public UsersBean() {
     }
 
+    public boolean activar(){
+        return (login.getUser().dentro_de(new int[] {1})>0);
+    }
+    
     public Users getUser() {
         return user;
     }
@@ -47,5 +62,14 @@ public class UsersBean {
     public void registrar(int reg){
         user.registrar(reg);
     }
-     
+    
+    public boolean editar(){
+    return true;
+    }
+    
+    public boolean editarnombre(){
+    return true;
+    }
+    
+    
 }

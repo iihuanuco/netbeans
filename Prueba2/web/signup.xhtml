@@ -25,7 +25,8 @@
                     <f:selectItem itemLabel="Femenino" itemValue="2" />
                 </p:selectOneRadio>
                 <p:inputText value="#{usersBean.user.email}" placeholder="Email" class="texto"></p:inputText>
-                <p:selectOneMenu value="#{usersBean.user.nivel}">
+                <p:selectOneMenu value="#{usersBean.user.nivel}" 
+                                 disabled="#{ (usersBean.editar()==false and usersBean.editarnombre()==false)} ">
                     <f:selectItem itemLabel="-Seleccionar Nievel-" itemValue="0" itemDisabled="true" />
                     <f:selectItem itemLabel="Administrador" itemValue="1" />
                     <f:selectItem itemLabel="Supervisor" itemValue="2" />
@@ -35,7 +36,26 @@
                     <f:selectItem itemLabel="Padre de Familia" itemValue="6" />
                     <f:selectItem itemLabel="Supervisor Externo" itemValue="7" />
                 </p:selectOneMenu>
-              
+               <c:choose>
+                   <c:when test="#{usersBean.user.saludar()==2}">
+                       <p:outputLabel value="Hola como estan."  />
+                       <p:outputLabel value="Hola como estan."  />
+                    </c:when>
+                   
+                   <c:when test="#{usersBean.user.saludar()==3}">
+                       <p:outputLabel value="Hola como estan."  />
+                       <p:outputLabel value="Hola como estan."  />
+                       <p:outputLabel value="Hola como estan."   />
+                                           </c:when>
+                   
+            <c:otherwise>
+                <p:outputLabel value="No saludo"  />
+                
+            </c:otherwise>
+        </c:choose>
+                
+                
+                
                 <p:commandButton value="Registrar" actionListener="#{usersBean.registrar(login.user.registro)}" class="boton-ingresar" />
              </h:panelGrid>
         </h:form>

@@ -195,12 +195,12 @@ public class Users {
           
              off = "inline";
              on = "none";
-            if(nivel==1){
+            if(dentro_de(new int [] {1})>=0){
+            //if(nivel==1){
                 flag = true;
                 flag2 = false;
-         
             }
-             if(nivel!=1){
+            else if(nivel!=1){
                  flag2=true;
                 flag = false;
             }
@@ -209,9 +209,22 @@ public class Users {
     
     }
  
-      public String signout() {
+    public String signout() {
         this.nombre=null;
         return "index";
+    }
+    
+    public int dentro_de(int[] a)
+    {
+    int i;
+    for(i=0;i<a.length;i++)
+        if(nivel==a[i])
+            return i;
+    return -1;
+    }
+    
+    public int saludar(){
+    return 2;
     }
     
 }

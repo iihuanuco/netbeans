@@ -121,7 +121,7 @@ public class Carreras {
         c.setNombrecarrera(nombrecarrera);
         c.setSemestrescarrera(semestrescarrera);
         c.setSucursal(sucursal);
-        c.setUserc(userc);
+        c.setUserc(reg);
         
         sc.InsertarCarreras(c);
         

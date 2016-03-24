@@ -38,25 +38,26 @@ and open the template in the editor.
                 
                 <p:dialog  header="Registrar Curso"  widgetVar="Cursos" rendered="true" height="500" width="350" modal="true" draggable="false" resizable="false" >
                   <h:panelGrid columns="1" >
-                    <p:inputText id="txtcodigocurso"   placeholder="Codigo" class="texto" ></p:inputText>
-                    <p:inputText id="txtnombrecurso"   placeholder="Nombre" class="texto" ></p:inputText>
-                    <p:inputText id="txtsemestrescurso"   placeholder="Semestre" class="texto" ></p:inputText>
-                      <p:selectOneMenu    > 
+                      <p:inputText id="txtcodigocurso" value="#{cursosBean.cursos.codigocurso}"  placeholder="Codigo" class="texto" ></p:inputText>
+                      <p:inputText id="txtnombrecurso" value="#{cursosBean.cursos.nombrecurso}"  placeholder="Nombre" class="texto" ></p:inputText>
+                      <p:inputText id="txtsemestrescurso" value="#{cursosBean.cursos.semestrecurso}"  placeholder="Semestre" class="texto" ></p:inputText>
+                      <p:selectOneMenu value="#{cursosBean.cursos.carrera}"  > 
                                     <f:selectItem itemLabel="-Seleccione Carrera- "   itemValue="0"/>
-                                    <f:selectItems  />
+                                    <f:selectItems value="#{carrerasBean.listacarreras}" />
                                 </p:selectOneMenu>
-                      <p:inputText id="txtcreditos"   placeholder="Creditos" class="texto" ></p:inputText>
-                      <p:selectOneMenu    > 
-                                    <f:selectItem itemLabel="-Seleccione Estado- "   itemValue="0"/>
-                                    <f:selectItems  />
-                      </p:selectOneMenu>
-                              <p:inputText id="txtht"   placeholder="Horas Teoria" class="texto" ></p:inputText>
-                              <p:inputText id="txthp"   placeholder="Horas Practica" class="texto" ></p:inputText>
-                               <p:inputText id="txtalcance"   placeholder="Alcance" class="texto" ></p:inputText>
-                              
-                                 <p:calendar  pattern="dd/MM/yyyy" mask="true" class="datos" placeholder="Fecha de Inicio"  ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>          
+                      <p:inputText id="txtcreditos" value="#{cursosBean.cursos.creditoscurso}"  placeholder="Creditos" class="texto" ></p:inputText>
+                      
+                      <p:inputText id="txtht" value="#{cursosBean.cursos.htcurso}"  placeholder="Horas Teoria" class="texto" ></p:inputText>
+                      <p:inputText id="txthp" value="#{cursosBean.cursos.hpcurso}"  placeholder="Horas Practica" class="texto" ></p:inputText>
+                      <p:selectOneMenu value="#{cursosBean.cursos.alcancecurso}">
+                          <f:selectItem itemLabel="-Seleccione alcance-" itemValue="0" />
+                          <f:selectItem itemLabel="Obligaorio" itemValue="1" />
+                          <f:selectItem itemLabel="Electivo" itemValue="2" />
+                          <f:selectItem itemLabel="Libre" itemValue="3" />
+                      </p:selectOneMenu>        
+                      <p:calendar value="#{cursosBean.cursos.fechainiciocurso}" pattern="dd/MM/yyyy" mask="true" class="datos" placeholder="Fecha de Inicio"  ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>          
                              
-                    <p:commandButton value="Guardar"   class="boton-ingresar"
+                                 <p:commandButton value="Guardar" actionListener="#{cursosBean.registrar(login.user.registro)}"  class="boton-ingresar"
              update="txtcodigocarrera,txtnombrecarrera,txtsemestrescarrera" />
                 </h:panelGrid>
             </p:dialog>

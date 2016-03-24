@@ -3,6 +3,9 @@ package dao;
 import entities.Carreras;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import util.Postgresql;
 
@@ -34,7 +37,25 @@ public class SqlCarreras implements DaoCarreras{
 
     @Override
     public List<Carreras> MostrarCarreras() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Carreras> listacar=new ArrayList<Carreras>();
+        try {
+            Connection conn=Postgresql.conexion();
+            String sql="select registro,nombre from carreras";
+            
+            Statement st=conn.createStatement();
+            ResultSet rs=null;
+            rs=st.executeQuery(sql);
+            while (rs.next()) {
+                Carreras c=new Carreras();
+                c.setRegistrocarrera(rs.getInt(1));
+                c.setNombrecarrera(rs.getString(2));
+                
+                listacar.add(c);
+            }
+            
+        } catch (Exception e) {
+        }
+        return listacar;
     }
 
     

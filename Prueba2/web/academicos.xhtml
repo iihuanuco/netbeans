@@ -10,24 +10,60 @@ and open the template in the editor.
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-    
+
     <h:head>
         <title>Operaciones Academicas</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        
+    <h:outputStylesheet library="css" name="style.css"  />
+        <h:outputStylesheet library="resources" name="fonts.css"  />
+
     </h:head>
     <h:body  style="background-color:white;">
         <f:view>
-            <h:form>
-                <h:panelGrid columns="1" >
+            <h:form class="academico" >
+                <div columns="1" class="registro-menu">
+                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/carr.jpg"/><p:commandButton value="Carreras" oncomplete="PF('Carreras').show();"  class="  btn-img"  /></div>
+                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/cur.jpg"/><p:commandButton value="Cursos" oncomplete="PF('Cursos').show();"  class="  btn-img"  /></div>
+       </div>
+            
+            
+            <p:dialog  header="Registrar Carreras"  widgetVar="Carreras" rendered="true" height="200" width="300" modal="true" draggable="false" resizable="false" >
+                  <h:panelGrid columns="1" >
                     <p:inputText id="txtcodigocarrera" value="#{carrerasBean.carreras.codigocarrera}" placeholder="Codigo" class="texto" ></p:inputText>
                     <p:inputText id="txtnombrecarrera" value="#{carrerasBean.carreras.nombrecarrera}" placeholder="Nombre" class="texto" ></p:inputText>
                     <p:inputText id="txtsemestrescarrera" value="#{carrerasBean.carreras.semestrescarrera}" placeholder="Semestre" class="texto" ></p:inputText>
                     <p:commandButton value="Guardar" actionListener="#{carrerasBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar"
-                                     update="txtcodigocarrera,txtnombrecarrera,txtsemestrescarrera" ></p:commandButton>
+             update="txtcodigocarrera,txtnombrecarrera,txtsemestrescarrera" />
                 </h:panelGrid>
-            </h:form>
+            </p:dialog>
+                
+                <p:dialog  header="Registrar Curso"  widgetVar="Cursos" rendered="true" height="500" width="350" modal="true" draggable="false" resizable="false" >
+                  <h:panelGrid columns="1" >
+                    <p:inputText id="txtcodigocurso"   placeholder="Codigo" class="texto" ></p:inputText>
+                    <p:inputText id="txtnombrecurso"   placeholder="Nombre" class="texto" ></p:inputText>
+                    <p:inputText id="txtsemestrescurso"   placeholder="Semestre" class="texto" ></p:inputText>
+                      <p:selectOneMenu    > 
+                                    <f:selectItem itemLabel="-Seleccione Carrera- "   itemValue="0"/>
+                                    <f:selectItems  />
+                                </p:selectOneMenu>
+                      <p:inputText id="txtcreditos"   placeholder="Creditos" class="texto" ></p:inputText>
+                      <p:selectOneMenu    > 
+                                    <f:selectItem itemLabel="-Seleccione Estado- "   itemValue="0"/>
+                                    <f:selectItems  />
+                      </p:selectOneMenu>
+                              <p:inputText id="txtht"   placeholder="Horas Teoria" class="texto" ></p:inputText>
+                              <p:inputText id="txthp"   placeholder="Horas Practica" class="texto" ></p:inputText>
+                               <p:inputText id="txtalcance"   placeholder="Alcance" class="texto" ></p:inputText>
+                              
+                                 <p:calendar  pattern="dd/MM/yyyy" mask="true" class="datos" placeholder="Fecha de Inicio"  ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>          
+                             
+                    <p:commandButton value="Guardar"   class="boton-ingresar"
+             update="txtcodigocarrera,txtnombrecarrera,txtsemestrescarrera" />
+                </h:panelGrid>
+            </p:dialog>
+            
+            
+        </h:form>
         </f:view>
-        
+
     </h:body>
 </html>

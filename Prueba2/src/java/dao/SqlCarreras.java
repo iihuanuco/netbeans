@@ -36,21 +36,50 @@ public class SqlCarreras implements DaoCarreras{
     }
 
     @Override
-    public List<Carreras> MostrarCarreras() {
+    public List<Carreras> MostrarCarreras(int suc) {
         List<Carreras> listacar=new ArrayList<Carreras>();
         try {
             Connection conn=Postgresql.conexion();
-            String sql="select registro,nombre from carreras";
+            String sql="select c.registro,c.nombre " +
+" from carreras c " +
+" inner join sucursales su " +
+" on su.registro=c.sucursal " +
+" where su.registro = "+suc;
             
             Statement st=conn.createStatement();
             ResultSet rs=null;
+      
             rs=st.executeQuery(sql);
             while (rs.next()) {
                 Carreras c=new Carreras();
                 c.setRegistrocarrera(rs.getInt(1));
                 c.setNombrecarrera(rs.getString(2));
-                
+             
                 listacar.add(c);
+                       
+            }
+            
+        } catch (Exception e) {
+        }
+        return listacar;
+    }
+
+    @Override
+    public List<Carreras> MostrarSemestres(int reg) {
+        List<Carreras> listacar=new ArrayList<Carreras>();
+        try {
+            Connection conn=Postgresql.conexion();
+            String sql="select semestres from carreras  where registro = "+reg;
+            
+            Statement st=conn.createStatement();
+            ResultSet rs=null;
+            util.util.creararchivotexto(String.valueOf(reg));
+            rs=st.executeQuery(sql);
+            while (rs.next()) {
+                Carreras c=new Carreras();
+                c.setSemestrescarrera(rs.getInt(1));
+                listacar.add(c);
+                       
             }
             
         } catch (Exception e) {

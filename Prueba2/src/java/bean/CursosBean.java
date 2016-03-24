@@ -1,13 +1,19 @@
 package bean;
 
+import dao.SqlCarreras;
+import entities.Carreras;
 import entities.Cursos;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.model.SelectItem;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class CursosBean {
     private Cursos cursos=new Cursos();
+    private List<SelectItem> listaSemestres;
     
     public CursosBean() {
     }
@@ -19,6 +25,23 @@ public class CursosBean {
     public void setCursos(Cursos cursos) {
         this.cursos = cursos;
     }
+    
+      public List<SelectItem> getListaSemestres() {
+         this.listaSemestres=new ArrayList<SelectItem>();
+        SqlCarreras sc=new SqlCarreras();
+            List<Carreras>  listacar=sc.MostrarSemestres(cursos.getCarrera());
+            listaSemestres.clear();
+            for (Carreras c : listacar) {
+                for (int i = 1; i <= c.getSemestrescarrera(); i++) {
+                      SelectItem caritem=new SelectItem(i,String.valueOf(i));
+                  this.listaSemestres.add(caritem);
+                }
+          
+         
+            }  
+        return listaSemestres;
+    }
+
     
     public void registrar(int reg){
         cursos.registrar(reg);

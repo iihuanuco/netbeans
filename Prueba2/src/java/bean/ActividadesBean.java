@@ -39,7 +39,6 @@ public class ActividadesBean {
     
     public void registrar(int reg,int suc){
         actividades.registrar(reg, suc);
-        actividades.setFechainicioact(null);
         actividades.setNombreact("");
         actividades.setAlcanceact(0);
     

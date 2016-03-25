@@ -1,7 +1,7 @@
 package entities;
 
 import dao.SqlEvaluaciones;
-import java.sql.Date;
+import java.util.Date;
 
 public class Evaluaciones {
 

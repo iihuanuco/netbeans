@@ -1,6 +1,7 @@
 package bean;
 
 import dao.SqlCarreras;
+import dao.SqlCursos;
 import entities.Carreras;
 import entities.Cursos;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import javax.faces.model.SelectItem;
 public class CursosBean {
     private Cursos cursos=new Cursos();
     private List<SelectItem> listaSemestres;
+    private List<SelectItem> listaCursos;
     
     public CursosBean() {
     }
@@ -42,6 +44,22 @@ public class CursosBean {
         return listaSemestres;
     }
 
+    public List<SelectItem> getListaCursos() {
+          this.listaCursos=new ArrayList<SelectItem>();
+        SqlCursos sc=new SqlCursos();
+            List<Cursos>  listacar=sc.MostrarCursos();
+            listaCursos.clear();
+            for (Cursos c : listacar) {
+               SelectItem caritem=new SelectItem(c.getRegistrocurso(),c.getNombrecurso());
+               this.listaCursos.add(caritem);
+    
+            }  
+        return listaCursos;
+    }
+
+ 
+      
+      
     
     public void registrar(int reg){
         cursos.registrar(reg);

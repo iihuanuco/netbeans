@@ -21,10 +21,11 @@ and open the template in the editor.
         <f:view>
             <h:form class="academico" >
                 <div columns="1" class="registro-menu">
-                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/carr.jpg"/><p:commandButton value="Carreras" oncomplete="PF('Carreras').show();"  class="  btn-img"  /></div>
-                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/cur.jpg"/><p:commandButton value="Cursos" oncomplete="PF('Cursos').show();"  class="  btn-img"  /></div>
-                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/eval.jpg"/><p:commandButton value="Evaluaciones" oncomplete="PF('evaluaciones').show();"  class="  btn-img"  /></div>
-                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/eval.jpg"/><p:commandButton value="Actividades" oncomplete="PF('actividades').show();"  class="  btn-img"  /></div>
+                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/7.jpg"/><p:commandButton value="Carreras" oncomplete="PF('Carreras').show();"  class="  btn-img"  /></div>
+                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/8.jpg"/><p:commandButton value="Cursos" oncomplete="PF('Cursos').show();"  class="  btn-img"  /></div>
+                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/9.jpg"/><p:commandButton value="Evaluaciones" oncomplete="PF('evaluaciones').show();"  class="  btn-img"  /></div>
+                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/10.jpg"/><p:commandButton value="Actividades" oncomplete="PF('actividades').show();"  class="  btn-img"  /></div>
+                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/11.jpg"/><p:commandButton value="Asignar Evaluacion" oncomplete="PF('evaluaxcurso').show();"  class="  btn-img"  /></div>
                 </div>
 
 
@@ -72,27 +73,50 @@ and open the template in the editor.
                 </p:dialog>
 
                 <p:dialog header="Evaluaciones" widgetVar="evaluaciones" rendered="true" height="100" width="500" modal="true" draggable="false" resizable="false" >
-                    <p:panelGrid columns="2">
+                    <h:panelGrid columns="2">
                         <p:inputText id="txtnombreval" value="#{evaluacionesBean.evaluaciones.nombreeval}" placeholder="Nombre de Evaluacion" class="texto"></p:inputText>
                         <p:commandButton value="Guardar" actionListener="#{evaluacionesBean.registrar(login.user.registro)}" class="boton-ingresar"/>
-                    </p:panelGrid>
+                    </h:panelGrid>
                     
                 </p:dialog>
                 
                 <p:dialog header="Actividades" widgetVar="actividades" rendered="true" height="200" width="330" modal="true" draggable="false" resizable="false" >
-                    <p:panelGrid columns="1">
+                    <h:panelGrid columns="1">
                          
                         <p:inputText id="txtnombreact" value="#{actividadesBean.actividades.nombreact}" placeholder="Nombre de Actividad" class="texto"></p:inputText>
-                        <p:selectOneMenu value="#{actividadesBean.actividades.alcanceact}">
+                        <p:selectOneMenu id="cmbalcance" value="#{actividadesBean.actividades.alcanceact}">
                             <f:selectItem itemLabel="-Seleccionar Alcance-" itemValue="0" itemDisabled="true" />
                             <f:selectItem itemLabel="Alcance 1" itemValue="1" />
                             <f:selectItem itemLabel="Alcance 2" itemValue="2" />
                             <f:selectItem itemLabel="Alcance 3" itemValue="3" />
                         </p:selectOneMenu>
-                        <p:calendar value="#{actividadesBean.actividades.fechainicioact}" pattern="dd/MM/yyyy" mask="true" class="datos" placeholder="Fecha de Inicio"  ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>
-                        <p:commandButton value="Guardar" actionListener="#{actividadesBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar"/>
+                        <p:calendar id="txtfecha" value="#{actividadesBean.actividades.fechainicioact}" pattern="dd/MM/yyyy" mask="true" class="datos" placeholder="Fecha de Inicio"  ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>
+                        <p:commandButton value="Guardar" actionListener="#{actividadesBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar" update="cmbalcance,txtnombreact,txtfecha"/>
                         
-                    </p:panelGrid>
+                    </h:panelGrid>
+                    
+                </p:dialog>
+                
+                  <p:dialog header="Asignar Evaluacion" widgetVar="evaluaxcurso" rendered="true" height="200" width="550" modal="true" draggable="false" resizable="false" >
+                    <h:panelGrid columns="2">
+                         
+                        <p:selectOneMenu id="cmbcurso" value="#{evaluaxCursoBean.evaluaxcurso.curso}" >
+                            <f:selectItem itemLabel="-Seleccionar Curso-" itemValue="0" itemDisabled="true" />
+                            <f:selectItems value="#{cursosBean.listaCursos}" />
+                        </p:selectOneMenu>
+                        <p:selectOneMenu id="cmbevaluacion" value="#{evaluaxCursoBean.evaluaxcurso.evaluacion}" >
+                            <f:selectItem itemLabel="-Seleccionar Evaluacion-" itemValue="0" itemDisabled="true" />
+                            <f:selectItems value="#{evaluacionesBean.listaevaluaciones}" />
+                        </p:selectOneMenu>
+                        <p:selectOneMenu id="cmbactividad" value="#{evaluaxCursoBean.evaluaxcurso.actividad}" >
+                            <f:selectItem itemLabel="-Seleccionar Actividad-" itemValue="0" itemDisabled="true" />
+                            <f:selectItems value="#{actividadesBean.listaactividades}" />
+                        </p:selectOneMenu>
+                        <p:inputText id="txtpeso" value="#{evaluaxCursoBean.evaluaxcurso.peso}" placeholder="Peso" class="texto"></p:inputText>
+                       
+                        <p:commandButton value="Guardar" actionListener="#{evaluaxCursoBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtpeso,cmbcurso,cmbevaluacion,cmbactividad"/>
+                        
+                    </h:panelGrid>
                     
                 </p:dialog>
                 

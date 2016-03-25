@@ -25,8 +25,7 @@
                     <f:selectItem itemLabel="Femenino" itemValue="2" />
                 </p:selectOneRadio>
                 <p:inputText value="#{usersBean.user.email}" placeholder="Email" class="texto"></p:inputText>
-                <p:selectOneMenu value="#{usersBean.user.nivel}" 
-                                 disabled="#{ (usersBean.editar()==false and usersBean.editarnombre()==false)} ">
+                <p:selectOneMenu value="#{usersBean.user.nivel}" >
                     <f:selectItem itemLabel="-Seleccionar Nievel-" itemValue="0" itemDisabled="true" />
                     <f:selectItem itemLabel="Administrador" itemValue="1" />
                     <f:selectItem itemLabel="Supervisor" itemValue="2" />

@@ -25,14 +25,15 @@ public class ActividadesBean {
         this.actividades = actividades;
     }
 
-    public List<SelectItem> getListaactividades() {
-        this.listaactividades=new ArrayList<SelectItem>();
-        SqlActividades sa=new SqlActividades();
-            List<Actividades> listaact=sa.MostrarActividades();
-            listaact.clear();
-            for (Actividades a : listaact) {
-            SelectItem actitem=new SelectItem(a.getRegistroact(),a.getNombreact());
-            this.listaactividades.add(actitem);
+     public List<SelectItem> getListaactividades() {
+          this.listaactividades=new ArrayList<SelectItem>();
+        SqlActividades sc=new SqlActividades();
+            List<Actividades>  listaac=sc.MostrarActividades();
+            listaactividades.clear();
+            for (Actividades c : listaac) {
+               SelectItem caritem=new SelectItem(c.getRegistroact(),c.getNombreact());
+               this.listaactividades.add(caritem);
+    
             }   
         return listaactividades;
     }
@@ -41,6 +42,7 @@ public class ActividadesBean {
         actividades.registrar(reg, suc);
         actividades.setNombreact("");
         actividades.setAlcanceact(0);
+        actividades.setFechac(null);
     
     }
     

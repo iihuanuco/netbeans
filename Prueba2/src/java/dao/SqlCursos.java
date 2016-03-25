@@ -3,6 +3,9 @@ package dao;
 import entities.Cursos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import util.Postgresql;
 import util.util;
@@ -42,7 +45,25 @@ public class SqlCursos implements DaoCursos{
 
     @Override
     public List<Cursos> MostrarCursos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          List<Cursos> listacur=new ArrayList<Cursos>();
+        try {
+            Connection conn=Postgresql.conexion();
+            String sql="select registro,nombre from cursos";
+            Statement st=conn.createStatement();
+            ResultSet rs=null;
+            rs=st.executeQuery(sql);
+            while (rs.next()) {
+                Cursos d=new Cursos();
+                d.setRegistrocurso(rs.getInt(1));
+                d.setNombrecurso(rs.getString(2));
+                
+                listacur.add(d);
+            }
+            
+        } catch (Exception e) {
+        }
+        
+        return listacur;
     }
 
     

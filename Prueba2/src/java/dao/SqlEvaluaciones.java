@@ -47,7 +47,6 @@ public class SqlEvaluaciones implements DaoEvaluaciones{
                 Evaluaciones e=new Evaluaciones();
                 e.setRegistroeval(rs.getInt(1));
                 e.setNombreeval(rs.getString(2));
-                
                 listaeval.add(e);
             }
         } catch (Exception e) {

@@ -18,72 +18,80 @@
 
 
     <h:body onload="#{login.user.load()} and #{sucursalesBean.sucursales.mostrar()} and #{sucursalesBean.sucursales.mostrar2(login.user.registro)}" style="background-color: rgba(51,51,51,1)">
-        <h:graphicImage id="bg" alt="Fondo de pantalla" value="resources/img/fondo.jpg" style="display: #{login.user.off};"/>
+      
 
-        <h:form id="menu2" style="display: #{login.user.off};">
-                      <p:growl id="messages" showDetail="true" />
-            <header>
-                <nav>
-                    <ul >
-                        
-                        <li><a href="inicio.xhtml" target="academico"  ><span class="c1"><i class="icon icon-home"></i></span>Inicio</a></li>
-                        <li><a href="registrar.xhtml"  target="academico" ><span class="c3"><i class="icon icon-matricula"></i></span>Registrar</a></li>
-                        <li ><a href="signup.xhtml"  target="academico" ><span class="c2"><i class="icon icon-user"></i></span>Usuarios</a></li>
-                        <li><a href="#"  target="academico" ><span class="c2"><i class="icon icon-matricula"></i></span>Matricula</a></li>
-                        <li><a href="#"  target="academico"><span class="c4"><i class="icon icon-id"></i></span>User: #{login.user.usuario}</a></li>
-                        <li><a href="academicos.xhtml"  target="academico"><span class="c4"><i class="icon icon-id"></i></span>#{sucursalesBean.sucursales.nombre}</a></li>
-                        <li class="menu-salir"><p:commandButton value="Salir" action="#{login.user.signout()}" icon="ui-icon-close"  class="boton-salir"  /></li>
-                    </ul>
-                </nav>
-            </header>
 
-        </h:form  >
-        <h:form id="menu" style="display: #{login.user.off};" >
-  
-            <p:dialog  header="Seleccionar sucursales" visible="#{login.user.flag}" widgetVar="sucursales" rendered="true" height="200" width="400" modal="true" closable="false" draggable="false" resizable="false" >
-                <p:dataTable  id="listasucursales"  class="lista-sucursales"  value="#{sucursalesBean.sucursales.lista}"  var="sucursales" >
+        <c:choose>
+            <c:when test="#{login.user.nombre==null}">
+
+                <h:form   class="login">
+                    <p:growl id="messages" showDetail="true" />
+                    <h:panelGrid columns="1"  title="Ingresar" class="panel-login">
+                        <p:outputLabel value="Usuario: "  class="label-login"/>
+                        <p:inputText value="#{login.user.usuario}"   class="texto texto-login" ></p:inputText>
+                        <p:outputLabel value="Contraseña: " class="label-login"/>
+                        <p:password value="#{login.user.password}"   class="texto texto-login"></p:password>
+                        <p:commandButton value="Ingresar" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages"  class=" boton-login"  />
+
+                    </h:panelGrid>
+                </h:form>
+            </c:when>
+
+            <c:otherwise>
+                  <h:graphicImage id="bg" alt="Fondo de pantalla" value="resources/img/fondo.jpg" />
+                <h:form id="menu2"  >
+                    <p:growl id="messages" showDetail="true" />
+                    <header>
+                        <nav>
+                            <ul >
+
+                                <li><a href="inicio.xhtml" target="academico"  ><span class="c1"><i class="icon icon-home"></i></span>Inicio</a></li>
+                                <li><a href="registrar.xhtml"  target="academico" ><span class="c3"><i class="icon icon-matricula"></i></span>Registrar</a></li>
+                                <li ><a href="signup.xhtml"  target="academico" ><span class="c2"><i class="icon icon-user"></i></span>Usuarios</a></li>
+                                <li><a href="#"  target="academico" ><span class="c2"><i class="icon icon-matricula"></i></span>Matricula</a></li>
+                                <li><a href="#"  target="academico"><span class="c4"><i class="icon icon-id"></i></span>User: #{login.user.usuario}</a></li>
+                                <li><a href="academicos.xhtml"  target="academico"><span class="c4"><i class="icon icon-id"></i></span>#{sucursalesBean.sucursales.nombre}</a></li>
+                                <li class="menu-salir"><p:commandButton value="Salir" action="#{login.user.signout()}" icon="ui-icon-close"  class="boton-salir"  /></li>
+                            </ul>
+                        </nav>
+                    </header>
+
+                </h:form  >
+                <h:form id="menu"   >
+
+                    <p:dialog  header="Seleccionar sucursales" visible="#{login.user.flag}" widgetVar="sucursales" rendered="true" height="200" width="400" modal="true" closable="false" draggable="false" resizable="false" >
+                        <p:dataTable  id="listasucursales"  class="lista-sucursales"  value="#{sucursalesBean.sucursales.lista}"  var="sucursales" >
 
                             <p:column>
                                 <h:outputText value="#{sucursales.nombresuc}" />
                             </p:column>
-                    
+
                             <p:column  class="c0">
                                 <p:commandButton    icon="ui-icon-check"  update=":menu2" action="#{sucursalesBean.sucursales.obtener(sucursales.registrosuc,sucursales.nombresuc)}" oncomplete="PF('sucursales').hide();"    />  
                             </p:column>   
 
                         </p:dataTable>  
-            </p:dialog>
-            
-             <p:dialog  header="Seleccionar sucursales" visible="#{login.user.flag2}" widgetVar="sucursales2" rendered="true" height="200" width="400" modal="true" closable="false" draggable="false" resizable="false" >
-                <p:dataTable  id="listasucursales2"  class="lista-sucursales"  value="#{sucursalesBean.sucursales.lista2}"  var="sucursales" >
+                    </p:dialog>
+
+                    <p:dialog  header="Seleccionar sucursales" visible="#{login.user.flag2}" widgetVar="sucursales2" rendered="true" height="200" width="400" modal="true" closable="false" draggable="false" resizable="false" >
+                        <p:dataTable  id="listasucursales2"  class="lista-sucursales"  value="#{sucursalesBean.sucursales.lista2}"  var="sucursales" >
 
                             <p:column>
                                 <h:outputText value="#{sucursales.nombresuc}" />
                             </p:column>
-                    
+
                             <p:column  class="c0">
                                 <p:commandButton    icon="ui-icon-check"  update=":menu2" action="#{sucursalesBean.sucursales.obtener(sucursales.registrosuc,sucursales.nombresuc)}" oncomplete="PF('sucursales2').hide();"    />  
                             </p:column>   
 
                         </p:dataTable>  
-            </p:dialog>
-            <iframe src="inicio.xhtml" frameborder="0" name="academico"  scrolling="no" id="iframe-custom" ></iframe>
-        </h:form  >
+                    </p:dialog>
+                    <iframe src="inicio.xhtml" frameborder="0" name="academico"  scrolling="no" id="iframe-custom" ></iframe>
+                </h:form  >
+            </c:otherwise>
+        </c:choose>
 
 
-        
-        
-        <h:form style="display: #{login.user.on};" class="login">
-            <p:growl id="messages" showDetail="true" />
-            <h:panelGrid columns="1"  title="Ingresar" class="panel-login">
-                <p:outputLabel value="Usuario: "  class="label-login"/>
-                <p:inputText value="#{login.user.usuario}"   class="texto texto-login" ></p:inputText>
-                <p:outputLabel value="Contraseña: " class="label-login"/>
-                <p:password value="#{login.user.password}"   class="texto texto-login"></p:password>
-                <p:commandButton value="Ingresar" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages"  class=" boton-login"  />
-
-            </h:panelGrid>
-        </h:form>
     </h:body>
 
 </html>

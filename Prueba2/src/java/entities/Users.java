@@ -11,7 +11,6 @@ public class Users {
     private int nivel,userc,userm,registro,sexo;
     private String usuario,password,nombre,email,dni;
     private Date fechac,fecham;
-    private String on,off;
     private boolean flag=true,flag2=true;
 
     public Users() {
@@ -129,22 +128,6 @@ public class Users {
         this.fecham = fecham;
     }
 
-    public String getOn() {
-        return on;
-    }
-
-    public void setOn(String on) {
-        this.on = on;
-    }
-
-    public String getOff() {
-        return off;
-    }
-
-    public void setOff(String off) {
-        this.off = off;
-    }
-
     public boolean isFlag() {
         return flag;
     }
@@ -164,10 +147,6 @@ public class Users {
     
   
     
-
-  
-    
-    
     public void registrar(int reg){
         SqlUsers su= new SqlUsers();
         Users u= new Users();
@@ -186,17 +165,12 @@ public class Users {
        
         if(nombre==null)
         {
-        off="none";
-        on="inline";
         flag=false;
-         flag2=false;
+        flag2=false;
         }
         else{
           
-             off = "inline";
-             on = "none";
             if(dentro_de(new int [] {1})>=0){
-            //if(nivel==1){
                 flag = true;
                 flag2 = false;
             }
@@ -223,8 +197,6 @@ public class Users {
     return -1;
     }
     
-    public int saludar(){
-    return 2;
-    }
+    
     
 }

@@ -63,13 +63,6 @@ public class UsersBean {
         user.registrar(reg);
     }
     
-    public boolean editar(){
-    return true;
-    }
-    
-    public boolean editarnombre(){
-    return true;
-    }
-    
+ 
     
 }

@@ -36,26 +36,8 @@
                     <f:selectItem itemLabel="Padre de Familia" itemValue="6" />
                     <f:selectItem itemLabel="Supervisor Externo" itemValue="7" />
                 </p:selectOneMenu>
-               <c:choose>
-                   <c:when test="#{usersBean.user.saludar()==2}">
-                       <p:outputLabel value="Hola como estan."  />
-                       <p:outputLabel value="Hola como estan."  />
-                    </c:when>
-                   
-                   <c:when test="#{usersBean.user.saludar()==3}">
-                       <p:outputLabel value="Hola como estan."  />
-                       <p:outputLabel value="Hola como estan."  />
-                       <p:outputLabel value="Hola como estan."   />
-                                           </c:when>
-                   
-            <c:otherwise>
-                <p:outputLabel value="No saludo"  />
-                
-            </c:otherwise>
-        </c:choose>
-                
-                
-                
+             
+               
                 <p:commandButton value="Registrar" actionListener="#{usersBean.registrar(login.user.registro)}" class="boton-ingresar" />
              </h:panelGrid>
         </h:form>

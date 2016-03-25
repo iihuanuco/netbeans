@@ -1,0 +1,11 @@
+package dao;
+
+import entities.Secciones;
+import java.util.List;
+
+public interface DaoSecciones {
+    
+    void InsertarSecciones(Secciones secciones);
+    List<Secciones> MostrarSecciones();
+    
+}

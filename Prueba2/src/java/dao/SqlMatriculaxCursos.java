@@ -3,6 +3,10 @@ package dao;
 import entities.MatriculaxCursos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import util.Postgresql;
 
 public class SqlMatriculaxCursos implements DaoMatriculaxCursos{
@@ -29,6 +33,25 @@ public class SqlMatriculaxCursos implements DaoMatriculaxCursos{
         } catch (Exception e) {
         }
         
+    }
+
+    @Override
+    public List<MatriculaxCursos> MostrarMatriculaxCursos() {
+        List<MatriculaxCursos> listamxc=new ArrayList<MatriculaxCursos>();
+        try {
+            Connection conn=Postgresql.conexion();
+            String sql="";
+            Statement st=conn.createStatement();
+            ResultSet rs=null;
+            rs=st.executeQuery(sql);
+            while (rs.next()) {
+                MatriculaxCursos mxc=new MatriculaxCursos();
+                
+            }
+            
+        } catch (Exception e) {
+        }
+        return listamxc;
     }
     
 }

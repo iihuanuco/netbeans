@@ -10,4 +10,5 @@ public interface DaoUsers {
     List<Users> ValidarUsers(String user, String password);
     List<Users> MostrarUsers();
     List<Users> MostrarProfesor();
+    List<Users> MostrarAlumno();
 }

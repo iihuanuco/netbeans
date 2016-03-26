@@ -28,6 +28,8 @@ and open the template in the editor.
                     <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/10.jpg"/><p:commandButton value="Actividades" oncomplete="PF('actividades').show();"  class="  btn-img"  /></div>
                     <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/11.jpg"/><p:commandButton value="Asignar Evaluacion" oncomplete="PF('evaluaxcurso').show();"  class="  btn-img"  /></div>
                     <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/13.jpg"/><p:commandButton value="Secciones" oncomplete="PF('secciones').show();"  class="  btn-img"  /></div>
+                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/13.jpg"/><p:commandButton value="Turnos" oncomplete="PF('turnos').show();"  class="  btn-img"  /></div>
+                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/13.jpg"/><p:commandButton value="Matricula" oncomplete="PF('matricula').show();"  class="  btn-img"  /></div>
                 </div>
 
 
@@ -116,7 +118,7 @@ and open the template in the editor.
                         
                     </h:panelGrid>
                     
-                </p:dialog>
+                    </p:dialog>
                 
                      <p:dialog header="Secciones" widgetVar="secciones" rendered="true" height="200" width="300" modal="true" draggable="false" resizable="false" >
                     <h:panelGrid columns="1">
@@ -127,7 +129,7 @@ and open the template in the editor.
                         
                     </h:panelGrid>
                     
-                </p:dialog>
+                    </p:dialog>
                 
                      <p:dialog header="Asignar Curso" widgetVar="cursoxprofesor" rendered="true" height="200" width="300" modal="true" draggable="false" resizable="false" >
                     <h:panelGrid columns="1">
@@ -146,9 +148,45 @@ and open the template in the editor.
                         </p:selectOneMenu>
                         
                         <p:commandButton value="Guardar" actionListener="#{cursoxProfesorBean.registrar(login.user.registro)}" class="boton-ingresar" update="cmbxcurso,cmbxprofesor,cmbxactividad"/>
+                    </h:panelGrid>   
+                </p:dialog>
+                
+                <p:dialog header="Turnos" widgetVar="turnos" rendered="true" height="200" width="300" modal="true" draggable="false" resizable="false" >
+                    <h:panelGrid columns="1">
+                         
+                        <p:inputText id="txtcodigotur" value="#{turnosBean.turnos.codigotur}" placeholder="Codigo" class="texto"></p:inputText>
+                        <p:inputText id="txtnombretur" value="#{turnosBean.turnos.nombretur}" placeholder="Nombre" class="texto"></p:inputText>
+                        <p:commandButton value="Guardar" actionListener="#{turnosBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtcodigotur,txtnombretur"/>
                         
-                    </h:panelGrid>
-                    
+                    </h:panelGrid>    
+                </p:dialog>
+                
+                <p:dialog header="Matricula" widgetVar="matricula" rendered="true" height="400" width="300" modal="true" draggable="false" resizable="false" >
+                    <h:panelGrid columns="1">
+                        <p:selectOneMenu value="#{matriculaBean.matricula.alumno}" >
+                            <f:selectItem itemLabel="-Seleccionar Alumno-" itemValue="0" itemDisabled="true" />
+                            <f:selectItems value="#{matriculaBean.listaalumnos}" />
+                        </p:selectOneMenu >
+                        <p:inputText id="txtcodigomat" value="#{matriculaBean.matricula.codigomat}" placeholder="codigo" class="texto" ></p:inputText>
+                        <p:selectOneMenu value="#{matriculaBean.matricula.actividad}" >
+                            <f:selectItem itemLabel="-Selecionar Actividad-" itemValue="0" itemDisabled="true" />
+                            <f:selectItems value="#{actividadesBean.listaactividades}" />
+                        </p:selectOneMenu>
+                        <p:selectOneMenu value="#{matriculaBean.matricula.carrera}" >
+                            <f:selectItem itemLabel="-Selecionar Carrera-" itemValue="0" itemDisabled="true" />
+                            <f:selectItems value="#{carrerasBean.getListacarreras(suc)}" />
+                        </p:selectOneMenu>
+                        <p:selectOneMenu value="#{matriculaBean.matricula.turno}" >
+                            <f:selectItem itemLabel="-Selecionar Turno-" itemValue="0" itemDisabled="true" />
+                            <f:selectItems value="#{turnosBean.listaturnos}" />
+                        </p:selectOneMenu>
+                        <p:selectOneMenu value="#{matriculaBean.matricula.seccion}" >
+                            <f:selectItem itemLabel="-Selecionar Seccion-" itemValue="0" itemDisabled="true" />
+                            <f:selectItems value="#{seccionesBean.listasecciones}" />
+                        </p:selectOneMenu>
+                        <p:commandButton value="Guardar" actionListener="#{matriculaBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtcodigosec,txtnombresec"/>
+                        
+                    </h:panelGrid>    
                 </p:dialog>
                 
             </h:form>

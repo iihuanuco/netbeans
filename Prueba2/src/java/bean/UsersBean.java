@@ -61,6 +61,12 @@ public class UsersBean {
     
     public void registrar(int reg){
         user.registrar(reg);
+        user.setUsuario("");
+        user.setDni("");
+        user.setPassword("");
+        user.setNombre("");
+        user.setEmail("");
+        user.setNivel(0);
     }
     
  

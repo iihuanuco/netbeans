@@ -92,4 +92,27 @@ public class SqlUsers implements DaoUsers {
         
         return listausers;
     }
+
+    @Override
+    public List<Users> MostrarProfesor() {
+          List<Users> listausers=new ArrayList<Users>();
+        try {
+            Connection conn=Postgresql.conexion();
+            String sql="select registro,nombre from users  where convert_from(decrypt(nivel,'iihuanuco2016'::bytea,'bf'),'SQL_ASCII')::int4=4";
+            Statement st=conn.createStatement();
+            ResultSet rs=null;
+            rs=st.executeQuery(sql);
+            while (rs.next()) {
+                Users u=new Users();
+                u.setRegistro(rs.getInt(1));
+                u.setNombre(rs.getString(2));
+                
+                listausers.add(u);
+            }
+            
+        } catch (Exception e) {
+        }
+        
+        return listausers;
+    }
 }

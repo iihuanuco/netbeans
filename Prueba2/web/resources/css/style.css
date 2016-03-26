@@ -90,7 +90,7 @@ box-shadow: 1px 1px 5px 0 #000000;
 .btn-img{
   font-family: "Dosis",sans-serif !important;
    padding: 10px !important;
-     background: rgba(0,0,0,.3) -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+     background: rgba(0,0,0,.2) -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
     top: -60%;
      box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
      border:2px solid rgba(255,255,255,0) !important;
@@ -99,17 +99,18 @@ box-shadow: 1px 1px 5px 0 #000000;
      text-shadow: none !important;
       width: 80%;
       height: 60px;
-     -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -ms-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
+     -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
 
 }
 
 .btn-img:hover{
     border:1px solid #99cc00 !important; 
-      background:  rgba(51,51,51,.95) -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+      background:  rgba(51,51,51,.9) -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+       border-radius: 10px;
        top: -100%;
        margin-top: -1%;
       width: 100%;

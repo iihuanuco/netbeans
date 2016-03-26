@@ -6,7 +6,7 @@ import java.util.Date;
 
  
 public class EvaluaxCurso {
-    private int registro,evaluacion,curso,actividad,userc,userm;
+    private int registro,evaluacion,profesorxcurso,userc,userm;
     private Date fecham;
     private double peso;
 
@@ -29,20 +29,12 @@ public class EvaluaxCurso {
         this.evaluacion = evaluacion;
     }
 
-    public int getCurso() {
-        return curso;
+    public int getProfesorxcurso() {
+        return profesorxcurso;
     }
 
-    public void setCurso(int curso) {
-        this.curso = curso;
-    }
-
-    public int getActividad() {
-        return actividad;
-    }
-
-    public void setActividad(int actividad) {
-        this.actividad = actividad;
+    public void setProfesorxcurso(int profesorxcurso) {
+        this.profesorxcurso = profesorxcurso;
     }
 
     public int getUserc() {
@@ -76,13 +68,16 @@ public class EvaluaxCurso {
     public void setPeso(double peso) {
         this.peso = peso;
     }
+
+   
+    
+    
     
     public void registrar(int reg){
         SqlEvaluaxCurso sec= new SqlEvaluaxCurso();
         EvaluaxCurso ec= new EvaluaxCurso();
         ec.setEvaluacion(evaluacion);
-        ec.setCurso(curso);
-        ec.setActividad(actividad);
+        ec.setProfesorxcurso(profesorxcurso);
         ec.setPeso(peso);
         ec.setUserc(reg);
         sec.InsertarEvaluaxCurso(ec);

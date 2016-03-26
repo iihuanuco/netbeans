@@ -9,4 +9,5 @@ public interface DaoUsers {
     void InsertarUsers(Users users);
     List<Users> ValidarUsers(String user, String password);
     List<Users> MostrarUsers();
+    List<Users> MostrarProfesor();
 }

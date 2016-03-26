@@ -14,17 +14,16 @@ public class SqlEvaluaxCurso implements DaoEvaluaxCurso{
        Connection conn=null;
         try {
             conn=Postgresql.conexion();
-            String sql="insert into evalucionesxcursos(evaluacion,curso,actividad,peso,userc)"
-                    + " values(?,?,?,?,?)";
+            String sql="insert into evalucionesxcursos(evaluacion,profesorxcurso,peso,userc)"
+                    + " values(?,?,?,?)";
             
             PreparedStatement pst=null;
             pst=conn.prepareStatement(sql);
             
             pst.setInt(1, evaluaxcurso.getEvaluacion());
-            pst.setInt(2, evaluaxcurso.getCurso());
-            pst.setInt(3, evaluaxcurso.getActividad());
-             pst.setDouble(4, evaluaxcurso.getPeso());
-              pst.setInt(5, evaluaxcurso.getUserc());
+            pst.setInt(2, evaluaxcurso.getProfesorxcurso());
+             pst.setDouble(3, evaluaxcurso.getPeso());
+              pst.setInt(4, evaluaxcurso.getUserc());
             
             pst.executeUpdate();
             

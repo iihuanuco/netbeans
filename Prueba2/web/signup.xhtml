@@ -15,17 +15,17 @@
         <f:view>
         <h:form>
             <h:panelGrid columns="1" class="signup">
-                <p:inputText value="#{usersBean.user.usuario}" placeholder="Usuario" class="texto"></p:inputText>
-                <p:password value="#{usersBean.user.password}" placeholder="Password" class="texto"></p:password>
-                <p:inputText value="#{usersBean.user.dni}" placeholder="DNI" class="texto"></p:inputText>
-                <p:inputText value="#{usersBean.user.nombre}" placeholder="Nombre" class="texto"></p:inputText>
+                <p:inputText id="txtusuario" value="#{usersBean.user.usuario}" placeholder="Usuario" class="texto"></p:inputText>
+                <p:password id="password" value="#{usersBean.user.password}" placeholder="Password" class="texto"></p:password>
+                <p:inputText id="txtdni" value="#{usersBean.user.dni}" placeholder="DNI" class="texto"></p:inputText>
+                <p:inputText id="txtnombreu" value="#{usersBean.user.nombre}" placeholder="Nombre" class="texto"></p:inputText>
                 <p:outputLabel for="sexo" value="Sexo: " />
                 <p:selectOneRadio id="sexo" value="#{usersBean.user.sexo}">
                     <f:selectItem itemLabel="Masculino" itemValue="1" />
                     <f:selectItem itemLabel="Femenino" itemValue="2" />
                 </p:selectOneRadio>
-                <p:inputText value="#{usersBean.user.email}" placeholder="Email" class="texto"></p:inputText>
-                <p:selectOneMenu value="#{usersBean.user.nivel}" >
+                <p:inputText id="txtemail" value="#{usersBean.user.email}" placeholder="Email" class="texto"></p:inputText>
+                <p:selectOneMenu id="cmdnivel" value="#{usersBean.user.nivel}" >
                     <f:selectItem itemLabel="-Seleccionar Nievel-" itemValue="0" itemDisabled="true" />
                     <f:selectItem itemLabel="Administrador" itemValue="1" />
                     <f:selectItem itemLabel="Supervisor" itemValue="2" />
@@ -37,7 +37,7 @@
                 </p:selectOneMenu>
              
                
-                <p:commandButton value="Registrar" actionListener="#{usersBean.registrar(login.user.registro)}" class="boton-ingresar" />
+                <p:commandButton value="Registrar" actionListener="#{usersBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtusuario,password,txtdni,txtnombreu,cmdnivel,txtemail"/>
              </h:panelGrid>
         </h:form>
             </f:view>

@@ -27,7 +27,7 @@ nav > ul {
   display: table;
   overflow: hidden;
   width: 100%;
-  background-color:rgba(51,51,51,1);
+  background-color:black;
   position: relative;
 }
 

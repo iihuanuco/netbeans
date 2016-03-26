@@ -3,6 +3,8 @@
                         screenHeight = $(window).height();
                         var bg = jQuery("#bg");
                         var iframe = jQuery("#iframe-custom");
+                        var submenu = jQuery(".submenu");
+                          var font = jQuery(".btn-img");
 
                         // Proporcion horizontal/vertical. En este caso la imagen es cuadrada
                         ratio = 1;
@@ -20,6 +22,8 @@
                               $(bg).css('left', (screenWidth - $(bg).width()) / 2);
                         }
                          $(iframe).css('height',(screenHeight)); 
+                         $(submenu).css('height',(screenHeight/3)); 
+                           $(font).css('font-size',(screenHeight/40)); 
                           
                         }
     $(document).ready(function() {

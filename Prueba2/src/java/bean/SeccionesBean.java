@@ -39,4 +39,9 @@ public class SeccionesBean {
         return listasecciones;
     }
     
+    public void registrar(int reg){
+        secciones.registrar(reg);
+        secciones.setCodigosec(0);
+        secciones.setNombresec("");
+    }
 }

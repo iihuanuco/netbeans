@@ -1,5 +1,6 @@
 package entities;
 
+import dao.SqlSecciones;
 import java.util.Date;
 
 public class Secciones {
@@ -83,7 +84,14 @@ public class Secciones {
     
     
     
-    
+    public void registrar(int reg){
+        SqlSecciones ss= new SqlSecciones();
+        Secciones s= new Secciones();
+        s.setCodigosec(codigosec);
+        s.setNombresec(nombresec);
+        s.setUserc(reg);
+        ss.InsertarSecciones(s);
+    }
     
     
 }

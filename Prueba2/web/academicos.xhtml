@@ -26,6 +26,7 @@ and open the template in the editor.
                     <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/9.jpg"/><p:commandButton value="Evaluaciones" oncomplete="PF('evaluaciones').show();"  class="  btn-img"  /></div>
                     <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/10.jpg"/><p:commandButton value="Actividades" oncomplete="PF('actividades').show();"  class="  btn-img"  /></div>
                     <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/11.jpg"/><p:commandButton value="Asignar Evaluacion" oncomplete="PF('evaluaxcurso').show();"  class="  btn-img"  /></div>
+                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/11.jpg"/><p:commandButton value="Secciones" oncomplete="PF('secciones').show();"  class="  btn-img"  /></div>
                 </div>
 
 
@@ -115,6 +116,17 @@ and open the template in the editor.
                         <p:inputText id="txtpeso" value="#{evaluaxCursoBean.evaluaxcurso.peso}" placeholder="Peso" class="texto"></p:inputText>
                        
                         <p:commandButton value="Guardar" actionListener="#{evaluaxCursoBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtpeso,cmbcurso,cmbevaluacion,cmbactividad"/>
+                        
+                    </h:panelGrid>
+                    
+                </p:dialog>
+                
+                     <p:dialog header="Secciones" widgetVar="secciones" rendered="true" height="200" width="300" modal="true" draggable="false" resizable="false" >
+                    <h:panelGrid columns="1">
+                         
+                        <p:inputText id="txtcodigosec" value="#{seccionesBean.secciones.codigosec}" placeholder="Codigo" class="texto"></p:inputText>
+                        <p:inputText id="txtnombresec" value="#{seccionesBean.secciones.nombresec}" placeholder="Nombre" class="texto"></p:inputText>
+                        <p:commandButton value="Guardar" actionListener="#{seccionesBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtcodigosec,txtnombresec"/>
                         
                     </h:panelGrid>
                     

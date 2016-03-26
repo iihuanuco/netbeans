@@ -134,6 +134,8 @@ public class Matricula {
         m.setSeccion(seccion);
         m.setUserc(reg);
         
+        System.out.println(""+alumno+" "+codigomat+" "+actividad+" "+carrera+" "+turno+" "+seccion);
+        
         sm.InsertarMatricula(m);
     }
     

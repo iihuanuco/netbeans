@@ -174,7 +174,7 @@ and open the template in the editor.
                         </p:selectOneMenu>
                         <p:selectOneMenu value="#{matriculaBean.matricula.carrera}" >
                             <f:selectItem itemLabel="-Selecionar Carrera-" itemValue="0" itemDisabled="true" />
-                            <f:selectItems value="#{carrerasBean.getListacarreras(suc)}" />
+                            <f:selectItems value="#{sucursalesBean.listacarreras}" />
                         </p:selectOneMenu>
                         <p:selectOneMenu value="#{matriculaBean.matricula.turno}" >
                             <f:selectItem itemLabel="-Selecionar Turno-" itemValue="0" itemDisabled="true" />

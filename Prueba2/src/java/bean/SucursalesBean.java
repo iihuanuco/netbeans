@@ -3,9 +3,11 @@ package bean;
 
 import dao.SqlActividades;
 import dao.SqlCarreras;
+import dao.SqlCursoxProfesor;
 import dao.SqlSucursales;
 import entities.Actividades;
 import entities.Carreras;
+import entities.CursoxProfesor;
 import entities.Sucursales;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,7 @@ public class SucursalesBean {
       private List <SelectItem> listaSucursales;
        List<SelectItem> listacarreras;
            private List<SelectItem> listaactividades;
+                 private List<SelectItem> listacxp;
     
     public SucursalesBean() {
     }
@@ -70,6 +73,20 @@ public class SucursalesBean {
             }   
         return listaactividades;
     }
+         
+          public List<SelectItem> getListacxp() {
+         this.listacxp=new ArrayList<SelectItem>();
+        SqlCursoxProfesor sc=new SqlCursoxProfesor();
+            List<CursoxProfesor>  listacar=sc.MostrarCursoxProfesor(sucursales.getRegistrosuc());
+            listacxp.clear();
+            for (CursoxProfesor c : listacar) {
+               SelectItem caritem=new SelectItem(c.getRegistro(),c.getCursoxprofe());
+               this.listacxp.add(caritem);
+    
+            }  
+        return listacxp;
+    }
+
     
     
     

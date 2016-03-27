@@ -55,10 +55,6 @@ public class MatriculaBean {
     
     
     
-    
-    
-    
-    
     public void registrar(int reg){
         matricula.registrar(reg);
         matricula.setAlumno(0);

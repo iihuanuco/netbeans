@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface DaoCursoxProfesor {
     void InsertarCursoxProfesor(CursoxProfesor cursoxprofesor);
-    List<CursoxProfesor> MostrarCursoxProfesor();
+    List<CursoxProfesor> MostrarCursoxProfesor(int suc);
 }

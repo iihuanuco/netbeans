@@ -39,15 +39,18 @@ public class SqlCursoxProfesor implements DaoCursoxProfesor{
     }
 
     @Override
-    public List<CursoxProfesor> MostrarCursoxProfesor() {
+    public List<CursoxProfesor> MostrarCursoxProfesor(int suc) {
        List<CursoxProfesor> listacur=new ArrayList<CursoxProfesor>();
         try {
             Connection conn=Postgresql.conexion();
-            String sql = "select pc.registro,concat(c.nombre,' - ',u.nombre) from cursos c "
-                    + "inner join profesorxcursos pc "
-                    + "on pc.curso=c.registro "
-                    + "inner join users u "
-                    + "on u.registro=pc.profesor";
+            String sql = " select pc.registro,concat(c.nombre,' - ',u.nombre) from cursos c  " +
+"                    inner join profesorxcursos pc  " +
+"                    on pc.curso=c.registro  " +
+"                    inner join users u " +
+"                    on u.registro=pc.profesor " +
+"                    inner join carreras ca " +
+"                    on ca.registro=c.carrera " +
+"                     where ca.sucursal="+suc;
             Statement st=conn.createStatement();
             ResultSet rs=null;
             rs=st.executeQuery(sql);

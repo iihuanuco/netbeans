@@ -121,7 +121,9 @@ public class SqlUsers implements DaoUsers {
         List<Users> listaalum=new ArrayList<Users>();
         try {
             Connection conn=Postgresql.conexion();
-            String sql="select registro,nombre from users  where convert_from(decrypt(nivel,'iihuanuco2016'::bytea,'bf'),'SQL_ASCII')::int4=5";
+            String sql="Select u.registro,u.nombre from users u  " +
+"where not exists (select m.alumno from matricula m where m.alumno = u.registro) and  " +
+"convert_from(decrypt(nivel,'iihuanuco2016'::bytea,'bf'),'SQL_ASCII')::int4=5";
             Statement st=conn.createStatement();
             ResultSet rs=null;
             rs=st.executeQuery(sql);

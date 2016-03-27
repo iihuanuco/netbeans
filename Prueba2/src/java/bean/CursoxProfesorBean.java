@@ -18,7 +18,7 @@ public class CursoxProfesorBean {
 
        private CursoxProfesor cursoxprofesor=new CursoxProfesor();
        private List<SelectItem> listaprofesor;
-           private List<SelectItem> listacxp;
+     
     
     public CursoxProfesorBean() {
     }
@@ -44,19 +44,7 @@ public class CursoxProfesorBean {
         return listaprofesor;
     }
     
-      public List<SelectItem> getListacxp() {
-         this.listacxp=new ArrayList<SelectItem>();
-        SqlCursoxProfesor sc=new SqlCursoxProfesor();
-            List<CursoxProfesor>  listacar=sc.MostrarCursoxProfesor();
-            listacxp.clear();
-            for (CursoxProfesor c : listacar) {
-               SelectItem caritem=new SelectItem(c.getRegistro(),c.getCursoxprofe());
-               this.listacxp.add(caritem);
-    
-            }  
-        return listacxp;
-    }
-
+     
   
      public void  registrar(int reg){
          cursoxprofesor.registrar(reg);

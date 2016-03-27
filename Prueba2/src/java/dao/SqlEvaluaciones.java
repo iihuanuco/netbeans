@@ -60,7 +60,7 @@ public class SqlEvaluaciones implements DaoEvaluaciones{
             List<Evaluaciones> listaeval=new ArrayList<Evaluaciones>();
         try {
             Connection conn=Postgresql.conexion();
-            String aql=" select e.registro,e.nombre from evalucionesxcursos ec  " +
+            String aql=" select ec.registro,e.nombre from evalucionesxcursos ec  " +
 "			     inner join evaluaciones e " +
 "			     on e.registro=ec.evaluacion  " +
 "			     inner join profesorxcursos pc  " +

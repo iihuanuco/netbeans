@@ -61,7 +61,7 @@ and open the template in the editor.
                                                 <p:commandButton value="Filtrar ALumnos" actionListener="#{usersBean.user.mostrar(cursosBean.cursos.registrocurso,usersBean.user.registro,actividadesBean.actividades.registroact)}" update="tblalumnos" />
                 
                         <p:dataTable id="tblalumnos"  var="alumnos" value="#{usersBean.user.lista}">
-                         <p:column headerText="Codigo"  >
+                         <p:column headerText="Registro Matricula x Curso"  >
                              <h:outputText value="#{alumnos.registro}" />
                          </p:column>
                          <p:column headerText="Nombre">

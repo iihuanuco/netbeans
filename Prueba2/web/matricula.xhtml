@@ -23,31 +23,31 @@ and open the template in the editor.
             <h:panelGrid columns="2" class="signup">
                 <h:panelGrid columns="1" class="matricula">
                       <p:outputLabel value="Matricula "/>
-                        <p:selectOneMenu value="#{matriculaBean.matricula.alumno}" >
+                      <p:selectOneMenu id="txtalumnop" value="#{matriculaBean.matricula.alumno}" >
                             <f:selectItem itemLabel="-Seleccionar Alumno-" itemValue="0" itemDisabled="true" />
                             <f:selectItems value="#{matriculaBean.listaalumnos}" />
                         </p:selectOneMenu >
                         <p:inputText id="txtcodigomat" value="#{matriculaBean.matricula.codigomat}" placeholder="codigo" class="texto" ></p:inputText>
-                        <p:selectOneMenu value="#{matriculaBean.matricula.actividad}" >
+                        <p:selectOneMenu id="txtactividadp" value="#{matriculaBean.matricula.actividad}" >
                             <f:selectItem itemLabel="-Selecionar Actividad-" itemValue="0" itemDisabled="true" />
                             <f:selectItems value="#{sucursalesBean.listaactividades}" />
                         </p:selectOneMenu>
-                        <p:selectOneMenu value="#{matriculaBean.matricula.carrera}" >
+                        <p:selectOneMenu id="txtcarrerap" value="#{matriculaBean.matricula.carrera}" >
                             <f:selectItem itemLabel="-Selecionar Carrera-" itemValue="0" itemDisabled="true" />
                             <f:selectItems value="#{sucursalesBean.listacarreras}" />
                         </p:selectOneMenu>
-                        <p:selectOneMenu value="#{matriculaBean.matricula.turno}" >
+                        <p:selectOneMenu id="txtturnop" value="#{matriculaBean.matricula.turno}" >
                             <f:selectItem itemLabel="-Selecionar Turno-" itemValue="0" itemDisabled="true" />
                             <f:selectItems value="#{turnosBean.listaturnos}" />
                         </p:selectOneMenu>
-                        <p:selectOneMenu value="#{matriculaBean.matricula.seccion}" >
+                        <p:selectOneMenu id="txtseccion" value="#{matriculaBean.matricula.seccion}" >
                             <f:selectItem itemLabel="-Selecionar Seccion-" itemValue="0" itemDisabled="true" />
                             <f:selectItems value="#{seccionesBean.listasecciones}" />
                         </p:selectOneMenu>
-                        <p:commandButton value="Guardar" actionListener="#{matriculaBean.registrar(login.user.registro)}" class="boton-ingresar"  />
+                        <p:commandButton value="Guardar" actionListener="#{matriculaBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtalumnop,txtcodigomat,txtactividadp,txtcarrerap,txtturnop,txtseccion,matricula"  />
                         
                     </h:panelGrid>    
-                <h:panelGrid columns="1" class="matricula" >
+                <h:panelGrid id="matricula" columns="1" class="matricula" >
                     <p:outputLabel value="Matricula por Curso"/>
                  <p:selectOneMenu value="#{matriculaxCursosBean.matriculaxcursos.matricula}"  >
                             <f:selectItem itemLabel="-Selecionar Matricula-" itemValue="0" itemDisabled="true" />
@@ -57,7 +57,7 @@ and open the template in the editor.
                             <f:selectItem itemLabel="-Selecionar Curso y Profesor-" itemValue="0" itemDisabled="true" />
                             <f:selectItems value="#{cursoxProfesorBean.listacxp}" />
                         </p:selectOneMenu>
-                 <p:commandButton value="Guardar" actionListener="#{matriculaxCursosBean.registrar(login.user.registro)}" class="boton-ingresar"  />
+                    <p:commandButton value="Guardar" actionListener="#{matriculaxCursosBean.registrar(login.user.registro)}" class="boton-ingresar" update="matricula" />
                     </h:panelGrid>    
                 </h:panelGrid>
         </h:form>

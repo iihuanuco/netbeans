@@ -1,8 +1,12 @@
 
 package entities;
 
+
 import dao.SqlUsers;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
  
 
 public class Users {
@@ -12,6 +16,7 @@ public class Users {
     private String usuario,password,nombre,email,dni;
     private Date fechac,fecham;
     private boolean flag=true,flag2=true;
+     private List <Users> lista;
 
     public Users() {
     
@@ -144,6 +149,17 @@ public class Users {
         this.flag2 = flag2;
     }
 
+    public List<Users> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Users> lista) {
+        this.lista = lista;
+    }
+
+  
+    
+
     
   
     
@@ -196,6 +212,19 @@ public class Users {
             return i;
     return -1;
     }
+    
+    
+          public void mostrar(int curso,int profesor,int act) {
+                lista=new ArrayList();  
+                SqlUsers pu = new SqlUsers();
+                List<Users> listaCurso = pu.MostrarMatriculado(curso,profesor, act);
+                Iterator<Users> iter = listaCurso.iterator();
+                      while (iter.hasNext()) {
+                          Users e = iter.next();
+                          lista.add(e);
+                      }
+
+      }
     
     
     

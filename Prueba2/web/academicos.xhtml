@@ -143,7 +143,7 @@ and open the template in the editor.
                         </p:selectOneMenu>
                         <p:selectOneMenu id="cmbxactividad" value="#{cursoxProfesorBean.cursoxprofesor.actividad}"  >
                             <f:selectItem itemLabel="-Seleccionar Actividad-" itemValue="0" itemDisabled="true" />
-                            <f:selectItems value="#{actividadesBean.listaactividades}" />
+                            <f:selectItems value="#{sucursalesBean.listaactividades}" />
                         </p:selectOneMenu>
                         
                         <p:commandButton value="Guardar" actionListener="#{cursoxProfesorBean.registrar(login.user.registro)}" class="boton-ingresar" update="cmbxcurso,cmbxprofesor,cmbxactividad"/>

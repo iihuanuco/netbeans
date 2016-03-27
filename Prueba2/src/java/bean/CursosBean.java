@@ -2,8 +2,10 @@ package bean;
 
 import dao.SqlCarreras;
 import dao.SqlCursos;
+import dao.SqlUsers;
 import entities.Carreras;
 import entities.Cursos;
+import entities.Users;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -16,6 +18,7 @@ public class CursosBean {
     private Cursos cursos=new Cursos();
     private List<SelectItem> listaSemestres;
     private List<SelectItem> listaCursos;
+      private List<SelectItem> listaProfesor;
     
     public CursosBean() {
     }
@@ -57,6 +60,24 @@ public class CursosBean {
         return listaCursos;
     }
 
+    public List<SelectItem> getListaProfesor() {
+         this.listaProfesor=new ArrayList<SelectItem>();
+        SqlUsers sc=new SqlUsers();
+            List<Users>  listap=sc.MostrarProfesor(cursos.getRegistrocurso());
+            listaProfesor.clear();
+            for (Users c : listap) {
+               SelectItem pitem=new SelectItem(c.getRegistro(),c.getNombre());
+               this.listaProfesor.add(pitem);
+    
+            }  
+        return listaProfesor;
+    }
+    
+     
+
+          public void obtener(int reg){
+               cursos.setRegistrocurso(reg);
+            }
  
       
       

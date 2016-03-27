@@ -22,7 +22,7 @@ and open the template in the editor.
         <h:form >
             <h:panelGrid columns="2" class="signup">
                 <h:panelGrid columns="1" class="matricula">
-                      <p:outputLabel value="Matricula 6"/>
+                      <p:outputLabel value="Matricula "/>
                         <p:selectOneMenu value="#{matriculaBean.matricula.alumno}" >
                             <f:selectItem itemLabel="-Seleccionar Alumno-" itemValue="0" itemDisabled="true" />
                             <f:selectItems value="#{matriculaBean.listaalumnos}" />
@@ -30,7 +30,7 @@ and open the template in the editor.
                         <p:inputText id="txtcodigomat" value="#{matriculaBean.matricula.codigomat}" placeholder="codigo" class="texto" ></p:inputText>
                         <p:selectOneMenu value="#{matriculaBean.matricula.actividad}" >
                             <f:selectItem itemLabel="-Selecionar Actividad-" itemValue="0" itemDisabled="true" />
-                            <f:selectItems value="#{actividadesBean.listaactividades}" />
+                            <f:selectItems value="#{sucursalesBean.listaactividades}" />
                         </p:selectOneMenu>
                         <p:selectOneMenu value="#{matriculaBean.matricula.carrera}" >
                             <f:selectItem itemLabel="-Selecionar Carrera-" itemValue="0" itemDisabled="true" />

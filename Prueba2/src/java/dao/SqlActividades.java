@@ -39,11 +39,11 @@ public class SqlActividades implements DaoActividades{
     }
 
     @Override
-    public List<Actividades> MostrarActividades() {
+    public List<Actividades> MostrarActividades(int suc) {
         List<Actividades> listaact=new ArrayList<Actividades>();
         try {
             Connection conn=Postgresql.conexion();
-            String sql="select registro,nombre from actividades";
+            String sql=" select a.registro,a.nombre from actividades a where a.sucursal="+suc;
             Statement st=conn.createStatement();
             ResultSet rs=null;
             rs=st.executeQuery(sql);

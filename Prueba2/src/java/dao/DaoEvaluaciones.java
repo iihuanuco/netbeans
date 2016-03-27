@@ -7,5 +7,7 @@ public interface DaoEvaluaciones {
 
     void InsertarEvaluaciones(Evaluaciones evaluaciones);
     List<Evaluaciones> MostrarEvaluaciones();
+      List<Evaluaciones> MostrarEvaluaciones(int pro);
+    
     
 }

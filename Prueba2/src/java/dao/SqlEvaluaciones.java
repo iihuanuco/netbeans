@@ -55,6 +55,35 @@ public class SqlEvaluaciones implements DaoEvaluaciones{
         return listaeval;
     }
 
+    @Override
+    public List<Evaluaciones> MostrarEvaluaciones(int pro) {
+            List<Evaluaciones> listaeval=new ArrayList<Evaluaciones>();
+        try {
+            Connection conn=Postgresql.conexion();
+            String aql=" select e.registro,e.nombre from evalucionesxcursos ec  " +
+"			     inner join evaluaciones e " +
+"			     on e.registro=ec.evaluacion  " +
+"			     inner join profesorxcursos pc  " +
+"		             on pc.registro=ec.profesorxcurso  " +
+"			     where pc.profesor="+pro;
+            
+            
+            System.out.println("jaja. "+pro);
+            Statement st=conn.createStatement();
+            ResultSet rs=null;
+            rs=st.executeQuery(aql);
+            while (rs.next()) {
+                Evaluaciones e=new Evaluaciones();
+                e.setRegistroeval(rs.getInt(1));
+                e.setNombreeval(rs.getString(2));
+                listaeval.add(e);
+            }
+        } catch (Exception e) {
+        }
+        
+        return listaeval;
+    }
+
     
     
 }

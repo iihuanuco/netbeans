@@ -1,7 +1,9 @@
  
 package bean;
 
+import dao.SqlEvaluaciones;
 import dao.SqlUsers;
+import entities.Evaluaciones;
 import entities.Users;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,7 @@ import javax.faces.model.SelectItem;
 public class UsersBean {
     private Users user=new Users();
     private List<SelectItem> listausuarios;
+    private List<SelectItem> listaeva;
     @ManagedProperty("#{login}")
     private Login login;  
 
@@ -58,6 +61,23 @@ public class UsersBean {
             
         return listausuarios;
     }
+
+    public List<SelectItem> getListaeva() {
+         this.listaeva=new ArrayList<SelectItem>();
+        SqlEvaluaciones su=new SqlEvaluaciones();
+            List<Evaluaciones> listaev=su.MostrarEvaluaciones(user.getRegistro());
+            listaeva.clear();
+            for (Evaluaciones u : listaev) {
+                SelectItem evitem=new SelectItem(u.getRegistroeval(),u.getNombreeval());
+                this.listaeva.add(evitem);
+        }
+        return listaeva;
+    }
+
+   
+
+  
+    
     
     public void registrar(int reg){
         user.registrar(reg);

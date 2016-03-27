@@ -1,8 +1,10 @@
 
 package bean;
 
+import dao.SqlActividades;
 import dao.SqlCarreras;
 import dao.SqlSucursales;
+import entities.Actividades;
 import entities.Carreras;
 import entities.Sucursales;
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ public class SucursalesBean {
     private Sucursales sucursales=new Sucursales();
       private List <SelectItem> listaSucursales;
        List<SelectItem> listacarreras;
+           private List<SelectItem> listaactividades;
     
     public SucursalesBean() {
     }
@@ -55,6 +58,18 @@ public class SucursalesBean {
         return listacarreras;
     }
     
+         public List<SelectItem> getListaactividades() {
+          this.listaactividades=new ArrayList<SelectItem>();
+        SqlActividades sc=new SqlActividades();
+            List<Actividades>  listaac=sc.MostrarActividades(sucursales.getRegistrosuc());
+            listaactividades.clear();
+            for (Actividades c : listaac) {
+               SelectItem caritem=new SelectItem(c.getRegistroact(),c.getNombreact());
+               this.listaactividades.add(caritem);
+    
+            }   
+        return listaactividades;
+    }
     
     
     

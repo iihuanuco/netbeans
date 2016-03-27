@@ -138,4 +138,65 @@ public class SqlUsers implements DaoUsers {
         
         return listaalum;
     }
+
+    @Override
+    public List<Users> MostrarProfesor(int reg) {
+         List<Users> listaalum=new ArrayList<Users>();
+        try {
+            Connection conn=Postgresql.conexion();
+            String sql = "  select u.registro,u.nombre from users u  "
+                    + "  inner join profesorxcursos pc "
+                    + "  on u.registro=pc.profesor "
+                    + "  where pc.curso="+reg;
+            Statement st=conn.createStatement();
+            ResultSet rs=null;
+            rs=st.executeQuery(sql);
+            while (rs.next()) {
+                Users u=new Users();
+                u.setRegistro(rs.getInt(1));
+                u.setNombre(rs.getString(2));
+                
+                listaalum.add(u);
+            }
+            
+        } catch (Exception e) {
+        }
+        
+        return listaalum;
+    }
+
+    @Override
+    public List<Users> MostrarMatriculado(int curso, int profesor, int act) {
+         List<Users> listaalum=new ArrayList<Users>();
+        try {
+            Connection conn=Postgresql.conexion();
+            String sql = " select mc.registro,u.nombre "
+                    + "from users u "
+                    + "inner join matricula m "
+                    + "on m.alumno=u.registro "
+                    + "inner join matriculaxcursos mc "
+                    + "on mc.matricula=m.registro "
+                    + "inner join profesorxcursos pc "
+                    + "on mc.profesorxcurso=pc.registro "
+                    + "inner join users us "
+                    + "on us.registro=pc.profesor "
+                    + "inner join actividades ac "
+                    + "on ac.registro=m.actividad "
+                    + "where pc.curso="+curso+" and pc.profesor="+profesor+" and ac.registro="+act;
+             Statement st=conn.createStatement();
+            ResultSet rs=null;
+            rs=st.executeQuery(sql);
+            while (rs.next()) {
+                Users u=new Users();
+                u.setRegistro(rs.getInt(1));
+                u.setNombre(rs.getString(2));
+                
+                listaalum.add(u);
+            }
+            
+        } catch (Exception e) {
+        }
+        
+        return listaalum;
+    }
 }

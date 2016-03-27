@@ -19,7 +19,7 @@ and open the template in the editor.
     </h:head>
     <h:body style="background-color:white;" >
         <f:view>
-        <h:form >
+            <h:form id="notas" >
               <h:panelGrid>
                   <p:selectOneMenu id="cmbcarreras"  value="#{carrerasBean.carreras.registrocarrera}"   > 
                             <f:selectItem itemLabel="-Seleccione Carrera- "   itemValue="0"/>
@@ -27,6 +27,9 @@ and open the template in the editor.
                             <p:ajax listener="#{cursosBean.cursos.mostrar(carrerasBean.carreras.registrocarrera,sucursalesBean.sucursales.registrosuc)}" process="cmbcarreras" update="tblcursos"/>
             </p:selectOneMenu>
                   <p:dataTable id="tblcursos" var="curso" value="#{cursosBean.cursos.lista}"  >
+                      <p:column headerText="Codigo" >
+                          <h:outputText value="#{curso.registrocurso}" />
+                         </p:column>
                          <p:column headerText="Codigo" >
                              <h:outputText value="#{curso.codigocurso}" />
                          </p:column>
@@ -34,18 +37,26 @@ and open the template in the editor.
                              <h:outputText value="#{curso.nombrecurso}" />
                          </p:column>
                          <p:column >
-                             <p:commandButton value="Notas" oncomplete="PF('notas').show();" />
+                             <p:commandButton value="Notas"  actionListener="#{cursosBean.obtener(curso.registrocurso)}" oncomplete="PF('notas').show();" update=":notas:notas-dialogo"  />
                          </p:column>
                      </p:dataTable>
               </h:panelGrid>
             
             
-            <p:dialog  header="Registrar Notas"  widgetVar="notas" rendered="true" height="200" width="300" modal="true" draggable="false" resizable="false" >
-                <p:selectOneMenu id="cmbactividad" > 
-                            <f:selectItem itemLabel="-Seleccione Actividad- "   itemValue="0"/>
-            </p:selectOneMenu>
-                <p:selectOneMenu id="cmbdocente" > 
+                <p:dialog id="notas-dialogo" header="Registrar Notas"  widgetVar="notas" rendered="true" height="800" width="800" modal="true" draggable="false" resizable="false" >
+                    <h:panelGrid columns="2">
+                <p:selectOneMenu id="cmbactividad"   >
+                            <f:selectItem itemLabel="-Selecionar Actividad-" itemValue="0" itemDisabled="true" />
+                            <f:selectItems value="#{sucursalesBean.listaactividades}" />
+                        </p:selectOneMenu>
+                    <p:selectOneMenu id="cmbdocente" value="#{usersBean.user.registro}"> 
                             <f:selectItem itemLabel="-Seleccione Docente- "   itemValue="0"/>
+                            <f:selectItems value="#{cursosBean.listaProfesor}" />
+                            <p:ajax process="cmbdocente" update="cmbnotas" />
+            </p:selectOneMenu>
+                  <p:selectOneMenu id="cmbnotas" > 
+                            <f:selectItem itemLabel="-Seleccione Tipo de Nota- "   itemValue="0"/>
+                            <f:selectItems value="#{usersBean.listaeva}" />
             </p:selectOneMenu>
                 
                 <p:dataTable id="tblalumnos"   >
@@ -56,10 +67,10 @@ and open the template in the editor.
                
                          </p:column>
                          <p:column >
-                           
+                       
                          </p:column>
                      </p:dataTable>
-                
+                    </h:panelGrid>
             </p:dialog>
             
         </h:form>

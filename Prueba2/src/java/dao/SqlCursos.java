@@ -66,6 +66,36 @@ public class SqlCursos implements DaoCursos{
         return listacur;
     }
 
+    @Override
+    public List<Cursos> MostrarCursos(int carr, int suc) {
+        List<Cursos> listacur=new ArrayList<Cursos>();
+        try {
+            Connection conn=Postgresql.conexion();
+            String sql = "select c.codigo,c.nombre  "
+                    + "from cursos c "
+                    + "inner join carreras ca "
+                    + "on ca.registro=c.carrera "
+                    + "inner join sucursales s "
+                    + "on s.registro=ca.sucursal "
+                    + "where ca.registro="+carr+" and s.registro="+suc;
+            util.creararchivotexto("hola: "+String.valueOf(carr)+String.valueOf(suc));
+            Statement st=conn.createStatement();
+            ResultSet rs=null;
+            rs=st.executeQuery(sql);
+            while (rs.next()) {
+                Cursos d=new Cursos();
+                d.setCodigocurso(rs.getString(1));
+                d.setNombrecurso(rs.getString(2));
+                
+                listacur.add(d);
+            }
+            
+        } catch (Exception e) {
+        }
+        
+        return listacur;
+    }
+
     
     
 }

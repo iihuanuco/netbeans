@@ -62,7 +62,7 @@ and open the template in the editor.
 
                         <p:inputText id="txtht" value="#{cursosBean.cursos.htcurso}"  placeholder="Horas Teoria" class="texto" ></p:inputText>
                         <p:inputText id="txthp" value="#{cursosBean.cursos.hpcurso}"  placeholder="Horas Practica" class="texto" ></p:inputText>
-                        <p:selectOneMenu value="#{cursosBean.cursos.alcancecurso}">
+                        <p:selectOneMenu id="cmbalcancec" value="#{cursosBean.cursos.alcancecurso}">
                             <f:selectItem itemLabel="-Seleccione alcance-" itemValue="0" />
                             <f:selectItem itemLabel="Obligaorio" itemValue="1" />
                             <f:selectItem itemLabel="Electivo" itemValue="2" />
@@ -71,7 +71,7 @@ and open the template in the editor.
                         <p:calendar value="#{cursosBean.cursos.fechainiciocurso}" pattern="dd/MM/yyyy" mask="true" class="datos" placeholder="Fecha de Inicio"  ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>          
 
                         <p:commandButton value="Guardar" actionListener="#{cursosBean.registrar(login.user.registro)}"  class="boton-ingresar"
-                                         update="txtcodigocarrera,txtnombrecarrera,txtsemestrescarrera" />
+                                         update="txtcodigocurso,txtnombrecurso,txtcarrera,txtsemestrescurso,txtcreditos,txtht,txthp,cmbalcancec" />
                     </h:panelGrid>
                 </p:dialog>
 

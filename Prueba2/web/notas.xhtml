@@ -17,10 +17,51 @@ and open the template in the editor.
          <h:outputScript library="js" name="bg.js"   />
 
     </h:head>
-    <h:body style="background-color:white;">
+    <h:body style="background-color:white;" >
         <f:view>
         <h:form >
-          
+              <h:panelGrid>
+                  <p:selectOneMenu id="cmbcarreras"  value="#{carrerasBean.carreras.registrocarrera}"   > 
+                            <f:selectItem itemLabel="-Seleccione Carrera- "   itemValue="0"/>
+                            <f:selectItems value="#{sucursalesBean.listacarreras}" />
+                            <p:ajax listener="#{cursosBean.cursos.mostrar(carrerasBean.carreras.registrocarrera,sucursalesBean.sucursales.registrosuc)}" process="cmbcarreras" update="tblcursos"/>
+            </p:selectOneMenu>
+                  <p:dataTable id="tblcursos" var="curso" value="#{cursosBean.cursos.lista}"  >
+                         <p:column headerText="Codigo" >
+                             <h:outputText value="#{curso.codigocurso}" />
+                         </p:column>
+                         <p:column headerText="Nombre">
+                             <h:outputText value="#{curso.nombrecurso}" />
+                         </p:column>
+                         <p:column >
+                             <p:commandButton value="Notas" oncomplete="PF('notas').show();" />
+                         </p:column>
+                     </p:dataTable>
+              </h:panelGrid>
+            
+            
+            <p:dialog  header="Registrar Notas"  widgetVar="notas" rendered="true" height="200" width="300" modal="true" draggable="false" resizable="false" >
+                <p:selectOneMenu id="cmbactividad" > 
+                            <f:selectItem itemLabel="-Seleccione Actividad- "   itemValue="0"/>
+            </p:selectOneMenu>
+                <p:selectOneMenu id="cmbdocente" > 
+                            <f:selectItem itemLabel="-Seleccione Docente- "   itemValue="0"/>
+            </p:selectOneMenu>
+                
+                <p:dataTable id="tblalumnos"   >
+                         <p:column headerText="Codigo" >
+                         
+                         </p:column>
+                         <p:column headerText="Nombre">
+               
+                         </p:column>
+                         <p:column >
+                           
+                         </p:column>
+                     </p:dataTable>
+                
+            </p:dialog>
+            
         </h:form>
             </f:view>
     </h:body>

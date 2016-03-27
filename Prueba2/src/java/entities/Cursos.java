@@ -2,7 +2,10 @@
 package entities;
 
 import dao.SqlCursos;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 public class Cursos {
 
@@ -21,6 +24,7 @@ public class Cursos {
     private Date fechainiciocurso;
     //atributo foraneo
     private int carrera;
+       private List <Cursos> lista;
 
     public Cursos() {
     }
@@ -162,6 +166,16 @@ public class Cursos {
     public void setCarrera(int carrera) {
         this.carrera = carrera;
     }
+
+    public List<Cursos> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Cursos> lista) {
+        this.lista = lista;
+    }
+    
+    
     
     
     public void registrar(int reg){
@@ -181,6 +195,18 @@ public class Cursos {
         sqlc.InsertarCursos(c);
     
     }
+    
+            public void mostrar(int carr,int suc) {
+                lista=new ArrayList();  
+                SqlCursos pu = new SqlCursos();
+                List<Cursos> listaCurso = pu.MostrarCursos(carr, suc);
+                Iterator<Cursos> iter = listaCurso.iterator();
+                      while (iter.hasNext()) {
+                          Cursos e = iter.next();
+                          lista.add(e);
+                      }
+
+      }
     
     
 }

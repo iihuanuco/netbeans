@@ -4,13 +4,63 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>Matricula</div>
-    </body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>registro</title>
+        <h:outputStylesheet library="css" name="style.css"  />
+        <h:outputStylesheet library="resources" name="fonts.css"  />
+         <h:outputScript library="js" name="bg.js"   />
+
+    </h:head>
+    <h:body style="background-color:white;">
+        <f:view>
+        <h:form >
+            <h:panelGrid columns="2" class="signup">
+                <h:panelGrid columns="1" class="matricula">
+                      <p:outputLabel value="Matricula 6"/>
+                        <p:selectOneMenu value="#{matriculaBean.matricula.alumno}" >
+                            <f:selectItem itemLabel="-Seleccionar Alumno-" itemValue="0" itemDisabled="true" />
+                            <f:selectItems value="#{matriculaBean.listaalumnos}" />
+                        </p:selectOneMenu >
+                        <p:inputText id="txtcodigomat" value="#{matriculaBean.matricula.codigomat}" placeholder="codigo" class="texto" ></p:inputText>
+                        <p:selectOneMenu value="#{matriculaBean.matricula.actividad}" >
+                            <f:selectItem itemLabel="-Selecionar Actividad-" itemValue="0" itemDisabled="true" />
+                            <f:selectItems value="#{actividadesBean.listaactividades}" />
+                        </p:selectOneMenu>
+                        <p:selectOneMenu value="#{matriculaBean.matricula.carrera}" >
+                            <f:selectItem itemLabel="-Selecionar Carrera-" itemValue="0" itemDisabled="true" />
+                            <f:selectItems value="#{sucursalesBean.listacarreras}" />
+                        </p:selectOneMenu>
+                        <p:selectOneMenu value="#{matriculaBean.matricula.turno}" >
+                            <f:selectItem itemLabel="-Selecionar Turno-" itemValue="0" itemDisabled="true" />
+                            <f:selectItems value="#{turnosBean.listaturnos}" />
+                        </p:selectOneMenu>
+                        <p:selectOneMenu value="#{matriculaBean.matricula.seccion}" >
+                            <f:selectItem itemLabel="-Selecionar Seccion-" itemValue="0" itemDisabled="true" />
+                            <f:selectItems value="#{seccionesBean.listasecciones}" />
+                        </p:selectOneMenu>
+                        <p:commandButton value="Guardar" actionListener="#{matriculaBean.registrar(login.user.registro)}" class="boton-ingresar"  />
+                        
+                    </h:panelGrid>    
+                <h:panelGrid columns="1" class="matricula" >
+                    <p:outputLabel value="Matricula por Curso"/>
+                 <p:selectOneMenu value="#{matriculaxCursosBean.matriculaxcursos.matricula}"  >
+                            <f:selectItem itemLabel="-Selecionar Matricula-" itemValue="0" itemDisabled="true" />
+                            <f:selectItems value="#{matriculaBean.listamatricula}" />
+                        </p:selectOneMenu>
+                 <p:selectOneMenu value="#{matriculaxCursosBean.matriculaxcursos.curso}" >
+                            <f:selectItem itemLabel="-Selecionar Curso y Profesor-" itemValue="0" itemDisabled="true" />
+                            <f:selectItems value="#{cursoxProfesorBean.listacxp}" />
+                        </p:selectOneMenu>
+                 <p:commandButton value="Guardar" actionListener="#{matriculaxCursosBean.registrar(login.user.registro)}" class="boton-ingresar"  />
+                    </h:panelGrid>    
+                </h:panelGrid>
+        </h:form>
+            </f:view>
+    </h:body>
 </html>

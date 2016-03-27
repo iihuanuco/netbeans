@@ -32,8 +32,10 @@
                                 $(window).bind("resize", function() {
                                 // Y tambien cada vez que se redimensione el navegador
                                 updateBackground();
+                                
                                 });
                                 
                                  
                         });
+ 
                         

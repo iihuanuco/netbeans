@@ -1,5 +1,6 @@
 package bean;
 
+import dao.SqlMatricula;
 import dao.SqlUsers;
 import entities.Matricula;
 import entities.Users;
@@ -14,6 +15,7 @@ import javax.faces.model.SelectItem;
 public class MatriculaBean {
     private Matricula matricula=new Matricula();
     private List<SelectItem> listaalumnos;
+       private List<SelectItem> listamatricula;
     
     public MatriculaBean() {
     }
@@ -37,6 +39,22 @@ public class MatriculaBean {
         }   
         return listaalumnos;
     }
+
+    public List<SelectItem> getListamatricula() {
+         this.listamatricula=new ArrayList<SelectItem>();
+        SqlMatricula su=new SqlMatricula();
+            List<Matricula> listamat=su.MostrarMatricula();
+            listamatricula.clear();
+            for (Matricula u : listamat) {
+            SelectItem matitem=new SelectItem(u.getRegistromat(), u.getMatriculado());
+            this.listamatricula.add(matitem);
+        }   
+        return listamatricula;
+    }
+    
+    
+    
+    
     
     
     

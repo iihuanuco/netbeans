@@ -86,11 +86,9 @@ public class MatriculaxCursos {
     public void registrar(int reg){
         SqlMatriculaxCursos smc=new SqlMatriculaxCursos();
         MatriculaxCursos mc=new MatriculaxCursos();
-        
         mc.setMatricula(matricula);
         mc.setCurso(curso);
         mc.setUserc(reg);
-        
         smc.InsertarMatriculaxCursos(mc);
     
     }

@@ -3,6 +3,9 @@ package dao;
 import entities.Matricula;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import util.Postgresql;
 
@@ -37,7 +40,28 @@ public class SqlMatricula implements DaoMatricula{
 
     @Override
     public List<Matricula> MostrarMatricula() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+           List<Matricula> listaeval=new ArrayList<Matricula>();
+        try {
+            Connection conn=Postgresql.conexion();
+            String aql = "select m.registro,concat(u.nombre,' - ',c.nombre) "
+                    + "from matricula m "
+                    + "inner join users u "
+                    + "on u.registro=m.alumno "
+                    + "inner join carreras c "
+                    + "on c.registro=m.carrera";
+            Statement st=conn.createStatement();
+            ResultSet rs=null;
+            rs=st.executeQuery(aql);
+            while (rs.next()) {
+                Matricula e=new Matricula();
+                e.setRegistromat(rs.getInt(1));
+                e.setMatriculado(rs.getString(2));
+                listaeval.add(e);
+            }
+        } catch (Exception e) {
+        }
+        
+        return listaeval;
     }
     
 }

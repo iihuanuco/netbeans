@@ -17,6 +17,7 @@ public class Matricula {
     private int carrera;
     private int turno;
     private int seccion;
+    private String matriculado;
 
     public Matricula() {
     }
@@ -122,6 +123,15 @@ public class Matricula {
     public void setSeccion(int seccion) {
         this.seccion = seccion;
     }
+
+    public String getMatriculado() {
+        return matriculado;
+    }
+
+    public void setMatriculado(String matriculado) {
+        this.matriculado = matriculado;
+    }
+    
     
     public void registrar(int reg){
         SqlMatricula sm=new SqlMatricula();
@@ -133,9 +143,7 @@ public class Matricula {
         m.setTurno(turno);
         m.setSeccion(seccion);
         m.setUserc(reg);
-        
-        System.out.println(""+alumno+" "+codigomat+" "+actividad+" "+carrera+" "+turno+" "+seccion);
-        
+       
         sm.InsertarMatricula(m);
     }
     

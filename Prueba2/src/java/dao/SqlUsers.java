@@ -200,5 +200,58 @@ public class SqlUsers implements DaoUsers {
         }
         
         return listaalum;
+    }    
+
+    @Override
+    public List<Users> Mmostaralumnos(int suc) {
+        List<Users> listaalum=new ArrayList<Users>();
+        try {
+            Connection conn=Postgresql.conexion();
+            String sql="select a.registro,a.nombre from usersxsucu us" +
+            " inner join users a on a.registro=us.usuario" +
+            " where us.sucursal='"+suc+"'" +
+            " and convert_from(decrypt(nivel,'iihuanuco2016'::bytea,'bf'),'SQL_ASCII')::int4=5";
+            Statement st=conn.createStatement();
+            ResultSet rs=null;
+            rs=st.executeQuery(sql);
+            while (rs.next()) {
+                Users u=new Users();
+                u.setRegistro(rs.getInt(1));
+                u.setNombre(rs.getString(2));
+                
+                listaalum.add(u);
+            }
+            
+        } catch (Exception e) {
+        }
+        
+        return listaalum;    
     }
+
+    @Override
+    public List<Users> Mmostarprofesor(int suc) {
+        List<Users> listaprof=new ArrayList<Users>();
+        try {
+            Connection conn=Postgresql.conexion();
+            String sql="select a.registro,a.nombre from usersxsucu us" +
+            " inner join users a on a.registro=us.usuario" +
+            " where us.sucursal='"+suc+"'" +
+            " and convert_from(decrypt(nivel,'iihuanuco2016'::bytea,'bf'),'SQL_ASCII')::int4=4";
+            Statement st=conn.createStatement();
+            ResultSet rs=null;
+            rs=st.executeQuery(sql);
+            while (rs.next()) {
+                Users u=new Users();
+                u.setRegistro(rs.getInt(1));
+                u.setNombre(rs.getString(2));
+                
+                listaprof.add(u);
+            }
+            
+        } catch (Exception e) {
+        }
+        
+        return listaprof;
+    }
+    
 }

@@ -5,10 +5,12 @@ import dao.SqlActividades;
 import dao.SqlCarreras;
 import dao.SqlCursoxProfesor;
 import dao.SqlSucursales;
+import dao.SqlUsers;
 import entities.Actividades;
 import entities.Carreras;
 import entities.CursoxProfesor;
 import entities.Sucursales;
+import entities.Users;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -24,6 +26,7 @@ public class SucursalesBean {
        List<SelectItem> listacarreras;
            private List<SelectItem> listaactividades;
                  private List<SelectItem> listacxp;
+                 private List<SelectItem> listaalumnos;
     
     public SucursalesBean() {
     }
@@ -86,9 +89,6 @@ public class SucursalesBean {
             }  
         return listacxp;
     }
-
-    
-    
     
     public void registrar(int reg){
         sucursales.registrar(reg);

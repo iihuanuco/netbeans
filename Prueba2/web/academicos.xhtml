@@ -78,14 +78,12 @@ and open the template in the editor.
                 <p:dialog header="Evaluaciones" widgetVar="evaluaciones" rendered="true" height="100" width="500" modal="true" draggable="false" resizable="false" >
                     <h:panelGrid columns="2">
                         <p:inputText id="txtnombreval" value="#{evaluacionesBean.evaluaciones.nombreeval}" placeholder="Nombre de Evaluacion" class="texto"></p:inputText>
-                        <p:commandButton value="Guardar" actionListener="#{evaluacionesBean.registrar(login.user.registro)}" class="boton-ingresar"/>
+                        <p:commandButton value="Guardar" actionListener="#{evaluacionesBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtnombreval" />
                     </h:panelGrid>
-                    
                 </p:dialog>
                 
                 <p:dialog header="Actividades" widgetVar="actividades" rendered="true" height="200" width="330" modal="true" draggable="false" resizable="false" >
                     <h:panelGrid columns="1">
-                         
                         <p:inputText id="txtnombreact" value="#{actividadesBean.actividades.nombreact}" placeholder="Nombre de Actividad" class="texto"></p:inputText>
                         <p:selectOneMenu id="cmbalcance" value="#{actividadesBean.actividades.alcanceact}">
                             <f:selectItem itemLabel="-Seleccionar Alcance-" itemValue="0" itemDisabled="true" />
@@ -94,15 +92,13 @@ and open the template in the editor.
                             <f:selectItem itemLabel="Alcance 3" itemValue="3" />
                         </p:selectOneMenu>
                         <p:calendar id="txtfecha" value="#{actividadesBean.actividades.fechainicioact}" pattern="dd/MM/yyyy" mask="true" class="datos" placeholder="Fecha de Inicio"  ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>
-                        <p:commandButton value="Guardar" actionListener="#{actividadesBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar" update="cmbalcance,txtnombreact,txtfecha"/>
-                        
+                        <p:commandButton value="Guardar" actionListener="#{actividadesBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar" 
+                                         update="cmbalcance,txtnombreact,txtfecha" />
                     </h:panelGrid>
-                    
                 </p:dialog>
                 
-                  <p:dialog header="Asignar Evaluacion" widgetVar="evaluaxcurso" rendered="true" height="200" width="350" modal="true" draggable="false" resizable="false" >
-                    <h:panelGrid columns="1">
-                         
+                <p:dialog header="Asignar Evaluacion" widgetVar="evaluaxcurso" rendered="true" height="200" width="350" modal="true" draggable="false" resizable="false" >
+                    <h:panelGrid columns="1">         
                         <p:selectOneMenu id="cmbcursoxprofesor" value="#{evaluaxCursoBean.evaluaxcurso.profesorxcurso}" >
                             <f:selectItem itemLabel="-Seleccionar Curso y Profesor-" itemValue="0" itemDisabled="true" />
                             <f:selectItems value="#{cursoxProfesorBean.listacxp}" />
@@ -112,27 +108,22 @@ and open the template in the editor.
                             <f:selectItems value="#{evaluacionesBean.listaevaluaciones}" />
                         </p:selectOneMenu>
                         <p:inputText id="txtpeso" value="#{evaluaxCursoBean.evaluaxcurso.peso}" placeholder="Peso" class="texto"></p:inputText>
-                       
-                        <p:commandButton value="Guardar" actionListener="#{evaluaxCursoBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtpeso,cmbcursoxprofesor,cmbevaluacion"/>
-                        
+                        <p:commandButton value="Guardar" actionListener="#{evaluaxCursoBean.registrar(login.user.registro)}" class="boton-ingresar" 
+                                         update="txtpeso,cmbcursoxprofesor,cmbevaluacion"/>
                     </h:panelGrid>
-                    
-                    </p:dialog>
+                </p:dialog>
                 
-                     <p:dialog header="Secciones" widgetVar="secciones" rendered="true" height="200" width="300" modal="true" draggable="false" resizable="false" >
+                <p:dialog header="Secciones" widgetVar="secciones" rendered="true" height="200" width="300" modal="true" draggable="false" resizable="false" >
                     <h:panelGrid columns="1">
-                         
                         <p:inputText id="txtcodigosec" value="#{seccionesBean.secciones.codigosec}" placeholder="Codigo" class="texto"></p:inputText>
                         <p:inputText id="txtnombresec" value="#{seccionesBean.secciones.nombresec}" placeholder="Nombre" class="texto"></p:inputText>
-                        <p:commandButton value="Guardar" actionListener="#{seccionesBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtcodigosec,txtnombresec"/>
-                        
+                        <p:commandButton value="Guardar" actionListener="#{seccionesBean.registrar(login.user.registro)}" class="boton-ingresar" 
+                                         update="txtcodigosec,txtnombresec" />
                     </h:panelGrid>
-                    
-                    </p:dialog>
+                </p:dialog>
                 
-                     <p:dialog header="Asignar Curso" widgetVar="cursoxprofesor" rendered="true" height="200" width="300" modal="true" draggable="false" resizable="false" >
-                    <h:panelGrid columns="1">
-                         
+                <p:dialog header="Asignar Curso" widgetVar="cursoxprofesor" rendered="true" height="200" width="300" modal="true" draggable="false" resizable="false" >
+                    <h:panelGrid columns="1">         
                         <p:selectOneMenu id="cmbxcurso" value="#{cursoxProfesorBean.cursoxprofesor.curso}" >
                             <f:selectItem itemLabel="-Seleccionar Curso-" itemValue="0" itemDisabled="true" />
                             <f:selectItems value="#{cursosBean.listaCursos}" />
@@ -145,18 +136,17 @@ and open the template in the editor.
                             <f:selectItem itemLabel="-Seleccionar Actividad-" itemValue="0" itemDisabled="true" />
                             <f:selectItems value="#{sucursalesBean.listaactividades}" />
                         </p:selectOneMenu>
-                        
-                        <p:commandButton value="Guardar" actionListener="#{cursoxProfesorBean.registrar(login.user.registro)}" class="boton-ingresar" update="cmbxcurso,cmbxprofesor,cmbxactividad"/>
+                        <p:commandButton value="Guardar" actionListener="#{cursoxProfesorBean.registrar(login.user.registro)}" class="boton-ingresar" 
+                                         update="cmbxcurso,cmbxprofesor,cmbxactividad" />
                     </h:panelGrid>   
                 </p:dialog>
                 
                 <p:dialog header="Turnos" widgetVar="turnos" rendered="true" height="200" width="300" modal="true" draggable="false" resizable="false" >
                     <h:panelGrid columns="1">
-                         
                         <p:inputText id="txtcodigotur" value="#{turnosBean.turnos.codigotur}" placeholder="Codigo" class="texto"></p:inputText>
                         <p:inputText id="txtnombretur" value="#{turnosBean.turnos.nombretur}" placeholder="Nombre" class="texto"></p:inputText>
-                        <p:commandButton value="Guardar" actionListener="#{turnosBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtcodigotur,txtnombretur"/>
-                        
+                        <p:commandButton value="Guardar" actionListener="#{turnosBean.registrar(login.user.registro)}" class="boton-ingresar" 
+                                         update="txtcodigotur,txtnombretur" />
                     </h:panelGrid>    
                 </p:dialog>
 

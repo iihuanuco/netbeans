@@ -43,34 +43,34 @@ and open the template in the editor.
               </h:panelGrid>
             
             
-                <p:dialog id="notas-dialogo" header="Registrar Notas"  widgetVar="notas" rendered="true" height="800" width="800" modal="true" draggable="false" resizable="false" >
-                    <h:panelGrid columns="1">
-                        <p:selectOneMenu id="cmbactividad" value="#{actividadesBean.actividades.registroact}"  >
-                            <f:selectItem itemLabel="-Selecionar Actividad-" itemValue="0" itemDisabled="true" />
-                            <f:selectItems value="#{sucursalesBean.listaactividades}" />
-                        </p:selectOneMenu>
+            <p:dialog id="notas-dialogo" header="Registrar Notas"  widgetVar="notas" rendered="true" height="800" width="800" modal="true" draggable="false" resizable="false" >
+                <h:panelGrid columns="1">
+                    <p:selectOneMenu id="cmbactividad" value="#{actividadesBean.actividades.registroact}"  >
+                        <f:selectItem itemLabel="-Selecionar Actividad-" itemValue="0" itemDisabled="true" />
+                        <f:selectItems value="#{sucursalesBean.listaactividades}" />
+                    </p:selectOneMenu>
                     <p:selectOneMenu id="cmbdocente" value="#{usersBean.user.registro}"> 
-                            <f:selectItem itemLabel="-Seleccione Docente- "   itemValue="0"/>
-                            <f:selectItems value="#{cursosBean.listaProfesor}" />
-                            <p:ajax process="cmbdocente" update="cmbnotas" />
-            </p:selectOneMenu>
-                  <p:selectOneMenu id="cmbnotas" > 
+                        <f:selectItem itemLabel="-Seleccione Docente- "   itemValue="0"/>
+                        <f:selectItems value="#{cursosBean.listaProfesor}" />
+                        <p:ajax process="cmbdocente" update="cmbnotas" />
+                    </p:selectOneMenu>
+                    <p:selectOneMenu id="cmbnotas" > 
                             <f:selectItem itemLabel="-Seleccione Tipo de Nota- "   itemValue="0"/>
                             <f:selectItems value="#{usersBean.listaeva}" />
-            </p:selectOneMenu>
-                                                <p:commandButton value="Filtrar ALumnos" actionListener="#{usersBean.user.mostrar(cursosBean.cursos.registrocurso,usersBean.user.registro,actividadesBean.actividades.registroact)}" update="tblalumnos" />
+                    </p:selectOneMenu>
+                    <p:commandButton value="Filtrar ALumnos" actionListener="#{usersBean.user.mostrar(cursosBean.cursos.registrocurso,usersBean.user.registro,actividadesBean.actividades.registroact)}" update="tblalumnos" />
                 
-                        <p:dataTable id="tblalumnos"  var="alumnos" value="#{usersBean.user.lista}">
-                         <p:column headerText="Registro Matricula x Curso"  >
-                             <h:outputText value="#{alumnos.registro}" />
-                         </p:column>
-                         <p:column headerText="Nombre">
-                             <h:outputText value="#{alumnos.nombre}" />
-                         </p:column>
-                         <p:column >
-                             <p:inputText />
-                         </p:column>
-                     </p:dataTable>
+                    <p:dataTable id="tblalumnos"  var="alumnos" value="#{usersBean.user.lista}">
+                        <p:column headerText="Registro Matricula x Curso"  >
+                            <h:outputText value="#{alumnos.registro}" />
+                        </p:column>
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{alumnos.nombre}" />
+                        </p:column>
+                        <p:column >
+                            <p:inputText />
+                        </p:column>
+                    </p:dataTable>
                     </h:panelGrid>
             </p:dialog>
             

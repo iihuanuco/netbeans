@@ -1,7 +1,11 @@
 package entities;
 
+import dao.SqlUsers;
 import dao.SqlUserxSucu;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 
 public class UserxSucu {
@@ -14,11 +18,14 @@ public class UserxSucu {
     //atributo foraneo
     private int usuario;
     private int sucursal;
-
+    //alumnos profesor por sucursal
+    private List<Users> listaalumnos;
+    private List<Users> listaprofesor;
+    
     public UserxSucu() {
     }
 
-    public UserxSucu(int userc, int userm, Date fechac, Date fecham, int registrouxs, int usuario, int sucursal) {
+    public UserxSucu(int userc, int userm, Date fechac, Date fecham, int registrouxs, int usuario, int sucursal, List<Users> listaalumnos, List<Users> listaprofesor) {
         this.userc = userc;
         this.userm = userm;
         this.fechac = fechac;
@@ -26,8 +33,11 @@ public class UserxSucu {
         this.registrouxs = registrouxs;
         this.usuario = usuario;
         this.sucursal = sucursal;
+        this.listaalumnos = listaalumnos;
+        this.listaprofesor = listaprofesor;
     }
 
+    
     public int getUserc() {
         return userc;
     }
@@ -83,6 +93,24 @@ public class UserxSucu {
     public void setSucursal(int sucursal) {
         this.sucursal = sucursal;
     }
+
+    public List<Users> getListaalumnos() {
+        return listaalumnos;
+    }
+
+    public void setListaalumnos(List<Users> listaalumnos) {
+        this.listaalumnos = listaalumnos;
+    }
+
+    public List<Users> getListaprofesor() {
+        return listaprofesor;
+    }
+
+    public void setListaprofesor(List<Users> listaprofesor) {
+        this.listaprofesor = listaprofesor;
+    }
+    
+    
     
     public void registrar(int reg) {
         SqlUserxSucu sus=new SqlUserxSucu();
@@ -94,5 +122,26 @@ public class UserxSucu {
     }
     
     
+    public void mostraralumnos(int suc){
+              listaalumnos=new ArrayList();
+              SqlUsers su=new SqlUsers();
+              List<Users> listaalum=su.Mmostaralumnos(suc);
+              Iterator<Users> iter= listaalum.iterator();
+              while (iter.hasNext()) {
+                Users u = iter.next();
+                listaalumnos.add(u);
+                }
+    }
+    
+    public void mostrardocentes(int suc){
+              listaprofesor=new ArrayList();
+              SqlUsers su=new SqlUsers();
+              List<Users> listaalum=su.Mmostarprofesor(suc);
+              Iterator<Users> iter= listaalum.iterator();
+              while (iter.hasNext()) {
+                Users u = iter.next();
+                listaprofesor.add(u);
+                }
+    }
     
 }

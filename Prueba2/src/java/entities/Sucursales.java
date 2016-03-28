@@ -29,7 +29,7 @@ public class Sucursales {
     private List<Sucursales> lista2;
     //session
     private String nombre;
-
+     
     public Sucursales() {
     }
 

@@ -16,13 +16,13 @@ public class Users {
     private String usuario,password,nombre,email,dni;
     private Date fechac,fecham;
     private boolean flag=true,flag2=true;
-     private List <Users> lista;
+    private List <Users> lista;
 
     public Users() {
     
     }
 
-    public Users(int nivel, int userc, int userm, int registro, int sexo, String usuario, String password, String nombre, String email, String dni, Date fechac, Date fecham) {
+    public Users(int nivel, int userc, int userm, int registro, int sexo, String usuario, String password, String nombre, String email, String dni, Date fechac, Date fecham, List<Users> lista) {
         this.nivel = nivel;
         this.userc = userc;
         this.userm = userm;
@@ -35,8 +35,10 @@ public class Users {
         this.dni = dni;
         this.fechac = fechac;
         this.fecham = fecham;
+        this.lista = lista;
     }
 
+    
     public int getNivel() {
         return nivel;
     }
@@ -157,11 +159,6 @@ public class Users {
         this.lista = lista;
     }
 
-  
-    
-
-    
-  
     
     public void registrar(int reg){
         SqlUsers su= new SqlUsers();
@@ -224,8 +221,7 @@ public class Users {
                           lista.add(e);
                       }
 
-      }
-    
-    
-    
+            }
+  
+          
 }

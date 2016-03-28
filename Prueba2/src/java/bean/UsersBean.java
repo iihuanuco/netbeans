@@ -74,11 +74,6 @@ public class UsersBean {
         return listaeva;
     }
 
-   
-
-  
-    
-    
     public void registrar(int reg){
         user.registrar(reg);
         user.setUsuario("");

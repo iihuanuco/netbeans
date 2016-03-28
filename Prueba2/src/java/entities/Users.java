@@ -16,7 +16,7 @@ import util.util;
 
 public class Users {
     
-    private int nivel,userc,userm,registro,sexo;
+    private int nivel,userc,userm,registro,sexo,nota;
     private String usuario,password,nombre,email,dni;
     private Date fechac,fecham;
     private boolean flag=true,flag2=true;
@@ -40,6 +40,14 @@ public class Users {
         this.fechac = fechac;
         this.fecham = fecham;
         this.lista = lista;
+    }
+
+    public int getNota() {
+        return nota;
+    }
+
+    public void setNota(int nota) {
+        this.nota = nota;
     }
 
     

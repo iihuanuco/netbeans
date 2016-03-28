@@ -13,7 +13,7 @@
 
     <h:body style="background-color:white;">
         <f:view>
-        <h:form>
+            <h:form id="usuarios">
             <div columns="1" class="registro-menu">
                     <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/newuser.jpg"/><p:commandButton value="Nuevo Usuario" oncomplete="PF('usuarionuevo').show();"  class="  btn-img"  /></div>
                     <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/alumnos.jpg"/><p:commandButton value=" Gestion de Alumnos" onclick="#{userxSucuBean.userxsucu.mostraralumnos(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('galumnos').show();"  class="  btn-img"  /></div>
@@ -57,7 +57,7 @@
                         </p:column>
                         <p:column headerText="Modificar">
                             <p:commandButton value="Modificar" actionListener="#{usersBean.user.ObtenerAlumno(alumnos.registro)}"
-                                             oncomplete="PF('modalumno').show();" update=":panelmodalum" />
+                                             oncomplete="PF('modalumno').show();" update=":usuarios:panelmodalum" />
                         </p:column>
                         <p:column>
                             <p:commandButton value="Eliminar" />

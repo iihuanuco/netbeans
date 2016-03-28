@@ -29,7 +29,6 @@ public class Login {
     }
 
     public String validardatos(String us, String pass) {
-
         SqlUsers pu = new SqlUsers();
         List<Users> listaUsuario = pu.ValidarUsers(us, pass);
         Iterator<Users> iter = listaUsuario.iterator();
@@ -55,10 +54,4 @@ public class Login {
         return null;
     }
 
-   
-    
-  
-    
     }
-
-

@@ -2,7 +2,9 @@
 package bean;
 
 import dao.SqlDepartamentos;
+import dao.SqlProvincias;
 import entities.Departamentos;
+import entities.Provincias;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -16,6 +18,8 @@ public class DepartamentosBean {
 
          private Departamentos departamentos= new Departamentos();
          private List <SelectItem> listaDepartamento;
+             private List <SelectItem> listaProvincias;
+    
    
     public DepartamentosBean() {
     }
@@ -41,6 +45,21 @@ public class DepartamentosBean {
                 
         return listaDepartamento;
     }
+
+    public List<SelectItem> getListaProvincias() {
+         this.listaProvincias=new ArrayList<SelectItem>();
+            SqlProvincias pu = new SqlProvincias();
+                List<Provincias> listaPro = pu.MostrarProvincias(departamentos.getRegistrodep());
+                listaProvincias.clear();
+                
+                for (Provincias c: listaPro){
+                    SelectItem proitem= new SelectItem(c.getRegistropro(),c.getNombrepro());
+                    this.listaProvincias.add(proitem);
+                }
+        return listaProvincias;
+    }
+    
+      
 
     
     public void registrar(int reg){

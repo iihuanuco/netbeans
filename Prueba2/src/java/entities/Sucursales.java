@@ -25,7 +25,10 @@ public class Sucursales {
     //atributos foraneos
     private int empresa;
     private int distrito;
+    private String nempresa;
+    private String ndistrito;
     private List<Sucursales> lista;
+     private List<Sucursales> listafiltrar;
     private List<Sucursales> lista2;
     //session
     private String nombre;
@@ -33,23 +36,6 @@ public class Sucursales {
     public Sucursales() {
     }
 
-    public Sucursales(int userc, int userm, Date fechac, Date fecham, int registrosuc, String nombresuc, String direccionsuc, int alcancesuc, String codigomodularsuc, String autorizacionsuc, Date fechaautorizacionsuc, String revalidacionsuc, int tipodegestionsuc, int empresa, int distrito) {
-        this.userc = userc;
-        this.userm = userm;
-        this.fechac = fechac;
-        this.fecham = fecham;
-        this.registrosuc = registrosuc;
-        this.nombresuc = nombresuc;
-        this.direccionsuc = direccionsuc;
-        this.alcancesuc = alcancesuc;
-        this.codigomodularsuc = codigomodularsuc;
-        this.autorizacionsuc = autorizacionsuc;
-        this.fechaautorizacionsuc = fechaautorizacionsuc;
-        this.revalidacionsuc = revalidacionsuc;
-        this.tipodegestionsuc = tipodegestionsuc;
-        this.empresa = empresa;
-        this.distrito = distrito;
-    }
 
     public int getUserc() {
         return userc;
@@ -196,9 +182,33 @@ public class Sucursales {
         this.lista2 = lista2;
     }
 
-        
- 
+    public String getNempresa() {
+        return nempresa;
+    }
+
+    public void setNempresa(String nempresa) {
+        this.nempresa = nempresa;
+    }
+
+    public String getNdistrito() {
+        return ndistrito;
+    }
+
+    public void setNdistrito(String ndistrito) {
+        this.ndistrito = ndistrito;
+    }
+
+    public List<Sucursales> getListafiltrar() {
+        return listafiltrar;
+    }
+
+    public void setListafiltrar(List<Sucursales> listafiltrar) {
+        this.listafiltrar = listafiltrar;
+    }
+
     
+    
+
     
     public void registrar(int reg){
         SqlSucursales ss=new SqlSucursales();
@@ -219,10 +229,13 @@ public class Sucursales {
         
     }
     public void mostrar(){
+          
          lista = new ArrayList();
+         
         SqlSucursales pu = new SqlSucursales();
         List<Sucursales> listaSucur = pu.MostrarSucursales();
         Iterator<Sucursales> iter = listaSucur.iterator();
+        lista.clear();
         while (iter.hasNext()) {
             Sucursales e = iter.next();
             lista.add(e);
@@ -230,10 +243,12 @@ public class Sucursales {
 
     }
     public void mostrar2(int user){
+    
          lista2 = new ArrayList();
         SqlSucursales pu = new SqlSucursales();
         List<Sucursales> listaSucur = pu.MostrarSucursales(user);
         Iterator<Sucursales> iter = listaSucur.iterator();
+        lista2.clear();
         while (iter.hasNext()) {
             Sucursales e = iter.next();
             lista2.add(e);

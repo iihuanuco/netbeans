@@ -107,8 +107,8 @@ public class Departamentos {
            public void mostrar() {
                 lista=new ArrayList();  
                 SqlDepartamentos pu = new SqlDepartamentos();
-                List<Departamentos> listaCurso = pu.MostrarDepartamentos();
-                Iterator<Departamentos> iter = listaCurso.iterator();
+                List<Departamentos> listaDepa = pu.MostrarDepartamentos();
+                Iterator<Departamentos> iter = listaDepa.iterator();
                       while (iter.hasNext()) {
                           Departamentos e = iter.next();
                           lista.add(e);

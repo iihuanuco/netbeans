@@ -46,6 +46,7 @@ public class EmpresasBean {
     empresas.registrar(reg);
     empresas.setNombreemp("");
     empresas.setRucemp("");
+     empresas.mostrar();
     }
     
     

@@ -101,7 +101,8 @@ public class SucursalesBean {
         sucursales.setAutorizacionsuc("");
         sucursales.setFechaautorizacionsuc(null);
         sucursales.setRevalidacionsuc("");
-        sucursales.setTipodegestionsuc(0);     
+        sucursales.setTipodegestionsuc(0);    
+        sucursales.mostrar();
     }
     
     

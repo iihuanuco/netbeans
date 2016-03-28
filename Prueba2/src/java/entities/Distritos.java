@@ -1,8 +1,12 @@
 
 package entities;
 
+
 import dao.SqlDistritos;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Distritos {
 
@@ -15,6 +19,8 @@ public class Distritos {
     private String capitaldis;
     //atributo foraneo
     private int provincia;
+      private List <Distritos> lista;
+        private List <Distritos> listafiltrar;
 
     public Distritos() {
     }
@@ -83,6 +89,25 @@ public class Distritos {
         this.provincia = provincia;
     }
 
+    public List<Distritos> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Distritos> lista) {
+        this.lista = lista;
+    }
+
+    public List<Distritos> getListafiltrar() {
+        return listafiltrar;
+    }
+
+    public void setListafiltrar(List<Distritos> listafiltrar) {
+        this.listafiltrar = listafiltrar;
+    }
+    
+    
+    
+
     public void registrar(int reg){
         SqlDistritos sd= new SqlDistritos();
         Distritos d= new Distritos();
@@ -93,5 +118,17 @@ public class Distritos {
         sd.InsertarDistritos(d);
         
     }
+    
+        public void mostrar(int reg) {
+                lista=new ArrayList();  
+                SqlDistritos pu = new SqlDistritos();
+                List<Distritos> listaDist = pu.MostrarDistritos(reg);
+                Iterator<Distritos> iter = listaDist.iterator();
+                      while (iter.hasNext()) {
+                          Distritos e = iter.next();
+                          lista.add(e);
+                      }
+
+      }
      
 }

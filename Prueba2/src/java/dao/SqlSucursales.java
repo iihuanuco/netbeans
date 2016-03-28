@@ -52,7 +52,11 @@ public class SqlSucursales implements DaoSucursales{
        List<Sucursales> listaSucur=new ArrayList<Sucursales>();
         try {
             Connection cn=Postgresql.conexion();
-            String sql="select registro,nombre from sucursales";
+            String sql = "select s.registro,s.nombre,e.nombre,d.nombre from sucursales s "
+                    + "inner join distritos d "
+                    + "on d.registro=s.distrito "
+                    + "inner join empresas e  "
+                    + "on e.registro=s.empresa";
             
             Statement st=cn.createStatement(); 
             ResultSet rs=null;
@@ -61,6 +65,8 @@ public class SqlSucursales implements DaoSucursales{
                 Sucursales c=new Sucursales();
                 c.setRegistrosuc(rs.getInt(1));
                 c.setNombresuc(rs.getString(2));
+                c.setNempresa(rs.getString(3));
+                c.setNdistrito(rs.getString(4));
 
                listaSucur.add(c);
             }      

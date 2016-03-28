@@ -3,6 +3,9 @@ package entities;
 
 import dao.SqlEmpresas;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Empresas {
 
@@ -13,6 +16,8 @@ public class Empresas {
     private int registroemp;
     private String nombreemp;
     private String rucemp;
+    private List <Empresas> lista;
+        private List <Empresas> listafiltrar;
 
     public Empresas() {
     }
@@ -72,6 +77,24 @@ public class Empresas {
     public void setRucemp(String rucemp) {
         this.rucemp = rucemp;
     }
+
+    public List<Empresas> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Empresas> lista) {
+        this.lista = lista;
+    }
+
+    public List<Empresas> getListafiltrar() {
+        return listafiltrar;
+    }
+
+    public void setListafiltrar(List<Empresas> listafiltrar) {
+        this.listafiltrar = listafiltrar;
+    }
+    
+    
     
     public void registrar(int reg) {
         SqlEmpresas se=new SqlEmpresas();
@@ -79,12 +102,19 @@ public class Empresas {
         e.setNombreemp(nombreemp);
         e.setUserc(reg);
         e.setRucemp(rucemp);
-        
-        System.out.println(""+nombreemp);
-        System.out.println(""+reg);
-        System.out.println(""+rucemp);
-        
         se.InsertarEmpresas(e);
     }
+    
+           public void mostrar() {
+                lista=new ArrayList();  
+                SqlEmpresas pu = new SqlEmpresas();
+                List<Empresas> listaEmp = pu.MostrarEmpresas();
+                Iterator<Empresas> iter = listaEmp.iterator();
+                      while (iter.hasNext()) {
+                          Empresas e = iter.next();
+                          lista.add(e);
+                      }
+
+      }
     
 }

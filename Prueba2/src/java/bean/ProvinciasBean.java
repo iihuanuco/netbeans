@@ -15,7 +15,7 @@ public class ProvinciasBean {
         
     private Provincias provincias= new Provincias();
     private List <SelectItem> listaProvincias;
-    
+
     public ProvinciasBean() {
     }
 
@@ -39,6 +39,8 @@ public class ProvinciasBean {
                 }
         return listaProvincias;
     }
+    
+    
 
     public void registrar(int reg){
     provincias.registrar(reg);

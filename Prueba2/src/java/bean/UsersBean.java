@@ -84,6 +84,14 @@ public class UsersBean {
         user.setNivel(0);
     }
     
- 
+    public void actualizaralumno(int reg){
+        user.actualizaralumno(reg);
+        user.setUsuario("");
+        user.setDni("");
+        user.setPassword("");
+        user.setNombre("");
+        user.setEmail("");
+        user.setNivel(0);
+    } 
     
 }

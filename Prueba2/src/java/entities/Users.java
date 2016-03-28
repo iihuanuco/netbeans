@@ -3,14 +3,18 @@ package entities;
 
 
 import dao.SqlUsers;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import util.Postgresql;
+import util.util;
  
 
 public class Users {
-    
     
     private int nivel,userc,userm,registro,sexo;
     private String usuario,password,nombre,email,dni;
@@ -223,5 +227,47 @@ public class Users {
 
             }
   
+          
+    public void ObtenerAlumno(int reg){
+        try {
+            Connection conn=Postgresql.conexion();
+            String sql=" select a.registro,a.dni,a.nombre,a.usuario,a.email,a.sexo "
+                    + " from users a"
+                    + " where a.registro='"+reg+"'"
+                    + " and convert_from(decrypt(nivel,'iihuanuco2016'::bytea,'bf'),'SQL_ASCII')::int4=5";
+            PreparedStatement pst=conn.prepareStatement(sql);
+            ResultSet rs=util.getfila(pst);
+            this.gdatos(rs);
+        } catch (Exception e) {
+        }
+    
+    }
+    
+    public void gdatos(ResultSet rs){
+        try {
+            registro=rs.getInt("registro");
+            usuario=rs.getString("usuario");
+            nombre=rs.getString("nombre");
+            dni=rs.getString("dni");
+            email=rs.getString("email");
+            sexo=rs.getInt("sexo");
+        } catch (Exception e) {
+        }
+    
+    }
+    
+    public void actualizaralumno(int reg){
+        SqlUsers su=new SqlUsers();
+        Users u=new Users();
+        u.setUsuario(usuario);
+        u.setPassword(password);
+        u.setNombre(nombre);
+        u.setUserm(reg);
+        u.setDni(dni);
+        u.setEmail(email);
+        u.setSexo(sexo);
+        u.setRegistro(registro);
+        su.ActualizarAlumno(u);    
+    }
           
 }

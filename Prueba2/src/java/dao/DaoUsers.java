@@ -17,4 +17,6 @@ public interface DaoUsers {
     List<Users> MostrarAlumnos(int suc);
     List<Users> MostrarProfesores(int suc);
     
+    void ActualizarAlumno(Users users);
+    
 }

@@ -252,5 +252,32 @@ public class SqlUsers implements DaoUsers {
         
         return listaprof;
     }
+
+    @Override
+    public void ActualizarAlumno(Users users) {
+        Connection conn=null;
+        try {
+            conn=Postgresql.conexion();
+            String sql="update users set usuario=?,password=crypt(?, gen_salt('md5')),nombre=?,dni=?,email=?,sexo=?,"
+                    + "userm=?,fecham=now() "
+                    + " where registro=?";
+            PreparedStatement pst=conn.prepareStatement(sql);
+            
+            pst.setString(1, users.getUsuario());
+            pst.setString(2, users.getPassword());
+            pst.setString(3, users.getNombre());
+            pst.setString(4, users.getDni());
+            pst.setString(5, users.getEmail());
+            pst.setInt(6, users.getSexo());
+            pst.setInt(7, users.getUserm());
+            pst.setInt(8, users.getRegistro());
+            
+            pst.executeUpdate();
+            pst.close();
+            conn.close();
+        } catch (Exception e) {
+        }
+    }
+    
     
 }

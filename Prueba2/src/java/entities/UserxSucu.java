@@ -125,7 +125,7 @@ public class UserxSucu {
     public void mostraralumnos(int suc){
               listaalumnos=new ArrayList();
               SqlUsers su=new SqlUsers();
-              List<Users> listaalum=su.Mmostaralumnos(suc);
+              List<Users> listaalum=su.MostrarAlumnos(suc);
               Iterator<Users> iter= listaalum.iterator();
               while (iter.hasNext()) {
                 Users u = iter.next();
@@ -136,7 +136,7 @@ public class UserxSucu {
     public void mostrardocentes(int suc){
               listaprofesor=new ArrayList();
               SqlUsers su=new SqlUsers();
-              List<Users> listaalum=su.Mmostarprofesor(suc);
+              List<Users> listaalum=su.MostrarProfesores(suc);
               Iterator<Users> iter= listaalum.iterator();
               while (iter.hasNext()) {
                 Users u = iter.next();

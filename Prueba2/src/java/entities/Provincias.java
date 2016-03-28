@@ -3,6 +3,9 @@ package entities;
 
 import dao.SqlProvincias;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Provincias {
     //variables de registro de cambios
@@ -13,6 +16,8 @@ public class Provincias {
     private String nombrepro;
     //atributo foraneo
     private int departamento;
+    private List <Provincias> lista;
+        private List <Provincias> listafiltrar;
 
     public Provincias() {
     }
@@ -73,6 +78,24 @@ public class Provincias {
         this.departamento = departamento;
     }
 
+    public List<Provincias> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Provincias> lista) {
+        this.lista = lista;
+    }
+
+    public List<Provincias> getListafiltrar() {
+        return listafiltrar;
+    }
+
+    public void setListafiltrar(List<Provincias> listafiltrar) {
+        this.listafiltrar = listafiltrar;
+    }
+    
+    
+
      public void registrar(int reg){
          SqlProvincias sp= new SqlProvincias();
          Provincias p= new Provincias();
@@ -82,5 +105,16 @@ public class Provincias {
          sp.InsertarProvincias(p);
      }
     
+         public void mostrar(int reg) {
+                lista=new ArrayList();  
+                SqlProvincias pu = new SqlProvincias();
+                List<Provincias> listaCurso = pu.MostrarProvincias(reg);
+                Iterator<Provincias> iter = listaCurso.iterator();
+                      while (iter.hasNext()) {
+                          Provincias e = iter.next();
+                          lista.add(e);
+                      }
+
+      }
     
 }

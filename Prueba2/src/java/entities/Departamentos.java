@@ -2,6 +2,9 @@ package entities;
 
 import dao.SqlDepartamentos;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Departamentos {
     //variables de registro de cambios
@@ -10,6 +13,8 @@ public class Departamentos {
     //propias de la clase
     private int registrodep;
     private String nombredep;
+        private List <Departamentos> lista;
+        private List <Departamentos> listafiltrar;
     
 
     public Departamentos() {
@@ -71,6 +76,25 @@ public class Departamentos {
     public void setNombredep(String nombredep) {
         this.nombredep = nombredep;
     }
+
+    public List<Departamentos> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Departamentos> lista) {
+        this.lista = lista;
+    }
+
+    public List<Departamentos> getListafiltrar() {
+        return listafiltrar;
+    }
+
+    public void setListafiltrar(List<Departamentos> listafiltrar) {
+        this.listafiltrar = listafiltrar;
+    }
+    
+    
+    
     
         public void registrar(int reg){
            SqlDepartamentos sd= new SqlDepartamentos();
@@ -79,6 +103,18 @@ public class Departamentos {
             d.setUserc(reg);
             sd.InsertarDepartamentos(d); 
     }  
+        
+           public void mostrar() {
+                lista=new ArrayList();  
+                SqlDepartamentos pu = new SqlDepartamentos();
+                List<Departamentos> listaCurso = pu.MostrarDepartamentos();
+                Iterator<Departamentos> iter = listaCurso.iterator();
+                      while (iter.hasNext()) {
+                          Departamentos e = iter.next();
+                          lista.add(e);
+                      }
+
+      }
 
     
 }

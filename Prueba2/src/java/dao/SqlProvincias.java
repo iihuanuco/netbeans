@@ -58,6 +58,34 @@ public class SqlProvincias implements DaoProvincias{
        
         return listaPro;
     }
+
+    @Override
+    public List<Provincias> MostrarProvincias(int depa) {
+        List<Provincias> listaPro=new ArrayList<Provincias>();
+        try {
+            Connection cn=Postgresql.conexion();
+            String sql = "select p.registro,p.nombre from departamentos d "
+                    + "inner join provincias p "
+                    + "on p.departamento=d.registro "
+                    + "where d.registro="+depa;
+            
+            Statement st=cn.createStatement(); 
+            ResultSet rs=null;
+            rs=st.executeQuery(sql);
+            while(rs.next()) {                
+                Provincias c=new Provincias();
+                c.setRegistropro(rs.getInt(1));
+                c.setNombrepro(rs.getString(2));
+
+               listaPro.add(c);
+            }      
+            
+        } catch (Exception e) {
+        }
+        
+       
+        return listaPro;
+    }
     
     
 }

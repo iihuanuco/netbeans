@@ -23,6 +23,8 @@ public class UserxSucuBean {
     
     public void registrar(int reg){
         userxsucu.registrar(reg);
+        userxsucu.setUsuario(0);
+        userxsucu.setSucursal(0);
     } 
    
     

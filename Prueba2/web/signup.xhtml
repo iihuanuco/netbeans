@@ -16,8 +16,8 @@
         <h:form>
             <div columns="1" class="registro-menu">
                     <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/newuser.jpg"/><p:commandButton value="Nuevo Usuario" oncomplete="PF('usuarionuevo').show();"  class="  btn-img"  /></div>
-                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/alumnos.jpg"/><p:commandButton value=" Gestion de Alumnos" oncomplete="PF('galumnos').show();"  class="  btn-img"  /></div>
-                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/profesor.jpg"/><p:commandButton value=" Gestion de Docentes" oncomplete="PF('gdocente').show();"  class="  btn-img"  /></div>
+                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/alumnos.jpg"/><p:commandButton value=" Gestion de Alumnos" onclick="#{userxSucuBean.userxsucu.mostraralumnos(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('galumnos').show();"  class="  btn-img"  /></div>
+                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/profesor.jpg"/><p:commandButton value=" Gestion de Docentes" onclick="#{userxSucuBean.userxsucu.mostrardocentes(sucursalesBean.sucursales.registrosuc)}"  oncomplete="PF('gdocente').show();"  class="  btn-img"  /></div>
             </div>
             
             <p:dialog header="Registrar Usuario Nuevo" widgetVar="usuarionuevo" rendered="true" height="380" width="300" modal="true" draggable="false" resizable="false" position="center"  >
@@ -48,10 +48,9 @@
             
             <p:dialog header="Gestionar Alumnos" widgetVar="galumnos" rendered="true" height="350" width="1000" modal="true" draggable="false" resizable="false" position="center"  >
                 <h:panelGrid columns="1" >
-                    <p:commandButton value="Mostrar" actionListener="#{userxSucuBean.userxsucu.mostraralumnos(sucursalesBean.sucursales.registrosuc)}" update="tblalum" />
                     <p:dataTable id="tblalum" var="alumnos"  value="#{userxSucuBean.userxsucu.listaalumnos}">
                         <p:column headerText="Registro">
-                            <h:outputText value="#{alumnnos.registro}" />
+                            <h:outputText value="#{alumnos.registro}" />
                         </p:column>
                         <p:column headerText="Nombre">
                             <h:outputText value="#{alumnos.nombre}" />
@@ -69,7 +68,7 @@
             
             <p:dialog header="Gestionar Docentes" widgetVar="gdocente" rendered="true" height="350" width="800" modal="true" draggable="false" resizable="false" position="center"  >
                 <h:panelGrid columns="1" >
-                    <p:commandButton value="Mostrar" actionListener="#{userxSucuBean.userxsucu.mostrardocentes(sucursalesBean.sucursales.registrosuc)}" update="tblprof" />
+                    
                     <p:dataTable id="tblprof" var="profesor"  value="#{userxSucuBean.userxsucu.listaprofesor}">
                         <p:column headerText="Registro">
                             <h:outputText value="#{profesor.registro}" />

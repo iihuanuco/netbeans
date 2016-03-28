@@ -44,6 +44,7 @@ and open the template in the editor.
                             <f:selectItem itemLabel="-Selecionar Seccion-" itemValue="0" itemDisabled="true" />
                             <f:selectItems value="#{seccionesBean.listasecciones}" />
                         </p:selectOneMenu>
+                        
                         <p:commandButton value="Guardar" actionListener="#{matriculaBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtalumnop,txtcodigomat,txtactividadp,txtcarrerap,txtturnop,txtseccion,matricula,matriculaxcurso"  />
                         
                     </h:panelGrid>    

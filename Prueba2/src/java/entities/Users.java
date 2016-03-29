@@ -202,7 +202,7 @@ public class Users {
     public void ObtenerAlumno(int reg){
         try {
             Connection conn=Postgresql.conexion();
-            String sql=" select a.registro,a.dni,a.nombre,a.usuario,a.email,a.sexo "
+            String sql="select a,registro,a.dni,a.nombre,a.usuario,a.email,a.sexo"
                     + " from users a"
                     + " where a.registro='"+reg+"'"
                     + " and convert_from(decrypt(nivel,'iihuanuco2016'::bytea,'bf'),'SQL_ASCII')::int4=5";
@@ -217,9 +217,9 @@ public class Users {
     public void gdatos(ResultSet rs){
         try {
             registro=rs.getInt("registro");
-            usuario=rs.getString("usuario");
-            nombre=rs.getString("nombre");
             dni=rs.getString("dni");
+            nombre=rs.getString("nombre");
+            usuario=rs.getString("usuario");
             email=rs.getString("email");
             sexo=rs.getInt("sexo");
         } catch (Exception e) {

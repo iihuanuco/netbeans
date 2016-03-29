@@ -1,6 +1,9 @@
 package bean;
 
+import entities.Users;
 import entities.UserxSucu;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -9,6 +12,7 @@ import javax.faces.bean.ViewScoped;
 public class UserxSucuBean {
 
     private UserxSucu userxsucu=new UserxSucu();
+    private List<Users> filtrotblalumnos=new ArrayList<Users>();
   
     public UserxSucuBean() {
     }
@@ -20,6 +24,16 @@ public class UserxSucuBean {
     public void setUserxsucu(UserxSucu userxsucu) {
         this.userxsucu = userxsucu;
     }
+
+    public List<Users> getFiltrotblalumnos() {
+        return filtrotblalumnos;
+    }
+
+    public void setFiltrotblalumnos(List<Users> filtrotblalumnos) {
+        this.filtrotblalumnos = filtrotblalumnos;
+    }
+    
+    
     
     public void registrar(int reg){
         userxsucu.registrar(reg);

@@ -1,9 +1,7 @@
  
 package bean;
 
-import dao.SqlEvaluaciones;
 import dao.SqlUsers;
-import entities.Evaluaciones;
 import entities.Users;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +16,7 @@ import javax.faces.model.SelectItem;
 public class UsersBean {
     private Users user=new Users();
     private List<SelectItem> listausuarios;
-
+    
     @ManagedProperty("#{login}")
     private Login login;  
 
@@ -44,8 +42,6 @@ public class UsersBean {
     public void setUser(Users user) {
         this.user = user;
     }
-
-  
    
     public List<SelectItem> getListausuarios() {
         this.listausuarios=new ArrayList<SelectItem>();
@@ -60,8 +56,6 @@ public class UsersBean {
         return listausuarios;
     }
 
-
-
     public void registrar(int reg){
         user.registrar(reg);
         user.setUsuario("");
@@ -72,14 +66,9 @@ public class UsersBean {
         user.setNivel(0);
     }
     
-    public void actualizaralumno(int reg){
-        user.actualizaralumno(reg);
-        user.setUsuario("");
-        user.setDni("");
-        user.setPassword("");
-        user.setNombre("");
-        user.setEmail("");
-        user.setNivel(0);
+    public void actualizarusers(int reg){
+        user.actualizarusers(reg);
+        
     } 
     
 }

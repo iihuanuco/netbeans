@@ -21,6 +21,8 @@ public class UserxSucu {
     //alumnos profesor por sucursal
     private List<Users> listaalumnos;
     private List<Users> listaprofesor;
+    //filtro para tablas
+    private List<Users> filtrotbl;
     
     public UserxSucu() {
     }
@@ -108,6 +110,14 @@ public class UserxSucu {
 
     public void setListaprofesor(List<Users> listaprofesor) {
         this.listaprofesor = listaprofesor;
+    }
+
+    public List<Users> getFiltrotbl() {
+        return filtrotbl;
+    }
+
+    public void setFiltrotbl(List<Users> filtrotbl) {
+        this.filtrotbl = filtrotbl;
     }
     
     

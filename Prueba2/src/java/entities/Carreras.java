@@ -1,7 +1,10 @@
 package entities;
 
 import dao.SqlCarreras;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 public class Carreras {
 
@@ -16,6 +19,10 @@ public class Carreras {
     private int estadocarrera; //estado: *null=activo; !null=debaja,suspendido,etc.
     //atributo foraneo
     private int sucursal;
+    //otros
+    private List<Carreras> listacarreras;
+    private List<Carreras> filtrocarreras;
+    
 
     public Carreras() {
     }
@@ -112,7 +119,35 @@ public class Carreras {
     public void setSucursal(int sucursal) {
         this.sucursal = sucursal;
     }
+
+    public List<Carreras> getFiltrocarreras() {
+        return filtrocarreras;
+    }
+
+    public void setFiltrocarreras(List<Carreras> filtrocarreras) {
+        this.filtrocarreras = filtrocarreras;
+    }
+
+    public List<Carreras> getListacarreras() {
+        return listacarreras;
+    }
+
+    public void setListacarreras(List<Carreras> listacarreras) {
+        this.listacarreras = listacarreras;
+    }
     
+    public void mostrarcarreras(int suc){
+        listacarreras=new ArrayList();
+        SqlCarreras sc=new SqlCarreras();
+        List<Carreras> listacar=sc.MostrarCarreras(suc);
+        Iterator<Carreras> iter=listacar.iterator();
+        while (iter.hasNext()) {
+            Carreras c = iter.next();
+            listacarreras.add(c);
+        }
+        
+        
+    }
     
     public void registrar(int reg,int suc){
         SqlCarreras sc=new SqlCarreras();
@@ -126,5 +161,18 @@ public class Carreras {
         System.out.println(""+suc+reg);
         
     }
+    
+    public void actualizarCarreras(int reg) {
+        SqlCarreras sc=new SqlCarreras();
+        Carreras c=new Carreras();
+        c.setCodigocarrera(codigocarrera);
+        c.setNombrecarrera(nombrecarrera);
+        c.setSemestrescarrera(semestrescarrera);
+        c.setUserm(reg);
+        c.setRegistrocarrera(registrocarrera);
+        
+        sc.ActualizarCarreras(c);
+    }
+    
     
 }

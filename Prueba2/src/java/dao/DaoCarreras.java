@@ -9,4 +9,6 @@ public interface DaoCarreras {
     List<Carreras> MostrarCarreras(int suc);
     List<Carreras> MostrarSemestres(int reg);
     
+    void ActualizarCarreras(Carreras carreras);
+    
 }

@@ -16,8 +16,8 @@
             <h:form id="usuarios">
             <div columns="1" class="registro-menu">
                     <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/newuser.jpg"/><p:commandButton value="Nuevo Usuario" oncomplete="PF('usuarionuevo').show();"  class="  btn-img"  /></div>
-                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/alumnos.jpg"/><p:commandButton value=" Gestion de Alumnos" onclick="#{userxSucuBean.userxsucu.mostraralumnos(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('galumnos').show();"  class="  btn-img"  /></div>
-                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/profesor.jpg"/><p:commandButton value=" Gestion de Docentes" onclick="#{userxSucuBean.userxsucu.mostrardocentes(sucursalesBean.sucursales.registrosuc)}"  oncomplete="PF('gdocente').show();"  class="  btn-img"  /></div>
+                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/alumnos.jpg"/><p:commandButton value=" Gestion de Alumnos" onclick="#{userxSucuBean.userxsucu.mostraralumnos(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('galumno').show();"  class="  btn-img"  /></div>
+                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/profesor.jpg"/><p:commandButton value=" Gestion de Profesores" onclick="#{userxSucuBean.userxsucu.mostrardocentes(sucursalesBean.sucursales.registrosuc)}"  oncomplete="PF('gprofesor').show();"  class="  btn-img"  /></div>
             </div>
             
             <p:dialog header="Registrar Usuario Nuevo" widgetVar="usuarionuevo" rendered="true" height="380" width="300" modal="true" draggable="false" resizable="false" position="center"  >
@@ -46,58 +46,22 @@
              </h:panelGrid>
             </p:dialog>
             
-            <p:dialog header="Gestionar Alumnos" widgetVar="galumnos" rendered="true" height="350" width="1000" modal="true" draggable="false" resizable="false" position="center"  >
-                <h:panelGrid columns="1" >
-                    <p:dataTable id="tblalum" var="alumnos"  value="#{userxSucuBean.userxsucu.listaalumnos}" filteredValue="#{userxSucuBean.filtrotblalumnos}" >
-                        <p:column headerText="Registro" filterBy="#{alumnos.registro}" filterMatchMode="contains" >
-                            <h:outputText value="#{alumnos.registro}" />
-                        </p:column>
-                        <p:column headerText="Nombre" filterBy="#{alumnos.nombre}" filterMatchMode="contains" >
-                            <h:outputText value="#{alumnos.nombre}" />
-                        </p:column>
-                        <p:column headerText="Modificar">
-                            <p:commandButton value="Modificar" actionListener="#{usersBean.user.ObtenerAlumno(alumnos.registro)}"
-                                             oncomplete="PF('modalumno').show();" update=":usuarios:panelmodalum" />
-                        </p:column>
-                        <p:column>
-                            <p:commandButton value="Eliminar" />
-                        </p:column>
-                    </p:dataTable>
-                    
-                </h:panelGrid>
-            </p:dialog>
-            
-            <p:dialog id="panelmodalum" header="Modificar Datos del Alumno" widgetVar="modalumno" rendered="true" height="350" width="300" modal="true" draggable="false" resizable="false" position="center" >
-                <h:panelGrid columns="1">
-                <p:inputText value="#{usersBean.user.dni}" placeholder="DNI" class="texto"></p:inputText>
-                <p:inputText value="#{usersBean.user.nombre}" placeholder="Nombre" class="texto"></p:inputText>
-                <p:inputText value="#{usersBean.user.usuario}" placeholder="Usuario" class="texto"></p:inputText>
-                <p:inputText value="#{usersBean.user.email}" placeholder="Email" class="texto"></p:inputText>
-                <p:outputLabel for="msexo" value="Sexo: " />
-                <p:selectOneRadio id="msexo" value="#{usersBean.user.sexo}">
-                    <f:selectItem itemLabel="Masculino" itemValue="1" />
-                    <f:selectItem itemLabel="Femenino" itemValue="2" />
-                </p:selectOneRadio>
-                <p:commandButton value="Guardar Cambios" ajax="false" 
-                                 actionListener="#{usersBean.actualizaralumno(login.user.registro)}" update=":tblalum"
-                                 oncomplete="PF('modalumno').hide();" class="boton-ingresar" />
-                <p:commandButton value="Cancelar" immediate="true"
-                                 oncomplete="PF('modalumno').hide();" class="boton-ingresar" />
-             </h:panelGrid>
-            </p:dialog>
-            
-            <p:dialog header="Gestionar Docentes" widgetVar="gdocente" rendered="true" height="350" width="800" modal="true" draggable="false" resizable="false" position="center"  >
+            <p:dialog header="Gestionar Alumnos" widgetVar="galumno" rendered="true" height="350" width="800" modal="true" draggable="false" resizable="false" position="center"  >
                 <h:panelGrid columns="1" >
                     
-                    <p:dataTable id="tblprof" var="profesor"  value="#{userxSucuBean.userxsucu.listaprofesor}">
-                        <p:column headerText="Registro">
-                            <h:outputText value="#{profesor.registro}" />
+                    <p:dataTable id="tblalum" var="alumno"  value="#{userxSucuBean.userxsucu.listaalumnos}" filteredValue="#{userxSucuBean.userxsucu.filtrotbl}">
+                        <p:column headerText="Registro" filterBy="#{alumno.registro}" filterMatchMode="contains" >
+                            <h:outputText value="#{alumno.registro}" />
                         </p:column>
-                        <p:column headerText="Nombre">
-                            <h:outputText value="#{profesor.nombre}" />
+                        <p:column headerText="DNI" filterBy="#{alumno.dni}" filterMatchMode="contains">
+                            <h:outputText value="#{alumno.dni}" />
+                        </p:column>
+                        <p:column headerText="Nombre" filterBy="#{alumno.nombre}" filterMatchMode="contains" >
+                            <h:outputText value="#{alumno.nombre}" />
                         </p:column>
                         <p:column headerText="Modificar">
-                            <p:commandButton value="Modificar" />
+                            <p:commandButton value="Modificar" actionListener="#{usersBean.user.ObtenerAlumno(alumno.registro)}"
+                                             oncomplete="PF('modalumno').show();" update=":usuarios:panelmodalumno" />
                         </p:column>
                         <p:column headerText="Eliminar" >
                             <p:commandButton value="Eliminar" />
@@ -107,8 +71,68 @@
                 </h:panelGrid>
             </p:dialog>
             
+            <p:dialog id="panelmodalumno" header="Modificar Datos del Docente" widgetVar="modalumno" rendered="true" height="350" width="300" modal="true" draggable="false" resizable="false" position="center" >
+                <h:panelGrid columns="1">
+                <p:inputText value="#{usersBean.user.dni}" placeholder="DNI" class="texto"></p:inputText>
+                <p:inputText value="#{usersBean.user.nombre}" placeholder="Nombre" class="texto"></p:inputText>
+                <p:inputText value="#{usersBean.user.usuario}" placeholder="Usuario" class="texto"></p:inputText>
+                <p:inputText value="#{usersBean.user.email}" placeholder="Email" class="texto"></p:inputText>
+                <p:outputLabel for="asexo" value="Sexo: " />
+                <p:selectOneRadio id="asexo" value="#{usersBean.user.sexo}">
+                    <f:selectItem itemLabel="Masculino" itemValue="1" />
+                    <f:selectItem itemLabel="Femenino" itemValue="2" />
+                </p:selectOneRadio>
+                <p:commandButton value="Guardar Cambios" ajax="false" 
+                                 actionListener="#{usersBean.actualizarusers(login.user.registro)}" update=":tblalum"
+                                 oncomplete="PF('modalumno').hide();" class="boton-ingresar" />
+                <p:commandButton value="Cancelar" immediate="true"
+                                 oncomplete="PF('modalumno').hide();" class="boton-ingresar" />
+             </h:panelGrid>
+            </p:dialog>
             
+            <p:dialog header="Gestionar Profesores" widgetVar="gprofesor" rendered="true" height="350" width="800" modal="true" draggable="false" resizable="false" position="center"  >
+                <h:panelGrid columns="1" >
+                    
+                    <p:dataTable id="tblprof" var="profesor"  value="#{userxSucuBean.userxsucu.listaprofesor}" filteredValue="#{userxSucuBean.userxsucu.filtrotbl}">
+                        <p:column headerText="Registro" filterBy="#{profesor.registro}" filterMatchMode="contains" >
+                            <h:outputText value="#{profesor.registro}" />
+                        </p:column>
+                        <p:column headerText="DNI" filterBy="#{profesor.dni}" filterMatchMode="conatins">
+                            <h:outputText value="#{profesor.dni}" />
+                        </p:column>
+                        <p:column headerText="Nombre" filterBy="#{profesor.nombre}" filterMatchMode="contains" >
+                            <h:outputText value="#{profesor.nombre}" />
+                        </p:column>
+                        <p:column headerText="Modificar">
+                            <p:commandButton value="Modificar" actionListener="#{usersBean.user.ObtenerProfesor(profesor.registro)}"
+                                             oncomplete="PF('modprofesor').show();" update=":usuarios:panelmodprof" />
+                        </p:column>
+                        <p:column headerText="Eliminar" >
+                            <p:commandButton value="Eliminar" />
+                        </p:column>
+                    </p:dataTable>
+                    
+                </h:panelGrid>
+            </p:dialog>
             
+            <p:dialog id="panelmodprof" header="Modificar Datos del Docente" widgetVar="modprofesor" rendered="true" height="350" width="300" modal="true" draggable="false" resizable="false" position="center" >
+                <h:panelGrid columns="1">
+                <p:inputText value="#{usersBean.user.dni}" placeholder="DNI" class="texto"></p:inputText>
+                <p:inputText value="#{usersBean.user.nombre}" placeholder="Nombre" class="texto"></p:inputText>
+                <p:inputText value="#{usersBean.user.usuario}" placeholder="Usuario" class="texto"></p:inputText>
+                <p:inputText value="#{usersBean.user.email}" placeholder="Email" class="texto"></p:inputText>
+                <p:outputLabel for="psexo" value="Sexo: " />
+                <p:selectOneRadio id="psexo" value="#{usersBean.user.sexo}">
+                    <f:selectItem itemLabel="Masculino" itemValue="1" />
+                    <f:selectItem itemLabel="Femenino" itemValue="2" />
+                </p:selectOneRadio>
+                <p:commandButton value="Guardar Cambios" ajax="false" 
+                                 actionListener="#{usersBean.actualizarusers(login.user.registro)}" update=":tblprof"
+                                 oncomplete="PF('modprofesor').hide();" class="boton-ingresar" />
+                <p:commandButton value="Cancelar" immediate="true"
+                                 oncomplete="PF('modprofesor').hide();" class="boton-ingresar" />
+             </h:panelGrid>
+            </p:dialog>
             
         </h:form>
             </f:view>

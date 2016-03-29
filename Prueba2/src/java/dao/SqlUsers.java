@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import util.Postgresql;
+import util.util;
 
 public class SqlUsers implements DaoUsers {
 
@@ -35,7 +36,7 @@ public class SqlUsers implements DaoUsers {
             //CIERRO LA CONEXION
             cn.close();
         } catch (Exception e) {
-            util.util.creararchivotexto("La conexion:"+cn.toString()+ " error:"+e.toString());
+            util.creararchivotexto("La conexion:"+cn.toString()+ " error:"+e.toString());
         }
     }
 
@@ -51,7 +52,7 @@ public class SqlUsers implements DaoUsers {
                    + "from users as u" +
                       " where u.usuario='"+user+"' and u.password=crypt('"+password+"',u.password) ";
             Statement st=cn.createStatement();
-            util.util.creararchivotexto("Comando:"+sql);
+            util.creararchivotexto("Comando:"+sql);
             ResultSet rs=st.executeQuery(sql);
             while(rs.next()) {                
                 Users c=new Users();
@@ -64,7 +65,7 @@ public class SqlUsers implements DaoUsers {
                   
             
         } catch (Exception e) {
-              util.util.creararchivotexto("La conexion:"+cn.toString()+ " error:"+e.toString());
+              util.creararchivotexto("La conexion:"+cn.toString()+ " error:"+e.toString());
         }
         
         return listaUsuario;
@@ -174,7 +175,7 @@ public class SqlUsers implements DaoUsers {
         List<Users> listaalum=new ArrayList<Users>();
         try {
             Connection conn=Postgresql.conexion();
-            String sql="select a.registro,a.nombre from usersxsucu us" +
+            String sql="select a.registro,a.dni,a.nombre from usersxsucu us" +
             " inner join users a on a.registro=us.usuario " +
             " where us.sucursal="+suc+" and convert_from(decrypt(nivel,'iihuanuco2016'::bytea,'bf'),'SQL_ASCII')::int4=5";
             Statement st=conn.createStatement();
@@ -183,7 +184,8 @@ public class SqlUsers implements DaoUsers {
             while (rs.next()) {
                 Users u=new Users();
                 u.setRegistro(rs.getInt(1));
-                u.setNombre(rs.getString(2));
+                u.setDni(rs.getString(2));
+                u.setNombre(rs.getString(3));
                 
                 listaalum.add(u);
             }
@@ -199,7 +201,7 @@ public class SqlUsers implements DaoUsers {
         List<Users> listaprof=new ArrayList<Users>();
         try {
             Connection conn=Postgresql.conexion();
-            String sql="select a.registro,a.nombre from usersxsucu us" +
+            String sql="select a.registro,a.dni,a.nombre from usersxsucu us" +
             " inner join users a on a.registro=us.usuario" +
             " where us.sucursal='"+suc+"'" +
             " and convert_from(decrypt(nivel,'iihuanuco2016'::bytea,'bf'),'SQL_ASCII')::int4=4";
@@ -209,7 +211,8 @@ public class SqlUsers implements DaoUsers {
             while (rs.next()) {
                 Users u=new Users();
                 u.setRegistro(rs.getInt(1));
-                u.setNombre(rs.getString(2));
+                u.setDni(rs.getString(2));
+                u.setNombre(rs.getString(3));
                 
                 listaprof.add(u);
             }
@@ -221,23 +224,23 @@ public class SqlUsers implements DaoUsers {
     }
 
     @Override
-    public void ActualizarAlumno(Users users) {
+    public void ActualizarUsers(Users users) {
         Connection conn=null;
         try {
             conn=Postgresql.conexion();
-            String sql="update users set usuario=?,password=crypt(?, gen_salt('md5')),nombre=?,dni=?,email=?,sexo=?,"
+            String sql="update users set usuario=?,nombre=?,dni=?,email=?,sexo=?," //,password=crypt(?, gen_salt('md5'))
                     + "userm=?,fecham=now() "
                     + " where registro=?";
             PreparedStatement pst=conn.prepareStatement(sql);
             
             pst.setString(1, users.getUsuario());
-            pst.setString(2, users.getPassword());
-            pst.setString(3, users.getNombre());
-            pst.setString(4, users.getDni());
-            pst.setString(5, users.getEmail());
-            pst.setInt(6, users.getSexo());
-            pst.setInt(7, users.getUserm());
-            pst.setInt(8, users.getRegistro());
+            //pst.setString(2, users.getPassword());
+            pst.setString(2, users.getNombre());
+            pst.setString(3, users.getDni());
+            pst.setString(4, users.getEmail());
+            pst.setInt(5, users.getSexo());
+            pst.setInt(6, users.getUserm());
+            pst.setInt(7, users.getRegistro());
             
             pst.executeUpdate();
             pst.close();
@@ -245,6 +248,6 @@ public class SqlUsers implements DaoUsers {
         } catch (Exception e) {
         }
     }
-    
-    
+
+
 }

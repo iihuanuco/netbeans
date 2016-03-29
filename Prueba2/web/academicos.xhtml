@@ -29,6 +29,7 @@ and open the template in the editor.
                     <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/11.jpg"/><p:commandButton value="Asignar Evaluacion" oncomplete="PF('evaluaxcurso').show();"  class="  btn-img"  /></div>
                     <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/13.jpg"/><p:commandButton value="Secciones" oncomplete="PF('secciones').show();"  class="  btn-img"  /></div>
                     <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/13.jpg"/><p:commandButton value="Turnos" oncomplete="PF('turnos').show();"  class="  btn-img"  /></div>
+                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/7.jpg"/><p:commandButton value="Gestion de Carreras" onclick="#{carrerasBean.carreras.mostrarcarreras(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('gcarreras').show();"  class="  btn-img"  /></div>
                 </div>
 
 
@@ -148,6 +149,25 @@ and open the template in the editor.
                         <p:commandButton value="Guardar" actionListener="#{turnosBean.registrar(login.user.registro)}" class="boton-ingresar" 
                                          update="txtcodigotur,txtnombretur" />
                     </h:panelGrid>    
+                </p:dialog>
+                
+                <p:dialog  header="Gestion de Carreras"  widgetVar="gcarreras" rendered="true" height="400" width="900" modal="true" draggable="false" resizable="false" >
+                    <h:panelGrid columns="1" >
+                        <p:dataTable id="tblcarreras" var="carrera" value="#{carrerasBean.carreras.listacarreras}" filteredValue="#{carrerasBean.carreras.filtrocarreras}" >
+                            <p:column headerText="Codigo" filterBy="#{carrera.codigocarrera}" filterMatchMode="contains" >
+                                <h:outputText value="#{carrera.codigocarrera}" />
+                            </p:column>
+                            <p:column headerText="Nombre" filterBy="#{carrera.nombrecarrera}" filterMatchMode="contains" >
+                                <h:outputText value="#{carrera.nombrecarrera}" />
+                            </p:column>
+                            <p:column>
+                                <p:commandButton value="Modificar" />
+                            </p:column>
+                            <p:column>
+                                <p:commandButton value="DeBaja" />
+                            </p:column>
+                        </p:dataTable>
+                    </h:panelGrid>
                 </p:dialog>
 
             </h:form>

@@ -40,11 +40,11 @@ public class SqlCarreras implements DaoCarreras{
         List<Carreras> listacar=new ArrayList<Carreras>();
         try {
             Connection conn=Postgresql.conexion();
-            String sql="select c.registro,c.nombre " +
-" from carreras c " +
-" inner join sucursales su " +
-" on su.registro=c.sucursal " +
-" where su.registro = "+suc;
+            String sql="select c.registro,c.nombre,c.codigo " +
+            " from carreras c " +
+            " inner join sucursales su " +
+            " on su.registro=c.sucursal " +
+            " where su.registro = "+suc;
             
             Statement st=conn.createStatement();
             ResultSet rs=null;
@@ -54,6 +54,7 @@ public class SqlCarreras implements DaoCarreras{
                 Carreras c=new Carreras();
                 c.setRegistrocarrera(rs.getInt(1));
                 c.setNombrecarrera(rs.getString(2));
+                c.setCodigocarrera(rs.getString(3));
              
                 listacar.add(c);
                        
@@ -85,6 +86,31 @@ public class SqlCarreras implements DaoCarreras{
         } catch (Exception e) {
         }
         return listacar;
+    }
+
+    @Override
+    public void ActualizarCarreras(Carreras carreras) {
+        try {
+            Connection conn=Postgresql.conexion();
+            String sql="update carreras "
+                    + "set codigo=?,nombre=?,semestres=?,"
+                    + "fecham=now(),userm=? "
+                    + "where registro=?";
+            PreparedStatement pst=conn.prepareStatement(sql);
+            
+            pst.setString(1, carreras.getCodigocarrera());
+            pst.setString(2, carreras.getNombrecarrera());
+            pst.setInt(3, carreras.getSemestrescarrera());
+            pst.setInt(4, carreras.getUserm());
+            pst.setInt(5, carreras.getRegistrocarrera());
+            
+            pst.executeUpdate();
+            pst.close();
+            conn.close();
+            
+        } catch (Exception e) {
+        }
+        
     }
 
     

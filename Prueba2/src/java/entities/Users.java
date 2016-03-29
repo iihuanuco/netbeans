@@ -195,14 +195,10 @@ public class Users {
     }
     
     
-  
-          
-          
-          
     public void ObtenerAlumno(int reg){
         try {
             Connection conn=Postgresql.conexion();
-            String sql="select a,registro,a.dni,a.nombre,a.usuario,a.email,a.sexo"
+            String sql="select a.registro,a.dni,a.nombre,a.usuario,a.email,a.sexo"
                     + " from users a"
                     + " where a.registro='"+reg+"'"
                     + " and convert_from(decrypt(nivel,'iihuanuco2016'::bytea,'bf'),'SQL_ASCII')::int4=5";
@@ -211,7 +207,21 @@ public class Users {
             this.gdatos(rs);
         } catch (Exception e) {
         }
+    }
     
+    
+    public void ObtenerProfesor(int reg){
+        try {
+            Connection conn=Postgresql.conexion();
+            String sql="select a.registro,a.dni,a.nombre,a.usuario,a.email,a.sexo"
+                    + " from users a"
+                    + " where a.registro='"+reg+"'"
+                    + " and convert_from(decrypt(nivel,'iihuanuco2016'::bytea,'bf'),'SQL_ASCII')::int4=4";
+            PreparedStatement pst=conn.prepareStatement(sql);
+            ResultSet rs=util.getfila(pst);
+            this.gdatos(rs);
+        } catch (Exception e) {
+        }
     }
     
     public void gdatos(ResultSet rs){
@@ -227,18 +237,27 @@ public class Users {
     
     }
     
-    public void actualizaralumno(int reg){
+    public void actualizarusers(int reg){
         SqlUsers su=new SqlUsers();
         Users u=new Users();
         u.setUsuario(usuario);
-        u.setPassword(password);
+        //u.setPassword(password);
         u.setNombre(nombre);
         u.setUserm(reg);
         u.setDni(dni);
         u.setEmail(email);
         u.setSexo(sexo);
         u.setRegistro(registro);
-        su.ActualizarAlumno(u);    
+        
+        System.out.println(""+usuario);
+        System.out.println(""+nombre);
+        System.out.println(""+reg);
+        System.out.println(""+dni);
+        System.out.println(""+email);
+        System.out.println(""+sexo);
+        System.out.println(""+registro);
+        
+        su.ActualizarUsers(u);    
     }
           
 }

@@ -75,9 +75,6 @@ public class CursosBean {
     
      
 
-          public void obtener(int reg){
-               cursos.setRegistrocurso(reg);
-            }
  
       
       

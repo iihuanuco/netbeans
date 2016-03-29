@@ -2,13 +2,18 @@
 package entities;
 
 import dao.SqlCursoxProfesor;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
  
 public class CursoxProfesor {
    private int registro,profesor,curso,actividad,userc,userm;  
+   private String ncurso,nprofesor;
    private String cursoxprofe;
    private Date fecham;
+      private List <CursoxProfesor> lista;
 
     public CursoxProfesor() {
     }
@@ -76,6 +81,32 @@ public class CursoxProfesor {
     public void setCursoxprofe(String cursoxprofe) {
         this.cursoxprofe = cursoxprofe;
     }
+
+    public String getNcurso() {
+        return ncurso;
+    }
+
+    public void setNcurso(String ncurso) {
+        this.ncurso = ncurso;
+    }
+
+    public String getNprofesor() {
+        return nprofesor;
+    }
+
+    public void setNprofesor(String nprofesor) {
+        this.nprofesor = nprofesor;
+    }
+
+    public List<CursoxProfesor> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<CursoxProfesor> lista) {
+        this.lista = lista;
+    }
+    
+    
     
     
    
@@ -88,6 +119,21 @@ public class CursoxProfesor {
          cp.setUserc(reg);
          scp.InsertarCursoxProfesor(cp);
     }
+    
+            
+               public void mostrar(int carr,int suc,int act) {
+                lista=new ArrayList();  
+                SqlCursoxProfesor pu = new SqlCursoxProfesor();
+                List<CursoxProfesor> listaCurso = pu.MostrarCursos(carr,suc,act);
+                Iterator<CursoxProfesor> iter = listaCurso.iterator();
+                      while (iter.hasNext()) {
+                          CursoxProfesor e = iter.next();
+                          lista.add(e);
+                      }
+                     
+      }
+                                  
+      
    
 
 }

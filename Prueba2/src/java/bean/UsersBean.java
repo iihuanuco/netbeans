@@ -18,7 +18,7 @@ import javax.faces.model.SelectItem;
 public class UsersBean {
     private Users user=new Users();
     private List<SelectItem> listausuarios;
-    private List<SelectItem> listaeva;
+
     @ManagedProperty("#{login}")
     private Login login;  
 
@@ -52,9 +52,7 @@ public class UsersBean {
         SqlUsers su=new SqlUsers();
             List<Users> listausers=su.MostrarUsers();
             listausuarios.clear();
-            
             for (Users u : listausers) {
-            
                 SelectItem usersitem=new SelectItem(u.getRegistro(),u.getNombre());
                 this.listausuarios.add(usersitem);
         }
@@ -62,17 +60,7 @@ public class UsersBean {
         return listausuarios;
     }
 
-    public List<SelectItem> getListaeva() {
-         this.listaeva=new ArrayList<SelectItem>();
-        SqlEvaluaciones su=new SqlEvaluaciones();
-            List<Evaluaciones> listaev=su.MostrarEvaluaciones(user.getRegistro());
-            listaeva.clear();
-            for (Evaluaciones u : listaev) {
-                SelectItem evitem=new SelectItem(u.getRegistroeval(),u.getNombreeval());
-                this.listaeva.add(evitem);
-        }
-        return listaeva;
-    }
+
 
     public void registrar(int reg){
         user.registrar(reg);

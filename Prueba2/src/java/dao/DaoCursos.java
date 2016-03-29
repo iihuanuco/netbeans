@@ -7,6 +7,5 @@ public interface DaoCursos {
 
     void InsertarCursos(Cursos cursos);
     List<Cursos> MostrarCursos();
-    List<Cursos> MostrarCursos(int carr,int suc);
     
 }

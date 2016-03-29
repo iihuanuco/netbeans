@@ -11,9 +11,7 @@ public interface DaoUsers {
     List<Users> MostrarUsers();
     List<Users> MostrarProfesor();
     List<Users> MostrarAlumno();
-    List<Users> MostrarProfesor(int reg);
-    List<Users> MostrarMatriculado(int curso,int profesor,int act);
-    
+    List<Users> MostrarProfesor(int reg);  
     List<Users> MostrarAlumnos(int suc);
     List<Users> MostrarProfesores(int suc);
     

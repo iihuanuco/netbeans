@@ -16,39 +16,17 @@ import util.util;
 
 public class Users {
     
-    private int nivel,userc,userm,registro,sexo,nota;
+    private int nivel,userc,userm,registro,sexo;
     private String usuario,password,nombre,email,dni;
     private Date fechac,fecham;
     private boolean flag=true,flag2=true;
-    private List <Users> lista;
+
 
     public Users() {
     
     }
 
-    public Users(int nivel, int userc, int userm, int registro, int sexo, String usuario, String password, String nombre, String email, String dni, Date fechac, Date fecham, List<Users> lista) {
-        this.nivel = nivel;
-        this.userc = userc;
-        this.userm = userm;
-        this.registro = registro;
-        this.sexo = sexo;
-        this.usuario = usuario;
-        this.password = password;
-        this.nombre = nombre;
-        this.email = email;
-        this.dni = dni;
-        this.fechac = fechac;
-        this.fecham = fecham;
-        this.lista = lista;
-    }
-
-    public int getNota() {
-        return nota;
-    }
-
-    public void setNota(int nota) {
-        this.nota = nota;
-    }
+ 
 
     
     public int getNivel() {
@@ -163,14 +141,8 @@ public class Users {
         this.flag2 = flag2;
     }
 
-    public List<Users> getLista() {
-        return lista;
-    }
-
-    public void setLista(List<Users> lista) {
-        this.lista = lista;
-    }
-
+ 
+    
     
     public void registrar(int reg){
         SqlUsers su= new SqlUsers();
@@ -223,18 +195,9 @@ public class Users {
     }
     
     
-          public void mostrar(int curso,int profesor,int act) {
-                lista=new ArrayList();  
-                SqlUsers pu = new SqlUsers();
-                List<Users> listaCurso = pu.MostrarMatriculado(curso,profesor, act);
-                Iterator<Users> iter = listaCurso.iterator();
-                      while (iter.hasNext()) {
-                          Users e = iter.next();
-                          lista.add(e);
-                      }
-
-            }
   
+          
+          
           
     public void ObtenerAlumno(int reg){
         try {

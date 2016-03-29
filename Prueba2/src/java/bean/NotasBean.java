@@ -1,11 +1,13 @@
 package bean;
 
 import entities.Notas;
+import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
+
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class NotasBean {
     private Notas notas=new Notas();
     
@@ -20,11 +22,9 @@ public class NotasBean {
         this.notas = notas;
     }
     
-    public void registrar(int reg){
-        notas.registrar(reg);
-        notas.setMatriculaxcurso(0);
-        notas.setEvaluacionxcurso(0);
-        notas.setNotanot(Double.NaN);
+    public void registrar(Notas alumnos,int reg,int evaluacion,int profe){
+       notas.registrar(alumnos,reg,evaluacion);
+       notas.mostrar(profe, evaluacion);
     }
-    
+ 
 }

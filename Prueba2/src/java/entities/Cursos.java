@@ -24,8 +24,8 @@ public class Cursos {
     private Date fechainiciocurso;
     //atributo foraneo
     private int carrera;
-       private List <Cursos> lista;
 
+   
     public Cursos() {
     }
 
@@ -167,14 +167,8 @@ public class Cursos {
         this.carrera = carrera;
     }
 
-    public List<Cursos> getLista() {
-        return lista;
-    }
-
-    public void setLista(List<Cursos> lista) {
-        this.lista = lista;
-    }
-    
+  
+  
     
     
     
@@ -196,19 +190,7 @@ public class Cursos {
     
     }
     
-            public void mostrar(int carr,int suc) {
-                lista=new ArrayList();  
-                SqlCursos pu = new SqlCursos();
-                List<Cursos> listaCurso = pu.MostrarCursos(carr, suc);
-                Iterator<Cursos> iter = listaCurso.iterator();
-                      while (iter.hasNext()) {
-                          Cursos e = iter.next();
-                          lista.add(e);
-                      }
 
-      }
-            
-          
             
       
 

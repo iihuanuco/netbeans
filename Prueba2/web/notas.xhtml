@@ -21,61 +21,71 @@ and open the template in the editor.
         <f:view>
             <h:form id="notas" >
               <h:panelGrid>
+                  <p:selectOneMenu id="cmbactividades" value="#{sucursalesBean.sucursales.registrosuc}"   > 
+                      <f:selectItem itemLabel="-Seleccione Actividad- "   itemValue="0"/>
+                       <f:selectItems value="#{sucursalesBean.listaactividades}" />
+            </p:selectOneMenu>
                   <p:selectOneMenu id="cmbcarreras"  value="#{carrerasBean.carreras.registrocarrera}"   > 
                             <f:selectItem itemLabel="-Seleccione Carrera- "   itemValue="0"/>
                             <f:selectItems value="#{sucursalesBean.listacarreras}" />
-                            <p:ajax listener="#{cursosBean.cursos.mostrar(carrerasBean.carreras.registrocarrera,sucursalesBean.sucursales.registrosuc)}" process="cmbcarreras" update="tblcursos"/>
             </p:selectOneMenu>
-                  <p:dataTable id="tblcursos" var="curso" value="#{cursosBean.cursos.lista}"  >
+                  <p:commandButton value="Filtrar"  actionListener="#{cursoxProfesorBean.cursoxprofesor.mostrar(carrerasBean.carreras.registrocarrera,sucursalesBean.sucursales.registrosuc,sucursalesBean.sucursales.registrosuc)}"  update="tblcursos"  />
+                  
+                  
+                  <p:dataTable id="tblcursos" var="curso" value="#{cursoxProfesorBean.cursoxprofesor.lista}"  >
                       <p:column headerText="Codigo" >
-                          <h:outputText value="#{curso.registrocurso}" />
+                          <h:outputText value="#{curso.registro}" />
                          </p:column>
-                         <p:column headerText="Codigo" >
-                             <h:outputText value="#{curso.codigocurso}" />
+                         <p:column headerText="Curso" >
+                             <h:outputText value="#{curso.ncurso}" />
                          </p:column>
-                         <p:column headerText="Nombre">
-                             <h:outputText value="#{curso.nombrecurso}" />
+                         <p:column headerText="Docente">
+                             <h:outputText value="#{curso.nprofesor}" />
                          </p:column>
                          <p:column >
-                             <p:commandButton value="Notas"  actionListener="#{cursosBean.obtener(curso.registrocurso)}" oncomplete="PF('notas').show();" update=":notas:notas-dialogo"  />
+                             <p:commandButton value="Notas"  actionListener="#{cursoxProfesorBean.obtener(curso.registro)}" oncomplete="PF('notas').show();" update=":notas:notas-dialogo"  ><p:ajax listener="#{notasBean.notas.limpiar()}" />
+                             </p:commandButton>
                          </p:column>
                      </p:dataTable>
               </h:panelGrid>
             
             
-            <p:dialog id="notas-dialogo" header="Registrar Notas"  widgetVar="notas" rendered="true" height="800" width="800" modal="true" draggable="false" resizable="false" >
+            <p:dialog id="notas-dialogo" header="Registrar Notas"  widgetVar="notas" rendered="true" height="600" width="800" modal="true" draggable="false" resizable="false" >
                 <h:panelGrid columns="1">
-                    <p:selectOneMenu id="cmbactividad" value="#{actividadesBean.actividades.registroact}"  >
-                        <f:selectItem itemLabel="-Selecionar Actividad-" itemValue="0" itemDisabled="true" />
-                        <f:selectItems value="#{sucursalesBean.listaactividades}" />
-                    </p:selectOneMenu>
-                    <p:selectOneMenu id="cmbdocente" value="#{usersBean.user.registro}"> 
-                        <f:selectItem itemLabel="-Seleccione Docente- "   itemValue="0"/>
-                        <f:selectItems value="#{cursosBean.listaProfesor}" />
-                        <p:ajax process="cmbdocente" update="cmbnotas" />
-                    </p:selectOneMenu>
-                    <p:selectOneMenu id="cmbnotas" > 
+ 
+                    <p:selectOneMenu id="cmbnotas" value="#{evaluaxCursoBean.evaluaxcurso.registro}" > 
                             <f:selectItem itemLabel="-Seleccione Tipo de Nota- "   itemValue="0"/>
-                            <f:selectItems value="#{usersBean.listaeva}" />
+                            <f:selectItems value="#{cursoxProfesorBean.listaeva}" />
                     </p:selectOneMenu>
                     <p:commandButton value="Filtrar ALumnos" 
-                      actionListener="#{usersBean.user.mostrar(cursosBean.cursos.registrocurso,usersBean.user.registro,actividadesBean.actividades.registroact)}" 
-                      update="tblalumnos" />
-                
-                    <p:dataTable id="tblalumnos"  var="alumnos" value="#{usersBean.user.lista}">
-                        <p:column headerText="Registro Matricula x Curso"  >
-                            <h:outputText value="#{alumnos.registro}" />
+                                     actionListener="#{notasBean.notas.mostrar(cursoxProfesorBean.cursoxprofesor.registro,evaluaxCursoBean.evaluaxcurso.registro)}"  update="tblalumnos" />
+                             
+                   
+                    <p:dataTable id="tblalumnos"  var="alumnos" value="#{notasBean.notas.lista}" emptyMessage="">
+                        <c:choose>
+                         <c:when test="#{notasBean.notas.filtro==true}">
+                        <p:column headerText="Registro Alumno"  >
+                            <h:outputText value="#{alumnos.codigoalumno}" />
                         </p:column>
                         <p:column headerText="Nombre">
-                            <h:outputText value="#{alumnos.nombre}" />
+                            <h:outputText value="#{alumnos.nombrealumno}" />
                         </p:column>
                         <p:column >
-                            <p:inputText value="#{alumnos.nota}" />
+                            <p:inputText value="#{alumnos.notanot}" >
+                                <p:ajax event="change" listener="#{notasBean.registrar(alumnos,login.user.registro,evaluaxCursoBean.evaluaxcurso.registro,cursoxProfesorBean.cursoxprofesor.registro)}"  update="tblalumnos"/>       
+                            </p:inputText>
                         </p:column>
+                               </c:when>
+                                <c:otherwise>
+                            </c:otherwise>
+                          </c:choose>
                     </p:dataTable>
+                         
+                
+                  
                     </h:panelGrid>
             </p:dialog>
-            
+              
         </h:form>
             </f:view>
     </h:body>

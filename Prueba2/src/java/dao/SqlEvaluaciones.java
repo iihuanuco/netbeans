@@ -65,10 +65,8 @@ public class SqlEvaluaciones implements DaoEvaluaciones{
 "			     on e.registro=ec.evaluacion  " +
 "			     inner join profesorxcursos pc  " +
 "		             on pc.registro=ec.profesorxcurso  " +
-"			     where pc.profesor="+pro;
+"			     where pc.registro="+pro;
             
-            
-            System.out.println("jaja. "+pro);
             Statement st=conn.createStatement();
             ResultSet rs=null;
             rs=st.executeQuery(aql);

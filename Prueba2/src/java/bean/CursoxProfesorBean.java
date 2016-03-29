@@ -2,8 +2,10 @@
 package bean;
 
 import dao.SqlCursoxProfesor;
+import dao.SqlEvaluaciones;
 import dao.SqlUsers;
 import entities.CursoxProfesor;
+import entities.Evaluaciones;
 import entities.Users;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,7 @@ public class CursoxProfesorBean {
 
        private CursoxProfesor cursoxprofesor=new CursoxProfesor();
        private List<SelectItem> listaprofesor;
+           private List<SelectItem> listaeva;
      
     
     public CursoxProfesorBean() {
@@ -44,6 +47,18 @@ public class CursoxProfesorBean {
         return listaprofesor;
     }
     
+        public List<SelectItem> getListaeva() {
+         this.listaeva=new ArrayList<SelectItem>();
+        SqlEvaluaciones su=new SqlEvaluaciones();
+            List<Evaluaciones> listaev=su.MostrarEvaluaciones(cursoxprofesor.getRegistro());
+            listaeva.clear();
+            for (Evaluaciones u : listaev) {
+                SelectItem evitem=new SelectItem(u.getRegistroeval(),u.getNombreeval());
+                this.listaeva.add(evitem);
+        }
+        return listaeva;
+    }
+    
      
   
      public void  registrar(int reg){
@@ -53,6 +68,10 @@ public class CursoxProfesorBean {
          cursoxprofesor.setActividad(0);
     }
     
+         public void obtener(int reg){
+               cursoxprofesor.setRegistro(reg);
+            }
+         
     
     
 }

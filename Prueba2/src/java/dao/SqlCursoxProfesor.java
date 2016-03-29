@@ -67,5 +67,42 @@ public class SqlCursoxProfesor implements DaoCursoxProfesor{
         
         return listacur;
     }
+
+    @Override
+    public List<CursoxProfesor> MostrarCursos(int carr, int suc, int act) {
+ 
+        List<CursoxProfesor> listacur=new ArrayList<CursoxProfesor>();
+        try {
+            Connection conn=Postgresql.conexion();
+            String sql = "select pc.registro,c.nombre,u.nombre " +
+"                    from profesorxcursos pc  " +
+"                    inner join cursos c  " +
+"                    on c.registro=pc.curso " +
+"                    inner join users u  " +
+"                    on u.registro=pc.profesor  " +
+"                    inner join carreras ca  " +
+"                    on ca.registro=c.carrera  " +
+"                    inner join sucursales s  " +
+"                    on s.registro=ca.sucursal  " +
+"                    where ca.registro="+carr+" and s.registro="+suc+" and pc.actividad="+act;
+            Statement st=conn.createStatement();
+            ResultSet rs=null;
+            rs=st.executeQuery(sql);
+            while (rs.next()) {
+                CursoxProfesor d=new CursoxProfesor();
+                d.setRegistro(rs.getInt(1));
+                d.setNcurso(rs.getString(2));
+                d.setNprofesor(rs.getString(3));
+                 
+                
+                listacur.add(d);
+            }
+            
+        } catch (Exception e) {
+        }
+        
+        return listacur;
+    
+    }
     
 }

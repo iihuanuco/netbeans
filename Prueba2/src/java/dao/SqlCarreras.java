@@ -40,7 +40,7 @@ public class SqlCarreras implements DaoCarreras{
         List<Carreras> listacar=new ArrayList<Carreras>();
         try {
             Connection conn=Postgresql.conexion();
-            String sql="select c.registro,c.nombre,c.codigo " +
+            String sql="select c.registro,c.nombre,c.codigo,c.semestres " +
             " from carreras c " +
             " inner join sucursales su " +
             " on su.registro=c.sucursal " +
@@ -55,6 +55,7 @@ public class SqlCarreras implements DaoCarreras{
                 c.setRegistrocarrera(rs.getInt(1));
                 c.setNombrecarrera(rs.getString(2));
                 c.setCodigocarrera(rs.getString(3));
+                c.setSemestrescarrera(rs.getInt(4));
              
                 listacar.add(c);
                        

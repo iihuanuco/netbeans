@@ -209,7 +209,7 @@ public class SqlUsers implements DaoUsers {
         try {
             conn=Postgresql.conexion();
             String sql="update users set usuario=?,nombre=?,dni=?,email=?,"  
-                    + "userm=?,fecham=now() "
+                    + "userm=?,sexo=?,fecham=now() "
                     + " where registro=?";
             PreparedStatement pst=conn.prepareStatement(sql);
             
@@ -218,7 +218,8 @@ public class SqlUsers implements DaoUsers {
             pst.setString(3, users.getDni());
             pst.setString(4, users.getEmail());
             pst.setInt(5, users.getUserm());
-            pst.setInt(6, users.getRegistro());
+             pst.setInt(6, users.getSexo());
+            pst.setInt(7, users.getRegistro());
             
             pst.executeUpdate();
             pst.close();

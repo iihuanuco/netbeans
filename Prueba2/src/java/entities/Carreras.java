@@ -22,7 +22,7 @@ public class Carreras {
     //otros
     private List<Carreras> listacarreras;
     private List<Carreras> filtrocarreras;
-    
+    private boolean flag=true;
 
     public Carreras() {
     }
@@ -135,6 +135,17 @@ public class Carreras {
     public void setListacarreras(List<Carreras> listacarreras) {
         this.listacarreras = listacarreras;
     }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+    
+    
+    
     
     public void mostrarcarreras(int suc){
         listacarreras=new ArrayList();
@@ -162,17 +173,30 @@ public class Carreras {
         
     }
     
-    public void actualizarCarreras(int reg) {
-        SqlCarreras sc=new SqlCarreras();
-        Carreras c=new Carreras();
-        c.setCodigocarrera(codigocarrera);
-        c.setNombrecarrera(nombrecarrera);
-        c.setSemestrescarrera(semestrescarrera);
-        c.setUserm(reg);
-        c.setRegistrocarrera(registrocarrera);
-        
-        sc.ActualizarCarreras(c);
-    }
+ 
+     public void actualizar(Carreras carrera,int reg){
+         
+       SqlCarreras su= new SqlCarreras();
+       Carreras u= new Carreras();
+       u.setRegistrocarrera(carrera.registrocarrera);
+       u.setNombrecarrera(carrera.nombrecarrera);
+        u.setCodigocarrera(carrera.codigocarrera);
+         u.setSemestrescarrera(carrera.semestrescarrera);
+          u.setUserm(reg);
+          su.ActualizarCarreras(u);
+
+        carrera.flag=true;
+   }
+     
+     
     
+   
+   public void editar(Carreras carrera){
+       carrera.flag=false;
+   }
+  
+       public void cancelar(Carreras carrera){
+        carrera.flag=true;
+   }
     
 }

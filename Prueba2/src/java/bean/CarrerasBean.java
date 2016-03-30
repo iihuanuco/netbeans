@@ -31,12 +31,6 @@ public class CarrerasBean {
     }
     
     
-    public void actualizarcarrera(int reg){
-        carreras.actualizarCarreras(reg);
-        
-        carreras.setCodigocarrera("");
-        carreras.setNombrecarrera("");
-        carreras.setSemestrescarrera(0);
-    }
+  
     
 }

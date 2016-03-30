@@ -241,6 +241,7 @@ public class Users {
        u.setNombre(alumno.nombre);
        u.setDni(alumno.dni);
        u.setEmail(alumno.email);
+       u.setSexo(alumno.sexo);
        u.setUserm(reg);
        su.ActualizarUsers(u);
         

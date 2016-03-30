@@ -40,21 +40,25 @@ and open the template in the editor.
                         <p:inputText id="txtsemestrescarrera" value="#{carrerasBean.carreras.semestrescarrera}" placeholder="Semestre" class="texto" ></p:inputText>
                         <p:commandButton value="Guardar" actionListener="#{carrerasBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar"
                                          update="txtcodigocarrera,txtnombrecarrera,txtsemestrescarrera,tblcarreras" />
+                        
                           <p:dataTable id="tblcarreras" var="carrera" value="#{carrerasBean.carreras.listacarreras}" filteredValue="#{carrerasBean.carreras.filtrocarreras}" >
-                            <p:column headerText="Codigo" filterBy="#{carrera.codigocarrera}" filterMatchMode="contains" >
-                                <h:outputText value="#{carrera.codigocarrera}" />
-                            </p:column>
-                            <p:column headerText="Nombre" filterBy="#{carrera.nombrecarrera}" filterMatchMode="contains" >
-                                <h:outputText value="#{carrera.nombrecarrera}" />
-                            </p:column>
+                              <p:column headerText="Codigo" filterBy="#{carrera.codigocarrera}">
+                                    <h:outputText value="#{carrera.codigocarrera}" rendered="#{carrera.flag}" />
+                             <h:inputText value="#{carrera.codigocarrera}" rendered="#{ not carrera.flag}" />
+                        </p:column>
+                              <p:column headerText="Carrera" filterBy="#{carrera.nombrecarrera}">
+                                    <h:outputText value="#{carrera.nombrecarrera} " rendered="#{carrera.flag}" />
+                             <h:inputText value="#{carrera.nombrecarrera}" rendered="#{ not carrera.flag}" />
+                        </p:column>
                             <p:column>
-                                <p:commandButton value="Modificar" />
-                            </p:column>
-                            <p:column>
-                                <p:commandButton value="DeBaja" />
+                                <p:commandButton icon="ui-icon-close" actionListener="#{carrerasBean.carreras.cancelar(carrera)}"  rendered="#{ not carrera.flag}" update="tblcarreras" />
+                            <p:commandButton icon="ui-icon-check" actionListener="#{carrerasBean.carreras.actualizar(carrera,login.user.registro)}" rendered="#{ not carrera.flag}" update="tblcarreras"/>
+                            <p:commandButton icon="ui-icon-pencil" actionListener="#{carrerasBean.carreras.editar(carrera)}"  rendered="#{carrera.flag}" update="tblcarreras"/>
                             </p:column>
                         </p:dataTable>
+                        
                     </h:panelGrid>
+                    
                 </p:dialog>
 
                 <p:dialog  header="Registrar Curso"  widgetVar="Cursos" rendered="true" height="500" width="350" modal="true" draggable="false" resizable="false" >

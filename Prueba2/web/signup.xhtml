@@ -51,7 +51,7 @@
              </h:panelGrid>
             </p:dialog>
             
-                 <p:dialog header="Getionar Alumno" widgetVar="alumno" rendered="true" height="400" width="800" modal="true" draggable="false" resizable="false" position="center"  >
+                 <p:dialog header="Getionar Alumno" widgetVar="alumno" rendered="true" height="400" width="900" modal="true" draggable="false" resizable="false" position="center"  >
                 <h:panelGrid columns="1">
                     <p:dataTable id="listaalumnos" var="alumnos" value="#{usersBean.user.listaalumnos}" filteredValue="#{usersBean.user.alumnofiltro}" >
                         <p:column headerText="usuario" filterBy="#{alumnos.usuario}">
@@ -70,6 +70,12 @@
                                      <h:outputText value="#{alumnos.email}" rendered="#{alumnos.flag3}" />
                               <h:inputText value="#{alumnos.email}" rendered="#{ not alumnos.flag3}" />
                         </p:column>
+                        <p:column headerText="sexo" >
+                            <p:selectOneRadio id="sexo" value="#{alumnos.sexo}" disabled="#{alumnos.flag3}" >
+                                <f:selectItem itemLabel="M" itemValue="1" />
+                                <f:selectItem itemLabel="F" itemValue="2" />
+                            </p:selectOneRadio>
+                        </p:column>
                         <p:column>
                             <p:commandButton icon="ui-icon-close" actionListener="#{usersBean.user.cancelar(alumnos)}"  rendered="#{ not alumnos.flag3}" update="listaalumnos" />
                             <p:commandButton icon="ui-icon-check" actionListener="#{usersBean.user.actualizar(alumnos,login.user.registro)}" rendered="#{ not alumnos.flag3}" update="listaalumnos"/>
@@ -80,7 +86,7 @@
                 </h:panelGrid>
             </p:dialog>
                 
-                   <p:dialog header="Getionar Docente" widgetVar="docente" rendered="true" height="400" width="800" modal="true" draggable="false" resizable="false" position="center"  >
+                   <p:dialog header="Getionar Docente" widgetVar="docente" rendered="true" height="400" width="900" modal="true" draggable="false" resizable="false" position="center"  >
                 <h:panelGrid columns="1">
                     <p:dataTable id="listadocente" var="profesores" value="#{usersBean.user.listaprofesor}" filteredValue="#{usersBean.user.profesorfiltro}" >
                         <p:column headerText="usuario" filterBy="#{alumnos.usuario}">
@@ -98,6 +104,12 @@
                         <p:column headerText="email" filterBy="#{profesores.email}">
                                      <h:outputText value="#{profesores.email}" rendered="#{profesores.flag3}" />
                               <h:inputText value="#{profesores.email}" rendered="#{ not profesores.flag3}" />
+                        </p:column>
+                            <p:column headerText="sexo" >
+                            <p:selectOneRadio id="sexo" value="#{profesores.sexo}"  disabled="#{profesores.flag3}" >
+                                <f:selectItem itemLabel="M" itemValue="1" />
+                                <f:selectItem itemLabel="F" itemValue="2" />
+                            </p:selectOneRadio>
                         </p:column>
                         <p:column>
                             <p:commandButton icon="ui-icon-close" actionListener="#{usersBean.user.cancelar(profesores)}"  rendered="#{ not profesores.flag3}" update="listadocente" />

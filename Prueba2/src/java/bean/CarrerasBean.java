@@ -26,6 +26,7 @@ public class CarrerasBean {
         carreras.setNombrecarrera("");
         carreras.setSemestrescarrera(0);
         carreras.setSucursal(0);
+        carreras.mostrarcarreras(suc);
         
     }
     

@@ -18,7 +18,6 @@ public class CursosBean {
     private Cursos cursos=new Cursos();
     private List<SelectItem> listaSemestres;
     private List<SelectItem> listaCursos;
-      private List<SelectItem> listaProfesor;
     
     public CursosBean() {
     }
@@ -60,24 +59,7 @@ public class CursosBean {
         return listaCursos;
     }
 
-    public List<SelectItem> getListaProfesor() {
-         this.listaProfesor=new ArrayList<SelectItem>();
-        SqlUsers sc=new SqlUsers();
-            List<Users>  listap=sc.MostrarProfesor(cursos.getRegistrocurso());
-            listaProfesor.clear();
-            for (Users c : listap) {
-               SelectItem pitem=new SelectItem(c.getRegistro(),c.getNombre());
-               this.listaProfesor.add(pitem);
-    
-            }  
-        return listaProfesor;
-    }
-    
-     
-
  
-      
-      
     
     public void registrar(int reg){
         cursos.registrar(reg);

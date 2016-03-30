@@ -143,49 +143,26 @@ public class SqlUsers implements DaoUsers {
     }
 
     @Override
-    public List<Users> MostrarProfesor(int reg) {
-         List<Users> listaalum=new ArrayList<Users>();
-        try {
-            Connection conn=Postgresql.conexion();
-            String sql = "  select pc.registro,u.nombre from users u  "
-                    + "  inner join profesorxcursos pc "
-                    + "  on u.registro=pc.profesor "
-                    + "  where pc.curso="+reg;
-            Statement st=conn.createStatement();
-            ResultSet rs=null;
-            rs=st.executeQuery(sql);
-            while (rs.next()) {
-                Users u=new Users();
-                u.setRegistro(rs.getInt(1));
-                u.setNombre(rs.getString(2));
-                
-                listaalum.add(u);
-            }
-            
-        } catch (Exception e) {
-        }
-        
-        return listaalum;
-    }
-
-       
-
-    @Override
     public List<Users> MostrarAlumnos(int suc) {
         List<Users> listaalum=new ArrayList<Users>();
         try {
             Connection conn=Postgresql.conexion();
-            String sql="select a.registro,a.dni,a.nombre from usersxsucu us" +
-            " inner join users a on a.registro=us.usuario " +
-            " where us.sucursal="+suc+" and convert_from(decrypt(nivel,'iihuanuco2016'::bytea,'bf'),'SQL_ASCII')::int4=5";
+            String sql = "  select  u.registro,u.usuario,u.nombre,u.dni,u.email,u.sexo  "
+                    + "            from usersxsucu us  "
+                    + "            inner join users u on u.registro=us.usuario  "
+                    + "            inner join matricula m on m.alumno=u.registro "
+                    + "            where us.sucursal="+suc;
             Statement st=conn.createStatement();
             ResultSet rs=null;
             rs=st.executeQuery(sql);
             while (rs.next()) {
                 Users u=new Users();
                 u.setRegistro(rs.getInt(1));
-                u.setDni(rs.getString(2));
+                u.setUsuario(rs.getString(2));
                 u.setNombre(rs.getString(3));
+                u.setDni(rs.getString(4));
+                u.setEmail(rs.getString(5));
+                u.setSexo(rs.getInt(6));
                 
                 listaalum.add(u);
             }
@@ -201,18 +178,21 @@ public class SqlUsers implements DaoUsers {
         List<Users> listaprof=new ArrayList<Users>();
         try {
             Connection conn=Postgresql.conexion();
-            String sql="select a.registro,a.dni,a.nombre from usersxsucu us" +
-            " inner join users a on a.registro=us.usuario" +
-            " where us.sucursal='"+suc+"'" +
-            " and convert_from(decrypt(nivel,'iihuanuco2016'::bytea,'bf'),'SQL_ASCII')::int4=4";
+            String sql = "  select a.registro,a.usuario,a.nombre,a.dni,a.email,a.sexo from usersxsucu us "
+                    + "            inner join users a on a.registro=us.usuario "
+                    + "            where us.sucursal="+suc
+                    + "            and convert_from(decrypt(nivel,'iihuanuco2016'::bytea,'bf'),'SQL_ASCII')::int4=4";
             Statement st=conn.createStatement();
             ResultSet rs=null;
             rs=st.executeQuery(sql);
             while (rs.next()) {
                 Users u=new Users();
                 u.setRegistro(rs.getInt(1));
-                u.setDni(rs.getString(2));
+                u.setUsuario(rs.getString(2));
                 u.setNombre(rs.getString(3));
+                u.setDni(rs.getString(4));
+                u.setEmail(rs.getString(5));
+                u.setSexo(rs.getInt(6));
                 
                 listaprof.add(u);
             }
@@ -228,19 +208,17 @@ public class SqlUsers implements DaoUsers {
         Connection conn=null;
         try {
             conn=Postgresql.conexion();
-            String sql="update users set usuario=?,nombre=?,dni=?,email=?,sexo=?," //,password=crypt(?, gen_salt('md5'))
+            String sql="update users set usuario=?,nombre=?,dni=?,email=?,"  
                     + "userm=?,fecham=now() "
                     + " where registro=?";
             PreparedStatement pst=conn.prepareStatement(sql);
             
             pst.setString(1, users.getUsuario());
-            //pst.setString(2, users.getPassword());
             pst.setString(2, users.getNombre());
             pst.setString(3, users.getDni());
             pst.setString(4, users.getEmail());
-            pst.setInt(5, users.getSexo());
-            pst.setInt(6, users.getUserm());
-            pst.setInt(7, users.getRegistro());
+            pst.setInt(5, users.getUserm());
+            pst.setInt(6, users.getRegistro());
             
             pst.executeUpdate();
             pst.close();

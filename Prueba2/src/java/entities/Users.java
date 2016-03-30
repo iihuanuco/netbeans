@@ -3,15 +3,11 @@ package entities;
 
 
 import dao.SqlUsers;
-import java.sql.Connection;
 import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import util.Postgresql;
-import util.util;
+
  
 
 public class Users {
@@ -19,7 +15,13 @@ public class Users {
     private int nivel,userc,userm,registro,sexo;
     private String usuario,password,nombre,email,dni;
     private Date fechac,fecham;
-    private boolean flag=true,flag2=true;
+    private boolean flag=true,flag2=true,flag3=true;
+           private List<Users> listaalumnos;
+    private List<Users> listaprofesor;
+    //filtro para tablas
+    private List<Users> alumnofiltro;
+    private List<Users> profesorfiltro;
+
 
 
     public Users() {
@@ -141,6 +143,52 @@ public class Users {
         this.flag2 = flag2;
     }
 
+    public boolean isFlag3() {
+        return flag3;
+    }
+
+    public void setFlag3(boolean flag3) {
+        this.flag3 = flag3;
+    }
+    
+    
+    
+     public List<Users> getListaalumnos() {
+        return listaalumnos;
+    }
+
+    public void setListaalumnos(List<Users> listaalumnos) {
+        this.listaalumnos = listaalumnos;
+    }
+
+    public List<Users> getListaprofesor() {
+        return listaprofesor;
+    }
+
+    public void setListaprofesor(List<Users> listaprofesor) {
+        this.listaprofesor = listaprofesor;
+    }
+
+    public List<Users> getAlumnofiltro() {
+        return alumnofiltro;
+    }
+
+    public void setAlumnofiltro(List<Users> alumnofiltro) {
+        this.alumnofiltro = alumnofiltro;
+    }
+
+   
+
+    public List<Users> getProfesorfiltro() {
+        return profesorfiltro;
+    }
+
+    public void setProfesorfiltro(List<Users> profesorfiltro) {
+        this.profesorfiltro = profesorfiltro;
+    }
+
+    
+
  
     
     
@@ -157,6 +205,60 @@ public class Users {
         u.setSexo(sexo);
         su.InsertarUsers(u);
     }   
+    
+    
+   public void mostraralumnos(int suc) {
+                listaalumnos=new ArrayList();  
+                SqlUsers pu = new SqlUsers();
+                List<Users> listaalum = pu.MostrarAlumnos(suc);
+                Iterator<Users> iter = listaalum.iterator();
+                listaalumnos.clear();
+                      while (iter.hasNext()) {
+                          Users e = iter.next();
+                          listaalumnos.add(e);
+                      }
+
+      }
+   
+     public void mostrardocente(int suc) {
+                listaprofesor=new ArrayList();  
+                SqlUsers pu = new SqlUsers();
+                List<Users> listaprofe = pu.MostrarProfesores(suc);
+                Iterator<Users> iter = listaprofe.iterator();
+                listaprofesor.clear();
+                      while (iter.hasNext()) {
+                          Users e = iter.next();
+                          listaprofesor.add(e);
+                      }
+
+      }
+   
+     public void actualizar(Users alumno,int reg){
+       SqlUsers su= new SqlUsers();
+       Users u= new Users();
+       u.setRegistro(alumno.registro);
+       u.setUsuario(alumno.usuario);
+       u.setNombre(alumno.nombre);
+       u.setDni(alumno.dni);
+       u.setEmail(alumno.email);
+       u.setUserm(reg);
+       su.ActualizarUsers(u);
+        
+        alumno.flag3=true;
+   }
+     
+     
+    
+   
+   public void editar(Users alumno){
+       alumno.flag3=false;
+   }
+  
+       public void cancelar(Users alumno){
+        alumno.flag3=true;
+   }
+   
+   
     
      public void load(){
        
@@ -195,69 +297,5 @@ public class Users {
     }
     
     
-    public void ObtenerAlumno(int reg){
-        try {
-            Connection conn=Postgresql.conexion();
-            String sql="select a.registro,a.dni,a.nombre,a.usuario,a.email,a.sexo"
-                    + " from users a"
-                    + " where a.registro='"+reg+"'"
-                    + " and convert_from(decrypt(nivel,'iihuanuco2016'::bytea,'bf'),'SQL_ASCII')::int4=5";
-            PreparedStatement pst=conn.prepareStatement(sql);
-            ResultSet rs=util.getfila(pst);
-            this.gdatos(rs);
-        } catch (Exception e) {
-        }
-    }
-    
-    
-    public void ObtenerProfesor(int reg){
-        try {
-            Connection conn=Postgresql.conexion();
-            String sql="select a.registro,a.dni,a.nombre,a.usuario,a.email,a.sexo"
-                    + " from users a"
-                    + " where a.registro='"+reg+"'"
-                    + " and convert_from(decrypt(nivel,'iihuanuco2016'::bytea,'bf'),'SQL_ASCII')::int4=4";
-            PreparedStatement pst=conn.prepareStatement(sql);
-            ResultSet rs=util.getfila(pst);
-            this.gdatos(rs);
-        } catch (Exception e) {
-        }
-    }
-    
-    public void gdatos(ResultSet rs){
-        try {
-            registro=rs.getInt("registro");
-            dni=rs.getString("dni");
-            nombre=rs.getString("nombre");
-            usuario=rs.getString("usuario");
-            email=rs.getString("email");
-            sexo=rs.getInt("sexo");
-        } catch (Exception e) {
-        }
-    
-    }
-    
-    public void actualizarusers(int reg){
-        SqlUsers su=new SqlUsers();
-        Users u=new Users();
-        u.setUsuario(usuario);
-        //u.setPassword(password);
-        u.setNombre(nombre);
-        u.setUserm(reg);
-        u.setDni(dni);
-        u.setEmail(email);
-        u.setSexo(sexo);
-        u.setRegistro(registro);
-        
-        System.out.println(""+usuario);
-        System.out.println(""+nombre);
-        System.out.println(""+reg);
-        System.out.println(""+dni);
-        System.out.println(""+email);
-        System.out.println(""+sexo);
-        System.out.println(""+registro);
-        
-        su.ActualizarUsers(u);    
-    }
           
 }

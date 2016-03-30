@@ -19,25 +19,12 @@ public class UserxSucu {
     private int usuario;
     private int sucursal;
     //alumnos profesor por sucursal
-    private List<Users> listaalumnos;
-    private List<Users> listaprofesor;
-    //filtro para tablas
-    private List<Users> filtrotbl;
+ 
     
     public UserxSucu() {
     }
 
-    public UserxSucu(int userc, int userm, Date fechac, Date fecham, int registrouxs, int usuario, int sucursal, List<Users> listaalumnos, List<Users> listaprofesor) {
-        this.userc = userc;
-        this.userm = userm;
-        this.fechac = fechac;
-        this.fecham = fecham;
-        this.registrouxs = registrouxs;
-        this.usuario = usuario;
-        this.sucursal = sucursal;
-        this.listaalumnos = listaalumnos;
-        this.listaprofesor = listaprofesor;
-    }
+ 
 
     
     public int getUserc() {
@@ -96,32 +83,7 @@ public class UserxSucu {
         this.sucursal = sucursal;
     }
 
-    public List<Users> getListaalumnos() {
-        return listaalumnos;
-    }
-
-    public void setListaalumnos(List<Users> listaalumnos) {
-        this.listaalumnos = listaalumnos;
-    }
-
-    public List<Users> getListaprofesor() {
-        return listaprofesor;
-    }
-
-    public void setListaprofesor(List<Users> listaprofesor) {
-        this.listaprofesor = listaprofesor;
-    }
-
-    public List<Users> getFiltrotbl() {
-        return filtrotbl;
-    }
-
-    public void setFiltrotbl(List<Users> filtrotbl) {
-        this.filtrotbl = filtrotbl;
-    }
-    
-    
-    
+   
     public void registrar(int reg) {
         SqlUserxSucu sus=new SqlUserxSucu();
         UserxSucu us=new UserxSucu();
@@ -132,26 +94,6 @@ public class UserxSucu {
     }
     
     
-    public void mostraralumnos(int suc){
-              listaalumnos=new ArrayList();
-              SqlUsers su=new SqlUsers();
-              List<Users> listaalum=su.MostrarAlumnos(suc);
-              Iterator<Users> iter= listaalum.iterator();
-              while (iter.hasNext()) {
-                Users u = iter.next();
-                listaalumnos.add(u);
-                }
-    }
-    
-    public void mostrardocentes(int suc){
-              listaprofesor=new ArrayList();
-              SqlUsers su=new SqlUsers();
-              List<Users> listaalum=su.MostrarProfesores(suc);
-              Iterator<Users> iter= listaalum.iterator();
-              while (iter.hasNext()) {
-                Users u = iter.next();
-                listaprofesor.add(u);
-                }
-    }
+  
     
 }

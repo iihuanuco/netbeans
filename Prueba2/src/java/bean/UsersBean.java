@@ -1,9 +1,11 @@
  
 package bean;
 
+
 import dao.SqlUsers;
 import entities.Users;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -16,6 +18,8 @@ import javax.faces.model.SelectItem;
 public class UsersBean {
     private Users user=new Users();
     private List<SelectItem> listausuarios;
+
+    
     
     @ManagedProperty("#{login}")
     private Login login;  
@@ -55,6 +59,8 @@ public class UsersBean {
             
         return listausuarios;
     }
+    
+    
 
     public void registrar(int reg){
         user.registrar(reg);
@@ -66,9 +72,7 @@ public class UsersBean {
         user.setNivel(0);
     }
     
-    public void actualizarusers(int reg){
-        user.actualizarusers(reg);
-        
-    } 
+
+    
     
 }

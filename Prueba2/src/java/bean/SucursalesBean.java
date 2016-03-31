@@ -3,11 +3,13 @@ package bean;
 
 import dao.SqlActividades;
 import dao.SqlCarreras;
+import dao.SqlCursos;
 import dao.SqlCursoxProfesor;
 import dao.SqlSucursales;
 import dao.SqlUsers;
 import entities.Actividades;
 import entities.Carreras;
+import entities.Cursos;
 import entities.CursoxProfesor;
 import entities.Sucursales;
 import entities.Users;
@@ -26,7 +28,7 @@ public class SucursalesBean {
        List<SelectItem> listacarreras;
            private List<SelectItem> listaactividades;
                  private List<SelectItem> listacxp;
-                 private List<SelectItem> listaalumnos;
+                     private List<SelectItem> listaCursos;
     
     public SucursalesBean() {
     }
@@ -88,6 +90,19 @@ public class SucursalesBean {
     
             }  
         return listacxp;
+    }
+          
+              public List<SelectItem> getListaCursos() {
+          this.listaCursos=new ArrayList<SelectItem>();
+        SqlCursos sc=new SqlCursos();
+            List<Cursos>  listacar=sc.MostrarCursos(sucursales.getRegistrosuc());
+            listaCursos.clear();
+            for (Cursos c : listacar) {
+               SelectItem caritem=new SelectItem(c.getRegistrocurso(),c.getNombrecurso());
+               this.listaCursos.add(caritem);
+    
+            }  
+        return listaCursos;
     }
     
     public void registrar(int reg){

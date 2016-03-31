@@ -27,18 +27,6 @@ public class Carreras {
     public Carreras() {
     }
 
-    public Carreras(int userc, int userm, Date fechac, Date fecham, int registrocarrera, String codigocarrera, String nombrecarrera, int semestrescarrera, int estadocarrera, int sucursal) {
-        this.userc = userc;
-        this.userm = userm;
-        this.fechac = fechac;
-        this.fecham = fecham;
-        this.registrocarrera = registrocarrera;
-        this.codigocarrera = codigocarrera;
-        this.nombrecarrera = nombrecarrera;
-        this.semestrescarrera = semestrescarrera;
-        this.estadocarrera = estadocarrera;
-        this.sucursal = sucursal;
-    }
 
     public int getUserc() {
         return userc;

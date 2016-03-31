@@ -161,6 +161,10 @@ div.submenu:hover .btn-img{
 .c0{
     width: 50px;
 }
+
+.c1{
+    width: 80px;
+}
 .lista-sucursales{
         font-family: "Dosis",sans-serif !important;
 }
@@ -172,6 +176,7 @@ div.submenu:hover .btn-img{
     padding: 80px;
 }
 
+ 
 
 
 @keyframes moveFromTop {

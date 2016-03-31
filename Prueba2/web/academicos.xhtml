@@ -22,7 +22,7 @@ and open the template in the editor.
             <h:form class="academico" >
                 <div columns="1" class="registro-menu">
                     <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/7.jpg"/><p:commandButton value="Carreras" onclick="#{carrerasBean.carreras.mostrarcarreras(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('Carreras').show();"  class="  btn-img"  /></div>
-                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/8.jpg"/><p:commandButton value="Cursos" oncomplete="PF('Cursos').show();"  class="  btn-img"  /></div>
+                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/8.jpg"/><p:commandButton value="Cursos" onclick="#{cursosBean.cursos.mostrarcursos(sucursalesBean.sucursales.registrosuc)}"  oncomplete="PF('Cursos').show();"  class="  btn-img"  /></div>
                      <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/12.jpg"/><p:commandButton value="Asignar Cursos" oncomplete="PF('cursoxprofesor').show();"  class="  btn-img"  /></div>
                     <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/9.jpg"/><p:commandButton value="Evaluaciones" oncomplete="PF('evaluaciones').show();"  class="  btn-img"  /></div>
                     <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/10.jpg"/><p:commandButton value="Actividades" oncomplete="PF('actividades').show();"  class="  btn-img"  /></div>
@@ -47,11 +47,11 @@ and open the template in the editor.
                              <h:inputText value="#{carrera.codigocarrera}" rendered="#{ not carrera.flag}" />
                         </p:column>
                               <p:column headerText="Carrera" filterBy="#{carrera.nombrecarrera}">
-                                    <h:outputText value="#{carrera.nombrecarrera} " rendered="#{carrera.flag}" />
+                                    <h:outputText value="#{carrera.nombrecarrera}" rendered="#{carrera.flag}" />
                              <h:inputText value="#{carrera.nombrecarrera}" rendered="#{ not carrera.flag}" />
                         </p:column>
                             <p:column>
-                                <p:commandButton icon="ui-icon-close" actionListener="#{carrerasBean.carreras.cancelar(carrera)}"  rendered="#{ not carrera.flag}" update="tblcarreras" />
+                             <p:commandButton icon="ui-icon-close" actionListener="#{carrerasBean.carreras.cancelar(carrera)}"  rendered="#{ not carrera.flag}" update="tblcarreras" />
                             <p:commandButton icon="ui-icon-check" actionListener="#{carrerasBean.carreras.actualizar(carrera,login.user.registro)}" rendered="#{ not carrera.flag}" update="tblcarreras"/>
                             <p:commandButton icon="ui-icon-pencil" actionListener="#{carrerasBean.carreras.editar(carrera)}"  rendered="#{carrera.flag}" update="tblcarreras"/>
                             </p:column>
@@ -61,8 +61,8 @@ and open the template in the editor.
                     
                 </p:dialog>
 
-                <p:dialog  header="Registrar Curso"  widgetVar="Cursos" rendered="true" height="500" width="350" modal="true" draggable="false" resizable="false" >
-                    <h:panelGrid columns="1" >
+                <p:dialog  header="Registrar Curso"  widgetVar="Cursos" rendered="true" height="500" width="1100" modal="true" draggable="false" resizable="false" position="center" >
+                    <h:panelGrid columns="2" >
                         <p:inputText id="txtcodigocurso" value="#{cursosBean.cursos.codigocurso}"  placeholder="Codigo" class="texto" ></p:inputText>
                         <p:inputText id="txtnombrecurso" value="#{cursosBean.cursos.nombrecurso}"  placeholder="Nombre" class="texto" ></p:inputText>
 
@@ -91,6 +91,51 @@ and open the template in the editor.
 
                         <p:commandButton value="Guardar" actionListener="#{cursosBean.registrar(login.user.registro)}"  class="boton-ingresar"
                                          update="txtcodigocurso,txtnombrecurso,txtcarrera,txtsemestrescurso,txtcreditos,txtht,txthp,cmbalcancec" />
+                    </h:panelGrid>
+                    <h:panelGrid columns="1" >
+                        
+                        <p:dataTable id="tblcursos" var="cursos" value="#{cursosBean.cursos.listacursos}" filteredValue="#{cursosBean.cursos.filtrocursos}" >
+                            <p:column headerText="Codigo" filterBy="#{cursos.codigocurso}" class="c1">
+                                    <h:outputText value="#{cursos.codigocurso}" rendered="#{cursos.flag}" />
+                             <h:inputText value="#{cursos.codigocurso}" rendered="#{ not cursos.flag}" />
+                        </p:column>
+                            
+                            <p:column headerText="Nombre" filterBy="#{cursos.nombrecurso}">
+                                    <h:outputText value="#{cursos.nombrecurso}" rendered="#{cursos.flag}" />
+                             <h:inputText value="#{cursos.nombrecurso}" rendered="#{ not cursos.flag}" />
+                        </p:column>
+                            
+                            <p:column headerText="Carrera" filterBy="#{cursos.carrera}">
+                                <p:selectOneMenu id="txtcarrera2" value="#{cursos.carrera}" disabled="#{cursos.flag}"  > 
+                               <f:selectItem itemLabel="-Seleccione Carrera- "   itemValue="0"/>
+                               <f:selectItems value="#{sucursalesBean.listacarreras}" />
+                                </p:selectOneMenu>
+                        </p:column>
+                            
+                            <p:column headerText="Semestre" filterBy="#{cursos.semestrecurso}" class="c1">
+                                    <h:outputText value="#{cursos.semestrecurso}" rendered="#{cursos.flag}" />
+                             <h:inputText value="#{cursos.semestrecurso}" rendered="#{ not cursos.flag}" />
+                        </p:column>
+                            <p:column headerText="Creditos" filterBy="#{cursos.creditoscurso}" class="c1">
+                                    <h:outputText value="#{cursos.creditoscurso}" rendered="#{cursos.flag}" />
+                             <h:inputText value="#{cursos.creditoscurso}" rendered="#{ not cursos.flag}" />
+                        </p:column>
+                            <p:column headerText="Horas Teoria" filterBy="#{cursos.htcurso}" class="c1">
+                                    <h:outputText value="#{cursos.htcurso}" rendered="#{cursos.flag}" />
+                             <h:inputText value="#{cursos.htcurso}" rendered="#{ not cursos.flag}" />
+                        </p:column>
+                            <p:column headerText="Horas Practica" filterBy="#{cursos.hpcurso}" class="c1">
+                                    <h:outputText value="#{cursos.hpcurso}" rendered="#{cursos.flag}" />
+                             <h:inputText value="#{cursos.hpcurso}" rendered="#{ not cursos.flag}" />
+                        </p:column>
+
+                            <p:column>
+                                <p:commandButton icon="ui-icon-close" actionListener="#{cursosBean.cursos.cancelar(cursos)}"  rendered="#{ not cursos.flag}" update="tblcursos" />
+                            <p:commandButton icon="ui-icon-check" actionListener="#{cursosBean.cursos.actualizar(cursos,login.user.registro)}" rendered="#{ not cursos.flag}" update="tblcursos"/>
+                            <p:commandButton icon="ui-icon-pencil" actionListener="#{cursosBean.cursos.editar(cursos)}"  rendered="#{cursos.flag}" update="tblcursos"/>
+                            </p:column>
+                        </p:dataTable>
+                        
                     </h:panelGrid>
                 </p:dialog>
 
@@ -145,7 +190,7 @@ and open the template in the editor.
                     <h:panelGrid columns="1">         
                         <p:selectOneMenu id="cmbxcurso" value="#{cursoxProfesorBean.cursoxprofesor.curso}" >
                             <f:selectItem itemLabel="-Seleccionar Curso-" itemValue="0" itemDisabled="true" />
-                            <f:selectItems value="#{cursosBean.listaCursos}" />
+                            <f:selectItems value="#{sucursalesBean.listaCursos}" />
                         </p:selectOneMenu>
                         <p:selectOneMenu id="cmbxprofesor" value="#{cursoxProfesorBean.cursoxprofesor.profesor}"  >
                             <f:selectItem itemLabel="-Seleccionar Profesor-" itemValue="0" itemDisabled="true" />

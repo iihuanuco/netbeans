@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+ 
 
 public class Cursos {
 
@@ -24,6 +25,9 @@ public class Cursos {
     private Date fechainiciocurso;
     //atributo foraneo
     private int carrera;
+    private List<Cursos> listacursos;
+    private List<Cursos> filtrocursos;
+    private boolean flag=true;
 
    
     public Cursos() {
@@ -167,6 +171,30 @@ public class Cursos {
         this.carrera = carrera;
     }
 
+    public List<Cursos> getListacursos() {
+        return listacursos;
+    }
+
+    public void setListacursos(List<Cursos> listacursos) {
+        this.listacursos = listacursos;
+    }
+
+    public List<Cursos> getFiltrocursos() {
+        return filtrocursos;
+    }
+
+    public void setFiltrocursos(List<Cursos> filtrocursos) {
+        this.filtrocursos = filtrocursos;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
   
   
     
@@ -190,7 +218,46 @@ public class Cursos {
     
     }
     
+        public void mostrarcursos(int suc){
+        listacursos=new ArrayList();
+        SqlCursos sc=new SqlCursos();
+        List<Cursos> listacar=sc.MostrarCursos(suc);
+        Iterator<Cursos> iter=listacar.iterator();
+        while (iter.hasNext()) {
+            Cursos c = iter.next();
+            listacursos.add(c);
+        }
+        
+    }
+    
+  public void actualizar(Cursos cursos,int reg){
+      SqlCursos su= new SqlCursos();
+      Cursos c= new  Cursos();
+      c.setCodigocurso(cursos.codigocurso);
+      c.setNombrecurso(cursos.nombrecurso);
+      c.setSemestrecurso(cursos.semestrecurso);
+      c.setCarrera(cursos.carrera);
+      c.setCreditoscurso(cursos.creditoscurso);
+      c.setHtcurso(cursos.htcurso);
+      c.setHpcurso(cursos.hpcurso);
+      c.setUserm(reg);
+      c.setRegistrocurso(cursos.registrocurso);
+      su.ActualizarCursos(c);
+      System.out.println(""+cursos.codigocurso);
 
+        cursos.flag=true;
+   }
+     
+     
+    
+   
+   public void editar(Cursos cursos){
+       cursos.flag=false;
+   }
+  
+       public void cancelar(Cursos cursos){
+        cursos.flag=true;
+   }
             
       
 

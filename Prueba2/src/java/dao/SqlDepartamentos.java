@@ -58,6 +58,27 @@ public class SqlDepartamentos implements DaoDepartamentos{
        
         return listaDepa;
     }
-    
+
+    @Override
+    public void ActualizarDepartamentos(Departamentos departamentos) {
+       Connection conn=null;
+        try {
+            conn=Postgresql.conexion();
+            
+            String sql="update departamentos set nombre=?,userm=?,fecham=now() where registro=? "; 
+            
+            PreparedStatement pst=null; 
+            pst = conn.prepareStatement(sql);
+            
+            pst.setString(1, departamentos.getNombredep());
+            pst.setInt(2, departamentos.getUserm());
+             pst.setInt(3, departamentos.getRegistrodep());
+            
+            pst.executeUpdate();
+            
+            conn.close();
+        } catch (Exception e) {
+        }
+    }
     
 }

@@ -86,6 +86,28 @@ public class SqlProvincias implements DaoProvincias{
        
         return listaPro;
     }
+
+    @Override
+    public void ActualizarProvincias(Provincias provincias) {
+        Connection conn=null;
+        try {
+            conn=Postgresql.conexion();
+            
+            String sql="update provincias set nombre=?,userm=?,fecham=now() where registro=? "; 
+            
+            PreparedStatement pst=null; 
+            pst = conn.prepareStatement(sql);
+            
+            pst.setString(1, provincias.getNombrepro());
+            pst.setInt(2, provincias.getUserm());
+            pst.setInt(3, provincias.getRegistropro());
+            
+            pst.executeUpdate();
+            
+            conn.close();
+        } catch (Exception e) {
+        }
+    }
     
     
 }

@@ -16,9 +16,12 @@ public class Provincias {
     private String nombrepro;
     //atributo foraneo
     private int departamento;
+    //otros
     private List <Provincias> lista;
-        private List <Provincias> listafiltrar;
-
+    private List <Provincias> listafiltrar;
+    private boolean flag=true;
+    
+    
     public Provincias() {
     }
 
@@ -93,6 +96,14 @@ public class Provincias {
     public void setListafiltrar(List<Provincias> listafiltrar) {
         this.listafiltrar = listafiltrar;
     }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
     
     
 
@@ -105,16 +116,36 @@ public class Provincias {
          sp.InsertarProvincias(p);
      }
     
-         public void mostrar(int reg) {
-                lista=new ArrayList();  
-                SqlProvincias pu = new SqlProvincias();
-                List<Provincias> listaCurso = pu.MostrarProvincias(reg);
-                Iterator<Provincias> iter = listaCurso.iterator();
-                      while (iter.hasNext()) {
-                          Provincias e = iter.next();
-                          lista.add(e);
-                      }
-
+    public void mostrar(int reg) {
+        lista=new ArrayList();  
+        SqlProvincias pu = new SqlProvincias();
+        List<Provincias> listaCurso = pu.MostrarProvincias(reg);
+        Iterator<Provincias> iter = listaCurso.iterator();
+            while (iter.hasNext()) {
+                Provincias e = iter.next();
+                lista.add(e);
+            }
       }
     
+         
+    public void actualizar(Provincias prov,int reg){
+       SqlProvincias sp=new SqlProvincias();
+       Provincias p=new Provincias();
+       p.setRegistropro(prov.registropro);
+       p.setNombrepro(prov.nombrepro);
+       p.setUserm(reg);
+      
+       sp.ActualizarProvincias(p);
+            
+       prov.flag=true;  
+   }      
+         
+   public void editar(Provincias prov){
+       prov.flag=false;
+   }
+  
+   public void cancelar(Provincias prov){
+       prov.flag=true;
+   }
+         
 }

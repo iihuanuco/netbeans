@@ -33,17 +33,23 @@ and open the template in the editor.
                 <h:panelGrid columns="1" id="panel-departamento">
                     <p:inputText id="txtdepartamento"  placeholder="Departamento" value="#{departamentosBean.departamentos.nombredep}" class="texto" ></p:inputText>
                     <p:commandButton value="Guardar" actionListener="#{departamentosBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtdepartamento" />
+                   
                     <p:dataTable id="listadepartamentos" var="departamento"  value="#{departamentosBean.departamentos.lista}" filteredValue="#{departamentosBean.departamentos.listafiltrar}" rows="3" paginator="true" >
                         <p:column headerText="Registro" filterBy="#{departamento.registrodep}" >
-                            <p:outputLabel value="#{departamento.registrodep}" />
-           </p:column>
+                           <h:outputText value="#{departamento.registrodep} " rendered="#{departamento.flag}" />
+                           <h:inputText value="#{departamento.registrodep}" rendered="#{ not departamento.flag}" />  
+                        </p:column>
                         <p:column headerText="Departemento" filterBy="#{departamento.nombredep}">
-                        <p:outputLabel value="#{departamento.nombredep}" />
-           </p:column>
-                    <p:column headerText="accion">
-                        <p:commandButton value="Modificar" />
-                     </p:column>
-            </p:dataTable>
+                            <h:outputText value="#{departamento.nombredep} " rendered="#{departamento.flag}" />
+                            <h:inputText value="#{departamento.nombredep}" rendered="#{ not departamento.flag}" />
+                        </p:column>
+                        <p:column headerText="accion">
+                            <p:commandButton icon="ui-icon-close" actionListener="#{departamentosBean.departamentos.cancelar(departamento)}"  rendered="#{ not departamento.flag}" update="listadepartamentos" />
+                            <p:commandButton icon="ui-icon-check" actionListener="#{departamentosBean.departamentos.actualizar(departamento,login.user.registro)}" rendered="#{ not departamento.flag}" update="listadepartamentos"/>
+                            <p:commandButton icon="ui-icon-pencil" actionListener="#{departamentosBean.departamentos.editar(departamento)}"  rendered="#{departamento.flag}" update="listadepartamentos"/>
+                        </p:column>
+                    </p:dataTable>
+                   
         </h:panelGrid>       
     </p:dialog>
 
@@ -62,13 +68,17 @@ and open the template in the editor.
         <h:panelGrid columns="1">
             <p:dataTable id="listaprovincias" var="provincia"  value="#{provinciasBean.provincias.lista}" filteredValue="#{provinciasBean.provincias.listafiltrar}" rows="3" paginator="true" >
                 <p:column headerText="Registro" >
-                    <p:outputLabel value="#{provincia.registropro}" />
+                    <p:outputLabel value="#{provincia.registropro}" rendered="#{provincia.flag}" />
+                    <h:inputText value="#{provincia.registropro}" rendered="#{ not provincia.flag}" />
                 </p:column>
                 <p:column headerText="Provincia">
-                    <p:outputLabel value="#{provincia.nombrepro}" />
+                    <p:outputLabel value="#{provincia.nombrepro}" rendered="#{provincia.flag}" />
+                    <h:inputText value="#{provincia.nombrepro}" rendered="#{ not provincia.flag}" />
                 </p:column>
-                <p:column headerText="accion">  
- <p:commandButton value="Modificar" />
+                <p:column headerText="accion">
+                    <p:commandButton icon="ui-icon-close" actionListener="#{provinciasBean.provincias.cancelar(provincia)}"  rendered="#{ not provincia.flag}" update="listaprovincias" />
+                    <p:commandButton icon="ui-icon-check" actionListener="#{provinciasBean.provincias.actualizar(provincia,login.user.registro)}" rendered="#{ not provincia.flag}" update="listaprovincias"/>
+                    <p:commandButton icon="ui-icon-pencil" actionListener="#{provinciasBean.provincias.editar(provincia)}"  rendered="#{provincia.flag}" update="listaprovincias"/>
                 </p:column>
             </p:dataTable>
         </h:panelGrid>  
@@ -91,21 +101,30 @@ and open the template in the editor.
             <p:inputText id="txtdistrito"  placeholder="Distrito" value="#{distritosBean.distritos.nombredis}" class="texto" ></p:inputText>
             <p:inputText id="txtcapital"  placeholder="Capital" value="#{distritosBean.distritos.capitaldis}" class="texto" ></p:inputText>
             <p:commandButton value="Guardar" actionListener="#{distritosBean.registrar(login.user.registro)}"  class="boton-ingresar" update="txtdistrito,txtcapital" />
+            
             <p:dataTable id="listadistritos" var="distritos"  value="#{distritosBean.distritos.lista}" filteredValue="#{distritosBean.distritos.listafiltrar}" rows="3" paginator="true" >
                 <p:column headerText="Registro" filterBy="#{distritos.registrodis}" >
-                    <p:outputLabel value="#{distritos.registrodis}" />
+                    <p:outputLabel value="#{distritos.registrodis}" rendered="#{distritos.flag}" />
+                    <h:inputText value="#{distritos.registrodis}" rendered="#{ not distritos.flag}" />
                 </p:column>
                 <p:column headerText="Distrito" filterBy="#{distritos.nombredis}">
-                    <p:outputLabel value="#{distritos.nombredis}" />
+                    <p:outputLabel value="#{distritos.nombredis}" rendered="#{distritos.flag}" />
+                    <h:inputText value="#{distritos.nombredis}" rendered="#{ not distritos.flag}" />
+                </p:column>
+                <p:column headerText="Capital" filterBy="#{distritos.capitaldis}">
+                    <p:outputLabel value="#{distritos.capitaldis}" rendered="#{distritos.flag}" />
+                    <h:inputText value="#{distritos.capitaldis}" rendered="#{ not distritos.flag}" />
                 </p:column>
                 <p:column headerText="accion">
-                        <p:commandButton value="Modificar" />
+                    <p:commandButton icon="ui-icon-close" actionListener="#{distritosBean.distritos.cancelar(distritos)}"  rendered="#{ not distritos.flag}" update="listadistritos" />
+                    <p:commandButton icon="ui-icon-check" actionListener="#{distritosBean.distritos.actualizar(distritos,login.user.registro)}" rendered="#{ not distritos.flag}" update="listadistritos"/>
+                    <p:commandButton icon="ui-icon-pencil" actionListener="#{distritosBean.distritos.editar(distritos)}"  rendered="#{distritos.flag}" update="listadistritos"/>
                 </p:column>
             </p:dataTable>
         </h:panelGrid>  
     </p:dialog>
 
-    <p:dialog  header="Registrar empresas"  widgetVar="empresas" rendered="true" height="500" width="600" modal="true" draggable="false" resizable="false" >
+    <p:dialog  header="Registrar empresas"  widgetVar="empresas" rendered="true" height="500" width="900" modal="true" draggable="false" resizable="false" >
         <h:panelGrid columns="1">
             <p:inputText  id="txtnombreemp" placeholder="RUC" value="#{empresasBean.empresas.rucemp}" class="texto" ></p:inputText>
             
@@ -116,13 +135,21 @@ and open the template in the editor.
             
             <p:dataTable id="listaempresas" var="empresas"  value="#{empresasBean.empresas.lista}" filteredValue="#{empresasBean.empresas.listafiltrar}" rows="3" paginator="true" >
                 <p:column headerText="Registro" filterBy="#{empresas.registroemp}" >
-                    <p:outputLabel value="#{empresas.registroemp}" />
+                    <p:outputLabel value="#{empresas.registroemp}" rendered="#{empresas.flag}" />
+                    <h:inputText value="#{empresas.registroemp}" rendered="#{ not empresas.flag}" />
                 </p:column>
-                <p:column headerText="Distrito" filterBy="#{empresas.nombreemp}">
-                    <p:outputLabel value="#{empresas.nombreemp}" />
+                <p:column headerText="RUC" filterBy="#{empresas.rucemp}">
+                    <p:outputLabel value="#{empresas.rucemp}" rendered="#{empresas.flag}" />
+                    <h:inputText value="#{empresas.rucemp}" rendered="#{ not empresas.flag}" />
+                </p:column>
+                <p:column headerText="Empresa" filterBy="#{empresas.nombreemp}">
+                    <p:outputLabel value="#{empresas.nombreemp}" rendered="#{empresas.flag}" />
+                    <h:inputText value="#{empresas.nombreemp}" rendered="#{ not empresas.flag}" />
                 </p:column>
                 <p:column headerText="accion">
-                        <p:commandButton value="Modificar" />
+                    <p:commandButton icon="ui-icon-close" actionListener="#{empresasBean.empresas.cancelar(empresas)}"  rendered="#{ not empresas.flag}" update="listaempresas" />
+                    <p:commandButton icon="ui-icon-check" actionListener="#{empresasBean.empresas.actualizar(empresas,login.user.registro)}" rendered="#{ not empresas.flag}" update="listaempresas" />
+                    <p:commandButton icon="ui-icon-pencil" actionListener="#{empresasBean.empresas.editar(empresas)}"  rendered="#{empresas.flag}" update="listaempresas" />
                 </p:column>
             </p:dataTable>
         </h:panelGrid>  
@@ -160,6 +187,7 @@ and open the template in the editor.
 
             <p:commandButton value="Guardar" actionListener="#{sucursalesBean.registrar(login.user.registro)}" class="boton-ingresar" update="listasucursal,pnlsucursal" />
         </h:panelGrid>  
+        
         <h:panelGrid columns="1">
             <p:dataTable id="listasucursal" var="sucursal"  value="#{sucursalesBean.sucursales.lista}" filteredValue="#{sucursalesBean.sucursales.listafiltrar}" rows="3" paginator="true" >
                 <p:column headerText="Registro" filterBy="#{sucursal.registrosuc}">

@@ -19,8 +19,10 @@ public class Distritos {
     private String capitaldis;
     //atributo foraneo
     private int provincia;
-      private List <Distritos> lista;
-        private List <Distritos> listafiltrar;
+    //otros
+    private List <Distritos> lista;
+    private List <Distritos> listafiltrar;
+    private boolean flag=true;
 
     public Distritos() {
     }
@@ -104,7 +106,14 @@ public class Distritos {
     public void setListafiltrar(List<Distritos> listafiltrar) {
         this.listafiltrar = listafiltrar;
     }
-    
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
     
     
 
@@ -119,16 +128,39 @@ public class Distritos {
         
     }
     
-        public void mostrar(int reg) {
-                lista=new ArrayList();  
-                SqlDistritos pu = new SqlDistritos();
-                List<Distritos> listaDist = pu.MostrarDistritos(reg);
-                Iterator<Distritos> iter = listaDist.iterator();
-                      while (iter.hasNext()) {
-                          Distritos e = iter.next();
-                          lista.add(e);
-                      }
+    public void mostrar(int reg) {
+        lista = new ArrayList();
+        SqlDistritos pu = new SqlDistritos();
+        List<Distritos> listaDist = pu.MostrarDistritos(reg);
+        Iterator<Distritos> iter = listaDist.iterator();
+        while (iter.hasNext()) {
+            Distritos e = iter.next();
+            lista.add(e);
+        }
 
-      }
-     
+    }
+    
+    public void actualizar(Distritos dist,int reg){
+       SqlDistritos sd=new SqlDistritos();
+       Distritos d=new Distritos();
+       
+       d.setRegistrodis(dist.registrodis);
+       d.setNombredis(dist.nombredis);
+       d.setCapitaldis(dist.capitaldis);
+       d.setUserm(reg);
+       
+       sd.ActualizarDistritos(d);
+            
+       dist.flag=true;  
+   }      
+         
+   public void editar(Distritos dist){
+       dist.flag=false;
+   }
+  
+   public void cancelar(Distritos dist){
+       dist.flag=true;
+   }    
+        
+        
 }

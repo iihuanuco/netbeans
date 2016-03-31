@@ -63,7 +63,7 @@ public class SqlDistritos implements DaoDistritos{
          List<Distritos> listadis=new ArrayList<Distritos>();
         try {
             Connection conn = Postgresql.conexion();
-            String sql = "select d.registro,d.nombre from provincias p "
+            String sql = "select d.registro,d.nombre,d.capital from provincias p "
                     + "inner join distritos d "
                     + "on d.provincia=p.registro "
                     + "where p.registro="+pro;
@@ -74,6 +74,7 @@ public class SqlDistritos implements DaoDistritos{
                 Distritos d=new Distritos();
                 d.setRegistrodis(rs.getInt(1));
                 d.setNombredis(rs.getString(2));
+                d.setCapitaldis(rs.getString(3));
                 
                 listadis.add(d);
             }
@@ -82,6 +83,28 @@ public class SqlDistritos implements DaoDistritos{
         }
         
         return listadis;
+    }
+
+    @Override
+    public void ActualizarDistritos(Distritos distritos) {
+        Connection conn=null;
+        try {
+            conn=Postgresql.conexion();
+            
+            String sql="update distritos set nombre=?,capital=?,userm=?,fecham=now() where registro=? "; 
+            
+            PreparedStatement pst=null; 
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, distritos.getNombredis());
+            pst.setString(2, distritos.getCapitaldis());
+            pst.setInt(3, distritos.getUserm());
+            pst.setInt(4, distritos.getRegistrodis());
+            
+            pst.executeUpdate();
+            
+            conn.close();
+        } catch (Exception e) {
+        }
     }
     
     

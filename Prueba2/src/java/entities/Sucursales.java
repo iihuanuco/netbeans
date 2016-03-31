@@ -32,6 +32,8 @@ public class Sucursales {
     private List<Sucursales> lista2;
     //session
     private String nombre;
+    //otros
+    private boolean flag=true;
      
     public Sucursales() {
     }
@@ -206,9 +208,15 @@ public class Sucursales {
         this.listafiltrar = listafiltrar;
     }
 
-    
-    
+    public boolean isFlag() {
+        return flag;
+    }
 
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
+    
     
     public void registrar(int reg){
         SqlSucursales ss=new SqlSucursales();
@@ -261,7 +269,29 @@ public class Sucursales {
         this.nombre=nom;
     }
     
-    
+    public void actualizar(Sucursales suc,int reg){
+       SqlSucursales su=new SqlSucursales();
+       Sucursales s=new Sucursales();
+       
+       s.setRegistrosuc(suc.registrosuc);
+       s.setNombresuc(suc.nombresuc);
+       s.setDireccionsuc(suc.direccionsuc);
+       s.setAlcancesuc(suc.alcancesuc);
+       s.setCodigomodularsuc(suc.codigomodularsuc);
+       s.setTipodegestionsuc(suc.tipodegestionsuc);
+       s.setUserm(reg);
+       
+       su.ActualizarSucursales(s);
+            
+       suc.flag=true;  
+   }      
+         
+   public void editar(Sucursales suc){
+       suc.flag=false;
+   }
+  
+   public void cancelar(Sucursales suc){
+       suc.flag=true;
+   }
       
-    
 }

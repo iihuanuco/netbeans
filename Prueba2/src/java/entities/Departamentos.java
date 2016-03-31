@@ -15,6 +15,7 @@ public class Departamentos {
     private String nombredep;
         private List <Departamentos> lista;
         private List <Departamentos> listafiltrar;
+        private boolean flag=true;
     
 
     public Departamentos() {
@@ -92,6 +93,15 @@ public class Departamentos {
     public void setListafiltrar(List<Departamentos> listafiltrar) {
         this.listafiltrar = listafiltrar;
     }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+    
     
     
     
@@ -115,6 +125,30 @@ public class Departamentos {
                       }
 
       }
+           
+           
+        public void actualizar(Departamentos depa,int reg){
+       SqlDepartamentos sd= new SqlDepartamentos();
+       Departamentos d= new Departamentos();
+       d.setRegistrodep(depa.registrodep);
+       d.setNombredep(depa.nombredep);
+       d.setUserm(reg);
+       sd.ActualizarDepartamentos(d);
+            
+        depa.flag=true;  
+   }
+     
+     
+    
+   
+   public void editar(Departamentos depa){
+       depa.flag=false;
+   }
+  
+       public void cancelar(Departamentos depa){
+        depa.flag=true;
+   }
+   
 
     
 }

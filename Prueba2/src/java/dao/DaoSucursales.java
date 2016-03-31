@@ -7,7 +7,8 @@ import java.util.List;
 public interface DaoSucursales {
 
     void InsertarSucursales(Sucursales sucursales);
+    void ActualizarSucursales(Sucursales sucursales);
     List<Sucursales> MostrarSucursales();
-     List<Sucursales> MostrarSucursales(int user);
+    List<Sucursales> MostrarSucursales(int user);
     
 }

@@ -98,6 +98,7 @@ public class SqlSucursales implements DaoSucursales{
                 Sucursales c=new Sucursales();
                 c.setRegistrosuc(rs.getInt(1));
                 c.setNombresuc(rs.getString(2));
+                
 
                listaSucur.add(c);
             }      
@@ -107,6 +108,37 @@ public class SqlSucursales implements DaoSucursales{
         
        
         return listaSucur;
+    }
+
+    @Override
+    public void ActualizarSucursales(Sucursales sucursales) {
+        Connection conn=null;
+        try {
+            conn=Postgresql.conexion();
+            
+            String sql="update sucursales set nombre=?,direccion=?,alcance=?,codigomodular=?,tipodegestion=?,fecham=now(),userm=? where registro=? ";  //,autorizacion=?,fechaautorizacion=?,revalidacion=?
+            
+            PreparedStatement pst=null; 
+            pst = conn.prepareStatement(sql);
+            
+            pst.setString(1, sucursales.getNombresuc());
+            pst.setString(2, sucursales.getDireccionsuc());
+            
+            pst.setInt(3, sucursales.getAlcancesuc());
+            pst.setString(4, sucursales.getCodigomodularsuc());
+            //pst.setString(5, sucursales.getAutorizacionsuc());
+            //pst.setDate(6, sucursales.getFechaautorizacionsuc());
+            //pst.setString(7, sucursales.getRevalidacionsuc());
+            pst.setInt(5, sucursales.getTipodegestionsuc());
+            pst.setInt(6, sucursales.getUserm());
+            pst.setInt(7, sucursales.getRegistrosuc());
+            
+            pst.executeUpdate();
+            
+            conn.close();
+        } catch (Exception e) {
+        }
+        
     }
     
 }

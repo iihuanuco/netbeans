@@ -16,9 +16,11 @@ public class Empresas {
     private int registroemp;
     private String nombreemp;
     private String rucemp;
+    //otros
     private List <Empresas> lista;
-        private List <Empresas> listafiltrar;
-
+    private List <Empresas> listafiltrar;
+    private boolean flag=true;
+    
     public Empresas() {
     }
 
@@ -93,8 +95,14 @@ public class Empresas {
     public void setListafiltrar(List<Empresas> listafiltrar) {
         this.listafiltrar = listafiltrar;
     }
-    
-    
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
     
     public void registrar(int reg) {
         SqlEmpresas se=new SqlEmpresas();
@@ -105,16 +113,39 @@ public class Empresas {
         se.InsertarEmpresas(e);
     }
     
-           public void mostrar() {
-                lista=new ArrayList();  
-                SqlEmpresas pu = new SqlEmpresas();
-                List<Empresas> listaEmp = pu.MostrarEmpresas();
-                Iterator<Empresas> iter = listaEmp.iterator();
-                      while (iter.hasNext()) {
-                          Empresas e = iter.next();
-                          lista.add(e);
-                      }
+    public void mostrar() {
+        lista = new ArrayList();
+        SqlEmpresas pu = new SqlEmpresas();
+        List<Empresas> listaEmp = pu.MostrarEmpresas();
+        Iterator<Empresas> iter = listaEmp.iterator();
+        while (iter.hasNext()) {
+            Empresas e = iter.next();
+            lista.add(e);
+        }
 
-      }
+    }
+    
+    public void actualizar(Empresas emp,int reg){
+       SqlEmpresas se=new SqlEmpresas();
+       Empresas e=new Empresas();
+       
+       e.setRegistroemp(emp.registroemp);
+       e.setNombreemp(emp.nombreemp);
+       e.setRucemp(emp.rucemp);
+       e.setUserm(reg);
+       
+       se.ActualizarEmpresas(e);
+            
+       emp.flag=true;  
+   }      
+         
+   public void editar(Empresas emp){
+       emp.flag=false;
+   }
+  
+   public void cancelar(Empresas emp){
+       emp.flag=true;
+   }
+    
     
 }

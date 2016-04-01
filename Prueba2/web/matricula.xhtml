@@ -23,10 +23,10 @@ and open the template in the editor.
             <h:panelGrid columns="2" class="signup">
                 <h:panelGrid columns="1" id="matricula" class="matricula">
                       <p:outputLabel value="Matricula "/>
-                      <p:selectOneMenu id="txtalumnop" value="#{matriculaBean.matricula.alumno}" >
-                            <f:selectItem itemLabel="-Seleccionar Alumno-" itemValue="0" itemDisabled="true" />
-                            <f:selectItems value="#{matriculaBean.listaalumnos}" />
-                        </p:selectOneMenu >
+                      <p:selectOneListbox value="#{matriculaBean.matricula.alumno}" filter="true" filterMatchMode="contains" class="list-box">
+                          <f:selectItems value="#{matriculaBean.listaalumnos}" itemLabel="#{matriculaBean.matricula.alumno}" />
+                      </p:selectOneListbox>
+                      
                         <p:inputText id="txtcodigomat" value="#{matriculaBean.matricula.codigomat}" placeholder="codigo" class="texto" ></p:inputText>
                         <p:selectOneMenu id="txtactividadp" value="#{matriculaBean.matricula.actividad}" >
                             <f:selectItem itemLabel="-Selecionar Actividad-" itemValue="0" itemDisabled="true" />
@@ -45,21 +45,22 @@ and open the template in the editor.
                             <f:selectItems value="#{seccionesBean.listasecciones}" />
                         </p:selectOneMenu>
                         
-                        <p:commandButton value="Guardar" actionListener="#{matriculaBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtalumnop,txtcodigomat,txtactividadp,txtcarrerap,txtturnop,txtseccion,matricula,matriculaxcurso"  />
-                        
-                    </h:panelGrid>    
+                        <p:commandButton value="Guardar" actionListener="#{matriculaBean.registrar(login.user.registro)}" class="boton-ingresar" update="matricula,matriculaxcurso"  />
+                      
+                </h:panelGrid>    
+                
                 <h:panelGrid id="matriculaxcurso" columns="1" class="matricula" >
                     <p:outputLabel value="Matricula por Curso"/>
-                 <p:selectOneMenu value="#{matriculaxCursosBean.matriculaxcursos.matricula}"  >
-                            <f:selectItem itemLabel="-Selecionar Matricula-" itemValue="0" itemDisabled="true" />
-                            <f:selectItems value="#{matriculaBean.listamatricula}" />
-                        </p:selectOneMenu>
-                 <p:selectOneMenu value="#{matriculaxCursosBean.matriculaxcursos.curso}" >
-                            <f:selectItem itemLabel="-Selecionar Curso y Profesor-" itemValue="0" itemDisabled="true" />
-                            <f:selectItems value="#{sucursalesBean.listacxp}" />
-                        </p:selectOneMenu>
+                    <p:selectOneListbox value="#{matriculaxCursosBean.matriculaxcursos.matricula}" filterMatchMode="contains" filter="true" class="list-box" >
+                        <f:selectItems value="#{matriculaBean.listamatricula}" itemLabel="#{matriculaBean.matricula.matriculado}" />
+                    </p:selectOneListbox>
+
+                    <p:selectOneListbox value="#{matriculaxCursosBean.matriculaxcursos.curso}" filterMatchMode="contains" filter="true" class="list-box" >
+                        <f:selectItems value="#{sucursalesBean.listacxp}" itemLabel="#{sucursalesBean.sucursales}" />
+                    </p:selectOneListbox>
+                 
                     <p:commandButton value="Guardar" actionListener="#{matriculaxCursosBean.registrar(login.user.registro)}" class="boton-ingresar" update="matriculaxcurso" />
-                    </h:panelGrid>    
+                </h:panelGrid>    
                 </h:panelGrid>
         </h:form>
             </f:view>

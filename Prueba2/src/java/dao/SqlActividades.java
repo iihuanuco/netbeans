@@ -43,7 +43,7 @@ public class SqlActividades implements DaoActividades{
         List<Actividades> listaact=new ArrayList<Actividades>();
         try {
             Connection conn=Postgresql.conexion();
-            String sql=" select a.registro,a.nombre from actividades a where a.sucursal="+suc;
+            String sql=" select a.registro,a.nombre,a.fechainicio,a.alcance from actividades a where a.sucursal="+suc;
             Statement st=conn.createStatement();
             ResultSet rs=null;
             rs=st.executeQuery(sql);
@@ -51,6 +51,8 @@ public class SqlActividades implements DaoActividades{
                 Actividades a=new Actividades();
                 a.setRegistroact(rs.getInt(1));
                 a.setNombreact(rs.getString(2));
+                a.setFechainicioact(rs.getDate(3));
+                a.setAlcanceact(rs.getInt(4));
                 
                 listaact.add(a);
             }
@@ -59,6 +61,31 @@ public class SqlActividades implements DaoActividades{
         }
         
         return listaact;
+    }
+
+    @Override
+    public void ActualizarActividades(Actividades actividades) {
+        Connection conn=null;
+        try {
+            conn=Postgresql.conexion();
+            
+            String sql="update  actividades set nombre=?,fechainicio=?,alcance=?,userm=?,fecham=now() where registro=?";
+            
+            PreparedStatement pst=null;
+            pst=conn.prepareStatement(sql);
+            
+          
+            pst.setString(1, actividades.getNombreact());
+            pst.setDate(2, util.dateutil2sql(actividades.getFechainicioact()));
+            pst.setInt(3, actividades.getAlcanceact());
+            pst.setInt(4, actividades.getUserm());
+            pst.setInt(5, actividades.getRegistroact());
+
+            pst.executeUpdate();
+            
+            conn.close();
+        } catch (Exception e) {
+        }
     }
 
 }

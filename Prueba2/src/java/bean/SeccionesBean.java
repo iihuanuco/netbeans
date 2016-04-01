@@ -5,11 +5,11 @@ import entities.Secciones;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class SeccionesBean {
     private Secciones secciones=new Secciones();
     private List<SelectItem> listasecciones;
@@ -43,5 +43,6 @@ public class SeccionesBean {
         secciones.registrar(reg);
         secciones.setCodigosec(0);
         secciones.setNombresec("");
+        secciones.mostrarsec();
     }
 }

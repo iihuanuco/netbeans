@@ -5,11 +5,11 @@ import entities.Turnos;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class TurnosBean {
     private Turnos turnos=new Turnos();
     private List<SelectItem> listaturnos;
@@ -44,6 +44,7 @@ public class TurnosBean {
     turnos.registrar(reg);
     turnos.setCodigotur(0);
     turnos.setNombretur("");
+    turnos.mostrartur();
     }
     
 }

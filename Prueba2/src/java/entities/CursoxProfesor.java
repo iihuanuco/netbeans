@@ -10,10 +10,12 @@ import java.util.List;
  
 public class CursoxProfesor {
    private int registro,profesor,curso,actividad,userc,userm;  
-   private String ncurso,nprofesor;
-   private String cursoxprofe;
+   private String ncurso,nprofesor,nactividad;
    private Date fecham;
       private List <CursoxProfesor> lista;
+       private List <CursoxProfesor> listapxc;
+       private List<Carreras> filtropxc;
+      private boolean flag=true;
 
     public CursoxProfesor() {
     }
@@ -74,13 +76,7 @@ public class CursoxProfesor {
         this.fecham = fecham;
     }
 
-    public String getCursoxprofe() {
-        return cursoxprofe;
-    }
-
-    public void setCursoxprofe(String cursoxprofe) {
-        this.cursoxprofe = cursoxprofe;
-    }
+  
 
     public String getNcurso() {
         return ncurso;
@@ -102,9 +98,43 @@ public class CursoxProfesor {
         return lista;
     }
 
+    public String getNactividad() {
+        return nactividad;
+    }
+
+    public void setNactividad(String nactividad) {
+        this.nactividad = nactividad;
+    }
+
+    
     public void setLista(List<CursoxProfesor> lista) {
         this.lista = lista;
     }
+
+    public List<CursoxProfesor> getListapxc() {
+        return listapxc;
+    }
+
+    public void setListapxc(List<CursoxProfesor> listapxc) {
+        this.listapxc = listapxc;
+    }
+
+    public List<Carreras> getFiltropxc() {
+        return filtropxc;
+    }
+
+    public void setFiltropxc(List<Carreras> filtropxc) {
+        this.filtropxc = filtropxc;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+    
     
     
     
@@ -132,6 +162,42 @@ public class CursoxProfesor {
                       }
                      
       }
+                       public void mostrarpxc(int suc) {
+                listapxc=new ArrayList();  
+                SqlCursoxProfesor pu = new SqlCursoxProfesor();
+                List<CursoxProfesor> listaCxP = pu.MostrarCursoxProfesor(suc);
+                Iterator<CursoxProfesor> iter = listaCxP.iterator();
+                      while (iter.hasNext()) {
+                          CursoxProfesor e = iter.next();
+                          listapxc.add(e);
+                      }
+                     
+      }
+               
+               
+    public void actualizar(CursoxProfesor cxp,int reg,int suc){
+        SqlCursoxProfesor scp =new SqlCursoxProfesor();
+        CursoxProfesor cp= new CursoxProfesor();
+        cp.setRegistro(cxp.registro);
+        cp.setCurso(cxp.curso);
+        cp.setProfesor(cxp.profesor);
+        cp.setActividad(cxp.actividad);
+        cp.setUserm(reg);
+        scp.ActualizarCursoxProfesor(cp);
+        cxp.flag=true;
+        mostrarpxc(suc);
+   }
+     
+     
+    
+   
+   public void editar(CursoxProfesor cxp){
+       cxp.flag=false;
+   }
+  
+       public void cancelar(CursoxProfesor cxp){
+        cxp.flag=true;
+   }
                                   
       
    

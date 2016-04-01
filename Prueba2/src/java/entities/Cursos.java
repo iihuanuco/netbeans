@@ -16,7 +16,7 @@ public class Cursos {
     //propios de la clase
     private int registrocurso;
     private String codigocurso;
-    private String nombrecurso;
+    private String nombrecurso,ncarrerra;
     private int semestrecurso;
     private int creditoscurso;
     private int estadocurso; //estado: *null=activo; !null=debaja,suspendido,etc.
@@ -195,6 +195,14 @@ public class Cursos {
         this.flag = flag;
     }
 
+    public String getNcarrerra() {
+        return ncarrerra;
+    }
+
+    public void setNcarrerra(String ncarrerra) {
+        this.ncarrerra = ncarrerra;
+    }
+
   
   
     
@@ -230,7 +238,7 @@ public class Cursos {
         
     }
     
-  public void actualizar(Cursos cursos,int reg){
+  public void actualizar(Cursos cursos,int reg,int suc){
       SqlCursos su= new SqlCursos();
       Cursos c= new  Cursos();
       c.setCodigocurso(cursos.codigocurso);
@@ -243,8 +251,7 @@ public class Cursos {
       c.setUserm(reg);
       c.setRegistrocurso(cursos.registrocurso);
       su.ActualizarCursos(c);
-      System.out.println(""+cursos.codigocurso);
-
+      mostrarcursos(suc);
         cursos.flag=true;
    }
      

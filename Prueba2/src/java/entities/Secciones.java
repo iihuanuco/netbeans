@@ -1,7 +1,10 @@
 package entities;
 
 import dao.SqlSecciones;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 public class Secciones {
 
@@ -12,6 +15,10 @@ public class Secciones {
     private int registrosec;
     private int codigosec;
     private String nombresec;
+    private List<Secciones> listasec;
+    private List<Secciones> filtrosec;
+    private boolean flag=true;
+    
 
     public Secciones() {
     }
@@ -81,6 +88,30 @@ public class Secciones {
     public void setNombresec(String nombresec) {
         this.nombresec = nombresec;
     }
+
+    public List<Secciones> getListasec() {
+        return listasec;
+    }
+
+    public void setListasec(List<Secciones> listasec) {
+        this.listasec = listasec;
+    }
+
+    public List<Secciones> getFiltrosec() {
+        return filtrosec;
+    }
+
+    public void setFiltrosec(List<Secciones> filtrosec) {
+        this.filtrosec = filtrosec;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
     
     
     
@@ -92,6 +123,47 @@ public class Secciones {
         s.setUserc(reg);
         ss.InsertarSecciones(s);
     }
+    
+    
+     public void mostrarsec(){
+        listasec=new ArrayList();
+        SqlSecciones sc=new SqlSecciones();
+        List<Secciones> listacar=sc.MostrarSecciones();
+        Iterator<Secciones> iter=listacar.iterator();
+        while (iter.hasNext()) {
+            Secciones c = iter.next();
+            listasec.add(c);
+        }
+        
+        
+    }
+    
+    
+ 
+     public void actualizar(Secciones seccion,int reg){
+         
+       SqlSecciones sec= new SqlSecciones();
+       Secciones s= new Secciones();
+       s.setCodigosec(seccion.codigosec);
+       s.setNombresec(seccion.nombresec);
+       s.setUserm(reg);
+       s.setRegistrosec(seccion.registrosec);
+       sec.ActualizarSecciones(s);
+ 
+        seccion.flag=true;
+   }
+     
+     
+    
+   
+   public void editar(Secciones seccion){
+       seccion.flag=false;
+   }
+  
+       public void cancelar(Secciones seccion){
+        seccion.flag=true;
+   }
+    
     
     
 }

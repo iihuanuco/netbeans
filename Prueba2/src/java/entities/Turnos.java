@@ -2,7 +2,10 @@
 package entities;
 
 import dao.SqlTurnos;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 public class Turnos {
 
@@ -13,6 +16,9 @@ public class Turnos {
     private int registrotur;
     private int codigotur;
     private String nombretur;
+        private List<Turnos> listaturnos;
+    private List<Turnos> filtroturnos;
+    private boolean flag=true;
 
     public Turnos() {
     }
@@ -83,6 +89,33 @@ public class Turnos {
         this.nombretur = nombretur;
     }
 
+    public List<Turnos> getListaturnos() {
+        return listaturnos;
+    }
+
+    public void setListaturnos(List<Turnos> listaturnos) {
+        this.listaturnos = listaturnos;
+    }
+
+    public List<Turnos> getFiltroturnos() {
+        return filtroturnos;
+    }
+
+    public void setFiltroturnos(List<Turnos> filtroturnos) {
+        this.filtroturnos = filtroturnos;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+    
+    
+    
+
     public void registrar(int reg){
         SqlTurnos st=new SqlTurnos();
         Turnos t=new Turnos();
@@ -92,6 +125,47 @@ public class Turnos {
         
         st.InsertarTurnos(t);
     }
+    
+    
+       public void mostrartur(){
+        listaturnos=new ArrayList();
+        SqlTurnos sc=new SqlTurnos();
+        List<Turnos> listatur=sc.MostrarTurnos();
+        Iterator<Turnos> iter=listatur.iterator();
+        while (iter.hasNext()) {
+            Turnos c = iter.next();
+            listaturnos.add(c);
+        }
+        
+        
+    }
+    
+    
+ 
+     public void actualizar(Turnos turno,int reg){
+         
+       SqlTurnos st= new SqlTurnos();
+       Turnos t= new Turnos();
+       t.setCodigotur(turno.codigotur);
+       t.setNombretur(turno.nombretur);
+       t.setUserm(reg);
+       t.setRegistrotur(turno.registrotur);
+       st.ActualizarTurnos(t);
+ 
+        turno.flag=true;
+   }
+     
+     
+    
+   
+   public void editar(Turnos turno){
+       turno.flag=false;
+   }
+  
+       public void cancelar(Turnos turno){
+        turno.flag=true;
+   }
+    
     
     
 }

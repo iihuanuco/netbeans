@@ -40,9 +40,10 @@ public class EvaluacionesBean {
 
      
     
-    public void registrar(int reg){
+    public void registrar(int reg,int suc){
         evaluaciones.registrar(reg);
         evaluaciones.setNombreeval("");
+        evaluaciones.mostrarevaua(suc);
     }
     
 }

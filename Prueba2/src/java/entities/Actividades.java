@@ -1,7 +1,10 @@
 package entities;
 
 import dao.SqlActividades;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 public class Actividades {
 
@@ -15,6 +18,9 @@ public class Actividades {
     private int alcanceact;
     //atributo foraneo
     private int sucursal;
+    private List<Actividades> listaact;
+    private List<Actividades> filtroact;
+    private boolean flag=true;
 
     public Actividades() {
     }
@@ -102,6 +108,32 @@ public class Actividades {
     public void setSucursal(int sucursal) {
         this.sucursal = sucursal;
     }
+
+    public List<Actividades> getListaact() {
+        return listaact;
+    }
+
+    public void setListaact(List<Actividades> listaact) {
+        this.listaact = listaact;
+    }
+
+    public List<Actividades> getFiltroact() {
+        return filtroact;
+    }
+
+    public void setFiltroact(List<Actividades> filtroact) {
+        this.filtroact = filtroact;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+    
+    
     
     public void registrar(int reg,int suc){
         SqlActividades sa=new SqlActividades();
@@ -115,6 +147,46 @@ public class Actividades {
         
         sa.InsertarActividades(a);
     }
+    
+    
+      public void mostraract(int suc){
+        listaact=new ArrayList();
+        SqlActividades sc=new SqlActividades();
+        List<Actividades> listacar=sc.MostrarActividades(suc);
+        Iterator<Actividades> iter=listacar.iterator();
+        while (iter.hasNext()) {
+            Actividades c = iter.next();
+            listaact.add(c);
+        }
+        
+        
+    }
+    
+    
+ 
+     public void actualizar(Actividades act,int reg){
+         
+       SqlActividades su= new SqlActividades();
+       Actividades u= new Actividades();
+       u.setNombreact(act.nombreact);
+       u.setFechainicioact(act.fechainicioact);
+       u.setUserm(reg);
+       u.setAlcanceact(act.alcanceact);
+       u.setRegistroact(act.registroact);
+       su.ActualizarActividades(u);
+        act.flag=true;
+   }
+     
+     
+    
+   
+   public void editar(Actividades act){
+       act.flag=false;
+   }
+  
+       public void cancelar(Actividades act){
+        act.flag=true;
+   }
     
     
 }

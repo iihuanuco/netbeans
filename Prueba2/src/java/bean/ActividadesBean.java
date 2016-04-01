@@ -32,6 +32,7 @@ public class ActividadesBean {
         actividades.setNombreact("");
         actividades.setAlcanceact(0);
         actividades.setFechac(null);
+        actividades.mostraract(suc);
     
     }
     

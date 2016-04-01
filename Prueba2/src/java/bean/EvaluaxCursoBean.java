@@ -25,10 +25,11 @@ public class EvaluaxCursoBean {
         this.evaluaxcurso = evaluaxcurso;
     }
  
-    public void registrar(int reg){
+    public void registrar(int reg,int suc){
      evaluaxcurso.registrar(reg);
      evaluaxcurso.setEvaluacion(0);
      evaluaxcurso.setPeso(0);
+     evaluaxcurso.mostrarexc(suc);
     }
 
     

@@ -48,11 +48,11 @@ public class SqlCursos implements DaoCursos{
           List<Cursos> listacur=new ArrayList<Cursos>();
         try {
             Connection conn=Postgresql.conexion();
-            String sql = "select c.registro,c.codigo,c.nombre,c.carrera,c.semestre,c.ht,c.hp,c.creditos "
-                    + "from cursos c "
-                    + "inner join carreras ca "
-                    + "on ca.registro=c.carrera "
-                    + "where ca.sucursal="+suc;
+            String sql = "select c.registro,c.codigo,c.nombre,c.carrera,ca.nombre,c.semestre,c.ht,c.hp,c.creditos " +
+"                    from cursos c " +
+"                    inner join carreras ca " +
+"                    on ca.registro=c.carrera " +
+"                    where ca.sucursal="+suc;
             Statement st=conn.createStatement();
             ResultSet rs=null;
             rs=st.executeQuery(sql);
@@ -62,10 +62,11 @@ public class SqlCursos implements DaoCursos{
                 d.setCodigocurso(rs.getString(2));
                 d.setNombrecurso(rs.getString(3));
                 d.setCarrera(rs.getInt(4));
-                d.setSemestrecurso(rs.getInt(5));
-                d.setHtcurso(rs.getInt(6));
-                d.setHpcurso(rs.getInt(7));
-                d.setCreditoscurso(rs.getInt(8));
+                d.setNcarrerra(rs.getString(5));
+                d.setSemestrecurso(rs.getInt(6));
+                d.setHtcurso(rs.getInt(7));
+                d.setHpcurso(rs.getInt(8));
+                d.setCreditoscurso(rs.getInt(9));
                 
                 listacur.add(d);
             }
@@ -81,7 +82,7 @@ public class SqlCursos implements DaoCursos{
  Connection conn=null;
         try {
             conn=Postgresql.conexion();
-            String sql="update cursos set codigo=?,nombre=?,carrera=?,semestre=?,creditos=?,ht=?,hp=?,userm=? where registro=? ";
+            String sql="update cursos set codigo=?,nombre=?,carrera=?,semestre=?,creditos=?,ht=?,hp=?,userm=?,fecham=now() where registro=? ";
             
             PreparedStatement pst=null;
             pst=conn.prepareStatement(sql);

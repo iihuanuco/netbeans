@@ -82,6 +82,27 @@ public class SqlEvaluaciones implements DaoEvaluaciones{
         return listaeval;
     }
 
+    @Override
+    public void ActualizarEvaluaciones(Evaluaciones evaluaciones) {
+         Connection conn=null;
+        try {
+            conn=Postgresql.conexion();
+            String sql=" update evaluaciones set nombre=?,fecham=now(),userm=? where registro=?";
+            
+            PreparedStatement pst=null;
+            pst=conn.prepareStatement(sql);
+            
+            pst.setString(1, evaluaciones.getNombreeval());
+            pst.setInt(2, evaluaciones.getUserm());
+            pst.setInt(3, evaluaciones.getRegistroeval());
+            
+            pst.executeUpdate();
+            
+            conn.close();
+        } catch (Exception e) {
+        }
+    }
+
     
     
 }

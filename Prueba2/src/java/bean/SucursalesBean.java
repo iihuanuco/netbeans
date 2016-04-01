@@ -85,7 +85,7 @@ public class SucursalesBean {
             List<CursoxProfesor>  listacar=sc.MostrarCursoxProfesor(sucursales.getRegistrosuc());
             listacxp.clear();
             for (CursoxProfesor c : listacar) {
-               SelectItem caritem=new SelectItem(c.getRegistro(),c.getCursoxprofe());
+               SelectItem caritem=new SelectItem(c.getRegistro(),c.getNcurso()+" - "+c.getNprofesor());
                this.listacxp.add(caritem);
     
             }  

@@ -176,6 +176,18 @@ div.submenu:hover .btn-img{
     padding: 80px;
 }
 
+.list-box{
+    width: 400px !important;
+}
+div.list-box .ui-selectlistbox-listcontainer{
+    height: 50px !important; 
+}
+.list-box2{
+    width: 200px !important;
+}
+div.list-box2 .ui-selectlistbox-listcontainer{
+    height: 50px !important; 
+}
  
 
 

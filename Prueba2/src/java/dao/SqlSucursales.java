@@ -116,22 +116,22 @@ public class SqlSucursales implements DaoSucursales{
         try {
             conn=Postgresql.conexion();
             
-            String sql="update sucursales set nombre=?,direccion=?,alcance=?,codigomodular=?,tipodegestion=?,fecham=now(),userm=? where registro=? ";  //,autorizacion=?,fechaautorizacion=?,revalidacion=?
+            String sql="update sucursales set nombre=?,direccion=?,alcance=?,codigomodular=?,tipodegestion=?,autorizacion=?,fechaautorizacion=?,empresa=?,fecham=now(),userm=?  where registro=? ";  
             
             PreparedStatement pst=null; 
             pst = conn.prepareStatement(sql);
             
             pst.setString(1, sucursales.getNombresuc());
             pst.setString(2, sucursales.getDireccionsuc());
-            
             pst.setInt(3, sucursales.getAlcancesuc());
             pst.setString(4, sucursales.getCodigomodularsuc());
-            //pst.setString(5, sucursales.getAutorizacionsuc());
-            //pst.setDate(6, sucursales.getFechaautorizacionsuc());
-            //pst.setString(7, sucursales.getRevalidacionsuc());
             pst.setInt(5, sucursales.getTipodegestionsuc());
-            pst.setInt(6, sucursales.getUserm());
-            pst.setInt(7, sucursales.getRegistrosuc());
+            pst.setString(6, sucursales.getAutorizacionsuc());
+            pst.setDate(7, util.dateutil2sql(sucursales.getFechaautorizacionsuc()));
+            pst.setInt(8, sucursales.getEmpresa());
+            pst.setInt(9, sucursales.getUserm());
+             pst.setInt(10, sucursales.getRegistrosuc());
+            
             
             pst.executeUpdate();
             
@@ -139,6 +139,46 @@ public class SqlSucursales implements DaoSucursales{
         } catch (Exception e) {
         }
         
+    }
+
+    @Override
+    public List<Sucursales> ListarSucursales() {
+        List<Sucursales> listaSucur=new ArrayList<Sucursales>();
+        Connection cn=null;
+        try {
+            cn=Postgresql.conexion();
+            String sql = "select s.registro,s.nombre,s.direccion,s.alcance,s.codigomodular,s.tipodegestion,s.autorizacion,s.fechaautorizacion,e.registro,e.nombre,d.nombre from sucursales s  " +
+"                  inner join distritos d  " +
+"                   on d.registro=s.distrito " +
+"                   inner join empresas e   " +
+"                   on e.registro=s.empresa ";
+            
+            Statement st=cn.createStatement(); 
+            ResultSet rs=null;
+            rs=st.executeQuery(sql);
+            while(rs.next()) {                
+                Sucursales c=new Sucursales();
+                c.setRegistrosuc(rs.getInt(1));
+                c.setNombresuc(rs.getString(2));
+                c.setDireccionsuc(rs.getString(3));
+                c.setAlcancesuc(rs.getInt(4));
+                c.setCodigomodularsuc(rs.getString(5));
+                c.setTipodegestionsuc(rs.getInt(6));
+                c.setAutorizacionsuc(rs.getString(7));
+                c.setFechaautorizacionsuc(rs.getDate(8));
+                c.setEmpresa(rs.getInt(9));
+                c.setNempresa(rs.getString(10));
+                c.setNdistrito(rs.getString(11));
+
+               listaSucur.add(c);
+            }      
+            
+        } catch (Exception e) {
+            util.creararchivotexto("La conexion lista sucursales:"+cn.toString()+ " error:"+e.toString());
+        }
+        
+       
+        return listaSucur;
     }
     
 }

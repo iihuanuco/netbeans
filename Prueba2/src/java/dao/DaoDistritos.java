@@ -8,7 +8,6 @@ public interface DaoDistritos {
 
     void InsertarDistritos(Distritos distritos);
     void ActualizarDistritos(Distritos distritos);
-    List<Distritos> MostrarDistritos();
     List<Distritos> MostrarDistritos(int pro);
     
 }

@@ -36,7 +36,7 @@ public class DistritosBean {
     public List<SelectItem> getListaDistritos() {
         this.listaDistritos=new ArrayList<SelectItem>();
         SqlDistritos sd=new SqlDistritos();
-            List<Distritos> listaDis=sd.MostrarDistritos();
+            List<Distritos> listaDis=sd.MostrarDistritos(distritos.getProvincia());
             listaDistritos.clear();
             
             for (Distritos d: listaDis) {

@@ -22,10 +22,11 @@ public class UserxSucuBean {
     }
 
     
-    public void registrar(int reg){
-        userxsucu.registrar(reg);
+    public void registrar(int reg,int suc){
+        userxsucu.registrar(reg,suc);
         userxsucu.setUsuario(0);
         userxsucu.setSucursal(0);
+        userxsucu.mostraruxs(suc);
     } 
    
     

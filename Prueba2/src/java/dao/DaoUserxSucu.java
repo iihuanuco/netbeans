@@ -6,6 +6,7 @@ import java.util.List;
 public interface DaoUserxSucu {
 
     void InsertarUserxSucu(UserxSucu userxSucu);
-    List<UserxSucu> MostrarUserxSucu();
+    void ActualizarUserxSucu(UserxSucu userxSucu);
+    List<UserxSucu> MostrarUserxSucu(int suc);
     
 }

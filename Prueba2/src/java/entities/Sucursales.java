@@ -30,6 +30,7 @@ public class Sucursales {
     private List<Sucursales> lista;
      private List<Sucursales> listafiltrar;
     private List<Sucursales> lista2;
+     private List<Sucursales> lista3;
     //session
     private String nombre;
     //otros
@@ -216,6 +217,15 @@ public class Sucursales {
         this.flag = flag;
     }
 
+    public List<Sucursales> getLista3() {
+        return lista3;
+    }
+
+    public void setLista3(List<Sucursales> lista3) {
+        this.lista3 = lista3;
+    }
+
+    
     
     
     public void registrar(int reg){
@@ -250,6 +260,17 @@ public class Sucursales {
         }
 
     }
+    
+      public void mostrar3(){  
+         lista3 = new ArrayList();
+        SqlSucursales pu = new SqlSucursales();
+        List<Sucursales> listaSucur = pu.ListarSucursales();
+        Iterator<Sucursales> iter = listaSucur.iterator();
+        while (iter.hasNext()) {
+            Sucursales e = iter.next();
+            lista3.add(e);
+        }
+    }
     public void mostrar2(int user){
     
          lista2 = new ArrayList();
@@ -272,18 +293,19 @@ public class Sucursales {
     public void actualizar(Sucursales suc,int reg){
        SqlSucursales su=new SqlSucursales();
        Sucursales s=new Sucursales();
-       
-       s.setRegistrosuc(suc.registrosuc);
        s.setNombresuc(suc.nombresuc);
        s.setDireccionsuc(suc.direccionsuc);
        s.setAlcancesuc(suc.alcancesuc);
        s.setCodigomodularsuc(suc.codigomodularsuc);
        s.setTipodegestionsuc(suc.tipodegestionsuc);
+       s.setAutorizacionsuc(suc.autorizacionsuc);
+       s.setFechaautorizacionsuc(suc.fechaautorizacionsuc);
+       s.setEmpresa(suc.empresa);
+       s.setRegistrosuc(suc.registrosuc);
        s.setUserm(reg);
-       
        su.ActualizarSucursales(s);
-            
        suc.flag=true;  
+       mostrar3();
    }      
          
    public void editar(Sucursales suc){

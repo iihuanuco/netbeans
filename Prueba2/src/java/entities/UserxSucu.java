@@ -18,7 +18,10 @@ public class UserxSucu {
     //atributo foraneo
     private int usuario;
     private int sucursal;
-    //alumnos profesor por sucursal
+    private String nusuario,nsucursal;
+    private List<UserxSucu> listauxs;
+    private List<UserxSucu> filtrouxs;
+    private boolean flag=true;
  
     
     public UserxSucu() {
@@ -83,16 +86,96 @@ public class UserxSucu {
         this.sucursal = sucursal;
     }
 
+    public String getNusuario() {
+        return nusuario;
+    }
+
+    public void setNusuario(String nusuario) {
+        this.nusuario = nusuario;
+    }
+
+    public String getNsucursal() {
+        return nsucursal;
+    }
+
+    public void setNsucursal(String nsucursal) {
+        this.nsucursal = nsucursal;
+    }
+
+    public List<UserxSucu> getListauxs() {
+        return listauxs;
+    }
+
+    public void setListauxs(List<UserxSucu> listauxs) {
+        this.listauxs = listauxs;
+    }
+
+    public List<UserxSucu> getFiltrouxs() {
+        return filtrouxs;
+    }
+
+    public void setFiltrouxs(List<UserxSucu> filtrouxs) {
+        this.filtrouxs = filtrouxs;
+    }
+
+    
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
    
-    public void registrar(int reg) {
+    
+    
+    public void registrar(int reg,int suc) {   
         SqlUserxSucu sus=new SqlUserxSucu();
         UserxSucu us=new UserxSucu();
         us.setUsuario(usuario);
-        us.setSucursal(sucursal);
+        us.setSucursal(suc);
         us.setUserc(reg);
         sus.InsertarUserxSucu(us);
     }
     
+      public void mostraruxs(int suc){
+        listauxs=new ArrayList();
+        SqlUserxSucu sc=new SqlUserxSucu();
+        List<UserxSucu> listacar=sc.MostrarUserxSucu(suc);
+        Iterator<UserxSucu> iter=listacar.iterator();
+        while (iter.hasNext()) {
+            UserxSucu c = iter.next();
+            listauxs.add(c);
+        }
+        
+        
+    }
+    
+    
+ 
+     public void actualizar(UserxSucu uxs,int reg,int suc){
+        SqlUserxSucu sc=new SqlUserxSucu();
+        UserxSucu s= new UserxSucu();
+        s.setRegistrouxs(uxs.registrouxs);
+        s.setUsuario(uxs.usuario);
+        s.setSucursal(uxs.sucursal);
+        s.setUserm(reg);
+        sc.ActualizarUserxSucu(s);
+        uxs.flag=true;
+         mostraruxs(suc);
+   }
+     
+     
+    
+   
+   public void editar(UserxSucu uxs){
+       uxs.flag=false;
+   }
+  
+       public void cancelar(UserxSucu uxs){
+        uxs.flag=true;
+   }
     
   
     

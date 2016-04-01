@@ -24,8 +24,8 @@ and open the template in the editor.
                 <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/2.jpg"/><p:commandButton value="Provincias" oncomplete="PF('provincias').show();"  class="  btn-img"  /></div>
                 <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/3r.jpg"/><p:commandButton value="Distritos" oncomplete="PF('distritos').show();" class="  btn-img"  /></div>
                 <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/4.jpg"/><p:commandButton value="Empresas" onclick="#{empresasBean.empresas.mostrar()}" oncomplete="PF('empresas').show();" class="  btn-img"  /></div>
-                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/5.jpg"/><p:commandButton value="Sucursales" onclick="#{sucursalesBean.sucursales.mostrar()}" oncomplete="PF('sucursales').show();"  class=" btn-img"  /></div>
-                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/6.jpg"/><p:commandButton value="Asignar Usuario" oncomplete="PF('sxu').show();"  class=" btn-img"  /></div>
+                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/5.jpg"/><p:commandButton value="Sucursales" onclick="#{sucursalesBean.sucursales.mostrar3()}" oncomplete="PF('sucursales').show();"  class=" btn-img"  /></div>
+                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/6.jpg"/><p:commandButton value="Asignar Usuario"  onclick="#{userxSucuBean.userxsucu.mostraruxs(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('sxu').show();"  class=" btn-img"  /></div>
             </div>
 
 
@@ -156,9 +156,21 @@ and open the template in the editor.
         
     </p:dialog>
 
-    <p:dialog  header="Registrar sucursales" widgetVar="sucursales" rendered="true" height="600" width="800" modal="true" draggable="false" resizable="false" >
-        <h:panelGrid  id="pnlsucursal" columns="2">
-            <p:selectOneMenu  value="#{sucursalesBean.sucursales.distrito}"> 
+    <p:dialog  header="Registrar sucursales" widgetVar="sucursales" rendered="true" height="600" width="1300" modal="true" draggable="false" resizable="false" >
+        <h:panelGrid  id="pnlsucursal" columns="4">
+             <p:selectOneMenu id="cmbdepartamento3"  value="#{departamentosBean.departamentos.registrodep}" > 
+                <f:selectItem itemLabel="-Seleccione Departamento- "   itemValue="0"/>
+                <f:selectItems value="#{departamentosBean.listaDepartamento}"/>
+                <p:ajax process="cmbdepartamento3" update="cmbprovincias2" />
+            </p:selectOneMenu>
+            
+            <p:selectOneMenu id="cmbprovincias2"  value="#{distritosBean.distritos.provincia}" > 
+                <f:selectItem itemLabel="-Seleccione Provincia- "   itemValue="0"/>
+                <f:selectItems value="#{departamentosBean.listaProvincias}"/>
+                <p:ajax process="cmbprovincias2" update="cmbdistrito" />
+            </p:selectOneMenu>
+            
+            <p:selectOneMenu id="cmbdistrito" value="#{sucursalesBean.sucursales.distrito}"> 
                 <f:selectItem itemLabel="-Seleccione Distrito- "   itemValue="0" itemDisabled="true"/>
                 <f:selectItems value="#{distritosBean.listaDistritos}" />
             </p:selectOneMenu>
@@ -189,37 +201,95 @@ and open the template in the editor.
         </h:panelGrid>  
         
         <h:panelGrid columns="1">
-            <p:dataTable id="listasucursal" var="sucursal"  value="#{sucursalesBean.sucursales.lista}" filteredValue="#{sucursalesBean.sucursales.listafiltrar}" rows="3" paginator="true" >
-                <p:column headerText="Registro" filterBy="#{sucursal.registrosuc}">
-                    <p:outputLabel value="#{sucursal.registrosuc}" />
-                </p:column>
+            <p:dataTable id="listasucursal" var="sucursal"  value="#{sucursalesBean.sucursales.lista3}" filteredValue="#{sucursalesBean.sucursales.listafiltrar}" rows="3" paginator="true" >
                 <p:column headerText="Sucursal" filterBy="#{sucursal.nombresuc}">
-                    <p:outputLabel value="#{sucursal.nombresuc}" />
+                    <p:outputLabel value="#{sucursal.nombresuc}" rendered="#{sucursal.flag}" />
+                       <h:inputText value="#{sucursal.nombresuc}" rendered="#{ not sucursal.flag}" />
+                </p:column>
+                <p:column headerText="Direccion" filterBy="#{sucursal.direccionsuc}">
+                    <p:outputLabel value="#{sucursal.direccionsuc}" rendered="#{sucursal.flag}" />
+                        <h:inputText value="#{sucursal.direccionsuc}" rendered="#{ not sucursal.flag}" />
+                </p:column>
+                 <p:column headerText="Alcance" >
+                     <p:selectOneMenu value="#{sucursal.alcancesuc}" disabled="#{sucursal.flag}" >
+                <f:selectItem itemLabel="-Seleccionar Alcance-" itemValue="0" itemDisabled="true" />
+                <f:selectItem itemLabel="Instituto Pedagogico" itemValue="1" />
+                <f:selectItem itemLabel="Instituto Tecnologico" itemValue="2" />
+                <f:selectItem itemLabel="CEPRE" itemValue="3" />
+            </p:selectOneMenu> 
+                </p:column>
+                <p:column headerText="Codigo Modular" filterBy="#{sucursal.codigomodularsuc}">
+                    <p:outputLabel value="#{sucursal.codigomodularsuc}" rendered="#{sucursal.flag}"/>
+                    <h:inputText value="#{sucursal.codigomodularsuc}" rendered="#{ not sucursal.flag}" />
+                </p:column>
+                <p:column headerText="Tipo De Gestion" filterBy="#{sucursal.tipodegestionsuc}">
+                    <p:selectOneMenu value="#{sucursal.tipodegestionsuc}"  disabled="#{sucursal.flag}" >
+                <f:selectItem itemLabel="-Seleccionar Tipo de Gestion-" itemValue="0" itemDisabled="true" />
+                <f:selectItem itemLabel="Privada" itemValue="1" />
+                <f:selectItem itemLabel="Publico" itemValue="2" />
+                <f:selectItem itemLabel="Religioso" itemValue="3" />
+            </p:selectOneMenu>     
+                </p:column>
+                <p:column headerText="Autorizacion" filterBy="#{sucursal.autorizacionsuc}">
+                    <p:outputLabel value="#{sucursal.autorizacionsuc}" rendered="#{sucursal.flag}" />
+                    <h:inputText value="#{sucursal.autorizacionsuc}" rendered="#{ not sucursal.flag}" />
+                </p:column>
+                <p:column headerText="Fecha Autorizacion" filterBy="#{sucursal.fechaautorizacionsuc}">
+                  <h:outputText value="#{sucursal.fechaautorizacionsuc}" rendered="#{sucursal.flag}" ><f:convertDateTime type="date" pattern="yyyy-MM-dd"/></h:outputText>
+                                  <p:calendar id="txtfecha2" value="#{sucursal.fechaautorizacionsuc}" pattern="dd/MM/yyyy" mask="true" class="datos" placeholder="Fecha de Inicio" rendered="#{ not sucursal.flag}" ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>
+                     
                 </p:column>
                 <p:column headerText="Empresa" filterBy="#{sucursal.nempresa}">
-                    <p:outputLabel value="#{sucursal.nempresa}" />
+                    <p:outputLabel value="#{sucursal.nempresa}" rendered="#{sucursal.flag}"  />
+                    <p:selectOneMenu value="#{sucursal.empresa}" rendered="#{ not sucursal.flag}"> 
+                <f:selectItem itemLabel="-Seleccione Empresa- "   itemValue="0" itemDisabled="true"/>
+                <f:selectItems value="#{empresasBean.listaEmpresas}" />
+            </p:selectOneMenu>
+                    
                 </p:column>
                 <p:column headerText="Distrito" filterBy="#{sucursal.ndistrito}">
                     <p:outputLabel value="#{sucursal.ndistrito}" />
                 </p:column>
-                <p:column headerText="accion">
-
+                
+                   <p:column headerText="accion">
+                     <p:commandButton icon="ui-icon-close" actionListener="#{sucursalesBean.sucursales.cancelar(sucursal)}"  rendered="#{ not sucursal.flag}" update="listasucursal" />
+                    <p:commandButton icon="ui-icon-check" actionListener="#{sucursalesBean.sucursales.actualizar(sucursal,login.user.registro)}" rendered="#{ not sucursal.flag}" update="listasucursal" />
+                    <p:commandButton icon="ui-icon-pencil" actionListener="#{sucursalesBean.sucursales.editar(sucursal)}"  rendered="#{sucursal.flag}" update="listasucursal" />
                 </p:column>
             </p:dataTable>
         </h:panelGrid>  
     </p:dialog>
 
-    <p:dialog header="Registrar Usuario a Sucursal"  widgetVar="sxu" rendered="true" height="100" width="600" modal="true" draggable="false" resizable="false" >
+    <p:dialog header="Registrar Usuario en Sucursal"  widgetVar="sxu" rendered="true" height="600" width="800" modal="true" draggable="false" resizable="false" >
         <h:panelGrid columns="2" id="userxSucu">
-            <p:selectOneMenu value="#{userxSucuBean.userxsucu.usuario}">
-                <f:selectItem itemLabel="-Seleccione Usuario- "   itemValue="0" itemDisabled="true"/>
-                <f:selectItems value="#{usersBean.listausuarios}" />
-            </p:selectOneMenu>
-            <p:selectOneMenu value="#{userxSucuBean.userxsucu.sucursal}">
+            
+            <p:selectOneListbox value="#{userxSucuBean.userxsucu.usuario}" filter="true" filterMatchMode="contains" class="list-box">
+                <f:selectItems value="#{usersBean.listausuarios}" itemLabel="#{usersBean.user.nombre}" />
+            </p:selectOneListbox> 
+            <p:commandButton value="Registrar" actionListener="#{userxSucuBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar" update="userxSucu,listauxs" />
+        </h:panelGrid>
+        <h:panelGrid columns="1">
+            <p:dataTable id="listauxs" var="uxs"  value="#{userxSucuBean.userxsucu.listauxs}" filteredValue="#{userxSucuBean.userxsucu.filtrouxs}" rows="5" paginator="true" >
+                <p:column headerText="Usuario" filterBy="#{uxs.nusuario}" >
+                    <p:outputLabel value="#{uxs.nusuario}" rendered="#{uxs.flag}" />
+                    <p:selectOneListbox value="#{uxs.usuario}" filter="true" filterMatchMode="contains" class="list-box2" rendered="#{ not uxs.flag}"  >
+                        <f:selectItems value="#{usersBean.listausuarios}" itemLabel="#{usersBean.user.nombre}" />
+                    </p:selectOneListbox> 
+                </p:column>
+                <p:column headerText="Sucursal">
+                    <p:outputLabel value="#{uxs.nsucursal}" rendered="#{uxs.flag}" />
+               <p:selectOneMenu value="#{uxs.sucursal}" rendered="#{ not uxs.flag}" >
                 <f:selectItem itemLabel="-Seleccione Sucursal- "   itemValue="0" itemDisabled="true"/>
                 <f:selectItems value="#{sucursalesBean.listaSucursales}" />
-            </p:selectOneMenu>  
-            <p:commandButton value="Registrar" actionListener="#{userxSucuBean.registrar(login.user.registro)}" class="boton-ingresar" update="userxSucu" />
+            </p:selectOneMenu>
+                </p:column>
+ 
+                <p:column >
+                    <p:commandButton icon="ui-icon-close" actionListener="#{userxSucuBean.userxsucu.cancelar(uxs)}"  rendered="#{ not uxs.flag}" update="listauxs" />
+                    <p:commandButton icon="ui-icon-check" actionListener="#{userxSucuBean.userxsucu.actualizar(uxs,login.user.registro,sucursalesBean.sucursales.registrosuc)}" rendered="#{ not uxs.flag}" update="listauxs"/>
+                    <p:commandButton icon="ui-icon-pencil" actionListener="#{userxSucuBean.userxsucu.editar(uxs)}"  rendered="#{uxs.flag}" update="listauxs"/>
+                </p:column>
+            </p:dataTable>
         </h:panelGrid>
     </p:dialog>
 </h:form>

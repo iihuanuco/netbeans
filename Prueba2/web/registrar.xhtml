@@ -19,6 +19,7 @@ and open the template in the editor.
     </h:head>
     <h:body style="background-color:white;">
         <h:form class="registro" >
+              <p:growl id="messages" showDetail="true" />
             <div columns="1" class="registro-menu">
                 <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/1.jpg"/><p:commandButton value="Departamentos" onclick="#{departamentosBean.departamentos.mostrar()}" oncomplete="PF('departamentos').show();"  class="  btn-img"  /></div>
                 <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/2.jpg"/><p:commandButton value="Provincias" oncomplete="PF('provincias').show();"  class="  btn-img"  /></div>

@@ -19,6 +19,7 @@ public class Notas {
     private int evaluacionxcurso;
     private String nombrealumno,codigoalumno;
         private List <Notas> lista;
+        private List <Notas> filtronotas;
         boolean filtro=false;
 
     public Notas() {
@@ -112,6 +113,14 @@ public class Notas {
 
     public void setLista(List<Notas> lista) {
         this.lista = lista;
+    }
+
+    public List<Notas> getFiltronotas() {
+        return filtronotas;
+    }
+
+    public void setFiltronotas(List<Notas> filtronotas) {
+        this.filtronotas = filtronotas;
     }
 
     public String getCodigoalumno() {

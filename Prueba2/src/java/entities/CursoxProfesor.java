@@ -10,12 +10,12 @@ import java.util.List;
  
 public class CursoxProfesor {
    private int registro,profesor,curso,actividad,userc,userm;  
-   private String ncurso,nprofesor,nactividad;
+   private String ncurso,nprofesor,nactividad,view="margin: 20% auto; text-align: center;";
    private Date fecham;
       private List <CursoxProfesor> lista;
        private List <CursoxProfesor> listapxc;
        private List<Carreras> filtropxc;
-      private boolean flag=true;
+      private boolean flag=true,sw=false;
 
     public CursoxProfesor() {
     }
@@ -134,6 +134,22 @@ public class CursoxProfesor {
     public void setFlag(boolean flag) {
         this.flag = flag;
     }
+
+    public boolean isSw() {
+        return sw;
+    }
+
+    public void setSw(boolean sw) {
+        this.sw = sw;
+    }
+
+    public String getView() {
+        return view;
+    }
+
+    public void setView(String view) {
+        this.view = view;
+    }
     
     
     
@@ -159,6 +175,8 @@ public class CursoxProfesor {
                       while (iter.hasNext()) {
                           CursoxProfesor e = iter.next();
                           lista.add(e);
+                          sw=true;
+                          view="margin: 20px auto; text-align: center;";
                       }
                      
       }

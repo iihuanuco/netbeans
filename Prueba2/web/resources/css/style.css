@@ -11,7 +11,6 @@
     width: 250px;
      background-color: white !important ;
     text-align: center;
-    border: 5px solid #333333;
 }
 
 .texto2{
@@ -242,6 +241,15 @@ div.submenu3:hover .btn-img{
     color: white;
 }
 
+.label-app{
+     font-family: "Dosis",sans-serif !important;
+     text-shadow:  none !important;
+     font-weight:  normal !important ;
+     margin-left: 5px;
+    color: black;
+    float:left;
+}
+
 .icono-login{
  position: absolute;
 color: #333333;
@@ -251,11 +259,12 @@ margin: 10px 10px;
 
 
 
+
+
 .c0{
     width: 50px;
 }
 
- 
 .lista-sucursales{
         font-family: "Dosis",sans-serif !important;
 }
@@ -266,23 +275,16 @@ margin: 10px 10px;
     display:none;
 }
 
-.matricula{
-    padding: 80px;
-}
 
-.list-box{
-    width: 400px !important;
-}
-div.list-box .ui-selectlistbox-listcontainer{
-    height: 50px !important; 
-}
-.list-box2{
-    width: 200px !important;
-}
-div.list-box2 .ui-selectlistbox-listcontainer{
-    height: 50px !important; 
-}
- 
+
+
+
+
+
+
+
+
+
 
 div.dialog-sucursal .ui-shadow{
     box-shadow: 0px 5px 10px rgba(0,0,0,0) !important;
@@ -333,6 +335,254 @@ opacity: 1 !important;
 
 
 
+
+
+
+
+
+
+
+
+.list-box{
+    width: 400px !important;
+}
+div.list-box .ui-selectlistbox-listcontainer{
+    height: 50px !important; 
+}
+.list-box2{
+    width: 200px !important;
+}
+div.list-box2 .ui-selectlistbox-listcontainer{
+    height: 50px !important; 
+}
+
+.matricula{
+    padding: 40px;
+}
+
+.matricula .ui-selectonemenu{
+    width: auto !important;
+}
+
+.matricula .ui-inputfield {
+    box-shadow: inset 0 2px 2px rgba(0,0,0,0) !important;
+    width: 300px !important;
+     font-family: "Dosis",sans-serif !important;
+     text-align: center !important;
+}
+.matricula .ui-selectlistbox-filter.ui-inputfield{
+    width: auto !important;
+}
+
+.matricula .ui-icon-search {
+    margin-right: 40px;
+}
+
+.matricula  .ui-shadow{
+    box-shadow: 0px 5px 10px rgba(0,0,0,0) !important;
+}
+
+.matricula  .ui-state-default{
+background: #ffffff -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
+}
+
+.matricula  .ui-state-hover,.ui-state-focus {
+    box-shadow: 0 0 0 rgba(0,0,0,0) !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.notas2 .ui-selectonemenu{
+    width: auto !important;
+}
+
+.notas2 .ui-inputfield {
+    box-shadow: inset 0 2px 2px rgba(0,0,0,0) !important;
+    width: 300px !important;
+     font-family: "Dosis",sans-serif !important;
+     text-align: center !important;
+}
+.notas2 .ui-selectlistbox-filter.ui-inputfield{
+    width: auto !important;
+}
+
+ .notas2 .ui-state-default{
+background:  white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
+text-shadow:  none;
+
+}
+
+
+.notas  .ui-shadow{
+    box-shadow: 0px 5px 10px rgba(0,0,0,0) !important;
+}
+
+.notas .ui-state-default{
+background: #f6f6f6 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
+text-shadow:  none;
+
+}
+
+.notas, .notas2  .ui-state-hover,.ui-state-focus {
+    box-shadow: 0 0 0 rgba(0,0,0,0) !important;
+}
+
+
+
+.notas .ui-datatable thead th{
+    color: black !important;
+    font-weight:  normal;
+    border: 0px solid rgba(0,0,0,0) !important;
+    padding-bottom: 10px;
+padding-top: 10px;
+}
+ 
+ 
+.notas .ui-widget-header{
+    background: white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+color: black;
+text-shadow: none;
+font-weight: normal;
+font-family: "Dosis",sans-serif !important;
+border-bottom: 1px solid black;
+
+}
+.notas .ui-widget-content{
+    border: 2px solid white ;
+    text-align: center;
+}
+
+.notas  .ui-inputfield {
+    box-shadow: inset 0 2px 2px rgba(0,0,0,0) !important;
+     font-family: "Dosis",sans-serif !important;
+     text-align: center !important;
+     background-color: white !important;
+     color: #333333 !important;
+     width: auto !important;
+
+}
+.notas .ui-widget-content{
+    border-top: 1px solid #bdbdbd !important;
+    border-bottom: 1px solid #bdbdbd !important;
+    text-align: center;
+ 
+}
+.notas  .ui-datatable-odd {
+    background: none repeat scroll 0 0 white !important;
+    border-top: 1px solid black !important;
+}
+
+
+.dialog-notas .ui-widget-content{
+    border-top: 1px solid #bdbdbd !important;
+    border-bottom: 1px solid #bdbdbd !important;
+    border: 2px solid #ffffff !important;
+    text-align: center;
+}
+
+.dialog-notas .ui-datatable thead th{
+    color: black !important;
+    font-weight:  normal;
+    border: 0px solid rgba(0,0,0,0) !important;
+    padding-bottom: 10px;
+padding-top: 10px;
+}
+ 
+ 
+.dialog-notas .ui-widget-header{
+    background: white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+color: black;
+text-shadow: none;
+font-weight: normal;
+font-family: "Dosis",sans-serif !important;
+border-bottom: 1px solid black;
+
+}
+.dialog-notas .ui-widget-content{
+    border: 2px solid white ;
+    text-align: center;
+}
+
+.dialog-notas  .ui-inputfield {
+    box-shadow: inset 0 2px 2px rgba(0,0,0,0) !important;
+     font-family: "Dosis",sans-serif !important;
+     text-align: center !important;
+     background-color: white !important;
+     color: #333333 !important;
+     width: auto !important;
+
+}
+.listanotas .ui-widget-content{
+    border-top: 1px solid #bdbdbd !important;
+    border-bottom: 1px solid #bdbdbd !important;
+    text-align: center;
+ 
+}
+.dialog-notas  .ui-datatable-odd {
+    background: none repeat scroll 0 0 white !important;
+    border-top: 1px solid black !important;
+}
+
+.dialog-notas  .ui-shadow{
+    box-shadow: 0px 5px 10px rgba(0,0,0,0) !important;
+}
+
+.dialog-notas .ui-state-default{
+background: #f6f6f6 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
+text-shadow:  none;
+
+}
+.dialog-notas  .ui-state-hover,.ui-state-focus {
+    box-shadow: 0 0 0 rgba(0,0,0,0) !important;
+}
+
+.notas  .btn-dialog{
+     background: #ffffff -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+    text-shadow: none !important;
+    box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
+    height: 50px;
+    width: 100px;
+    font-family: "Dosis",sans-serif !important;
+    font-weight:  normal;
+     border: 1px solid #009999;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+.notas .btn-dialog:hover{
+     border: 2px solid #333333;
+}
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 div.dialog-alumno .ui-selectonemenu{
     width: auto !important;
 }
@@ -342,12 +592,12 @@ div.dialog-alumno .ui-shadow{
 }
 
 div.dialog-alumno .ui-widget-header{
-    background: #009999 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
-color: white;
+    background: white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+color: black;
 text-shadow: none;
 font-weight: normal;
    font-family: "Dosis",sans-serif !important;
-
+   border-bottom: 1px solid black;
 }
 
 div.dialog-alumno .ui-widget-content{
@@ -376,6 +626,17 @@ div.dialog-alumno .ui-inputfield {
  div.ui-selectonemenu-list-item{
     font-family: "Dosis",sans-serif !important;
 }
+
+
+
+
+
+
+
+
+
+
+
 
  
 div.dialog-gestion-alumnos .ui-inputfield {
@@ -406,8 +667,9 @@ div.dialog-gestion-alumnos .btn-dialog{
     transition: all .2s ease-in-out;
 }
 div.dialog-gestion-alumnos .ui-state-default{
-background: #333333 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
+background: #f6f6f6 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
 text-shadow:  none;
+
 }
 
 div.dialog-gestion-alumnos .btn-dialog:hover{
@@ -419,7 +681,7 @@ div.dialog-gestion-alumnos .btn-dialog:hover{
       border-width: 0 !important;
 }
 div.dialog-gestion-alumnos .ui-datatable thead th{
-    color: white !important;
+    color: black !important;
     font-weight:  normal;
     border: 0px solid rgba(0,0,0,0) !important;
     padding-bottom: 10px;
@@ -438,18 +700,26 @@ div.dialog-gestion-alumnos  .ui-shadow{
 }
 
 div.dialog-gestion-alumnos .ui-widget-header{
-    background: #009999 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
-color: white;
+    background: white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+color: black;
 text-shadow: none;
 font-weight: normal;
 font-family: "Dosis",sans-serif !important;
+border-bottom: 1px solid black;
 
 }
-
 div.dialog-gestion-alumnos .ui-widget-content{
-    border: 2px solid #ffffff !important;
+    border: 2px solid white ;
     text-align: center;
 }
+
+.listausers .ui-widget-content{
+    border-top: 1px solid #bdbdbd !important;
+    border-bottom: 1px solid #bdbdbd !important;
+    text-align: center;
+}
+
+
 .ui-dialog-titlebar-close
 {
     background-color: white;
@@ -460,7 +730,9 @@ div.dialog-gestion-alumnos .ui-widget-content{
 }
 div.dialog-gestion-alumnos  .ui-datatable-odd {
     background: none repeat scroll 0 0 white !important;
+    border-top: 1px solid black !important;
 }
+
 
 
 @keyframes moveFromTop {

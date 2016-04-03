@@ -28,6 +28,6 @@ public class UserxSucuBean {
         userxsucu.setSucursal(0);
         userxsucu.mostraruxs(suc);
     } 
-   
+    
     
 }

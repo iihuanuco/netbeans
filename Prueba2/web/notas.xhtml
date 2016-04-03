@@ -14,79 +14,95 @@ and open the template in the editor.
         <title>registro</title>
         <h:outputStylesheet library="css" name="style.css"  />
         <h:outputStylesheet library="resources" name="fonts.css"  />
-         <h:outputScript library="js" name="bg.js"   />
+        <h:outputScript library="js" name="bg.js"   />
 
     </h:head>
     <h:body style="background-color:white;" >
         <f:view>
             <h:form id="notas" >
-              <h:panelGrid>
-                  <p:selectOneMenu id="cmbactividades" value="#{sucursalesBean.sucursales.registrosuc}"   > 
-                      <f:selectItem itemLabel="-Seleccione Actividad- "   itemValue="0"/>
-                       <f:selectItems value="#{sucursalesBean.listaactividades}" />
-            </p:selectOneMenu>
-                  <p:selectOneMenu id="cmbcarreras"  value="#{carrerasBean.carreras.registrocarrera}"   > 
-                            <f:selectItem itemLabel="-Seleccione Carrera- "   itemValue="0"/>
-                            <f:selectItems value="#{sucursalesBean.listacarreras}" />
-            </p:selectOneMenu>
-                  <p:commandButton value="Filtrar"  actionListener="#{cursoxProfesorBean.cursoxprofesor.mostrar(carrerasBean.carreras.registrocarrera,sucursalesBean.sucursales.registrosuc,sucursalesBean.sucursales.registrosuc)}"  update="tblcursos"  />
-                  
-                  
-                  <p:dataTable id="tblcursos" var="curso" value="#{cursoxProfesorBean.cursoxprofesor.lista}"  >
-                      <p:column headerText="Codigo" >
-                          <h:outputText value="#{curso.registro}" />
-                         </p:column>
-                         <p:column headerText="Curso" >
-                             <h:outputText value="#{curso.ncurso}" />
-                         </p:column>
-                         <p:column headerText="Docente">
-                             <h:outputText value="#{curso.nprofesor}" />
-                         </p:column>
-                         <p:column >
-                             <p:commandButton value="Notas"  actionListener="#{cursoxProfesorBean.obtener(curso.registro)}" oncomplete="PF('notas').show();" update=":notas:notas-dialogo"  ><p:ajax listener="#{notasBean.notas.limpiar()}" />
-                             </p:commandButton>
-                         </p:column>
-                     </p:dataTable>
-              </h:panelGrid>
-            
-            
-            <p:dialog id="notas-dialogo" header="Registrar Notas"  widgetVar="notas" rendered="true" height="600" width="800" modal="true" draggable="false" resizable="false" >
-                <h:panelGrid columns="1">
- 
-                    <p:selectOneMenu id="cmbnotas" value="#{evaluaxCursoBean.evaluaxcurso.registro}" > 
-                            <f:selectItem itemLabel="-Seleccione Tipo de Nota- "   itemValue="0"/>
-                            <f:selectItems value="#{cursoxProfesorBean.listaeva}" />
+                <h:panelGrid id="view" class="notas2" style="#{cursoxProfesorBean.cursoxprofesor.view}">
+                    <p:selectOneMenu id="cmbactividades" value="#{sucursalesBean.sucursales.registrosuc}"   > 
+                        <f:selectItem itemLabel="-Seleccione Actividad- "   itemValue="0"/>
+                        <f:selectItems value="#{sucursalesBean.listaactividades}" />
                     </p:selectOneMenu>
-                    <p:commandButton value="Filtrar ALumnos" 
-                                     actionListener="#{notasBean.notas.mostrar(cursoxProfesorBean.cursoxprofesor.registro,evaluaxCursoBean.evaluaxcurso.registro)}"  update="tblalumnos" />
-                             
-                   
-                    <p:dataTable id="tblalumnos"  var="alumnos" value="#{notasBean.notas.lista}" emptyMessage="">
-                        <c:choose>
-                         <c:when test="#{notasBean.notas.filtro==true}">
-                        <p:column headerText="Registro Alumno"  >
-                            <h:outputText value="#{alumnos.codigoalumno}" />
-                        </p:column>
-                        <p:column headerText="Nombre">
-                            <h:outputText value="#{alumnos.nombrealumno}" />
-                        </p:column>
-                        <p:column >
-                            <p:inputText value="#{alumnos.notanot}" >
-                                <p:ajax event="change" listener="#{notasBean.registrar(alumnos,login.user.registro,evaluaxCursoBean.evaluaxcurso.registro,cursoxProfesorBean.cursoxprofesor.registro)}"  update="tblalumnos"/>       
-                            </p:inputText>
-                        </p:column>
-                               </c:when>
+                    <p:selectOneMenu id="cmbcarreras"  value="#{carrerasBean.carreras.registrocarrera}"   > 
+                        <f:selectItem itemLabel="-Seleccione Carrera- "   itemValue="0"/>
+                        <f:selectItems value="#{sucursalesBean.listacarreras}" />
+                    </p:selectOneMenu>
+                    <p:commandButton value="Filtrar"  actionListener="#{cursoxProfesorBean.cursoxprofesor.mostrar(carrerasBean.carreras.registrocarrera,sucursalesBean.sucursales.registrosuc,sucursalesBean.sucursales.registrosuc)}"  update="listnotas,view" class="boton-ingresar" />
+                </h:panelGrid>
+
+
+                <h:panelGrid id="listnotas" class="notas">
+                    <c:choose>
+                        <c:when test="#{cursoxProfesorBean.cursoxprofesor.sw==true}">
+                            <p:dataTable id="tblcursos" var="curso" value="#{cursoxProfesorBean.cursoxprofesor.lista}" emptyMessage=""  filteredValue="#{cursoxProfesorBean.cursoxprofesor.filtropxc}">
+
+
+                                <p:column headerText="Codigo" filterBy="#{curso.registro}" >
+                                    <h:outputText value="#{curso.registro}" />
+                                </p:column>
+                                <p:column headerText="Curso" filterBy="#{curso.ncurso}"  >
+                                    <h:outputText value="#{curso.ncurso}" />
+                                </p:column>
+                                <p:column headerText="Docente" filterBy="#{curso.nprofesor}" >
+                                    <h:outputText value="#{curso.nprofesor}" />
+                                </p:column>
+                                <p:column >
+                                    <p:commandButton value="Notas" icon="ui-icon-note
+ "  actionListener="#{cursoxProfesorBean.obtener(curso.registro)}" oncomplete="PF('notas').show();" update=":notas:notas-dialogo" class="btn-dialog" ><p:ajax listener="#{notasBean.notas.limpiar()}" />
+                                    </p:commandButton>
+                                </p:column>
+
+                            </p:dataTable>
+                        </c:when>
+                        <c:otherwise>
+                        </c:otherwise>
+                    </c:choose>
+                </h:panelGrid>
+
+
+                <div class="dialog-notas"> 
+                    <p:dialog id="notas-dialogo"   widgetVar="notas"  showEffect="clip" hideEffect="clip"  rendered="true" height="auto" width="100%" modal="true" draggable="false" resizable="false" position="absolute">
+                        <h:panelGrid columns="1" class="listanotas" style="margin: 20px auto; text-align: center;">
+
+                            <p:selectOneMenu id="cmbnotas" value="#{evaluaxCursoBean.evaluaxcurso.registro}" > 
+                                <f:selectItem itemLabel="-Seleccione Tipo de Nota- "   itemValue="0"/>
+                                <f:selectItems value="#{cursoxProfesorBean.listaeva}" />
+                            </p:selectOneMenu>
+                            <p:commandButton value="Filtrar Notas"  actionListener="#{notasBean.notas.mostrar(cursoxProfesorBean.cursoxprofesor.registro,evaluaxCursoBean.evaluaxcurso.registro)}"  update="listnotas2"  class="boton-ingresar"/>
+
+                            <h:panelGrid  id="listnotas2">
+    
+                            <c:choose>
+                                <c:when test="#{notasBean.notas.filtro==true}">
+                                    <p:dataTable id="tblalumnos"  var="alumnos" value="#{notasBean.notas.lista}" emptyMessage="" filteredValue="#{notasBean.notas.filtronotas}">
+
+                                        <p:column headerText="Registro Alumno" filterBy="#{alumnos.codigoalumno}" >
+                                            <h:outputText value="#{alumnos.codigoalumno}" />
+                                        </p:column>
+                                        <p:column headerText="Nombre" filterBy="#{alumnos.nombrealumno}">
+                                            <h:outputText value="#{alumnos.nombrealumno}" />
+                                        </p:column>
+                                        <p:column >
+                                            <p:inputText value="#{alumnos.notanot}" >
+                                                <p:ajax event="change" listener="#{notasBean.registrar(alumnos,login.user.registro,evaluaxCursoBean.evaluaxcurso.registro,cursoxProfesorBean.cursoxprofesor.registro)}"  update="tblalumnos"/>       
+                                            </p:inputText>
+                                        </p:column>
+
+                                    </p:dataTable>
+                                </c:when>
                                 <c:otherwise>
-                            </c:otherwise>
-                          </c:choose>
-                    </p:dataTable>
-                         
-                
-                  
-                    </h:panelGrid>
-            </p:dialog>
-              
-        </h:form>
-            </f:view>
+                                </c:otherwise>
+                            </c:choose>
+                                
+                        </h:panelGrid>
+                            
+                        </h:panelGrid>
+                    </p:dialog>
+                </div>      
+
+            </h:form>
+        </f:view>
     </h:body>
 </html>

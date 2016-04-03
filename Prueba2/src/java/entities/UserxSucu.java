@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 
 public class UserxSucu {
@@ -131,12 +133,34 @@ public class UserxSucu {
     
     
     public void registrar(int reg,int suc) {   
+        boolean sw=false;
         SqlUserxSucu sus=new SqlUserxSucu();
         UserxSucu us=new UserxSucu();
         us.setUsuario(usuario);
         us.setSucursal(suc);
         us.setUserc(reg);
-        sus.InsertarUserxSucu(us);
+        
+        SqlUserxSucu sc=new SqlUserxSucu();
+        List<UserxSucu> listacar=sc.MostrarUserxSucu(suc);
+        Iterator<UserxSucu> iter=listacar.iterator();
+        while (iter.hasNext()) {
+            UserxSucu c = iter.next();
+            if(c.getUsuario()==usuario ){
+            sw=true;
+            }      
+        }
+       
+        if(sw==false)
+        {
+           sus.InsertarUserxSucu(us);
+        }
+        else if(sw==true){  
+            
+               FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Usuario ya esta registrado"));
+
+        }
+        
     }
     
       public void mostraruxs(int suc){

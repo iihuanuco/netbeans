@@ -17,28 +17,39 @@
 
 
 
-    <h:body onload="#{login.user.load()} and #{sucursalesBean.sucursales.mostrar()} and #{sucursalesBean.sucursales.mostrar2(login.user.registro)}" style="background-color: rgba(51,51,51,1)">
+    <h:body onload="#{login.user.load()} and #{sucursalesBean.sucursales.mostrar()} and #{sucursalesBean.sucursales.mostrar2(login.user.registro)}" style="background-color: rgba(255,255,255,1);">
       
-
-
         <c:choose>
             <c:when test="#{login.user.nombre==null}">
-
+                  <h:graphicImage id="bg"  value="resources/img/bg.jpg" />
                 <h:form   class="login">
-                    <p:growl id="messages" showDetail="true" />
-                    <h:panelGrid columns="1"  title="Ingresar" class="panel-login">
-                        <p:outputLabel value="Usuario: "  class="label-login"/>
-                        <p:inputText value="#{login.user.usuario}"   class="texto texto-login" ></p:inputText>
-                        <p:outputLabel value="Contraseña: " class="label-login"/>
-                        <p:password value="#{login.user.password}"   class="texto texto-login"></p:password>
-                        <p:commandButton value="Ingresar" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages"  class=" boton-login"  />
+                     <table class="title-login">
+                   <tr> 
+                       <td><i class="icon icon-shield logo-login"></i>
+                       </td> 
+                       <td><h:outputText value="INICIAR SESIÓN " class="label-text-login" /><br/>
+                       <h:outputText value="Ingrese su usuario y contraseña para ingresar al sistema" class="label-text-login2" />
+                       </td> 
+                   </tr>
+                 </table>
 
-                    </h:panelGrid>
+                <table class="panel-login">
+                    <tr>
+                        <td > <p:outputLabel value="Usuario:  " class="label-login" />  </td>
+                        <td > <p:outputLabel value="Contraseña:  " class="label-login" /></td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td > <i class="icon icon-user2 icono-login"></i><p:inputText value="#{login.user.usuario}"   class="texto texto-login" ></p:inputText></td>
+                        <td > <i class="icon icon-pass icono-login"></i><p:password value="#{login.user.password}"   class="texto texto-login"></p:password></td>
+                        <td> <p:commandButton value="INGRESAR" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages"  class=" boton-login"  /></td>
+                    </tr>
+                    <p:growl id="messages" showDetail="true" />
+                </table>
                 </h:form>
             </c:when>
 
             <c:otherwise>
-                  <h:graphicImage id="bg" alt="Fondo de pantalla" value="resources/img/fondo.jpg" />
                 <h:form id="menu2"  >
                     <p:growl id="messages" showDetail="true" />
                     <header>
@@ -46,13 +57,13 @@
                             <ul >
 
                                 <li><a href="inicio.xhtml" target="academico"  ><span class="c1"><i class="icon icon-home"></i></span>Inicio</a></li> 
-                                <li ><a href="signup.xhtml"  target="academico" ><span class="c2"><i class="icon icon-user"></i></span>Usuarios</a></li>
+                                <li><a href="signup.xhtml"  target="academico" ><span class="c2"><i class="icon icon-user"></i></span>Usuarios</a></li>
                                 <li><a href="matricula.xhtml"  target="academico" ><span class="c2"><i class="icon icon-matricula"></i></span>Matricula</a></li>
-                                  <li><a href="notas.xhtml"  target="academico" ><span class="c2"><i class="icon icon-matricula"></i></span>Notas</a></li>
-                                 <li><a href="academicos.xhtml"  target="academico" ><span class="c2"><i class="icon icon-matricula"></i></span>Academico</a></li>
-                                     <li><a href="registrar.xhtml"  target="academico" ><span class="c3"><i class="icon icon-matricula"></i></span>Registrar</a></li>
-                                <li><a href="personalizar.xhtml"  target="academico"><span class="c4"><i class="icon icon-id"></i></span>User: #{login.user.usuario}</a></li>
-                                <li style="color:white;">#{sucursalesBean.sucursales.nombre}</li>
+                                  <li><a href="notas.xhtml"  target="academico" ><span class="c2"><i class="icon icon-notebook-list"></i></span>Notas</a></li>
+                                 <li><a href="academicos.xhtml"  target="academico" ><span class="c2"><i class="icon icon-storage"></i></span>Academico</a></li>
+                                     <li><a href="registrar.xhtml"  target="academico" ><span class="c3"><i class="icon icon-storage"></i></span>Registrar</a></li>
+                                <li><a href="personalizar.xhtml"  target="academico"><span class="c4"><i class="icon icon-cogs"></i></span>User: #{login.user.usuario}</a></li>
+                                <li style="color:white;" class="menu-salir">#{sucursalesBean.sucursales.nombre}</li>
                                 <li class="menu-salir"><p:commandButton value="Salir" action="#{login.user.signout()}" icon="ui-icon-close"  class="boton-salir"  /></li>
                             </ul>
                         </nav>
@@ -60,34 +71,28 @@
 
                 </h:form  >
                 <h:form id="menu"   >
-
-                    <p:dialog  header="Seleccionar sucursales" visible="#{login.user.flag}" widgetVar="sucursales" rendered="true" height="200" width="400" modal="true" closable="false" draggable="false" resizable="false" >
+                    <div class="dialog-sucursal"> 
+                        <p:dialog  header="Seleccione Sucursal" visible="#{login.user.flag}" widgetVar="sucursales" rendered="true" height="100%" width="100%" modal="true" closable="false" draggable="false" resizable="false" position="absolute" >
                         <p:dataTable  id="listasucursales"  class="lista-sucursales"  value="#{sucursalesBean.sucursales.lista}"  var="sucursales" >
-
-                            <p:column>
-                                <h:outputText value="#{sucursales.nombresuc}" />
-                            </p:column>
-
-                            <p:column  class="c0">
-                                <p:commandButton    icon="ui-icon-check"  update=":menu2" action="#{sucursalesBean.sucursales.obtener(sucursales.registrosuc,sucursales.nombresuc)}" oncomplete="PF('sucursales').hide();"    />  
+ 
+                            <p:column  >
+                                <p:commandButton   icon="ui-icon-check" value="#{sucursales.nombresuc}"   update=":menu2" action="#{sucursalesBean.sucursales.obtener(sucursales.registrosuc,sucursales.nombresuc)}" oncomplete="PF('sucursales').hide();"  class="btn-dialog"  />  
                             </p:column>   
 
                         </p:dataTable>  
                     </p:dialog>
-
-                    <p:dialog  header="Seleccionar sucursales" visible="#{login.user.flag2}" widgetVar="sucursales2" rendered="true" height="200" width="400" modal="true" closable="false" draggable="false" resizable="false" >
+      
+                    
+                    <p:dialog  header="Seleccione Sucursal" visible="#{login.user.flag2}" widgetVar="sucursales2" rendered="true" height="100%" width="100%" modal="true" closable="false" draggable="false" resizable="false" position="absolute" >
                         <p:dataTable  id="listasucursales2"  class="lista-sucursales"  value="#{sucursalesBean.sucursales.lista2}"  var="sucursales" >
 
-                            <p:column>
-                                <h:outputText value="#{sucursales.nombresuc}" />
-                            </p:column>
-
-                            <p:column  class="c0">
-                                <p:commandButton    icon="ui-icon-check"  update=":menu2" action="#{sucursalesBean.sucursales.obtener(sucursales.registrosuc,sucursales.nombresuc)}" oncomplete="PF('sucursales2').hide();"    />  
+                            <p:column >
+                                <p:commandButton icon="ui-icon-check"  value="#{sucursales.nombresuc}"  update=":menu2" action="#{sucursalesBean.sucursales.obtener(sucursales.registrosuc,sucursales.nombresuc)}" oncomplete="PF('sucursales2').hide();"  class="btn-dialog"   />  
                             </p:column>   
 
                         </p:dataTable>  
                     </p:dialog>
+                                  </div>
                     <iframe src="inicio.xhtml" frameborder="0" name="academico"  scrolling="no" id="iframe-custom" ></iframe>
                 </h:form  >
             </c:otherwise>

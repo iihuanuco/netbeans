@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:    url('fonts/icomoon.eot?9zjc02');
-    src:    url('fonts/icomoon.eot?9zjc02#iefix') format('embedded-opentype'),
-        url('fonts/icomoon.ttf?9zjc02') format('truetype'),
-        url('fonts/icomoon.woff?9zjc02') format('woff'),
-        url('fonts/icomoon.svg?9zjc02#icomoon') format('svg');
+    src:    url('fonts/icomoon.eot?c853or');
+    src:    url('fonts/icomoon.eot?c853or#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?c853or') format('truetype'),
+        url('fonts/icomoon.woff?c853or') format('woff'),
+        url('fonts/icomoon.svg?c853or#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,16 +24,31 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-notebook-list:before {
+    content: "\e903";
+}
+.icon-cogs:before {
+    content: "\e901";
+}
+.icon-pass:before {
+    content: "\e900";
+}
 .icon-user:before {
     content: "\e904";
 }
 .icon-matricula:before {
     content: "\e902";
 }
-.icon-id:before {
-    content: "\e905";
+.icon-shield:before {
+    content: "\e906";
+}
+.icon-storage:before {
+    content: "\e0bc";
 }
 .icon-home:before {
     content: "\e29e";
+}
+.icon-user2:before {
+    content: "\e905";
 }
 

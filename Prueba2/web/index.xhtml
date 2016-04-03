@@ -7,24 +7,40 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Ingresar</title>
-          <h:outputStylesheet library="css" name="menu.css"  />
-             <h:outputStylesheet library="css" name="style.css"  />
+     <h:outputStylesheet library="css" name="menu.css"  />
+        <h:outputStylesheet library="css" name="style.css"  />
+        <h:outputStylesheet library="resources" name="fonts.css"  />
+        <h:outputScript library="js" name="bg.js"   />
 
     </h:head>
 
-    <h:body style="background-color: rgba(51,51,51,1)">
+    <h:body style="background-color:white;">
         <f:view>
-
+           <h:graphicImage id="bg" value="resources/img/bg.jpg" />
             <h:form class="login">
-                 <p:growl id="messages" showDetail="true" />
-            <h:panelGrid columns="1"  title="Ingresar" class="panel-login">
-                <p:outputLabel value="Usuario: "  class="label-login"/>
-                <p:inputText value="#{login.user.usuario}"   class="texto texto-login" ></p:inputText>
-                <p:outputLabel value="Contraseña: " class="label-login"/>
-                <p:password value="#{login.user.password}"   class="texto texto-login"></p:password>
-                <p:commandButton value="Ingresar" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages"  class=" boton-login"  />
+               <table class="title-login">
+                   <tr> 
+                        <td><i class="icon icon-shield logo-login"></i>
+                       </td> 
+                       <td><h:outputText value="INICIAR SESIÓN " class="label-text-login" /><br/>
+                       <h:outputText value="ingrese su usuario y contraseña para ingresar al sistema" class="label-text-login2" />
+                       </td> 
+                   </tr>
+                 </table>
 
-            </h:panelGrid>
+                <table class="panel-login">
+                    <tr>
+                        <td > <p:outputLabel value="Usuario:  " class="label-login" />  </td>
+                        <td > <p:outputLabel value="Contraseña:  " class="label-login" /></td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td > <i class="icon icon-user2 icono-login"></i><p:inputText value="#{login.user.usuario}"   class="texto texto-login" ></p:inputText></td>
+                        <td > <i class="icon icon-pass icono-login"></i><p:password value="#{login.user.password}"   class="texto texto-login"></p:password></td>
+                        <td> <p:commandButton value="INGRESAR" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages"  class=" boton-login"  /></td>
+                    </tr>
+                    <p:growl id="messages" showDetail="true" />
+                </table>
 
             </h:form>
 

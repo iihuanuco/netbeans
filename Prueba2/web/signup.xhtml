@@ -9,6 +9,7 @@
         <title>Registrar Usuario</title>
          <h:outputStylesheet library="css" name="style.css"  />
         <h:outputStylesheet library="resources" name="fonts.css"  />
+         <h:outputScript library="js" name="bg.js"   />
     </h:head>
 
     <h:body style="background-color:white;">
@@ -16,17 +17,17 @@
             <h:form id="usuarios">
                 <div columns="1" class="registro-menu">
                     
-                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/newuser.jpg"/><p:commandButton value="Nuevo Usuario" 
+                    <div class="submenu3"><h:graphicImage class="imagen-reg" value="resources/img/1u.jpg"/><p:commandButton value="Nuevo Usuario" 
               oncomplete="PF('usuarionuevo').show();"  class="  btn-img"  /></div>
-                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/alumnos.jpg"/><p:commandButton value="Gestionar Alumnos" 
+                    <div class="submenu3"><h:graphicImage class="imagen-reg" value="resources/img/2u.jpg"/><p:commandButton value="Gestionar Alumnos" 
               onclick="#{usersBean.user.mostraralumnos(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('alumno').show();"  class="  btn-img"  /></div>
-                    <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/profesor.jpg"/><p:commandButton value="Gestionar Docente" 
+                    <div class="submenu3"><h:graphicImage class="imagen-reg" value="resources/img/3u.jpg"/><p:commandButton value="Gestionar Docente" 
               onclick="#{usersBean.user.mostrardocente(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('docente').show();"  class="  btn-img"  /></div>
 
                 </div>
-            
-            <p:dialog header="Registrar Usuario Nuevo" widgetVar="usuarionuevo" rendered="true" height="380" width="300" modal="true" draggable="false" resizable="false" position="center"  >
-                <h:panelGrid columns="1">
+                <div class="dialog-alumno"> 
+            <p:dialog header="Registrar Usuario Nuevo" widgetVar="usuarionuevo" rendered="true" height="auto" width="100%" modal="true" draggable="false" resizable="false" position="absolute"  >
+                <h:panelGrid columns="1" style="margin: 0 auto;" >
                 <p:inputText id="txtusuario" value="#{usersBean.user.usuario}" placeholder="Usuario" class="texto"></p:inputText>
                 <p:password id="password" value="#{usersBean.user.password}" placeholder="Password" class="texto"></p:password>
                 <p:inputText id="txtdni" value="#{usersBean.user.dni}" placeholder="DNI" class="texto"></p:inputText>
@@ -37,7 +38,8 @@
                     <f:selectItem itemLabel="Femenino" itemValue="2" />
                 </p:selectOneRadio>
                 <p:inputText id="txtemail" value="#{usersBean.user.email}" placeholder="Email" class="texto"></p:inputText>
-                <p:selectOneMenu id="cmdnivel" value="#{usersBean.user.nivel}" >
+                
+                <p:selectOneMenu id="cmdnivel"   value="#{usersBean.user.nivel}" >
                     <f:selectItem itemLabel="-Seleccionar Nievel-" itemValue="0" itemDisabled="true" />
                     <f:selectItem itemLabel="Administrador" itemValue="1" />
                     <f:selectItem itemLabel="Supervisor" itemValue="2" />
@@ -47,83 +49,85 @@
                     <f:selectItem itemLabel="Padre de Familia" itemValue="6" />
                     <f:selectItem itemLabel="Supervisor Externo" itemValue="7" />
                 </p:selectOneMenu>
+
                 <p:commandButton value="Registrar" actionListener="#{usersBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtusuario,password,txtdni,txtnombreu,cmdnivel,txtemail"/>
              </h:panelGrid>
             </p:dialog>
-            
-                <p:dialog header="Getionar Alumno" widgetVar="alumno" rendered="true" height="400" width="900" modal="true" draggable="false" resizable="false" position="center"  >
+            </div>
+                <div class="dialog-gestion-alumnos">
+                <p:dialog header="Getionar Alumno" widgetVar="alumno" rendered="true" height="auto" width="100%" modal="true" draggable="false" resizable="false"  position="absolute" >
                     <h:panelGrid columns="1">
                         <p:dataTable id="listaalumnos" var="alumnos" value="#{usersBean.user.listaalumnos}" filteredValue="#{usersBean.user.alumnofiltro}" >
-                            <p:column headerText="usuario" filterBy="#{alumnos.usuario}">
+                            <p:column headerText="Usuario" filterBy="#{alumnos.usuario}">
                                 <h:outputText value="#{alumnos.usuario} " rendered="#{alumnos.flag3}" />
-                                <h:inputText value="#{alumnos.usuario}" rendered="#{ not alumnos.flag3}" />
+                                <h:inputText value="#{alumnos.usuario}" rendered="#{ not alumnos.flag3}" class="texto2"/>
                             </p:column>
-                            <p:column headerText="nombre" filterBy="#{alumnos.nombre}">
+                            <p:column headerText="Nombre" filterBy="#{alumnos.nombre}">
                                 <h:outputText value="#{alumnos.nombre}" rendered="#{alumnos.flag3}" />
-                                <h:inputText value="#{alumnos.nombre}" rendered="#{ not alumnos.flag3}"/>
+                                <h:inputText value="#{alumnos.nombre}" rendered="#{ not alumnos.flag3}" class="texto2"/>
                             </p:column>
-                            <p:column headerText="dni" filterBy="#{alumnos.dni}">
+                            <p:column headerText="DNI" filterBy="#{alumnos.dni}">
                                 <h:outputText value="#{alumnos.dni}" rendered="#{alumnos.flag3}" />
-                                <h:inputText value="#{alumnos.dni}" rendered="#{ not alumnos.flag3}" />
+                                <h:inputText value="#{alumnos.dni}" rendered="#{ not alumnos.flag3}" class="texto2" />
                             </p:column>
-                            <p:column headerText="email" filterBy="#{alumnos.email}">
+                            <p:column headerText="Email" filterBy="#{alumnos.email}">
                                 <h:outputText value="#{alumnos.email}" rendered="#{alumnos.flag3}" />
-                                <h:inputText value="#{alumnos.email}" rendered="#{ not alumnos.flag3}" />
+                                <h:inputText value="#{alumnos.email}" rendered="#{ not alumnos.flag3}" class="texto2" />
                             </p:column>
-                            <p:column headerText="sexo" >
+                            <p:column headerText="Sexo" >
                                 <p:selectOneRadio id="sexo" value="#{alumnos.sexo}" disabled="#{alumnos.flag3}" >
                                     <f:selectItem itemLabel="M" itemValue="1" />
                                     <f:selectItem itemLabel="F" itemValue="2" />
                                 </p:selectOneRadio>
                             </p:column>
-                            <p:column>
-                                <p:commandButton icon="ui-icon-close" actionListener="#{usersBean.user.cancelar(alumnos)}"  rendered="#{ not alumnos.flag3}" update="listaalumnos" />
-                                <p:commandButton icon="ui-icon-check" actionListener="#{usersBean.user.actualizar(alumnos,login.user.registro)}" rendered="#{ not alumnos.flag3}" update="listaalumnos"/>
-                                <p:commandButton icon="ui-icon-pencil" actionListener="#{usersBean.user.editar(alumnos)}"  rendered="#{alumnos.flag3}" update="listaalumnos"/>
+                            <p:column headerText="Accion">
+                                <p:commandButton icon="ui-icon-close" actionListener="#{usersBean.user.cancelar(alumnos)}"  rendered="#{ not alumnos.flag3}" update="listaalumnos" class="btn-dialog" />
+                                <p:commandButton icon="ui-icon-check" actionListener="#{usersBean.user.actualizar(alumnos,login.user.registro)}" rendered="#{ not alumnos.flag3}" update="listaalumnos" class="btn-dialog"/>
+                                <p:commandButton icon="ui-icon-pencil" actionListener="#{usersBean.user.editar(alumnos)}"  rendered="#{alumnos.flag3}" update="listaalumnos" class="btn-dialog"/>
                             </p:column>
                             <p:column headerText="Contactar">
-                                <p:commandButton value="Contactar"  />
+                                <p:commandButton icon="ui-icon-mail-closed" class="btn-dialog" />
                             </p:column>
 
                         </p:dataTable>
                     </h:panelGrid>
                 </p:dialog>
 
-                <p:dialog header="Getionar Docente" widgetVar="docente" rendered="true" height="400" width="900" modal="true" draggable="false" resizable="false" position="center"  >
+                <p:dialog header="Getionar Docente" widgetVar="docente" rendered="true" height="auto" width="100%" modal="true" draggable="false" resizable="false" position="absoluter" >
                     <h:panelGrid columns="1">
                         <p:dataTable id="listadocente" var="profesores" value="#{usersBean.user.listaprofesor}" filteredValue="#{usersBean.user.profesorfiltro}" >
-                            <p:column headerText="usuario" filterBy="#{alumnos.usuario}">
+                            <p:column headerText="Usuario" filterBy="#{alumnos.usuario}">
                                 <h:outputText value="#{profesores.usuario} " rendered="#{profesores.flag3}" />
-                                <h:inputText value="#{profesores.usuario}" rendered="#{ not profesores.flag3}" />
+                                <h:inputText value="#{profesores.usuario}" rendered="#{ not profesores.flag3}" class="texto2" />
                             </p:column>
-                            <p:column headerText="nombre" filterBy="#{profesores.nombre}">
+                            <p:column headerText="Nombre" filterBy="#{profesores.nombre}">
                                 <h:outputText value="#{profesores.nombre}" rendered="#{profesores.flag3}" />
-                                <h:inputText value="#{profesores.nombre}" rendered="#{ not profesores.flag3}"/>
+                                <h:inputText value="#{profesores.nombre}" rendered="#{ not profesores.flag3}" class="texto2"/>
                             </p:column>
-                            <p:column headerText="dni" filterBy="#{profesores.dni}">
+                            <p:column headerText="DNI" filterBy="#{profesores.dni}">
                                 <h:outputText value="#{profesores.dni}" rendered="#{profesores.flag3}" />
-                                <h:inputText value="#{profesores.dni}" rendered="#{ not profesores.flag3}" />
+                                <h:inputText value="#{profesores.dni}" rendered="#{ not profesores.flag3}" class="texto2"/>
                             </p:column>
-                            <p:column headerText="email" filterBy="#{profesores.email}">
+                            <p:column headerText="Email" filterBy="#{profesores.email}">
                                 <h:outputText value="#{profesores.email}" rendered="#{profesores.flag3}" />
-                                <h:inputText value="#{profesores.email}" rendered="#{ not profesores.flag3}" />
+                                <h:inputText value="#{profesores.email}" rendered="#{ not profesores.flag3}" class="texto2" />
                             </p:column>
-                            <p:column headerText="sexo" >
+                            <p:column headerText="Sexo" >
                                 <p:selectOneRadio id="sexo" value="#{profesores.sexo}"  disabled="#{profesores.flag3}" >
                                     <f:selectItem itemLabel="M" itemValue="1" />
                                     <f:selectItem itemLabel="F" itemValue="2" />
                                 </p:selectOneRadio>
                             </p:column>
-                            <p:column>
-                                <p:commandButton icon="ui-icon-close" actionListener="#{usersBean.user.cancelar(profesores)}"  rendered="#{ not profesores.flag3}" update="listadocente" />
-                                <p:commandButton icon="ui-icon-check" actionListener="#{usersBean.user.actualizar(profesores,login.user.registro)}" rendered="#{ not profesores.flag3}" update="listadocente"/>
-                                <p:commandButton icon="ui-icon-pencil" actionListener="#{usersBean.user.editar(profesores)}"  rendered="#{profesores.flag3}" update="listadocente"/>
+                            <p:column headerText="Accion">
+                                <p:commandButton icon="ui-icon-close" actionListener="#{usersBean.user.cancelar(profesores)}"  rendered="#{ not profesores.flag3}" update="listadocente" class="btn-dialog" />
+                                <p:commandButton icon="ui-icon-check" actionListener="#{usersBean.user.actualizar(profesores,login.user.registro)}" rendered="#{ not profesores.flag3}" update="listadocente" class="btn-dialog"/>
+                                <p:commandButton icon="ui-icon-pencil" actionListener="#{usersBean.user.editar(profesores)}"  rendered="#{profesores.flag3}" update="listadocente" class="btn-dialog"/>
                             </p:column>
 
                         </p:dataTable>
                     </h:panelGrid>
                 </p:dialog>
-
+    </div>
             
         </h:form>
             </f:view>

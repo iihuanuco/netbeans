@@ -222,7 +222,7 @@ and open the template in the editor.
                     <p:outputLabel value="#{sucursal.codigomodularsuc}" rendered="#{sucursal.flag}"/>
                     <h:inputText value="#{sucursal.codigomodularsuc}" rendered="#{ not sucursal.flag}" />
                 </p:column>
-                <p:column headerText="Tipo De Gestion" filterBy="#{sucursal.tipodegestionsuc}">
+                <p:column headerText="Tipo De Gestion" >
                     <p:selectOneMenu value="#{sucursal.tipodegestionsuc}"  disabled="#{sucursal.flag}" >
                 <f:selectItem itemLabel="-Seleccionar Tipo de Gestion-" itemValue="0" itemDisabled="true" />
                 <f:selectItem itemLabel="Privada" itemValue="1" />

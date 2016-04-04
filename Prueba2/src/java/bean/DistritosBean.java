@@ -27,16 +27,17 @@ public class DistritosBean {
         this.distritos = distritos;
     }
 
-    public void registrar(int reg){
+    public void registrar(int reg,int pro){
     distritos.registrar(reg);
     distritos.setNombredis("");
     distritos.setCapitaldis("");
+    distritos.mostrar(pro);
     }
 
     public List<SelectItem> getListaDistritos() {
         this.listaDistritos=new ArrayList<SelectItem>();
         SqlDistritos sd=new SqlDistritos();
-            List<Distritos> listaDis=sd.MostrarDistritos(distritos.getProvincia());
+            List<Distritos> listaDis=sd.MostrarDistritos();
             listaDistritos.clear();
             
             for (Distritos d: listaDis) {

@@ -33,9 +33,9 @@ and open the template in the editor.
             <p:dialog  header="Registrar departamentos"  widgetVar="departamentos" rendered="true" height="400" width="500" modal="true" draggable="false" resizable="false" >
                 <h:panelGrid columns="1" id="panel-departamento">
                     <p:inputText id="txtdepartamento"  placeholder="Departamento" value="#{departamentosBean.departamentos.nombredep}" class="texto" ></p:inputText>
-                    <p:commandButton value="Guardar" actionListener="#{departamentosBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtdepartamento" />
+                    <p:commandButton value="Guardar" actionListener="#{departamentosBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtdepartamento,listadepartamentos" />
                    
-                    <p:dataTable id="listadepartamentos" var="departamento"  value="#{departamentosBean.departamentos.lista}" filteredValue="#{departamentosBean.departamentos.listafiltrar}" rows="3" paginator="true" >
+                    <p:dataTable id="listadepartamentos" var="departamento"  value="#{departamentosBean.departamentos.lista}" filteredValue="#{departamentosBean.departamentos.listafiltrar}"   >
                         <p:column headerText="Registro" filterBy="#{departamento.registrodep}" >
                            <h:outputText value="#{departamento.registrodep} " rendered="#{departamento.flag}" />
                            <h:inputText value="#{departamento.registrodep}" rendered="#{ not departamento.flag}" />  
@@ -64,10 +64,10 @@ and open the template in the editor.
         </h:panelGrid>       
         <h:panelGrid columns="2">
             <p:inputText  id="txtprovincia" placeholder="Provincia" value="#{provinciasBean.provincias.nombrepro}" class="texto" ></p:inputText>
-            <p:commandButton value="Guardar" actionListener="#{provinciasBean.registrar(login.user.registro)}" class="boton-ingresar" update="txtprovincia,listaprovincias"  />
+            <p:commandButton value="Guardar" actionListener="#{provinciasBean.registrar(login.user.registro,provinciasBean.provincias.departamento)}" class="boton-ingresar" update="txtprovincia,listaprovincias"  />
         </h:panelGrid>  
         <h:panelGrid columns="1">
-            <p:dataTable id="listaprovincias" var="provincia"  value="#{provinciasBean.provincias.lista}" filteredValue="#{provinciasBean.provincias.listafiltrar}" rows="3" paginator="true" >
+            <p:dataTable id="listaprovincias" var="provincia"  value="#{provinciasBean.provincias.lista}" filteredValue="#{provinciasBean.provincias.listafiltrar}"  >
                 <p:column headerText="Registro" >
                     <p:outputLabel value="#{provincia.registropro}" rendered="#{provincia.flag}" />
                     <h:inputText value="#{provincia.registropro}" rendered="#{ not provincia.flag}" />
@@ -99,9 +99,11 @@ and open the template in the editor.
                 <p:ajax listener="#{distritosBean.distritos.mostrar(distritosBean.distritos.provincia)}" process="cmbprovincias" update="listadistritos" />
             </p:selectOneMenu>
             
+            
+            
             <p:inputText id="txtdistrito"  placeholder="Distrito" value="#{distritosBean.distritos.nombredis}" class="texto" ></p:inputText>
             <p:inputText id="txtcapital"  placeholder="Capital" value="#{distritosBean.distritos.capitaldis}" class="texto" ></p:inputText>
-            <p:commandButton value="Guardar" actionListener="#{distritosBean.registrar(login.user.registro)}"  class="boton-ingresar" update="txtdistrito,txtcapital" />
+            <p:commandButton value="Guardar" actionListener="#{distritosBean.registrar(login.user.registro,distritosBean.distritos.provincia)}"  class="boton-ingresar" update="txtdistrito,txtcapital,listadistritos" />
             
             <p:dataTable id="listadistritos" var="distritos"  value="#{distritosBean.distritos.lista}" filteredValue="#{distritosBean.distritos.listafiltrar}" rows="3" paginator="true" >
                 <p:column headerText="Registro" filterBy="#{distritos.registrodis}" >
@@ -159,22 +161,11 @@ and open the template in the editor.
 
     <p:dialog  header="Registrar sucursales" widgetVar="sucursales" rendered="true" height="600" width="1300" modal="true" draggable="false" resizable="false" >
         <h:panelGrid  id="pnlsucursal" columns="4">
-             <p:selectOneMenu id="cmbdepartamento3"  value="#{departamentosBean.departamentos.registrodep}" > 
-                <f:selectItem itemLabel="-Seleccione Departamento- "   itemValue="0"/>
-                <f:selectItems value="#{departamentosBean.listaDepartamento}"/>
-                <p:ajax process="cmbdepartamento3" update="cmbprovincias2" />
-            </p:selectOneMenu>
-            
-            <p:selectOneMenu id="cmbprovincias2"  value="#{distritosBean.distritos.provincia}" > 
-                <f:selectItem itemLabel="-Seleccione Provincia- "   itemValue="0"/>
-                <f:selectItems value="#{departamentosBean.listaProvincias}"/>
-                <p:ajax process="cmbprovincias2" update="cmbdistrito" />
-            </p:selectOneMenu>
-            
-            <p:selectOneMenu id="cmbdistrito" value="#{sucursalesBean.sucursales.distrito}"> 
-                <f:selectItem itemLabel="-Seleccione Distrito- "   itemValue="0" itemDisabled="true"/>
-                <f:selectItems value="#{distritosBean.listaDistritos}" />
-            </p:selectOneMenu>
+             
+            <p:selectOneListbox value="#{sucursalesBean.sucursales.distrito}" filterMatchMode="contains" filter="true" class="list-box" >
+                <f:selectItems value="#{distritosBean.listaDistritos}" itemLabel="#{distritosBean.distritos.nombredis }" />
+                  </p:selectOneListbox>
+           
             <p:selectOneMenu value="#{sucursalesBean.sucursales.empresa}"> 
                 <f:selectItem itemLabel="-Seleccione Empresa- "   itemValue="0" itemDisabled="true"/>
                 <f:selectItems value="#{empresasBean.listaEmpresas}" />

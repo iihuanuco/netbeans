@@ -128,16 +128,28 @@ public class Distritos {
         
     }
     
-    public void mostrar(int reg) {
+    public void mostrar() {
         lista = new ArrayList();
         SqlDistritos pu = new SqlDistritos();
-        List<Distritos> listaDist = pu.MostrarDistritos(reg);
+        List<Distritos> listaDist = pu.MostrarDistritos();
         Iterator<Distritos> iter = listaDist.iterator();
         while (iter.hasNext()) {
             Distritos e = iter.next();
             lista.add(e);
         }
-
+        
+    }
+    
+    public void mostrar(int pro) {
+        lista = new ArrayList();
+        SqlDistritos pu = new SqlDistritos();
+        List<Distritos> listaDist = pu.MostrarDistritos(pro);
+        Iterator<Distritos> iter = listaDist.iterator();
+        while (iter.hasNext()) {
+            Distritos e = iter.next();
+            lista.add(e);
+        }
+        
     }
     
     public void actualizar(Distritos dist,int reg){

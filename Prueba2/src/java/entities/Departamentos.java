@@ -112,6 +112,7 @@ public class Departamentos {
             d.setNombredep(nombredep);
             d.setUserc(reg);
             sd.InsertarDepartamentos(d); 
+            System.out.println(""+nombredep+reg);
     }  
         
            public void mostrar() {

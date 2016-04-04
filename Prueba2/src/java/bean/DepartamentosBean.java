@@ -65,6 +65,7 @@ public class DepartamentosBean {
     public void registrar(int reg){
         departamentos.registrar(reg);
         departamentos.setNombredep("");
+        departamentos.mostrar();
     }
     
     

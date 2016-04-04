@@ -42,9 +42,10 @@ public class ProvinciasBean {
     
     
 
-    public void registrar(int reg){
+    public void registrar(int reg,int dep){
     provincias.registrar(reg);
     provincias.setNombrepro("");
+    provincias.mostrar(dep);
     }
     
    

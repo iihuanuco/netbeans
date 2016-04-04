@@ -370,6 +370,7 @@ div.list-box2 .ui-selectlistbox-listcontainer{
      font-family: "Dosis",sans-serif !important;
      text-align: center !important;
 }
+
 .matricula .ui-selectlistbox-filter.ui-inputfield{
     width: auto !important;
 }
@@ -389,6 +390,37 @@ background: #ffffff -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,
 .matricula  .ui-state-hover,.ui-state-focus {
     box-shadow: 0 0 0 rgba(0,0,0,0) !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.dialog-academico .ui-inputfield {
+    box-shadow: inset 0 2px 2px rgba(0,0,0,0) !important;
+    width: 200px !important;
+     font-family: "Dosis",sans-serif !important;
+     text-align: center !important;
+}
+
+.dialog-academico .ui-selectlistbox-filter.ui-inputfield{
+    width: auto !important;
+}
+
+.dialog-academico .ui-selectonemenu{
+    width: auto !important;
+}
+
 
 
 
@@ -713,11 +745,49 @@ div.dialog-gestion-alumnos .ui-widget-content{
     text-align: center;
 }
 
+div.dialog-gestion-alumnos  .ui-datatable-odd {
+    background: none repeat scroll 0 0 white !important;
+    border-top: 1px solid black !important;
+}
+
+
 .listausers .ui-widget-content{
     border-top: 1px solid #bdbdbd !important;
     border-bottom: 1px solid #bdbdbd !important;
     text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .ui-dialog-titlebar-close
@@ -728,10 +798,15 @@ div.dialog-gestion-alumnos .ui-widget-content{
 {
     background-color: white !important;
 }
-div.dialog-gestion-alumnos  .ui-datatable-odd {
-    background: none repeat scroll 0 0 white !important;
-    border-top: 1px solid black !important;
-}
+
+
+
+
+
+
+
+
+
 
 
 

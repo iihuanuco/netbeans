@@ -85,6 +85,29 @@ public class SqlDistritos implements DaoDistritos{
         } catch (Exception e) {
         }
     }
+
+    @Override
+    public List<Distritos> MostrarDistritos() {
+         List<Distritos> listadis=new ArrayList<Distritos>();
+        try {
+            Connection conn = Postgresql.conexion();
+            String sql = "select d.registro,d.nombre from distritos d ";
+            Statement st=conn.createStatement();
+            ResultSet rs=null;
+            rs=st.executeQuery(sql);
+            while (rs.next()) {
+                Distritos d=new Distritos();
+                d.setRegistrodis(rs.getInt(1));
+                d.setNombredis(rs.getString(2));
+                
+                listadis.add(d);
+            }
+            
+        } catch (Exception e) {
+        }
+        
+        return listadis;
+    }
     
     
 }

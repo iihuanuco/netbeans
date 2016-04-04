@@ -33,8 +33,9 @@ and open the template in the editor.
                  
                 </div>
 
-
-                <p:dialog  header="Registrar Carreras"  widgetVar="Carreras" rendered="true" height="500" width="600" modal="true" draggable="false" resizable="false" >
+                <div class="dialog-academico">
+                
+                    <p:dialog  header="Registrar Carreras"  widgetVar="Carreras"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >
                     <h:panelGrid columns="1" >
                         <p:outputLabel value="Codigo" for="txtcodigocarrera" />
                         <p:inputText id="txtcodigocarrera" value="#{carrerasBean.carreras.codigocarrera}" placeholder="Codigo" class="texto" ></p:inputText>
@@ -65,38 +66,43 @@ and open the template in the editor.
                     
                 </p:dialog>
 
-                <p:dialog  header="Registrar Curso"  widgetVar="Cursos" rendered="true" height="500" width="1100" modal="true" draggable="false" resizable="false" position="center" >
-                    <h:panelGrid columns="3" >
-                        <p:outputLabel value="Codigo" for="txtcodigocurso" />
-                        <p:inputText id="txtcodigocurso" value="#{cursosBean.cursos.codigocurso}"  placeholder="Codigo" class="texto" ></p:inputText>
-                        <p:outputLabel value="Nombre" for="txtnombrecurso" />
-                        <p:inputText id="txtnombrecurso" value="#{cursosBean.cursos.nombrecurso}"  placeholder="Nombre" class="texto" ></p:inputText>
-                        <p:outputLabel value="Carrera" for="txtcarrera" />
+                <p:dialog  header="Registrar Curso"  widgetVar="Cursos"   showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false"   >
+                    <h:panelGrid columns="6" cellspacing="5" >
+                        <p:outputLabel value="Codigo: " for="txtcodigocurso" />
+                        <p:inputText id="txtcodigocurso" value="#{cursosBean.cursos.codigocurso}"    class="texto" ></p:inputText>
+                        <p:outputLabel value="Nombre: " for="txtnombrecurso" />
+                        <p:inputText id="txtnombrecurso" value="#{cursosBean.cursos.nombrecurso}"    class="texto" ></p:inputText>
+                        
+                         <p:outputLabel value="Creditos: " for="txtcreditos" />
+                        <p:inputText id="txtcreditos" value="#{cursosBean.cursos.creditoscurso}"    class="texto" ></p:inputText>
+                        
+                        <p:outputLabel value="Carrera: " for="txtcarrera" />
                         <p:selectOneMenu id="txtcarrera" value="#{cursosBean.cursos.carrera}"  > 
                             <f:selectItem itemLabel="-Seleccione Carrera- "   itemValue="0"/>
                             <f:selectItems value="#{sucursalesBean.listacarreras}" />
                             <p:ajax process="txtcarrera" update="txtsemestrescurso" />
                         </p:selectOneMenu>
-                        <p:outputLabel value="Semestre" for="txtsemestrescurso" />
+                        
+                        
+                        <p:outputLabel value="Semestre: " for="txtsemestrescurso" />
                         <p:selectOneMenu  id="txtsemestrescurso" value="#{cursosBean.cursos.semestrecurso}"  > 
                             <f:selectItem itemLabel="-Seleccione Semestre- "   itemValue="0"/>
                             <f:selectItems value="#{cursosBean.listaSemestres}" />
                         </p:selectOneMenu>
-                        <p:outputLabel value="Alcance" for="cmbalcance" />
+                        <p:outputLabel value="Alcance: " for="cmbalcance" />
                         <p:selectOneMenu id="cmbalcancec" value="#{cursosBean.cursos.alcancecurso}">
                             <f:selectItem itemLabel="-Seleccione alcance-" itemValue="0" />
                             <f:selectItem itemLabel="Obligaorio" itemValue="1" />
                             <f:selectItem itemLabel="Electivo" itemValue="2" />
                             <f:selectItem itemLabel="Libre" itemValue="3" />
                         </p:selectOneMenu> 
-                        <p:outputLabel value="Creditos" for="txtcreditos" />
-                        <p:inputText id="txtcreditos" value="#{cursosBean.cursos.creditoscurso}"  placeholder="Creditos" class="texto" ></p:inputText>
-                        <p:outputLabel value="Horas de Teoria" for="txtht" />
-                        <p:inputText id="txtht" value="#{cursosBean.cursos.htcurso}"  placeholder="Horas Teoria" class="texto" ></p:inputText>
-                        <p:outputLabel value="Horas de Practica" for="txthp" />
-                        <p:inputText id="txthp" value="#{cursosBean.cursos.hpcurso}"  placeholder="Horas Practica" class="texto" ></p:inputText>
-                        <p:outputLabel value="Fecha de Inicio" />       
-                        <p:calendar value="#{cursosBean.cursos.fechainiciocurso}" pattern="dd/MM/yyyy" mask="true" class="datos" placeholder="Fecha de Inicio"  ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>          
+                       
+                        <p:outputLabel value="Horas de Teoria: " for="txtht" />
+                        <p:inputText id="txtht" value="#{cursosBean.cursos.htcurso}"    class="texto" ></p:inputText>
+                        <p:outputLabel value="Horas de Practica: " for="txthp" />
+                        <p:inputText id="txthp" value="#{cursosBean.cursos.hpcurso}"   class="texto" ></p:inputText>
+                        <p:outputLabel value="Fecha de Inicio: " />       
+                        <p:calendar value="#{cursosBean.cursos.fechainiciocurso}" pattern="dd/MM/yyyy" mask="true" class="datos"    ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>          
 
                         <p:commandButton value="Guardar" actionListener="#{cursosBean.registrar(login.user.registro)}"  class="boton-ingresar"
                                          update="txtcodigocurso,txtnombrecurso,txtcarrera,txtsemestrescurso,txtcreditos,txtht,txthp,cmbalcancec" />
@@ -149,7 +155,7 @@ and open the template in the editor.
                     </h:panelGrid>
                 </p:dialog>
 
-                <p:dialog header="Evaluaciones" widgetVar="evaluaciones" rendered="true" height="500" width="500" modal="true" draggable="false" resizable="false" >
+                <p:dialog header="Evaluaciones" widgetVar="evaluaciones"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >
                     <h:panelGrid columns="1">
                         <p:outputLabel value="Nombre de Evaluacion" for="txtnombreval" />
                         <p:inputText id="txtnombreval" value="#{evaluacionesBean.evaluaciones.nombreeval}" placeholder="Nombre de Evaluacion" class="texto"></p:inputText>
@@ -171,7 +177,7 @@ and open the template in the editor.
                 </p:dialog>
                 
                 
-                <p:dialog header="Actividades" widgetVar="actividades" rendered="true" height="500" width="600" modal="true" draggable="false" resizable="false" >
+                <p:dialog header="Actividades" widgetVar="actividades"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >
                     <h:panelGrid columns="1">
                         <p:outputLabel value="Nombre de Actividad" for="txtnombreact" />
                         <p:inputText id="txtnombreact" value="#{actividadesBean.actividades.nombreact}" placeholder="Nombre de Actividad" class="texto"></p:inputText>
@@ -214,7 +220,7 @@ and open the template in the editor.
                       </h:panelGrid>
                 </p:dialog>
                 
-                <p:dialog header="Asignar Evaluacion" widgetVar="evaluaxcurso" rendered="true" height="500" width="800" modal="true" draggable="false" resizable="false" >
+                <p:dialog header="Asignar Evaluacion" widgetVar="evaluaxcurso"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >
                     <h:panelGrid columns="1">         
                         <p:outputLabel value="Curso y Profesor" for="cmbcursoxprofesor" />
                         <p:selectOneMenu id="cmbcursoxprofesor" value="#{evaluaxCursoBean.evaluaxcurso.profesorxcurso}" >
@@ -260,7 +266,7 @@ and open the template in the editor.
                         </h:panelGrid>
                 </p:dialog>
          
-                <p:dialog header="Asignar Curso" widgetVar="cursoxprofesor" rendered="true" height="500" width="800" modal="true" draggable="false" resizable="false" >
+                <p:dialog header="Asignar Curso" widgetVar="cursoxprofesor"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >
                     <h:panelGrid columns="2">         
                         <p:outputLabel value="Curso" for="cmbxcurso" />
                         <p:selectOneMenu id="cmbxcurso" value="#{cursoxProfesorBean.cursoxprofesor.curso}" >
@@ -318,7 +324,7 @@ and open the template in the editor.
                     </h:panelGrid>   
                 </p:dialog>
                 
-                <p:dialog header="Turnos" widgetVar="turnos" rendered="true" height="500" width="500" modal="true" draggable="false" resizable="false" >
+                <p:dialog header="Turnos" widgetVar="turnos"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >
                     <h:panelGrid columns="1">
                         <p:outputLabel value="Codigo" for="txtcodigotur" />
                         <p:inputText id="txtcodigotur" value="#{turnosBean.turnos.codigotur}" placeholder="Codigo" class="texto"></p:inputText>
@@ -347,7 +353,7 @@ and open the template in the editor.
                     </h:panelGrid>    
                 </p:dialog>
                 
-                <p:dialog header="Secciones" widgetVar="secciones" rendered="true" height="500" width="500" modal="true" draggable="false" resizable="false" >
+                <p:dialog header="Secciones" widgetVar="secciones"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >
                     <h:panelGrid columns="1">
                         <p:outputLabel value="Codigo" for="txtcodigosec" />
                         <p:inputText id="txtcodigosec" value="#{seccionesBean.secciones.codigosec}" placeholder="Codigo" class="texto"></p:inputText>
@@ -375,7 +381,7 @@ and open the template in the editor.
                         </p:dataTable>
                     </h:panelGrid>    
                 </p:dialog>
- 
+  </div>
             </h:form>
         </f:view>
 

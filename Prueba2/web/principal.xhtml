@@ -54,6 +54,9 @@
                     <p:growl id="messages" showDetail="true" />
                     <header>
                         <nav>
+                            <ul> 
+                                 <li style="color:white;  float: left; padding-left: 10px;" class="menu-salir">#{sucursalesBean.sucursales.nombre}</li>
+                            </ul>
                             <ul >
 
                                 <li><a href="inicio.xhtml" target="academico"  ><span class="c1"><i class="icon icon-home"></i></span>Inicio</a></li> 
@@ -63,7 +66,6 @@
                                  <li><a href="academicos.xhtml"  target="academico" ><span class="c2"><i class="icon icon-storage"></i></span>Academico</a></li>
                                      <li><a href="registrar.xhtml"  target="academico" ><span class="c3"><i class="icon icon-storage"></i></span>Registrar</a></li>
                                 <li><a href="personalizar.xhtml"  target="academico"><span class="c4"><i class="icon icon-cogs"></i></span>User: #{login.user.usuario}</a></li>
-                                <li style="color:white;" class="menu-salir">#{sucursalesBean.sucursales.nombre}</li>
                                 <li class="menu-salir"><p:commandButton value="Salir" action="#{login.user.signout()}" icon="ui-icon-close"  class="boton-salir"  /></li>
                             </ul>
                         </nav>

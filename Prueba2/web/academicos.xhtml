@@ -36,16 +36,19 @@ and open the template in the editor.
                 <div class="dialog-academico">
                 
                     <p:dialog  header="Registrar Carreras"  widgetVar="Carreras"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >
-                    <h:panelGrid columns="1" >
-                        <p:outputLabel value="Codigo" for="txtcodigocarrera" />
+                        <h:panelGrid columns="3" class="inputs">
+                        <p:outputLabel value="Codigo: " for="txtcodigocarrera" />
+                               <p:outputLabel value="Nombre: " for="txtnombrecarrera" />
+                                 <p:outputLabel value="Semestres: " for="txtsemestrescarrera" />
                         <p:inputText id="txtcodigocarrera" value="#{carrerasBean.carreras.codigocarrera}" placeholder="Codigo" class="texto" ></p:inputText>
-                        <p:outputLabel value="Nombre" for="txtnombrecarrera" />
+                  
                         <p:inputText id="txtnombrecarrera" value="#{carrerasBean.carreras.nombrecarrera}" placeholder="Nombre" class="texto" ></p:inputText>
-                        <p:outputLabel value="Semestres" for="txtsemestrescarrera" />
+                      
                         <p:inputText id="txtsemestrescarrera" value="#{carrerasBean.carreras.semestrescarrera}" placeholder="Semestre" class="texto" ></p:inputText>
                         <p:commandButton value="Guardar" actionListener="#{carrerasBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar"
-                                         update="txtcodigocarrera,txtnombrecarrera,txtsemestrescarrera,tblcarreras" />
-                        
+                                         update="txtcodigocarrera,txtnombrecarrera,txtsemestrescarrera,tblcarreras,cmbcarrera" />   
+                          </h:panelGrid>
+                        <h:panelGrid columns="1" class="carreras">
                         <p:dataTable id="tblcarreras" var="carrera" value="#{carrerasBean.carreras.listacarreras}" filteredValue="#{carrerasBean.carreras.filtrocarreras}" >
                               <p:column headerText="Codigo" filterBy="#{carrera.codigocarrera}">
                                     <h:outputText value="#{carrera.codigocarrera}" rendered="#{carrera.flag}" />
@@ -56,9 +59,9 @@ and open the template in the editor.
                              <h:inputText value="#{carrera.nombrecarrera}" rendered="#{ not carrera.flag}" />
                         </p:column>
                             <p:column>
-                             <p:commandButton icon="ui-icon-close" actionListener="#{carrerasBean.carreras.cancelar(carrera)}"  rendered="#{ not carrera.flag}" update="tblcarreras" />
-                            <p:commandButton icon="ui-icon-check" actionListener="#{carrerasBean.carreras.actualizar(carrera,login.user.registro)}" rendered="#{ not carrera.flag}" update="tblcarreras"/>
-                            <p:commandButton icon="ui-icon-pencil" actionListener="#{carrerasBean.carreras.editar(carrera)}"  rendered="#{carrera.flag}" update="tblcarreras"/>
+                             <p:commandButton icon="ui-icon-close" actionListener="#{carrerasBean.carreras.cancelar(carrera)}"  rendered="#{ not carrera.flag}" update="tblcarreras" class="btn-dialog" />
+                            <p:commandButton icon="ui-icon-check" actionListener="#{carrerasBean.carreras.actualizar(carrera,login.user.registro)}" rendered="#{ not carrera.flag}" update="tblcarreras" class="btn-dialog"/>
+                            <p:commandButton icon="ui-icon-pencil" actionListener="#{carrerasBean.carreras.editar(carrera)}"  rendered="#{carrera.flag}" update="tblcarreras" class="btn-dialog"/>
                             </p:column>
                         </p:dataTable>
                         
@@ -67,7 +70,7 @@ and open the template in the editor.
                 </p:dialog>
 
                 <p:dialog  header="Registrar Curso"  widgetVar="Cursos"   showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false"   >
-                    <h:panelGrid columns="6" cellspacing="5" >
+                    <h:panelGrid columns="6" cellspacing="5" class="input-cursos">
                         <p:outputLabel value="Codigo: " for="txtcodigocurso" />
                         <p:inputText id="txtcodigocurso" value="#{cursosBean.cursos.codigocurso}"    class="texto" ></p:inputText>
                         <p:outputLabel value="Nombre: " for="txtnombrecurso" />
@@ -76,11 +79,11 @@ and open the template in the editor.
                          <p:outputLabel value="Creditos: " for="txtcreditos" />
                         <p:inputText id="txtcreditos" value="#{cursosBean.cursos.creditoscurso}"    class="texto" ></p:inputText>
                         
-                        <p:outputLabel value="Carrera: " for="txtcarrera" />
-                        <p:selectOneMenu id="txtcarrera" value="#{cursosBean.cursos.carrera}"  > 
+                        <p:outputLabel value="Carrera: " for="cmbcarrera" />
+                        <p:selectOneMenu id="cmbcarrera" value="#{cursosBean.cursos.carrera}"  > 
                             <f:selectItem itemLabel="-Seleccione Carrera- "   itemValue="0"/>
                             <f:selectItems value="#{sucursalesBean.listacarreras}" />
-                            <p:ajax process="txtcarrera" update="txtsemestrescurso" />
+                            <p:ajax process="cmbcarrera" update="txtsemestrescurso" />
                         </p:selectOneMenu>
                         
                         
@@ -105,9 +108,9 @@ and open the template in the editor.
                         <p:calendar value="#{cursosBean.cursos.fechainiciocurso}" pattern="dd/MM/yyyy" mask="true" class="datos"    ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>          
 
                         <p:commandButton value="Guardar" actionListener="#{cursosBean.registrar(login.user.registro)}"  class="boton-ingresar"
-                                         update="txtcodigocurso,txtnombrecurso,txtcarrera,txtsemestrescurso,txtcreditos,txtht,txthp,cmbalcancec" />
+                                         update="txtcodigocurso,txtnombrecurso,cmbcarrera,txtsemestrescurso,txtcreditos,txtht,txthp,cmbalcancec,cmbxcurso,tblcursos" />
                     </h:panelGrid>
-                    <h:panelGrid columns="1" >
+                    <h:panelGrid columns="1"  class="cursos">
                         
                         <p:dataTable id="tblcursos" var="cursos" value="#{cursosBean.cursos.listacursos}" filteredValue="#{cursosBean.cursos.filtrocursos}" >
                             <p:column headerText="Codigo" filterBy="#{cursos.codigocurso}" class="c1">
@@ -146,9 +149,9 @@ and open the template in the editor.
                         </p:column>
 
                             <p:column>
-                                <p:commandButton icon="ui-icon-close" actionListener="#{cursosBean.cursos.cancelar(cursos)}"  rendered="#{ not cursos.flag}" update="tblcursos" />
-                            <p:commandButton icon="ui-icon-check" actionListener="#{cursosBean.cursos.actualizar(cursos,login.user.registro,sucursalesBean.sucursales.registrosuc)}" rendered="#{ not cursos.flag}" update="tblcursos"/>
-                            <p:commandButton icon="ui-icon-pencil" actionListener="#{cursosBean.cursos.editar(cursos)}"  rendered="#{cursos.flag}" update="tblcursos"/>
+                                <p:commandButton icon="ui-icon-close" actionListener="#{cursosBean.cursos.cancelar(cursos)}"  rendered="#{ not cursos.flag}" update="tblcursos" class="btn-dialog" />
+                            <p:commandButton icon="ui-icon-check" actionListener="#{cursosBean.cursos.actualizar(cursos,login.user.registro,sucursalesBean.sucursales.registrosuc)}" rendered="#{ not cursos.flag}" update="tblcursos" class="btn-dialog"/>
+                            <p:commandButton icon="ui-icon-pencil" actionListener="#{cursosBean.cursos.editar(cursos)}"  rendered="#{cursos.flag}" update="tblcursos" class="btn-dialog"/>
                             </p:column>
                         </p:dataTable>
                         
@@ -156,21 +159,21 @@ and open the template in the editor.
                 </p:dialog>
 
                 <p:dialog header="Evaluaciones" widgetVar="evaluaciones"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >
-                    <h:panelGrid columns="1">
+                    <h:panelGrid columns="1" class="inputs">
                         <p:outputLabel value="Nombre de Evaluacion" for="txtnombreval" />
                         <p:inputText id="txtnombreval" value="#{evaluacionesBean.evaluaciones.nombreeval}" placeholder="Nombre de Evaluacion" class="texto"></p:inputText>
-                        <p:commandButton value="Guardar" actionListener="#{evaluacionesBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar" update="txtnombreval,tblevalua" />
+                        <p:commandButton value="Guardar" actionListener="#{evaluacionesBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar" update="txtnombreval,tblevalua,cmbevaluacion" />
                     </h:panelGrid>
-                    <h:panelGrid columns="1">
+                    <h:panelGrid columns="1" class="evaluacion">
                         <p:dataTable id="tblevalua" var="evalua" value="#{evaluacionesBean.evaluaciones.listaevalua}" filteredValue="#{evaluacionesBean.evaluaciones.filtroevalua}" >
                             <p:column headerText="Nombre" filterBy="#{evalua.nombreeval}" >
                                 <h:outputText value="#{evalua.nombreeval}" rendered="#{evalua.flag}" />
                                 <h:inputText value="#{evalua.nombreeval}" rendered="#{ not evalua.flag}" />
                             </p:column>
                             <p:column>
-                                <p:commandButton icon="ui-icon-close" actionListener="#{evaluacionesBean.evaluaciones.cancelar(evalua)}"  rendered="#{ not evalua.flag}" update="tblevalua" />
-                                <p:commandButton icon="ui-icon-check" actionListener="#{evaluacionesBean.evaluaciones.actualizar(evalua,login.user.registro)}" rendered="#{ not evalua.flag}" update="tblevalua"/>
-                                <p:commandButton icon="ui-icon-pencil" actionListener="#{evaluacionesBean.evaluaciones.editar(evalua)}"  rendered="#{evalua.flag}" update="tblevalua"/>
+                                <p:commandButton icon="ui-icon-close" actionListener="#{evaluacionesBean.evaluaciones.cancelar(evalua)}"  rendered="#{ not evalua.flag}" update="tblevalua" class="btn-dialog" />
+                                <p:commandButton icon="ui-icon-check" actionListener="#{evaluacionesBean.evaluaciones.actualizar(evalua,login.user.registro)}" rendered="#{ not evalua.flag}" update="tblevalua" class="btn-dialog"/>
+                                <p:commandButton icon="ui-icon-pencil" actionListener="#{evaluacionesBean.evaluaciones.editar(evalua)}"  rendered="#{evalua.flag}" update="tblevalua" class="btn-dialog"/>
                             </p:column>
                         </p:dataTable>
                     </h:panelGrid>
@@ -178,22 +181,23 @@ and open the template in the editor.
                 
                 
                 <p:dialog header="Actividades" widgetVar="actividades"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >
-                    <h:panelGrid columns="1">
-                        <p:outputLabel value="Nombre de Actividad" for="txtnombreact" />
+                    <h:panelGrid columns="3" class="inputs">
+                        <p:outputLabel value="Nombre de Actividad: " for="txtnombreact" />
+                         <p:outputLabel value="Alcance: " for="cmbalcance" />
+                         <p:outputLabel value="Fecha de Inicio: " for="txtfecha" />
                         <p:inputText id="txtnombreact" value="#{actividadesBean.actividades.nombreact}" placeholder="Nombre de Actividad" class="texto"></p:inputText>
-                        <p:outputLabel value="Alcance" for="cmbalcance" />
                         <p:selectOneMenu id="cmbalcance" value="#{actividadesBean.actividades.alcanceact}">
                             <f:selectItem itemLabel="-Seleccionar Alcance-" itemValue="0" itemDisabled="true" />
                             <f:selectItem itemLabel="Alcance 1" itemValue="1" />
                             <f:selectItem itemLabel="Alcance 2" itemValue="2" />
                             <f:selectItem itemLabel="Alcance 3" itemValue="3" />
                         </p:selectOneMenu>
-                        <p:outputLabel value="Fecha de Inicio" for="txtfecha" />
+                        
                         <p:calendar id="txtfecha" value="#{actividadesBean.actividades.fechainicioact}" pattern="dd/MM/yyyy" mask="true" class="datos" placeholder="Fecha de Inicio"  ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>
                         <p:commandButton value="Guardar" actionListener="#{actividadesBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar" 
-                                         update="cmbalcance,txtnombreact,txtfecha,tblact" />
+                                         update="cmbalcance,txtnombreact,txtfecha,tblact,cmbxactividad" />
                     </h:panelGrid>
-                    <h:panelGrid columns="1">
+                    <h:panelGrid columns="1" class="actividades">
                         <p:dataTable id="tblact" var="act" value="#{actividadesBean.actividades.listaact}" filteredValue="#{actividadesBean.actividades.filtroact}" >
                             <p:column headerText="Nombre" filterBy="#{act.nombreact}" >
                                 <h:outputText value="#{act.nombreact}" rendered="#{act.flag}" />
@@ -203,7 +207,7 @@ and open the template in the editor.
                                 <h:outputText value="#{act.fechainicioact}" rendered="#{act.flag}" ><f:convertDateTime type="date" pattern="yyyy-MM-dd"/></h:outputText>
                                   <p:calendar id="txtfecha2" value="#{act.fechainicioact}" pattern="dd/MM/yyyy" mask="true" class="datos" placeholder="Fecha de Inicio" rendered="#{ not act.flag}" ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>
                             </p:column>
-                             <p:column>
+                            <p:column headerText="Alcance">
                                  <p:selectOneMenu id="cmbalcance2" value="#{act.alcanceact}" disabled="#{act.flag}">
                                     <f:selectItem itemLabel="-Seleccionar Alcance-" itemValue="0" itemDisabled="true" />
                                     <f:selectItem itemLabel="Alcance 1" itemValue="1" />
@@ -212,32 +216,34 @@ and open the template in the editor.
                                 </p:selectOneMenu>
                             </p:column>
                             <p:column>
-                                <p:commandButton icon="ui-icon-close" actionListener="#{actividadesBean.actividades.cancelar(act)}"  rendered="#{ not act.flag}" update="tblact" />
-                                <p:commandButton icon="ui-icon-check" actionListener="#{actividadesBean.actividades.actualizar(act,login.user.registro)}" rendered="#{ not act.flag}" update="tblact"/>
-                                <p:commandButton icon="ui-icon-pencil" actionListener="#{actividadesBean.actividades.editar(act)}"  rendered="#{act.flag}" update="tblact"/>
+                                <p:commandButton icon="ui-icon-close" actionListener="#{actividadesBean.actividades.cancelar(act)}"  rendered="#{ not act.flag}" update="tblact" class="btn-dialog" />
+                                <p:commandButton icon="ui-icon-check" actionListener="#{actividadesBean.actividades.actualizar(act,login.user.registro)}" rendered="#{ not act.flag}" update="tblact" class="btn-dialog"/>
+                                <p:commandButton icon="ui-icon-pencil" actionListener="#{actividadesBean.actividades.editar(act)}"  rendered="#{act.flag}" update="tblact" class="btn-dialog"/>
                             </p:column>
                         </p:dataTable>
                       </h:panelGrid>
                 </p:dialog>
                 
                 <p:dialog header="Asignar Evaluacion" widgetVar="evaluaxcurso"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >
-                    <h:panelGrid columns="1">         
-                        <p:outputLabel value="Curso y Profesor" for="cmbcursoxprofesor" />
+                    <h:panelGrid columns="3" class="inputs">         
+                        <p:outputLabel value="Curso y Profesor: " for="cmbcursoxprofesor" />
+                             <p:outputLabel value="Evaluacion: " for="cmbevaluacion" />
+                                  <p:outputLabel value="Peso: " for="txtpeso" />
                         <p:selectOneMenu id="cmbcursoxprofesor" value="#{evaluaxCursoBean.evaluaxcurso.profesorxcurso}" >
                             <f:selectItem itemLabel="-Seleccionar Curso y Profesor-" itemValue="0" itemDisabled="true" />
                             <f:selectItems value="#{sucursalesBean.listacxp}" />
                         </p:selectOneMenu>
-                        <p:outputLabel value="Evaluacion" for="cmbevaluacion" />
+                   
                         <p:selectOneMenu id="cmbevaluacion" value="#{evaluaxCursoBean.evaluaxcurso.evaluacion}" >
                             <f:selectItem itemLabel="-Seleccionar Evaluacion-" itemValue="0" itemDisabled="true" />
                             <f:selectItems value="#{evaluacionesBean.listaevaluaciones}" />
                         </p:selectOneMenu>
-                        <p:outputLabel value="Peso" for="txtpeso" />
+                   
                         <p:inputText id="txtpeso" value="#{evaluaxCursoBean.evaluaxcurso.peso}" placeholder="Peso" class="texto"></p:inputText>
                         <p:commandButton value="Guardar" actionListener="#{evaluaxCursoBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar" 
                                          update="txtpeso,cmbcursoxprofesor,cmbevaluacion,tblexc"/>
                     </h:panelGrid>
-                    <h:panelGrid columns="1">
+                    <h:panelGrid columns="1" class="asignar-evaluacion">
                         <p:dataTable id="tblexc" var="exc" value="#{evaluaxCursoBean.evaluaxcurso.listaexc}" filteredValue="#{evaluaxCursoBean.evaluaxcurso.filtroexc}" >
                             <p:column headerText="Evaluacion" filterBy="#{exc.nevaluacion}" >
                                 <h:outputText value="#{exc.nevaluacion}" rendered="#{exc.flag}" />
@@ -258,35 +264,38 @@ and open the template in the editor.
                                    <h:inputText value="#{exc.peso}" rendered="#{ not exc.flag}" />
                             </p:column>
                             <p:column>
-                                <p:commandButton icon="ui-icon-close" actionListener="#{evaluaxCursoBean.evaluaxcurso.cancelar(exc)}"  rendered="#{ not exc.flag}" update="tblexc" />
-                                <p:commandButton icon="ui-icon-check" actionListener="#{evaluaxCursoBean.evaluaxcurso.actualizar(exc,login.user.registro,sucursalesBean.sucursales.registrosuc)}" rendered="#{ not exc.flag}" update="tblexc"/>
-                                <p:commandButton icon="ui-icon-pencil" actionListener="#{evaluaxCursoBean.evaluaxcurso.editar(exc)}"  rendered="#{exc.flag}" update="tblexc"/>
+                                <p:commandButton icon="ui-icon-close" actionListener="#{evaluaxCursoBean.evaluaxcurso.cancelar(exc)}"  rendered="#{ not exc.flag}" update="tblexc" class="btn-dialog" />
+                                <p:commandButton icon="ui-icon-check" actionListener="#{evaluaxCursoBean.evaluaxcurso.actualizar(exc,login.user.registro,sucursalesBean.sucursales.registrosuc)}" rendered="#{ not exc.flag}" update="tblexc" class="btn-dialog" />
+                                <p:commandButton icon="ui-icon-pencil" actionListener="#{evaluaxCursoBean.evaluaxcurso.editar(exc)}"  rendered="#{exc.flag}" update="tblexc" class="btn-dialog" />
                             </p:column>
                         </p:dataTable>
                         </h:panelGrid>
                 </p:dialog>
          
                 <p:dialog header="Asignar Curso" widgetVar="cursoxprofesor"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >
-                    <h:panelGrid columns="2">         
-                        <p:outputLabel value="Curso" for="cmbxcurso" />
+                    <h:panelGrid columns="3" class="inputs">         
+                          <p:outputLabel value="Profesor: " for="cmbxprofesor" />
+                        <p:outputLabel value="Curso: " for="cmbxcurso" />
+                         <p:outputLabel value="Actividad: " for="cmbxactividad" />
+                         
                         <p:selectOneMenu id="cmbxcurso" value="#{cursoxProfesorBean.cursoxprofesor.curso}" >
                             <f:selectItem itemLabel="-Seleccionar Curso-" itemValue="0" itemDisabled="true" />
                             <f:selectItems value="#{sucursalesBean.listaCursos}" />
                         </p:selectOneMenu>
-                        <p:outputLabel value="Profesor" for="cmbxprofesor" />
+      
                         <p:selectOneMenu id="cmbxprofesor" value="#{cursoxProfesorBean.cursoxprofesor.profesor}"  >
                             <f:selectItem itemLabel="-Seleccionar Profesor-" itemValue="0" itemDisabled="true" />
                             <f:selectItems value="#{cursoxProfesorBean.listaprofesor}" />
                         </p:selectOneMenu>
-                        <p:outputLabel value="Actividad" for="cmbxactividad" />
+                       
                         <p:selectOneMenu id="cmbxactividad" value="#{cursoxProfesorBean.cursoxprofesor.actividad}"  >
                             <f:selectItem itemLabel="-Seleccionar Actividad-" itemValue="0" itemDisabled="true" />
                             <f:selectItems value="#{sucursalesBean.listaactividades}" />
                         </p:selectOneMenu>
                         <p:commandButton value="Guardar" actionListener="#{cursoxProfesorBean.registrar(login.user.registro)}" class="boton-ingresar" 
-                                         update="cmbxcurso,cmbxprofesor,cmbxactividad" />
+                                         update="cmbxcurso,cmbxprofesor,cmbxactividad,cmbcursoxprofesor" />
                          </h:panelGrid>   
-                    <h:panelGrid columns="1">  
+                    <h:panelGrid columns="1" class="curso-profesor">  
                         <p:dataTable id="tblprofesorcursos" var="pxc" value="#{cursoxProfesorBean.cursoxprofesor.listapxc}" filteredValue="#{cursoxProfesorBean.cursoxprofesor.filtropxc}" >
                             
                         <p:column headerText="Curso" filterBy="#{pxc.ncurso}">
@@ -314,9 +323,9 @@ and open the template in the editor.
                         </p:column>
                         
                                 <p:column>
-                                <p:commandButton icon="ui-icon-close" actionListener="#{cursoxProfesorBean.cursoxprofesor.cancelar(pxc)}"  rendered="#{ not pxc.flag}" update="tblprofesorcursos" />
-                                <p:commandButton icon="ui-icon-check" actionListener="#{cursoxProfesorBean.cursoxprofesor.actualizar(pxc,login.user.registro,sucursalesBean.sucursales.registrosuc)}" rendered="#{ not pxc.flag}" update="tblprofesorcursos"/>
-                            <p:commandButton icon="ui-icon-pencil" actionListener="#{cursoxProfesorBean.cursoxprofesor.editar(pxc)}"  rendered="#{pxc.flag}" update="tblprofesorcursos"/>
+                                <p:commandButton icon="ui-icon-close" actionListener="#{cursoxProfesorBean.cursoxprofesor.cancelar(pxc)}"  rendered="#{ not pxc.flag}" update="tblprofesorcursos" class="btn-dialog" />
+                                <p:commandButton icon="ui-icon-check" actionListener="#{cursoxProfesorBean.cursoxprofesor.actualizar(pxc,login.user.registro,sucursalesBean.sucursales.registrosuc)}" rendered="#{ not pxc.flag}" update="tblprofesorcursos" class="btn-dialog" />
+                            <p:commandButton icon="ui-icon-pencil" actionListener="#{cursoxProfesorBean.cursoxprofesor.editar(pxc)}"  rendered="#{pxc.flag}" update="tblprofesorcursos" class="btn-dialog" />
                             </p:column>
                             
                         </p:dataTable>
@@ -325,15 +334,15 @@ and open the template in the editor.
                 </p:dialog>
                 
                 <p:dialog header="Turnos" widgetVar="turnos"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >
-                    <h:panelGrid columns="1">
-                        <p:outputLabel value="Codigo" for="txtcodigotur" />
+                    <h:panelGrid columns="2" class="inputs">
+                        <p:outputLabel value="Codigo: " for="txtcodigotur" />
+                         <p:outputLabel value="Nombre: " for="txtnombretur" />
                         <p:inputText id="txtcodigotur" value="#{turnosBean.turnos.codigotur}" placeholder="Codigo" class="texto"></p:inputText>
-                        <p:outputLabel value="Nombre" for="txtnombretur" />
                         <p:inputText id="txtnombretur" value="#{turnosBean.turnos.nombretur}" placeholder="Nombre" class="texto"></p:inputText>
                         <p:commandButton value="Guardar" actionListener="#{turnosBean.registrar(login.user.registro)}" class="boton-ingresar" 
                 update="txtcodigotur,txtnombretur,tblturnos" />
                     </h:panelGrid>    
-                    <h:panelGrid columns="1">    
+                    <h:panelGrid columns="1" class="turno">    
                         <p:dataTable id="tblturnos" var="turno" value="#{turnosBean.turnos.listaturnos}" filteredValue="#{turnosBean.turnos.filtroturnos}" >
                             <p:column headerText="Codigo" filterBy="#{turno.codigotur}">
                                  <h:outputText value="#{turno.codigotur}" rendered="#{turno.flag}" />
@@ -344,9 +353,9 @@ and open the template in the editor.
                                    <h:inputText value="#{turno.nombretur}" rendered="#{ not turno.flag}" />
                             </p:column>
                               <p:column>
-                                  <p:commandButton icon="ui-icon-close" actionListener="#{turnosBean.turnos.cancelar(turno)}"  rendered="#{ not turno.flag}" update="tblturnos" />
-                                  <p:commandButton icon="ui-icon-check" actionListener="#{turnosBean.turnos.actualizar(turno,login.user.registro)}" rendered="#{ not turno.flag}" update="tblturnos"/>
-                                  <p:commandButton icon="ui-icon-pencil" actionListener="#{turnosBean.turnos.editar(turno)}"   rendered="#{turno.flag}" update="tblturnos"/>
+                                  <p:commandButton icon="ui-icon-close" actionListener="#{turnosBean.turnos.cancelar(turno)}"  rendered="#{ not turno.flag}" update="tblturnos" class="btn-dialog"/>
+                                  <p:commandButton icon="ui-icon-check" actionListener="#{turnosBean.turnos.actualizar(turno,login.user.registro)}" rendered="#{ not turno.flag}" update="tblturnos" class="btn-dialog"/>
+                                  <p:commandButton icon="ui-icon-pencil" actionListener="#{turnosBean.turnos.editar(turno)}"   rendered="#{turno.flag}" update="tblturnos" class="btn-dialog"/>
                             </p:column>
                         
                         </p:dataTable>
@@ -354,15 +363,16 @@ and open the template in the editor.
                 </p:dialog>
                 
                 <p:dialog header="Secciones" widgetVar="secciones"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >
-                    <h:panelGrid columns="1">
-                        <p:outputLabel value="Codigo" for="txtcodigosec" />
+                    <h:panelGrid columns="2" class="inputs">
+                        <p:outputLabel value="Codigo: " for="txtcodigosec" />
+                         <p:outputLabel value="Nombre: " for="txtnombresec" />º
                         <p:inputText id="txtcodigosec" value="#{seccionesBean.secciones.codigosec}" placeholder="Codigo" class="texto"></p:inputText>
-                        <p:outputLabel value="Nombre" for="txtnombresec" />
+              
                         <p:inputText id="txtnombresec" value="#{seccionesBean.secciones.nombresec}" placeholder="Nombre" class="texto"></p:inputText>
                         <p:commandButton value="Guardar" actionListener="#{seccionesBean.registrar(login.user.registro)}" class="boton-ingresar" 
                             update="txtcodigosec,txtnombresec,tblseccion" />
                     </h:panelGrid>
-                           <h:panelGrid columns="1">    
+                    <h:panelGrid columns="1" class="secciones">    
                                <p:dataTable id="tblseccion" var="seccion" value="#{seccionesBean.secciones.listasec}" filteredValue="#{seccionesBean.secciones.filtrosec}" >
                                    <p:column headerText="Codigo" filterBy="#{seccion.codigosec}">
                                  <h:outputText value="#{seccion.codigosec}" rendered="#{seccion.flag}" />
@@ -373,9 +383,9 @@ and open the template in the editor.
                                    <h:inputText value="#{seccion.nombresec}" rendered="#{ not seccion.flag}" />
                             </p:column>
                               <p:column>
-                                  <p:commandButton icon="ui-icon-close" actionListener="#{seccionesBean.secciones.cancelar(seccion)}"  rendered="#{ not seccion.flag}" update="tblseccion" />
-                                  <p:commandButton icon="ui-icon-check" actionListener="#{seccionesBean.secciones.actualizar(seccion,login.user.registro)}" rendered="#{ not seccion.flag}" update="tblseccion"/>
-                                  <p:commandButton icon="ui-icon-pencil" actionListener="#{seccionesBean.secciones.editar(seccion)}"   rendered="#{seccion.flag}" update="tblseccion"/>
+                                  <p:commandButton icon="ui-icon-close" actionListener="#{seccionesBean.secciones.cancelar(seccion)}"  rendered="#{ not seccion.flag}" update="tblseccion" class="btn-dialog" />
+                                  <p:commandButton icon="ui-icon-check" actionListener="#{seccionesBean.secciones.actualizar(seccion,login.user.registro)}" rendered="#{ not seccion.flag}" update="tblseccion" class="btn-dialog" />
+                                  <p:commandButton icon="ui-icon-pencil" actionListener="#{seccionesBean.secciones.editar(seccion)}"   rendered="#{seccion.flag}" update="tblseccion" class="btn-dialog" />
                             </p:column>
                         
                         </p:dataTable>

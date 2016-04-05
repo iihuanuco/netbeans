@@ -422,6 +422,115 @@ background: #ffffff -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,
 }
 
 
+.dialog-academico .ui-widget-header{
+    background: white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+color: black;
+text-shadow: none;
+font-weight: normal;
+font-family: "Dosis",sans-serif !important;
+border-bottom: 1px solid black !important;
+
+}
+.dialog-academico .ui-widget-content{
+    border: 2px solid white ;
+}
+
+.carreras  .ui-inputfield {
+    box-shadow: inset 0 2px 2px rgba(0,0,0,0) !important;
+     font-family: "Dosis",sans-serif !important;
+     text-align: center !important;
+     background-color: white !important;
+     color: #333333 !important;
+     width: auto !important;
+
+}
+.cursos  .ui-inputfield, .curso-profesor  .ui-inputfield, .evaluacion .ui-inputfield,.turno .ui-inputfield, .secciones .ui-inputfield {
+    box-shadow: inset 0 2px 2px rgba(0,0,0,0) !important;
+     font-family: "Dosis",sans-serif !important;
+     text-align: center !important;
+     background-color: white !important;
+     color: #333333 !important;
+    width: 90% !important;
+}
+ .actividades .ui-inputfield  {
+    box-shadow: inset 0 2px 2px rgba(0,0,0,0) !important;
+     font-family: "Dosis",sans-serif !important;
+     text-align: center !important;
+     background-color: white !important;
+     color: #333333 !important;
+
+}
+
+.asignar-evaluacion .ui-inputfield  {
+    box-shadow: inset 0 2px 2px rgba(0,0,0,0) !important;
+     font-family: "Dosis",sans-serif !important;
+     text-align: center !important;
+     background-color: white !important;
+     color: #333333 !important;
+
+}
+ 
+ 
+ 
+
+.inputs .ui-inputfield {
+    box-shadow: inset 0 2px 2px rgba(0,0,0,0) !important;
+    width: 300px !important;
+     font-family: "Dosis",sans-serif !important;
+     text-align: center !important;
+}
+
+.carreras .ui-widget-content , .cursos .ui-widget-content , .curso-profesor .ui-widget-content , .evaluacion  .ui-widget-content,
+.actividades  .ui-widget-content, .asignar-evaluacion  .ui-widget-content,  .turno  .ui-widget-content,  .secciones  .ui-widget-content{
+    border-top: 1px solid #bdbdbd !important;
+    border-bottom: 1px solid #bdbdbd !important;
+}
+ 
+.dialog-academico  .ui-datatable-odd {
+    background: none repeat scroll 0 0 white !important;
+    border-top: 1px solid black !important;
+}
+
+.dialog-academico  .ui-shadow{
+    box-shadow: 0px 5px 10px rgba(0,0,0,0) !important;
+}
+
+.dialog-academico .ui-state-default{
+background: #f6f6f6 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
+text-shadow:  none;
+
+}
+
+.dialog-academico  .btn-dialog{
+     background: #ffffff -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+    text-shadow: none !important;
+    box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
+    height: 50px;
+    width: 50px;
+    font-family: "Dosis",sans-serif !important;
+    font-weight:  normal;
+     border: 1px solid #009999;
+  
+}
+
+.dialog-academico .btn-dialog:hover{
+     border: 2px solid #333333;
+}
+
+ 
+ 
+ 
+.dialog-academico .ui-selectonemenu{
+    width: auto !important;
+}
+
+.dialog-academico .ui-selectlistbox-filter.ui-inputfield{
+    width: auto !important;
+}
+
+.dialog-academico  .ui-state-hover,.ui-state-focus {
+    box-shadow: 0 0 0 rgba(0,0,0,0) !important;
+}
 
 
 
@@ -430,7 +539,84 @@ background: #ffffff -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,
 
 
 
+ 
 
+
+div.registrar .ui-selectonemenu{
+    width: auto !important;
+}
+
+div.registrar .ui-inputfield {
+    box-shadow: inset 0 2px 2px rgba(0,0,0,0) !important;
+     font-family: "Dosis",sans-serif !important;
+     text-align: center !important;
+}
+div.registrar .ui-selectlistbox-filter.ui-inputfield{
+    width: auto !important;
+}
+
+
+div.registrar  .ui-shadow{
+    box-shadow: 0px 5px 10px rgba(0,0,0,0) !important;
+}
+
+div.registrar .ui-state-default{
+background: #f6f6f6 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
+text-shadow:  none;
+
+}
+
+div.registrar .ui-state-hover,.ui-state-focus {
+    box-shadow: 0 0 0 rgba(0,0,0,0) !important;
+}
+
+.departamento .ui-widget-content, .provincias .ui-widget-content, .distrito .ui-widget-content, .empresa .ui-widget-content,  .sucursal .ui-widget-content,  .userxsucu .ui-widget-content{
+    border-top: 1px solid #bdbdbd !important;
+    border-bottom: 1px solid #bdbdbd !important;
+    text-align: center;
+ 
+}
+div.registrar  .ui-datatable-odd {
+    background: none repeat scroll 0 0 white !important;
+    border-top: 1px solid black !important;
+}
+
+
+div.registrar .ui-widget-header{
+    background: white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+color: black;
+text-shadow: none;
+font-weight: normal;
+font-family: "Dosis",sans-serif !important;
+border-bottom: 1px solid black;
+
+}
+
+.departamento  .ui-inputfield, .provincias  .ui-inputfield, .distrito .ui-inputfield,.empresa .ui-inputfield, .sucursal .ui-inputfield,  .userxsucu .ui-inputfield {
+    box-shadow: inset 0 2px 2px rgba(0,0,0,0) !important;
+     font-family: "Dosis",sans-serif !important;
+     text-align: center !important;
+     background-color: white !important;
+     color: #333333 !important;
+    width: 90% !important;
+}
+
+div.registrar .btn-dialog{
+     background: #ffffff -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+    text-shadow: none !important;
+    box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
+    height: 50px;
+    width: 50px;
+    font-family: "Dosis",sans-serif !important;
+    font-weight:  normal;
+     border: 1px solid #009999;
+}
+
+div.registrar .btn-dialog:hover{
+     border: 2px solid #333333;
+}
+
+ 
 
 
 
@@ -473,13 +659,6 @@ text-shadow:  none;
 
 
 
-.notas .ui-datatable thead th{
-    color: black !important;
-    font-weight:  normal;
-    border: 0px solid rgba(0,0,0,0) !important;
-    padding-bottom: 10px;
-padding-top: 10px;
-}
  
  
 .notas .ui-widget-header{
@@ -524,13 +703,15 @@ border-bottom: 1px solid black;
     text-align: center;
 }
 
-.dialog-notas .ui-datatable thead th{
+.ui-datatable thead th{
     color: black !important;
     font-weight:  normal;
     border: 0px solid rgba(0,0,0,0) !important;
     padding-bottom: 10px;
 padding-top: 10px;
 }
+
+ 
  
  
 .dialog-notas .ui-widget-header{
@@ -589,11 +770,6 @@ text-shadow:  none;
     font-family: "Dosis",sans-serif !important;
     font-weight:  normal;
      border: 1px solid #009999;
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    -ms-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
 }
 .notas .btn-dialog:hover{
      border: 2px solid #333333;
@@ -692,11 +868,7 @@ div.dialog-gestion-alumnos .btn-dialog{
     font-weight:  normal;
      border: 1px solid #009999;
      border-radius: 0px;
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    -ms-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
+ 
 }
 div.dialog-gestion-alumnos .ui-state-default{
 background: #f6f6f6 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
@@ -712,13 +884,7 @@ div.dialog-gestion-alumnos .btn-dialog:hover{
     text-align: center;
       border-width: 0 !important;
 }
-div.dialog-gestion-alumnos .ui-datatable thead th{
-    color: black !important;
-    font-weight:  normal;
-    border: 0px solid rgba(0,0,0,0) !important;
-    padding-bottom: 10px;
-padding-top: 10px;
-}
+ 
 div.dialog-gestion-alumnos .ui-state-active{
 background: white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0));
 }
@@ -764,28 +930,7 @@ div.dialog-gestion-alumnos  .ui-datatable-odd {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 

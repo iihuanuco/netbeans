@@ -13,7 +13,7 @@ and open the template in the editor.
     <h:head>
         <title>registro</title>
         <h:outputStylesheet library="css" name="style.css"  />
-        <h:outputStylesheet library="resources" name="fonts.css"  />
+                <h:outputStylesheet name="fonts.css"  />
         <h:outputScript library="js" name="bg.js"   />
 
     </h:head>
@@ -39,13 +39,13 @@ and open the template in the editor.
                             <p:dataTable id="tblcursos" var="curso" value="#{cursoxProfesorBean.cursoxprofesor.lista}" emptyMessage=""  filteredValue="#{cursoxProfesorBean.cursoxprofesor.filtropxc}">
 
 
-                                <p:column headerText="Codigo" filterBy="#{curso.registro}" >
+                                <p:column headerText="Codigo" filterBy="#{curso.registro}"  filterMatchMode="contains" >
                                     <h:outputText value="#{curso.registro}" />
                                 </p:column>
-                                <p:column headerText="Curso" filterBy="#{curso.ncurso}"  >
+                                <p:column headerText="Curso" filterBy="#{curso.ncurso}"  filterFunction="#{curso.filterByName}" filterMatchMode="contains" >
                                     <h:outputText value="#{curso.ncurso}" />
                                 </p:column>
-                                <p:column headerText="Docente" filterBy="#{curso.nprofesor}" >
+                                <p:column headerText="Docente" filterBy="#{curso.nprofesor}"  filterFunction="#{curso.filterByName}" filterMatchMode="contains" >
                                     <h:outputText value="#{curso.nprofesor}" />
                                 </p:column>
                                 <p:column >

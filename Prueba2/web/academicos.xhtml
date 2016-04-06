@@ -14,7 +14,7 @@ and open the template in the editor.
     <h:head>
         <title>Operaciones Academicas</title>
         <h:outputStylesheet library="css" name="style.css"  />
-        <h:outputStylesheet library="resources" name="fonts.css"  />
+        <h:outputStylesheet name="fonts.css"  />
         <h:outputScript library="js" name="bg.js"   />
     </h:head>
     <h:body  style="background-color:white;">
@@ -50,11 +50,11 @@ and open the template in the editor.
                           </h:panelGrid>
                         <h:panelGrid columns="1" class="carreras">
                         <p:dataTable id="tblcarreras" var="carrera" value="#{carrerasBean.carreras.listacarreras}" filteredValue="#{carrerasBean.carreras.filtrocarreras}" >
-                              <p:column headerText="Codigo" filterBy="#{carrera.codigocarrera}">
+                              <p:column headerText="Codigo" filterBy="#{carrera.codigocarrera}"   filterMatchMode="contains" >
                                     <h:outputText value="#{carrera.codigocarrera}" rendered="#{carrera.flag}" />
                              <h:inputText value="#{carrera.codigocarrera}" rendered="#{ not carrera.flag}" />
                         </p:column>
-                              <p:column headerText="Carrera" filterBy="#{carrera.nombrecarrera}">
+                              <p:column headerText="Carrera" filterBy="#{carrera.nombrecarrera}" filterFunction="#{carrera.filterByName}" filterMatchMode="contains">
                                     <h:outputText value="#{carrera.nombrecarrera}" rendered="#{carrera.flag}" />
                              <h:inputText value="#{carrera.nombrecarrera}" rendered="#{ not carrera.flag}" />
                         </p:column>
@@ -113,17 +113,17 @@ and open the template in the editor.
                     <h:panelGrid columns="1"  class="cursos">
                         
                         <p:dataTable id="tblcursos" var="cursos" value="#{cursosBean.cursos.listacursos}" filteredValue="#{cursosBean.cursos.filtrocursos}" >
-                            <p:column headerText="Codigo" filterBy="#{cursos.codigocurso}" class="c1">
+                            <p:column headerText="Codigo" filterBy="#{cursos.codigocurso}"   filterMatchMode="contains"  class="c1">
                                     <h:outputText value="#{cursos.codigocurso}" rendered="#{cursos.flag}" />
                              <h:inputText value="#{cursos.codigocurso}" rendered="#{ not cursos.flag}" />
                         </p:column>
                             
-                            <p:column headerText="Nombre" filterBy="#{cursos.nombrecurso}">
+                            <p:column headerText="Nombre" filterBy="#{cursos.nombrecurso}" filterFunction="#{cursos.filterByName}" filterMatchMode="contains" >
                                     <h:outputText value="#{cursos.nombrecurso}" rendered="#{cursos.flag}" />
                              <h:inputText value="#{cursos.nombrecurso}" rendered="#{ not cursos.flag}" />
                         </p:column>
                             
-                            <p:column headerText="Carrera" filterBy="#{cursos.ncarrerra}">
+                            <p:column headerText="Carrera" filterBy="#{cursos.ncarrerra}" filterFunction="#{cursos.filterByName}" filterMatchMode="contains" >
                                 <h:outputText value="#{cursos.ncarrerra}" rendered="#{cursos.flag}" />
                                 <p:selectOneMenu id="txtcarrera2" value="#{cursos.carrera}" rendered="#{not cursos.flag}"  > 
                                <f:selectItem itemLabel="-Seleccione Carrera- "   itemValue="0"/>
@@ -131,19 +131,19 @@ and open the template in the editor.
                                 </p:selectOneMenu>
                         </p:column>
                             
-                            <p:column headerText="Semestre" filterBy="#{cursos.semestrecurso}" class="c1">
+                            <p:column headerText="Semestre" filterBy="#{cursos.semestrecurso}"  filterMatchMode="contains" class="c1">
                                     <h:outputText value="#{cursos.semestrecurso}" rendered="#{cursos.flag}" />
                              <h:inputText value="#{cursos.semestrecurso}" rendered="#{ not cursos.flag}" />
                         </p:column>
-                            <p:column headerText="Creditos" filterBy="#{cursos.creditoscurso}" class="c1">
+                            <p:column headerText="Creditos" filterBy="#{cursos.creditoscurso}" filterMatchMode="contains"  class="c1">
                                     <h:outputText value="#{cursos.creditoscurso}" rendered="#{cursos.flag}" />
                              <h:inputText value="#{cursos.creditoscurso}" rendered="#{ not cursos.flag}" />
                         </p:column>
-                            <p:column headerText="Horas Teoria" filterBy="#{cursos.htcurso}" class="c1">
+                            <p:column headerText="Horas Teoria" filterBy="#{cursos.htcurso}" filterMatchMode="contains"  class="c1">
                                     <h:outputText value="#{cursos.htcurso}" rendered="#{cursos.flag}" />
                              <h:inputText value="#{cursos.htcurso}" rendered="#{ not cursos.flag}" />
                         </p:column>
-                            <p:column headerText="Horas Practica" filterBy="#{cursos.hpcurso}" class="c1">
+                            <p:column headerText="Horas Practica" filterBy="#{cursos.hpcurso}"  filterMatchMode="contains" class="c1">
                                     <h:outputText value="#{cursos.hpcurso}" rendered="#{cursos.flag}" />
                              <h:inputText value="#{cursos.hpcurso}" rendered="#{ not cursos.flag}" />
                         </p:column>
@@ -166,7 +166,7 @@ and open the template in the editor.
                     </h:panelGrid>
                     <h:panelGrid columns="1" class="evaluacion">
                         <p:dataTable id="tblevalua" var="evalua" value="#{evaluacionesBean.evaluaciones.listaevalua}" filteredValue="#{evaluacionesBean.evaluaciones.filtroevalua}" >
-                            <p:column headerText="Nombre" filterBy="#{evalua.nombreeval}" >
+                            <p:column headerText="Nombre" filterBy="#{evalua.nombreeval}" filterFunction="#{evalua.filterByName}" filterMatchMode="contains"  >
                                 <h:outputText value="#{evalua.nombreeval}" rendered="#{evalua.flag}" />
                                 <h:inputText value="#{evalua.nombreeval}" rendered="#{ not evalua.flag}" />
                             </p:column>
@@ -199,11 +199,11 @@ and open the template in the editor.
                     </h:panelGrid>
                     <h:panelGrid columns="1" class="actividades">
                         <p:dataTable id="tblact" var="act" value="#{actividadesBean.actividades.listaact}" filteredValue="#{actividadesBean.actividades.filtroact}" >
-                            <p:column headerText="Nombre" filterBy="#{act.nombreact}" >
+                            <p:column headerText="Nombre" filterBy="#{act.nombreact}" filterFunction="#{act.filterByName}" filterMatchMode="contains" >
                                 <h:outputText value="#{act.nombreact}" rendered="#{act.flag}" />
                                 <h:inputText value="#{act.nombreact}" rendered="#{ not act.flag}" />
                             </p:column>
-                            <p:column headerText="Inicio" filterBy="#{act.fechainicioact}">
+                            <p:column headerText="Inicio" filterBy="#{act.fechainicioact}" filterMatchMode="contains">
                                 <h:outputText value="#{act.fechainicioact}" rendered="#{act.flag}" ><f:convertDateTime type="date" pattern="yyyy-MM-dd"/></h:outputText>
                                   <p:calendar id="txtfecha2" value="#{act.fechainicioact}" pattern="dd/MM/yyyy" mask="true" class="datos" placeholder="Fecha de Inicio" rendered="#{ not act.flag}" ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>
                             </p:column>
@@ -245,14 +245,14 @@ and open the template in the editor.
                     </h:panelGrid>
                     <h:panelGrid columns="1" class="asignar-evaluacion">
                         <p:dataTable id="tblexc" var="exc" value="#{evaluaxCursoBean.evaluaxcurso.listaexc}" filteredValue="#{evaluaxCursoBean.evaluaxcurso.filtroexc}" >
-                            <p:column headerText="Evaluacion" filterBy="#{exc.nevaluacion}" >
+                            <p:column headerText="Evaluacion" filterBy="#{exc.nevaluacion}" filterFunction="#{exc.filterByName}" filterMatchMode="contains"  >
                                 <h:outputText value="#{exc.nevaluacion}" rendered="#{exc.flag}" />
                                 <p:selectOneMenu id="cmbevaluacion2" value="#{exc.evaluacion}" rendered="#{not exc.flag}" >
                                     <f:selectItem itemLabel="-Seleccionar Evaluacion-" itemValue="0" itemDisabled="true" />
                                     <f:selectItems value="#{evaluacionesBean.listaevaluaciones}" />
                                 </p:selectOneMenu>
                             </p:column>
-                            <p:column headerText="Docente - Curso" filterBy="#{exc.nprofesorxcurso}" >
+                            <p:column headerText="Docente - Curso" filterBy="#{exc.nprofesorxcurso}" filterFunction="#{exc.filterByName}" filterMatchMode="contains"  >
                                 <h:outputText value="#{exc.nprofesorxcurso}" rendered="#{exc.flag}" />
                                 <p:selectOneMenu id="cursoxprofesor2" value="#{exc.profesorxcurso}" rendered="#{not exc.flag}" >
                                     <f:selectItem itemLabel="-Seleccionar Profesor-Curso-" itemValue="0" itemDisabled="true" />
@@ -274,31 +274,32 @@ and open the template in the editor.
          
                 <p:dialog header="Asignar Curso" widgetVar="cursoxprofesor"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >
                     <h:panelGrid columns="3" class="inputs">         
-                          <p:outputLabel value="Profesor: " for="cmbxprofesor" />
+                            <p:outputLabel value="Profesor: " for="cmbxprofesor" />
                         <p:outputLabel value="Curso: " for="cmbxcurso" />
                          <p:outputLabel value="Actividad: " for="cmbxactividad" />
                          
-                        <p:selectOneMenu id="cmbxcurso" value="#{cursoxProfesorBean.cursoxprofesor.curso}" >
-                            <f:selectItem itemLabel="-Seleccionar Curso-" itemValue="0" itemDisabled="true" />
-                            <f:selectItems value="#{sucursalesBean.listaCursos}" />
-                        </p:selectOneMenu>
-      
-                        <p:selectOneMenu id="cmbxprofesor" value="#{cursoxProfesorBean.cursoxprofesor.profesor}"  >
-                            <f:selectItem itemLabel="-Seleccionar Profesor-" itemValue="0" itemDisabled="true" />
-                            <f:selectItems value="#{cursoxProfesorBean.listaprofesor}" />
-                        </p:selectOneMenu>
-                       
-                        <p:selectOneMenu id="cmbxactividad" value="#{cursoxProfesorBean.cursoxprofesor.actividad}"  >
-                            <f:selectItem itemLabel="-Seleccionar Actividad-" itemValue="0" itemDisabled="true" />
-                            <f:selectItems value="#{sucursalesBean.listaactividades}" />
-                        </p:selectOneMenu>
-                        <p:commandButton value="Guardar" actionListener="#{cursoxProfesorBean.registrar(login.user.registro)}" class="boton-ingresar" 
-                                         update="cmbxcurso,cmbxprofesor,cmbxactividad,cmbcursoxprofesor" />
+                         <p:selectOneListbox id="cmbxprofesor"   value="#{cursoxProfesorBean.cursoxprofesor.profesor}" filterMatchMode="contains" filter="true" class="list-box"  >
+                             <f:selectItems value="#{cursoxProfesorBean.listaprofesor}" itemLabel="#{cursoxProfesorBean.cursoxprofesor.nprofesor}" />
+                         </p:selectOneListbox>
+
+                         <p:selectOneMenu id="cmbxcurso" value="#{cursoxProfesorBean.cursoxprofesor.curso}" >
+                             <f:selectItem itemLabel="-Seleccionar Curso-" itemValue="0" itemDisabled="true" />
+                             <f:selectItems value="#{sucursalesBean.listaCursos}" />
+                         </p:selectOneMenu>
+
+
+
+                         <p:selectOneMenu id="cmbxactividad" value="#{cursoxProfesorBean.cursoxprofesor.actividad}"  >
+                             <f:selectItem itemLabel="-Seleccionar Actividad-" itemValue="0" itemDisabled="true" />
+                             <f:selectItems value="#{sucursalesBean.listaactividades}" />
+                         </p:selectOneMenu>
+                        <p:commandButton value="Guardar" actionListener="#{cursoxProfesorBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar" 
+                                         update="cmbxcurso,cmbxprofesor,cmbxactividad,cmbcursoxprofesor,tblprofesorcursos" />
                          </h:panelGrid>   
                     <h:panelGrid columns="1" class="curso-profesor">  
                         <p:dataTable id="tblprofesorcursos" var="pxc" value="#{cursoxProfesorBean.cursoxprofesor.listapxc}" filteredValue="#{cursoxProfesorBean.cursoxprofesor.filtropxc}" >
                             
-                        <p:column headerText="Curso" filterBy="#{pxc.ncurso}">
+                        <p:column headerText="Curso" filterBy="#{pxc.ncurso}" filterFunction="#{pxc.filterByName}" filterMatchMode="contains" >
                             <h:outputText value="#{pxc.ncurso}" rendered="#{pxc.flag}"  />
                             <p:selectOneMenu id="cmbxcurso2" value="#{pxc.curso}" rendered="#{ not pxc.flag}" >
                                 <f:selectItem itemLabel="-Seleccionar Curso-" itemValue="0" itemDisabled="true" />
@@ -306,7 +307,7 @@ and open the template in the editor.
                             </p:selectOneMenu>
                         </p:column>
                             
-                            <p:column headerText="Docente" filterBy="#{pxc.nprofesor}">
+                            <p:column headerText="Docente" filterBy="#{pxc.nprofesor}" filterFunction="#{pxc.filterByName}" filterMatchMode="contains">
                             <h:outputText value="#{pxc.nprofesor}" rendered="#{pxc.flag}"  />
                             <p:selectOneMenu id="cmbxprofesor2" value="#{pxc.profesor}" rendered="#{ not pxc.flag}" >
                                 <f:selectItem itemLabel="-Seleccionar Curso-" itemValue="0" itemDisabled="true" />

@@ -61,11 +61,12 @@ public class CursoxProfesorBean {
     
      
   
-     public void  registrar(int reg){
+     public void  registrar(int reg,int suc){
          cursoxprofesor.registrar(reg);
          cursoxprofesor.setProfesor(0);
          cursoxprofesor.setCurso(0);
          cursoxprofesor.setActividad(0);
+         cursoxprofesor.mostrarpxc(suc);
     }
     
          public void obtener(int reg){

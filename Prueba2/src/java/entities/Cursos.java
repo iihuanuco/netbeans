@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
  
 
 public class Cursos {
@@ -33,23 +34,26 @@ public class Cursos {
     public Cursos() {
     }
 
-    public Cursos(int userc, int userm, Date fechac, Date fecham, int registrocurso, String codigocurso, String nombrecurso, int semestrecurso, int creditoscurso, int estadocurso, int htcurso, int hpcurso, int alcancecurso, Date fechainiciocurso, int carrera) {
-        this.userc = userc;
-        this.userm = userm;
-        this.fechac = fechac;
-        this.fecham = fecham;
-        this.registrocurso = registrocurso;
-        this.codigocurso = codigocurso;
-        this.nombrecurso = nombrecurso;
-        this.semestrecurso = semestrecurso;
-        this.creditoscurso = creditoscurso;
-        this.estadocurso = estadocurso;
-        this.htcurso = htcurso;
-        this.hpcurso = hpcurso;
-        this.alcancecurso = alcancecurso;
-        this.fechainiciocurso = fechainiciocurso;
-        this.carrera = carrera;
+          public boolean filterByName(Object value, Object filter, Locale locale) {
+    String filterText = (filter == null) ? null : filter.toString().trim();
+    if (filterText == null || filterText.equals("")) {
+        return true;
     }
+
+    if (value == null) {
+        return false;
+    }
+
+    String Name = value.toString().toUpperCase();
+    filterText = filterText.toUpperCase();
+
+    if (Name.contains(filterText)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
     public int getUserc() {
         return userc;

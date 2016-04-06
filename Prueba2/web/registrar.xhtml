@@ -13,8 +13,9 @@ and open the template in the editor.
     <h:head>
         <title>registro</title>
         <h:outputStylesheet library="css" name="style.css"  />
-        <h:outputStylesheet library="resources" name="fonts.css"  />
+                <h:outputStylesheet name="fonts.css"  />
         <h:outputScript library="js" name="bg.js"   />
+ 
 
     </h:head>
     <h:body style="background-color:white;">
@@ -191,7 +192,7 @@ and open the template in the editor.
                 <p:outputLabel value="Direccion:  " for="txtdireccion" />
                 <p:outputLabel value="Codigo Modular:  " for="txtcodigomodular" />
                  
-            <p:selectOneListbox id="lstdistrito" value="#{sucursalesBean.sucursales.distrito}" filterMatchMode="contains" filter="true" class="list-box" >
+                <p:selectOneListbox id="lstdistrito" value="#{sucursalesBean.sucursales.distrito}"  filterMatchMode="contains"  filter="true" class="list-box" >
                 <f:selectItems value="#{distritosBean.listaDistritos}" itemLabel="#{distritosBean.distritos.nombredis }" />
                   </p:selectOneListbox>
            

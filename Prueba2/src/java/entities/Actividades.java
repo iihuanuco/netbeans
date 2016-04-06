@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 public class Actividades {
 
@@ -25,17 +26,26 @@ public class Actividades {
     public Actividades() {
     }
 
-    public Actividades(int userc, int userm, Date fechac, Date fecham, int registroact, Date fechainicioact, String nombreact, int alcanceact, int sucursal) {
-        this.userc = userc;
-        this.userm = userm;
-        this.fechac = fechac;
-        this.fecham = fecham;
-        this.registroact = registroact;
-        this.fechainicioact = fechainicioact;
-        this.nombreact = nombreact;
-        this.alcanceact = alcanceact;
-        this.sucursal = sucursal;
+        public boolean filterByName(Object value, Object filter, Locale locale) {
+    String filterText = (filter == null) ? null : filter.toString().trim();
+    if (filterText == null || filterText.equals("")) {
+        return true;
     }
+
+    if (value == null) {
+        return false;
+    }
+
+    String Name = value.toString().toUpperCase();
+    filterText = filterText.toUpperCase();
+
+    if (Name.contains(filterText)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
     public int getUserc() {
         return userc;

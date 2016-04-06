@@ -10,7 +10,7 @@
         <title>Inicio</title>
         <h:outputStylesheet library="css" name="menu.css"  />
         <h:outputStylesheet library="css" name="style.css"  />
-        <h:outputStylesheet library="resources" name="fonts.css"  />
+        <h:outputStylesheet name="fonts.css"  />
         <h:outputScript library="js" name="bg.js"   />
 
     </h:head>
@@ -55,7 +55,7 @@
                     <header>
                         <nav>
                             <ul> 
-                                 <li style="color:white;  float: left; padding-left: 10px;" class="menu-salir">#{sucursalesBean.sucursales.nombre}</li>
+                                 <li style="color:white;  float: left; padding-left: 15px; background-color: #009999; width: 100%;" class="menu-salir"><i class="icon icon-location"></i>#{sucursalesBean.sucursales.nombre}</li>
                             </ul>
                             <ul >
 
@@ -74,7 +74,7 @@
                 </h:form  >
                 <h:form id="menu"   >
                     <div class="dialog-sucursal"> 
-                        <p:dialog  header="Seleccione Sucursal" visible="#{login.user.flag}" widgetVar="sucursales" rendered="true" height="100%" width="100%" modal="true" closable="false" draggable="false" resizable="false" position="absolute" >
+                        <p:dialog  header="Seleccione Sucursal" visible="#{login.user.flag}" widgetVar="sucursales" rendered="true" height="100%" width="100%"  showEffect="clip" hideEffect="clip" modal="true" closable="false" draggable="false" resizable="false" position="absolute" >
                         <p:dataTable  id="listasucursales"  class="lista-sucursales"  value="#{sucursalesBean.sucursales.lista}"  var="sucursales" >
  
                             <p:column  >
@@ -85,7 +85,7 @@
                     </p:dialog>
       
                     
-                    <p:dialog  header="Seleccione Sucursal" visible="#{login.user.flag2}" widgetVar="sucursales2" rendered="true" height="100%" width="100%" modal="true" closable="false" draggable="false" resizable="false" position="absolute" >
+                    <p:dialog  header="Seleccione Sucursal" visible="#{login.user.flag2}" widgetVar="sucursales2" rendered="true" height="100%" width="100%" showEffect="clip" hideEffect="clip" modal="true" closable="false" draggable="false" resizable="false" position="absolute" >
                         <p:dataTable  id="listasucursales2"  class="lista-sucursales"  value="#{sucursalesBean.sucursales.lista2}"  var="sucursales" >
 
                             <p:column >

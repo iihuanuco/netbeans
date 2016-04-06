@@ -30,16 +30,40 @@
                            $(font).css('font-size',(screenHeight/40)); 
                           
                         }
-    $(document).ready(function() {
-                                // Actualizamos el fondo al cargar la pagina
-                                updateBackground();
-                                $(window).bind("resize", function() {
-                                // Y tambien cada vez que se redimensione el navegador
-                                updateBackground();
-                                
-                                });
-                                
-                                 
-                        });
+    $(document).ready(function () {
+    
+            updateBackground();
+            $(window).bind("resize", function () {
+
+                updateBackground();
+
+            });
+            
+            
+            
+
+            $("body").css({"overflow-y": "hidden"});
+
+            var alto = $(window).height();
+
+            $("body").append("<div id='pre-load-web'><div id='imagen-load'><img src='http://preloaders.net/preloaders/359/Filling%20circles.gif'  /><br />Cargando...</div>");
+
+            $("#pre-load-web").css({height: alto + "px"});
+
+            $("#imagen-load").css({"margin-top": (alto / 2) - 30 + "px"});
+
+
+});
  
-                        
+ 
+
+        $(window).load(function(){
+           $("#pre-load-web").fadeOut(2000,function()
+           { 
+            
+               $(this).remove();
+  
+               $("body").css({"overflow-y":"auto"}); 
+
+           });        
+        }); 

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 public class Evaluaciones {
 
@@ -21,13 +22,26 @@ public class Evaluaciones {
     public Evaluaciones() {
     }
 
-    public Evaluaciones(int userc, int userm, Date fecham, int registroeval, String nombreeval) {
-        this.userc = userc;
-        this.userm = userm;
-        this.fecham = fecham;
-        this.registroeval = registroeval;
-        this.nombreeval = nombreeval;
+             public boolean filterByName(Object value, Object filter, Locale locale) {
+    String filterText = (filter == null) ? null : filter.toString().trim();
+    if (filterText == null || filterText.equals("")) {
+        return true;
     }
+
+    if (value == null) {
+        return false;
+    }
+
+    String Name = value.toString().toUpperCase();
+    filterText = filterText.toUpperCase();
+
+    if (Name.contains(filterText)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
     public int getUserc() {
         return userc;

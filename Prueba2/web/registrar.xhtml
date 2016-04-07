@@ -15,81 +15,77 @@ and open the template in the editor.
         <h:outputStylesheet library="css" name="style.css"  />
                 <h:outputStylesheet name="fonts.css"  />
         <h:outputScript library="js" name="bg.js"   />
+           <h:outputScript library="js" name="load.js"   />
    <h:outputStylesheet library="css" name="submenu3.css"  />
-
+            <h:outputStylesheet library="assets" name="animations.min.css"  />
+        <h:outputScript library="assets" name="smoothscroll.min.js"   />
+        <h:outputScript library="assets" name="appear.min.js"   />
+        <h:outputScript library="assets" name="animations.min.js"   />
+        <h:outputScript library="assets" name="backbone.js"   />
     </h:head>
     <h:body style="background-color:white;">
         <h:form class="registro" >
               <p:growl id="messages" showDetail="true" />
        
-                
-                
                    <ul class="ca-menu">
-                    <li>
-                        <a>
+                    <li class="animate-in"  data-anim-type="bounce-in-left" data-anim-delay="600">
+                        <a >
                             <span> <i class="icon icon-pin-alt ca-icon"></i></span>
                             <div class="ca-content">
-                                <h2 class="ca-main"><p:commandButton value="Departamentos" onclick="#{departamentosBean.departamentos.mostrar()}" oncomplete="PF('departamentos').show();"  class="btn-img"  /></h2>
-                                <h3 class="ca-sub">Registra Y gestiona las carreras</h3>
+                                <h2 class="ca-main"><p:commandButton value="DEPARTAMENTOS" onclick="#{departamentosBean.departamentos.mostrar()}" oncomplete="PF('departamentos').show();"  class="btn-img"  /></h2>
+                                <h3 class="ca-sub">Registrar y gestionar los departamentos</h3>
                             </div>
                         </a>
                     </li>
-                    <li>
+                 <li class="animate-in"  data-anim-type="bounce-in-up" data-anim-delay="600">
                         <a >
                             <span  ><i class="icon icon-pin ca-icon"></i></span>
                             <div class="ca-content">
-                                <h2 class="ca-main"><p:commandButton value="Provincias" oncomplete="PF('provincias').show();"  class="btn-img"  /></h2>
-                                <h3 class="ca-sub">Registra Y gestiona los cursos</h3>
+                                <h2 class="ca-main"><p:commandButton value="PROVINCIAS" oncomplete="PF('provincias').show();"  class="btn-img"  /></h2>
+                                <h3 class="ca-sub">Registrar y gestionar las provincias</h3>
                             </div>
                         </a>
                     </li>
-                      <li>
+                       <li class="animate-in"  data-anim-type="bounce-in-right" data-anim-delay="600">
                         <a >
                             <span  ><i class="icon icon-my_location ca-icon"></i></span>
                             <div class="ca-content">
-                                <h2 class="ca-main"><p:commandButton value="Distritos" oncomplete="PF('distritos').show();" class="btn-img"  /> </h2>
-                                <h3 class="ca-sub">Asigna cursos a los docentes</h3>
+                                <h2 class="ca-main"><p:commandButton value="DISTRITOS" oncomplete="PF('distritos').show();" class="btn-img"  /> </h2>
+                                <h3 class="ca-sub">Registrar y gestionar los distritos</h3>
                             </div>
                         </a>
                     </li>
-                            <li>
+                             <li class="animate-in"  data-anim-type="bounce-in-left" data-anim-delay="600">
                         <a >
                             <span  ><i class="icon icon-office ca-icon"></i></span>
                             <div class="ca-content">
-                                <h2 class="ca-main"><p:commandButton value="Empresas" onclick="#{empresasBean.empresas.mostrar()}" oncomplete="PF('empresas').show();" class="btn-img"  /></h2>
-                                <h3 class="ca-sub">Registra Y gestiona las evaluaciones</h3>
+                                <h2 class="ca-main"><p:commandButton value="EMPRESAS" onclick="#{empresasBean.empresas.mostrar()}" oncomplete="PF('empresas').show();" class="btn-img"  /></h2>
+                                <h3 class="ca-sub">Registrar y gestionar las empresas</h3>
                             </div>
                         </a>
                     </li>
-                            <li>
+                             <li class="animate-in"  data-anim-type="bounce-in-down" data-anim-delay="600">
                         <a >
                             <span  ><i class="icon icon-location3 ca-icon"></i></span>
                             <div class="ca-content">
-                                <h2 class="ca-main"><p:commandButton value="Sucursales" onclick="#{sucursalesBean.sucursales.mostrar3()}" oncomplete="PF('sucursales').show();"  class="btn-img"  /></h2>
-                                <h3 class="ca-sub">Registra Y gestiona las actividades</h3>
+                                <h2 class="ca-main"><p:commandButton value="SUCURSALES" onclick="#{sucursalesBean.sucursales.mostrar3()}" oncomplete="PF('sucursales').show();"  class="btn-img"  /></h2>
+                                <h3 class="ca-sub">Registrar y gestionar las sucursales</h3>
                             </div>
                         </a>
                     </li>
-                           <li>
+                            <li class="animate-in"  data-anim-type="bounce-in-right" data-anim-delay="600">
                         <a >
                             <span  ><i class="icon icon-group ca-icon"></i></span>
                             <div class="ca-content">
-                                <h2 class="ca-main"><p:commandButton value="Asignar Usuario"  onclick="#{userxSucuBean.userxsucu.mostraruxs(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('sxu').show();"  class="btn-img"  /></h2>
-                                <h3 class="ca-sub">Registrar y asigna evaluaciones a los cursos</h3>
+                                <h2 class="ca-main"><p:commandButton value="ASIGNAR SUCURSAL"  onclick="#{userxSucuBean.userxsucu.mostraruxs(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('sxu').show();"  class="btn-img"  /></h2>
+                                <h3 class="ca-sub">Registrar y asignar evaluaciones a los cursos</h3>
                             </div>
                         </a>
                     </li>
                             
                 </ul>
                 
-                
-             <!--   <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/1.jpg"/><p:commandButton value="Departamentos" onclick="#{departamentosBean.departamentos.mostrar()}" oncomplete="PF('departamentos').show();"  class="  btn-img"  /></div>
-                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/2.jpg"/><p:commandButton value="Provincias" oncomplete="PF('provincias').show();"  class="  btn-img"  /></div>
-                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/3r.jpg"/><p:commandButton value="Distritos" oncomplete="PF('distritos').show();" class="  btn-img"  /></div>
-                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/4.jpg"/><p:commandButton value="Empresas" onclick="#{empresasBean.empresas.mostrar()}" oncomplete="PF('empresas').show();" class="  btn-img"  /></div>
-                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/5.jpg"/><p:commandButton value="Sucursales" onclick="#{sucursalesBean.sucursales.mostrar3()}" oncomplete="PF('sucursales').show();"  class=" btn-img"  /></div>
-                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/6.jpg"/><p:commandButton value="Asignar Usuario"  onclick="#{userxSucuBean.userxsucu.mostraruxs(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('sxu').show();"  class=" btn-img"  /></div>
-            </div>-->
+      
 
               <div class="registrar"> 
             <p:dialog  header="Registrar departamentos"  widgetVar="departamentos"   showEffect="clip" hideEffect="clip" position="absolute" height="auto" width="100%" rendered="true"  modal="true" draggable="false" resizable="false" >
@@ -102,14 +98,14 @@ and open the template in the editor.
                     
                     
                     <h:panelGrid class="departamento"  >
-                    <p:dataTable id="listadepartamentos" var="departamento"  value="#{departamentosBean.departamentos.lista}" filteredValue="#{departamentosBean.departamentos.listafiltrar}"   >
-                        <p:column headerText="Registro" filterBy="#{departamento.registrodep}" >
+                    <p:dataTable id="listadepartamentos" var="departamento"  value="#{departamentosBean.departamentos.lista}" filteredValue="#{departamentosBean.departamentos.listafiltrar}"  paginator="true" paginatorPosition="top" rows="5"  >
+                        <p:column headerText="Registro" filterBy="#{departamento.registrodep}"   filterMatchMode="contains" >
                            <h:outputText value="#{departamento.registrodep} " rendered="#{departamento.flag}" />
-                           <h:inputText value="#{departamento.registrodep}" rendered="#{ not departamento.flag}" />  
+                           <h:inputText value="#{departamento.registrodep}" rendered="#{ not departamento.flag}" class="texto2" />  
                         </p:column>
-                        <p:column headerText="Departemento" filterBy="#{departamento.nombredep}">
+                        <p:column headerText="Departemento" filterBy="#{departamento.nombredep}" filterFunction="#{departamento.filterByName}" filterMatchMode="contains"  >
                             <h:outputText value="#{departamento.nombredep} " rendered="#{departamento.flag}" />
-                            <h:inputText value="#{departamento.nombredep}" rendered="#{ not departamento.flag}" />
+                            <h:inputText value="#{departamento.nombredep}" rendered="#{ not departamento.flag}"  class="texto2" />
                         </p:column>
                         <p:column headerText="accion">
                             <p:commandButton icon="ui-icon-close" actionListener="#{departamentosBean.departamentos.cancelar(departamento)}"  rendered="#{ not departamento.flag}" update="listadepartamentos" class="btn-dialog" />
@@ -138,14 +134,14 @@ and open the template in the editor.
         
         
         <h:panelGrid columns="1" class="provincias">
-            <p:dataTable id="listaprovincias" var="provincia"  value="#{provinciasBean.provincias.lista}" filteredValue="#{provinciasBean.provincias.listafiltrar}"  >
-                <p:column headerText="Registro" filterBy="#{provincia.registropro}">
+            <p:dataTable id="listaprovincias" var="provincia"  value="#{provinciasBean.provincias.lista}" filteredValue="#{provinciasBean.provincias.listafiltrar}"  paginator="true" paginatorPosition="top" rows="5" >
+                <p:column headerText="Registro" filterBy="#{provincia.registropro}"  filterMatchMode="contains">
                     <p:outputLabel value="#{provincia.registropro}" rendered="#{provincia.flag}" />
-                    <h:inputText value="#{provincia.registropro}" rendered="#{ not provincia.flag}" />
+                    <h:inputText value="#{provincia.registropro}" rendered="#{ not provincia.flag}" class="texto2" />
                 </p:column>
-                <p:column headerText="Provincia" filterBy="#{provincia.nombrepro}">
+                <p:column headerText="Provincia" filterBy="#{provincia.nombrepro}" filterFunction="#{provincia.filterByName}" filterMatchMode="contains" >
                     <p:outputLabel value="#{provincia.nombrepro}" rendered="#{provincia.flag}" />
-                    <h:inputText value="#{provincia.nombrepro}" rendered="#{ not provincia.flag}" />
+                    <h:inputText value="#{provincia.nombrepro}" rendered="#{ not provincia.flag}" class="texto2" />
                 </p:column>
                 <p:column headerText="accion">
                     <p:commandButton icon="ui-icon-close" actionListener="#{provinciasBean.provincias.cancelar(provincia)}"  rendered="#{ not provincia.flag}" update="listaprovincias" class="btn-dialog" />
@@ -186,18 +182,18 @@ and open the template in the editor.
             
             <h:panelGrid columns="1" class="distrito" >
                 
-            <p:dataTable id="listadistritos" var="distritos"  value="#{distritosBean.distritos.lista}" filteredValue="#{distritosBean.distritos.listafiltrar}"   >
-                <p:column headerText="Registro" filterBy="#{distritos.registrodis}" >
+            <p:dataTable id="listadistritos" var="distritos"  value="#{distritosBean.distritos.lista}" filteredValue="#{distritosBean.distritos.listafiltrar}"  paginator="true" paginatorPosition="top" rows="5"  >
+                <p:column headerText="Registro" filterBy="#{distritos.registrodis}"   filterMatchMode="contains" >
                     <p:outputLabel value="#{distritos.registrodis}" rendered="#{distritos.flag}" />
-                    <h:inputText value="#{distritos.registrodis}" rendered="#{ not distritos.flag}" />
+                    <h:inputText value="#{distritos.registrodis}" rendered="#{ not distritos.flag}" class="texto2" />
                 </p:column>
-                <p:column headerText="Distrito" filterBy="#{distritos.nombredis}">
+                <p:column headerText="Distrito" filterBy="#{distritos.nombredis}" filterFunction="#{distritos.filterByName}" filterMatchMode="contains" >
                     <p:outputLabel value="#{distritos.nombredis}" rendered="#{distritos.flag}" />
-                    <h:inputText value="#{distritos.nombredis}" rendered="#{ not distritos.flag}" />
+                    <h:inputText value="#{distritos.nombredis}" rendered="#{ not distritos.flag}" class="texto2" />
                 </p:column>
-                <p:column headerText="Capital" filterBy="#{distritos.capitaldis}">
+                <p:column headerText="Capital" filterBy="#{distritos.capitaldis}" filterFunction="#{distritos.filterByName}" filterMatchMode="contains" >
                     <p:outputLabel value="#{distritos.capitaldis}" rendered="#{distritos.flag}" />
-                    <h:inputText value="#{distritos.capitaldis}" rendered="#{ not distritos.flag}" />
+                    <h:inputText value="#{distritos.capitaldis}" rendered="#{ not distritos.flag}" class="texto2" />
                 </p:column>
                 <p:column headerText="accion">
                     <p:commandButton icon="ui-icon-close" actionListener="#{distritosBean.distritos.cancelar(distritos)}"  rendered="#{ not distritos.flag}" update="listadistritos" class="btn-dialog" />
@@ -222,18 +218,18 @@ and open the template in the editor.
             
             
             <h:panelGrid columns="1" class="empresa">
-            <p:dataTable id="listaempresas" var="empresas"  value="#{empresasBean.empresas.lista}" filteredValue="#{empresasBean.empresas.listafiltrar}"   >
-                <p:column headerText="Registro" filterBy="#{empresas.registroemp}" >
+            <p:dataTable id="listaempresas" var="empresas"  value="#{empresasBean.empresas.lista}" filteredValue="#{empresasBean.empresas.listafiltrar}"  paginator="true" paginatorPosition="top" rows="5"  >
+                <p:column headerText="Registro" filterBy="#{empresas.registroemp}"   filterMatchMode="contains" >
                     <p:outputLabel value="#{empresas.registroemp}" rendered="#{empresas.flag}" />
-                    <h:inputText value="#{empresas.registroemp}" rendered="#{ not empresas.flag}" />
+                    <h:inputText value="#{empresas.registroemp}" rendered="#{ not empresas.flag}" class="texto2" />
                 </p:column>
-                <p:column headerText="RUC" filterBy="#{empresas.rucemp}">
+                <p:column headerText="RUC" filterBy="#{empresas.rucemp}"   filterMatchMode="contains" >
                     <p:outputLabel value="#{empresas.rucemp}" rendered="#{empresas.flag}" />
-                    <h:inputText value="#{empresas.rucemp}" rendered="#{ not empresas.flag}" />
+                    <h:inputText value="#{empresas.rucemp}" rendered="#{ not empresas.flag}" class="texto2" />
                 </p:column>
-                <p:column headerText="Empresa" filterBy="#{empresas.nombreemp}">
+                <p:column headerText="Empresa" filterBy="#{empresas.nombreemp}" filterFunction="#{empresas.filterByName}" filterMatchMode="contains" >
                     <p:outputLabel value="#{empresas.nombreemp}" rendered="#{empresas.flag}" />
-                    <h:inputText value="#{empresas.nombreemp}" rendered="#{ not empresas.flag}" />
+                    <h:inputText value="#{empresas.nombreemp}" rendered="#{ not empresas.flag}" class="texto2" />
                 </p:column>
                 <p:column headerText="accion">
                     <p:commandButton icon="ui-icon-close" actionListener="#{empresasBean.empresas.cancelar(empresas)}"  rendered="#{ not empresas.flag}" update="listaempresas"   class="btn-dialog"  />
@@ -302,14 +298,14 @@ and open the template in the editor.
         </h:panelGrid>  
         
         <h:panelGrid columns="1" class="sucursal">
-            <p:dataTable id="listasucursal" var="sucursal"  value="#{sucursalesBean.sucursales.lista3}" filteredValue="#{sucursalesBean.sucursales.listafiltrar}"   >
-                <p:column headerText="Sucursal" filterBy="#{sucursal.nombresuc}">
+            <p:dataTable id="listasucursal" var="sucursal"  value="#{sucursalesBean.sucursales.lista3}" filteredValue="#{sucursalesBean.sucursales.listafiltrar}"  paginator="true" paginatorPosition="top" rows="2"  >
+                <p:column headerText="Sucursal" filterBy="#{sucursal.nombresuc}" filterFunction="#{sucursal.filterByName}" filterMatchMode="contains" >
                     <p:outputLabel value="#{sucursal.nombresuc}" rendered="#{sucursal.flag}" />
-                       <h:inputText value="#{sucursal.nombresuc}" rendered="#{ not sucursal.flag}" />
+                       <h:inputText value="#{sucursal.nombresuc}" rendered="#{ not sucursal.flag}" class="texto2" />
                 </p:column>
-                <p:column headerText="Direccion" filterBy="#{sucursal.direccionsuc}">
+                <p:column headerText="Direccion" filterBy="#{sucursal.direccionsuc}" filterFunction="#{sucursal.filterByName}" filterMatchMode="contains">
                     <p:outputLabel value="#{sucursal.direccionsuc}" rendered="#{sucursal.flag}" />
-                        <h:inputText value="#{sucursal.direccionsuc}" rendered="#{ not sucursal.flag}" />
+                        <h:inputText value="#{sucursal.direccionsuc}" rendered="#{ not sucursal.flag}" class="texto2" />
                 </p:column>
                  <p:column headerText="Alcance" >
                      <p:selectOneMenu value="#{sucursal.alcancesuc}" disabled="#{sucursal.flag}" >
@@ -319,9 +315,9 @@ and open the template in the editor.
                 <f:selectItem itemLabel="CEPRE" itemValue="3" />
             </p:selectOneMenu> 
                 </p:column>
-                <p:column headerText="Codigo Modular" filterBy="#{sucursal.codigomodularsuc}">
+                <p:column headerText="Codigo Modular" filterBy="#{sucursal.codigomodularsuc}" filterFunction="#{sucursal.filterByName}" filterMatchMode="contains">
                     <p:outputLabel value="#{sucursal.codigomodularsuc}" rendered="#{sucursal.flag}"/>
-                    <h:inputText value="#{sucursal.codigomodularsuc}" rendered="#{ not sucursal.flag}" />
+                    <h:inputText value="#{sucursal.codigomodularsuc}" rendered="#{ not sucursal.flag}" class="texto2" />
                 </p:column>
                 <p:column headerText="Tipo De Gestion" >
                     <p:selectOneMenu value="#{sucursal.tipodegestionsuc}"  disabled="#{sucursal.flag}" >
@@ -331,16 +327,16 @@ and open the template in the editor.
                 <f:selectItem itemLabel="Religioso" itemValue="3" />
             </p:selectOneMenu>     
                 </p:column>
-                <p:column headerText="Autorizacion" filterBy="#{sucursal.autorizacionsuc}">
+                <p:column headerText="Autorizacion" filterBy="#{sucursal.autorizacionsuc}" filterFunction="#{sucursal.filterByName}" filterMatchMode="contains">
                     <p:outputLabel value="#{sucursal.autorizacionsuc}" rendered="#{sucursal.flag}" />
-                    <h:inputText value="#{sucursal.autorizacionsuc}" rendered="#{ not sucursal.flag}" />
+                    <h:inputText value="#{sucursal.autorizacionsuc}" rendered="#{ not sucursal.flag}" class="texto2" />
                 </p:column>
-                <p:column headerText="Fecha Autorizacion" filterBy="#{sucursal.fechaautorizacionsuc}">
-                  <h:outputText value="#{sucursal.fechaautorizacionsuc}" rendered="#{sucursal.flag}" ><f:convertDateTime type="date" pattern="yyyy-MM-dd"/></h:outputText>
+                <p:column headerText="Fecha Autorizacion" filterBy="#{sucursal.fechaautorizacionsuc}" filterFunction="#{sucursal.filterByName}" filterMatchMode="contains">
+                  <h:outputText value="#{sucursal.fechaautorizacionsuc}" rendered="#{sucursal.flag}" ><f:convertDateTime type="date" pattern="yyyy-MM-dd" class="texto2" /></h:outputText>
                                   <p:calendar id="txtfecha2" value="#{sucursal.fechaautorizacionsuc}" pattern="dd/MM/yyyy" mask="true" class="datos" placeholder="Fecha de Inicio" rendered="#{ not sucursal.flag}" ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>
                      
                 </p:column>
-                <p:column headerText="Empresa" filterBy="#{sucursal.nempresa}">
+                <p:column headerText="Empresa" filterBy="#{sucursal.nempresa}" filterFunction="#{sucursal.filterByName}" filterMatchMode="contains" >
                     <p:outputLabel value="#{sucursal.nempresa}" rendered="#{sucursal.flag}"  />
                     <p:selectOneMenu value="#{sucursal.empresa}" rendered="#{ not sucursal.flag}"> 
                 <f:selectItem itemLabel="-Seleccione Empresa- "   itemValue="0" itemDisabled="true"/>
@@ -348,7 +344,7 @@ and open the template in the editor.
             </p:selectOneMenu>
                     
                 </p:column>
-                <p:column headerText="Distrito" filterBy="#{sucursal.ndistrito}">
+                <p:column headerText="Distrito" filterBy="#{sucursal.ndistrito}" filterFunction="#{sucursal.filterByName}" filterMatchMode="contains" >
                     <p:outputLabel value="#{sucursal.ndistrito}" />
                 </p:column>
                 
@@ -371,8 +367,8 @@ and open the template in the editor.
         </h:panelGrid>
         
         <h:panelGrid columns="1" class="userxsucu">
-            <p:dataTable id="listauxs" var="uxs"  value="#{userxSucuBean.userxsucu.listauxs}" filteredValue="#{userxSucuBean.userxsucu.filtrouxs}"   >
-                <p:column headerText="Usuario" filterBy="#{uxs.nusuario}" >
+            <p:dataTable id="listauxs" var="uxs"  value="#{userxSucuBean.userxsucu.listauxs}" filteredValue="#{userxSucuBean.userxsucu.filtrouxs}"  paginator="true" paginatorPosition="top" rows="5"  >
+                <p:column headerText="Usuario" filterBy="#{uxs.nusuario}" filterFunction="#{uxs.filterByName}" filterMatchMode="contains">
                     <p:outputLabel value="#{uxs.nusuario}" rendered="#{uxs.flag}" />
                     <p:selectOneListbox value="#{uxs.usuario}" filter="true" filterMatchMode="contains" class="list-box2" rendered="#{ not uxs.flag}"  >
                         <f:selectItems value="#{usersBean.listausuarios}" itemLabel="#{usersBean.user.nombre}" />

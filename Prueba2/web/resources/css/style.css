@@ -25,6 +25,7 @@
     width: 250px;
      background-color: white !important ;
     text-align: center;
+    border-radius: 0;
 }
 
 .texto2{
@@ -33,12 +34,13 @@
     width: 100%;
      background-color: white !important ;
     border: 1px solid #333333;
+    text-align: center;
 }
 .texto:valid{
     box-shadow: none !important;
 }
 .texto:focus{
-   border: 2px solid #009999;
+   border: 1px solid #009999;
 }
 .panel-login{
     display: block;
@@ -146,6 +148,7 @@ display: block;
      border:1px solid rgba(255,255,255,1) !important;
      font-size:22px !important ;
      color:rgba(255,255,255,1);
+     border-radius: 0;
      text-shadow: none !important;
      -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
@@ -216,7 +219,7 @@ display: block;
 }
 
 .texto-login:focus{
-       width: 200px;
+       width: 170px;
 }
 .label-login{
      font-family: "Dosis",sans-serif !important;
@@ -247,7 +250,7 @@ margin: 10px 10px;
 
 
 .c0{
-    width: 50px;
+    width: 70px;
 }
 
 .lista-sucursales{
@@ -276,7 +279,7 @@ div.dialog-sucursal .ui-shadow{
 }
 
 div.dialog-sucursal .ui-widget-header{
-    background: #009999 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+    background: white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
 color: white;
 text-shadow: none;
 font-weight: normal;
@@ -388,12 +391,15 @@ background: #ffffff -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,
 
 
 
-
+.dialog-academico  .ui-paginator-next,.dialog-academico .ui-paginator-last,.dialog-academico .ui-paginator-prev,.dialog-academico .ui-paginator-first {
+    height: 19px !important;
+    overflow: hidden;
+}
+ 
 
 
 .dialog-academico .ui-inputfield {
     box-shadow: inset 0 2px 2px rgba(0,0,0,0) !important;
-    width: 200px !important;
      font-family: "Dosis",sans-serif !important;
      text-align: center !important;
 }
@@ -419,6 +425,8 @@ font-family: "Dosis",sans-serif !important;
 border-bottom: 1px solid black !important;
 
 }
+
+
 .dialog-academico .ui-widget-content{
     border: 2px solid white ;
 }
@@ -447,6 +455,12 @@ border-bottom: 1px solid black !important;
      color: #333333 !important;
     width: 90% !important;
 }
+
+.cursos .ui-widget-header,.curso-profesor .ui-widget-header,.evaluacion .ui-widget-header,.turno .ui-widget-header,.secciones .ui-widget-header,.asignar-evaluacion .ui-widget-header,.carreras .ui-widget-header,.actividades .ui-widget-header{
+border-bottom: 0px solid black !important;
+
+}
+
  .actividades .ui-inputfield  {
     box-shadow: inset 0 2px 2px rgba(0,0,0,0) !important;
      font-family: "Dosis",sans-serif !important;
@@ -470,7 +484,7 @@ border-bottom: 1px solid black !important;
 
 .inputs .ui-inputfield {
     box-shadow: inset 0 2px 2px rgba(0,0,0,0) !important;
-    width: 300px !important;
+    width: 250px !important;
      font-family: "Dosis",sans-serif !important;
      text-align: center !important;
 }
@@ -479,6 +493,8 @@ border-bottom: 1px solid black !important;
 .actividades  .ui-widget-content, .asignar-evaluacion  .ui-widget-content,  .turno  .ui-widget-content,  .secciones  .ui-widget-content{
     border-top: 1px solid #bdbdbd !important;
     border-bottom: 1px solid #bdbdbd !important;
+    border-left: 1px solid #bdbdbd !important;
+border-right: 1px solid #bdbdbd !important;
 }
  
 
@@ -533,6 +549,14 @@ text-shadow:  none;
 
 
 
+ .departamento .ui-widget-header,.provincias .ui-widget-header,.distrito .ui-widget-header,.empresa .ui-widget-header,.sucursal .ui-widget-header,.userxsucu .ui-widget-header{
+border-bottom: 0px solid black !important;
+
+}
+.registrar  .ui-paginator-next,.registrar .ui-paginator-last,.registrar .ui-paginator-prev,.registrar .ui-paginator-first {
+    height: 19px !important;
+    overflow: hidden;
+}
  
 
 
@@ -567,6 +591,8 @@ div.registrar .ui-state-hover,.ui-state-focus {
 .departamento .ui-widget-content, .provincias .ui-widget-content, .distrito .ui-widget-content, .empresa .ui-widget-content,  .sucursal .ui-widget-content,  .userxsucu .ui-widget-content{
     border-top: 1px solid #bdbdbd !important;
     border-bottom: 1px solid #bdbdbd !important;
+    border-left: 1px solid #bdbdbd !important;
+border-right: 1px solid #bdbdbd !important;
     text-align: center;
  
 }
@@ -686,6 +712,8 @@ border-bottom: 1px solid black;
 .notas .ui-widget-content{
     border-top: 1px solid #bdbdbd !important;
     border-bottom: 1px solid #bdbdbd !important;
+       border-left: 1px solid #bdbdbd !important;
+border-right: 1px solid #bdbdbd !important;
     text-align: center;
  
 }
@@ -725,6 +753,7 @@ border-bottom: 1px solid black;
 .dialog-notas .ui-widget-content{
     border: 2px solid white ;
     text-align: center;
+    
 }
 
 .dialog-notas  .ui-inputfield {
@@ -739,6 +768,8 @@ border-bottom: 1px solid black;
 .listanotas .ui-widget-content{
     border-top: 1px solid #bdbdbd !important;
     border-bottom: 1px solid #bdbdbd !important;
+        border-left: 1px solid #bdbdbd !important;
+border-right: 1px solid #bdbdbd !important;
     text-align: center;
  
 }
@@ -919,6 +950,8 @@ div.dialog-gestion-alumnos  .ui-datatable-odd {
 .listausers .ui-widget-content{
     border-top: 1px solid #bdbdbd !important;
     border-bottom: 1px solid #bdbdbd !important;
+    border-left: 1px solid #bdbdbd !important;
+border-right: 1px solid #bdbdbd !important;
     text-align: center;
 }
 

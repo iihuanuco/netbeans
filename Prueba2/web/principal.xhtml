@@ -13,6 +13,11 @@
         <h:outputStylesheet library="css" name="style.css"  />
         <h:outputStylesheet name="fonts.css"  />
         <h:outputScript library="js" name="bg.js"   />
+            <h:outputStylesheet library="assets" name="animations.min.css"  />
+        <h:outputScript library="assets" name="smoothscroll.min.js"   />
+        <h:outputScript library="assets" name="appear.min.js"   />
+        <h:outputScript library="assets" name="animations.min.js"   />
+        <h:outputScript library="assets" name="backbone.js"   />
 
     </h:head>
 
@@ -24,29 +29,30 @@
             <c:when test="#{login.user.nombre==null}">
                   <h:graphicImage id="bg"  value="resources/img/bg.jpg" />
                 <h:form   class="login">
-                     <table class="title-login">
+                            <table class="title-login animate-in"  data-anim-type="fade-in-right" data-anim-delay="800">
                    <tr> 
-                       <td><i class="icon icon-shield logo-login"></i>
+                        <td><i class="icon icon-shield logo-login"></i>
                        </td> 
                        <td><h:outputText value="INICIAR SESIÓN " class="label-text-login" /><br/>
-                       <h:outputText value="Ingrese su usuario y contraseña para ingresar al sistema" class="label-text-login2" />
+                       <h:outputText value="ingrese su usuario y contraseña para ingresar al sistema" class="label-text-login2" />
                        </td> 
                    </tr>
                  </table>
 
-                <table class="panel-login">
+                <table class="panel-login animate-in"  data-anim-type="fade-in-left" data-anim-delay="800">
                     <tr>
                         <td > <p:outputLabel value="Usuario:  " class="label-login" />  </td>
                         <td > <p:outputLabel value="Contraseña:  " class="label-login" /></td>
                         <td> </td>
                     </tr>
-                    <tr>
+                    <tr >
                         <td > <i class="icon icon-user2 icono-login"></i><p:inputText value="#{login.user.usuario}"   class="texto texto-login" ></p:inputText></td>
                         <td > <i class="icon icon-pass icono-login"></i><p:password value="#{login.user.password}"   class="texto texto-login"></p:password></td>
                         <td> <p:commandButton value="INGRESAR" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages"  class=" boton-login"  /></td>
                     </tr>
                     <p:growl id="messages" showDetail="true" />
                 </table>
+
                 </h:form>
             </c:when>
 
@@ -67,8 +73,8 @@
                                   <li><a href="notas.xhtml"  target="academico" ><span class="c2"><i class="icon icon-notebook-list"></i></span>Notas</a></li>
                                  <li><a href="academicos.xhtml"  target="academico" ><span class="c2"><i class="icon icon-storage"></i></span>Academico</a></li>
                                      <li><a href="registrar.xhtml"  target="academico" ><span class="c3"><i class="icon icon-storage"></i></span>Registrar</a></li>
-                                <li><a href="personalizar.xhtml"  target="academico"><span class="c4"><i class="icon icon-cogs"></i></span>User: #{login.user.usuario}</a></li>
-                                <li class="menu-salir"><p:commandButton value="Salir" action="#{login.user.signout()}" icon="ui-icon-close"  class="boton-salir"  /></li>
+                                <li><a href="personalizar.xhtml"  target="academico"><span class="c4"><i class="icon icon-cogs"></i></span><i class="icon icon-user3" style="padding-right: 5px;"></i>#{login.user.usuario}</a></li>
+                                <li class="menu-salir"><p:commandButton value="Salir" action="#{login.user.signout()}" ajax="false" icon="ui-icon-close"  class="boton-salir"  /></li>
                             </ul>
                         </nav>
                     </header>
@@ -77,7 +83,7 @@
                 </h:form  >
                 <h:form id="menu"   >
                     <div class="dialog-sucursal"> 
-                        <p:dialog  header="Seleccione Sucursal" visible="#{login.user.flag}" widgetVar="sucursales" rendered="true" height="100%" width="100%"  showEffect="clip" hideEffect="clip" modal="true" closable="false" draggable="false" resizable="false" position="absolute" >
+                        <p:dialog    visible="#{login.user.flag}" widgetVar="sucursales" rendered="true" height="100%" width="100%"  showEffect="clip" hideEffect="clip" modal="true" closable="false" draggable="false" resizable="false" position="absolute" >
                         <p:dataTable  id="listasucursales"  class="lista-sucursales"  value="#{sucursalesBean.sucursales.lista}"  var="sucursales" >
  
                             <p:column  >
@@ -99,7 +105,7 @@
                     </p:dialog>
       
                     
-                    <p:dialog  header="Seleccione Sucursal" visible="#{login.user.flag2}" widgetVar="sucursales2" rendered="true" height="100%" width="100%" showEffect="clip" hideEffect="clip" modal="true" closable="false" draggable="false" resizable="false" position="absolute" >
+                    <p:dialog    visible="#{login.user.flag2}" widgetVar="sucursales2" rendered="true" height="100%" width="100%" showEffect="clip" hideEffect="clip" modal="true" closable="false" draggable="false" resizable="false" position="absolute" >
                         <p:dataTable  id="listasucursales2"  class="lista-sucursales"  value="#{sucursalesBean.sucursales.lista2}"  var="sucursales" >
 
                             <p:column >

@@ -50,7 +50,7 @@ public class CursosBean {
 
  
     
-    public void registrar(int reg){
+    public void registrar(int reg,int suc){
         cursos.registrar(reg);
         cursos.setCodigocurso("");
         cursos.setNombrecurso("");
@@ -61,7 +61,7 @@ public class CursosBean {
         cursos.setHpcurso(0);
         cursos.setAlcancecurso(0);
         cursos.setFechainiciocurso(null);
-        
+        cursos.mostrarcursos(suc);
     }
     
 }

@@ -103,6 +103,8 @@ nav > ul > li > a:hover > span{
 }
 
 .boton-salir{
+    border-radius: 0px;
+        font-weight:normal;
     background: white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
     text-shadow: none !important;
        font-family: "Dosis",sans-serif !important;
@@ -118,6 +120,5 @@ transition: all .5s ease-in-out;
     -moz-box-shadow:  none !important;
     box-shadow:  none !important;
     border:1px solid #009999 !important;
-    background: #009999 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
-    color: white;
+    color: #009999;
 }

@@ -5,12 +5,14 @@ import dao.SqlActividades;
 import dao.SqlCarreras;
 import dao.SqlCursos;
 import dao.SqlCursoxProfesor;
+import dao.SqlMatricula;
 import dao.SqlSucursales;
 import dao.SqlUsers;
 import entities.Actividades;
 import entities.Carreras;
 import entities.Cursos;
 import entities.CursoxProfesor;
+import entities.Matricula;
 import entities.Sucursales;
 import entities.Users;
 import java.util.ArrayList;
@@ -29,6 +31,7 @@ public class SucursalesBean {
            private List<SelectItem> listaactividades;
                  private List<SelectItem> listacxp;
                      private List<SelectItem> listaCursos;
+                       private List<SelectItem> listamatricula;
     
     public SucursalesBean() {
     }
@@ -104,6 +107,19 @@ public class SucursalesBean {
             }  
         return listaCursos;
     }
+              
+                  public List<SelectItem> getListamatricula() {
+         this.listamatricula=new ArrayList<SelectItem>();
+        SqlMatricula su=new SqlMatricula();
+            List<Matricula> listamat=su.MostrarMatricula(sucursales.getRegistrosuc());
+            listamatricula.clear();
+            for (Matricula u : listamat) {
+            SelectItem matitem=new SelectItem(u.getRegistromat(), u.getMatriculado());
+            this.listamatricula.add(matitem);
+        }   
+        return listamatricula;
+    }
+    
     
     public void registrar(int reg){
         sucursales.registrar(reg);

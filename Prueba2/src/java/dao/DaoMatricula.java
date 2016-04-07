@@ -6,6 +6,6 @@ import java.util.List;
 public interface DaoMatricula {
 
     void InsertarMatricula(Matricula matricula);
-    List<Matricula> MostrarMatricula();
+    List<Matricula> MostrarMatricula(int suc);
     
 }

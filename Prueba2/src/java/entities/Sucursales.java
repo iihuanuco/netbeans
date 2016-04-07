@@ -40,7 +40,25 @@ public class Sucursales {
     public Sucursales() {
     }
 
-     
+          public boolean filterByName(Object value, Object filter, Locale locale) {
+    String filterText = (filter == null) ? null : filter.toString().trim();
+    if (filterText == null || filterText.equals("")) {
+        return true;
+    }
+
+    if (value == null) {
+        return false;
+    }
+
+    String Name = value.toString().toUpperCase();
+    filterText = filterText.toUpperCase();
+
+    if (Name.contains(filterText)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 
     public int getUserc() {

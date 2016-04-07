@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 public class Departamentos {
     //variables de registro de cambios
@@ -21,15 +22,25 @@ public class Departamentos {
     public Departamentos() {
     }
 
-    public Departamentos(int userc, int userm, Date fechac, Date fecham, int registrodep, String nombredep) {
-        this.userc = userc;
-        this.userm = userm;
-        this.fechac = fechac;
-        this.fecham = fecham;
-        this.registrodep = registrodep;
-        this.nombredep = nombredep;
+        public boolean filterByName(Object value, Object filter, Locale locale) {
+    String filterText = (filter == null) ? null : filter.toString().trim();
+    if (filterText == null || filterText.equals("")) {
+        return true;
     }
 
+    if (value == null) {
+        return false;
+    }
+
+    String Name = value.toString().toUpperCase();
+    filterText = filterText.toUpperCase();
+
+    if (Name.contains(filterText)) {
+        return true;
+    } else {
+        return false;
+    }
+}
     public int getUserc() {
         return userc;
     }

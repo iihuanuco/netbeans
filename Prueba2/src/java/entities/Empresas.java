@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 public class Empresas {
 
@@ -23,6 +24,25 @@ public class Empresas {
     
     public Empresas() {
     }
+         public boolean filterByName(Object value, Object filter, Locale locale) {
+    String filterText = (filter == null) ? null : filter.toString().trim();
+    if (filterText == null || filterText.equals("")) {
+        return true;
+    }
+
+    if (value == null) {
+        return false;
+    }
+
+    String Name = value.toString().toUpperCase();
+    filterText = filterText.toUpperCase();
+
+    if (Name.contains(filterText)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
     public int getUserc() {
         return userc;

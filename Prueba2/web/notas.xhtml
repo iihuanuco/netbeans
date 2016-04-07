@@ -15,11 +15,18 @@ and open the template in the editor.
         <h:outputStylesheet library="css" name="style.css"  />
                 <h:outputStylesheet name="fonts.css"  />
         <h:outputScript library="js" name="bg.js"   />
+           <h:outputScript library="js" name="load.js"   />
+                <h:outputStylesheet library="assets" name="animations.min.css"  />
+        <h:outputScript library="assets" name="smoothscroll.min.js"   />
+        <h:outputScript library="assets" name="appear.min.js"   />
+        <h:outputScript library="assets" name="animations.min.js"   />
+        <h:outputScript library="assets" name="backbone.js"   />
 
     </h:head>
     <h:body style="background-color:white;" >
         <f:view>
             <h:form id="notas" >
+                <div class="animate-in"  data-anim-type="bounce-in-up" data-anim-delay="600">
                 <h:panelGrid id="view" class="notas2" style="#{cursoxProfesorBean.cursoxprofesor.view}">
                     <p:selectOneMenu id="cmbactividades" value="#{sucursalesBean.sucursales.registrosuc}"   > 
                         <f:selectItem itemLabel="-Seleccione Actividad- "   itemValue="0"/>
@@ -31,7 +38,7 @@ and open the template in the editor.
                     </p:selectOneMenu>
                     <p:commandButton value="Filtrar"  actionListener="#{cursoxProfesorBean.cursoxprofesor.mostrar(carrerasBean.carreras.registrocarrera,sucursalesBean.sucursales.registrosuc,sucursalesBean.sucursales.registrosuc)}"  update="listnotas,view" class="boton-ingresar" />
                 </h:panelGrid>
-
+            </div>
 
                 <h:panelGrid id="listnotas" class="notas">
                     <c:choose>

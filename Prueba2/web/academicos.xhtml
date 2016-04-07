@@ -16,82 +16,88 @@ and open the template in the editor.
         <h:outputStylesheet library="css" name="style.css"  />
         <h:outputStylesheet name="fonts.css"  />
         <h:outputScript library="js" name="bg.js"   />
+           <h:outputScript library="js" name="load.js"   />
         <h:outputStylesheet library="css" name="submenu2.css"  />
+             <h:outputStylesheet library="assets" name="animations.min.css"  />
+        <h:outputScript library="assets" name="smoothscroll.min.js"   />
+        <h:outputScript library="assets" name="appear.min.js"   />
+        <h:outputScript library="assets" name="animations.min.js"   />
+        <h:outputScript library="assets" name="backbone.js"   />
     </h:head>
     <h:body  style="background-color:white;">
         <f:view>
             <h:form class="academico" >
                 
                     <ul class="ca-menu">
-                    <li>
+                   <li class="animate-in"  data-anim-type="bounce-in-left" data-anim-delay="600">
                         <a>
                             <span> <i class="icon icon-graduate ca-icon"></i></span>
                             <div class="ca-content">
-                                <h2 class="ca-main"><p:commandButton value="Carreras" onclick="#{carrerasBean.carreras.mostrarcarreras(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('Carreras').show();"  class="  btn-img"  /></h2>
-                                <h3 class="ca-sub">Registra Y gestiona las carreras</h3>
+                                <h2 class="ca-main"><p:commandButton value="CARRERAS" onclick="#{carrerasBean.carreras.mostrarcarreras(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('Carreras').show();"  class="  btn-img"  /></h2>
+                                <h3 class="ca-sub">Registrar y gestionar las carreras</h3>
                             </div>
                         </a>
                     </li>
-                    <li>
+                    <li class="animate-in"  data-anim-type="bounce-in-up" data-anim-delay="600">
                         <a >
                             <span  ><i class="icon icon-archive ca-icon"></i></span>
                             <div class="ca-content">
-                                <h2 class="ca-main"><p:commandButton value="Cursos" onclick="#{cursosBean.cursos.mostrarcursos(sucursalesBean.sucursales.registrosuc)}"  oncomplete="PF('Cursos').show();"  class="  btn-img"  /></h2>
-                                <h3 class="ca-sub">Registra Y gestiona los cursos</h3>
+                                <h2 class="ca-main"><p:commandButton value="CURSOS" onclick="#{cursosBean.cursos.mostrarcursos(sucursalesBean.sucursales.registrosuc)}"  oncomplete="PF('Cursos').show();"  class="  btn-img"  /></h2>
+                                <h3 class="ca-sub">Registrar y gestionar los cursos</h3>
                             </div>
                         </a>
                     </li>
-                      <li>
+                     <li class="animate-in"  data-anim-type="bounce-in-up" data-anim-delay="600">
                         <a >
                             <span  ><i class="icon icon-sitemap ca-icon"></i></span>
                             <div class="ca-content">
-                                <h2 class="ca-main"><p:commandButton value="Asignar Cursos" onclick="#{cursoxProfesorBean.cursoxprofesor.mostrarpxc(sucursalesBean.sucursales.registrosuc)}"  oncomplete="PF('cursoxprofesor').show();"  class="  btn-img"  /></h2>
-                                <h3 class="ca-sub">Asigna cursos a los docentes</h3>
+                                <h2 class="ca-main"><p:commandButton value="ASIGNAR CURSO" onclick="#{cursoxProfesorBean.cursoxprofesor.mostrarpxc(sucursalesBean.sucursales.registrosuc)}"  oncomplete="PF('cursoxprofesor').show();"  class="  btn-img"  /></h2>
+                                <h3 class="ca-sub">Asignar cursos a los docentes</h3>
                             </div>
                         </a>
                     </li>
-                            <li>
+                           <li class="animate-in"  data-anim-type="bounce-in-right" data-anim-delay="600">
                         <a >
                             <span  ><i class="icon icon-document-edit ca-icon"></i></span>
                             <div class="ca-content">
-                                <h2 class="ca-main"><p:commandButton value="Evaluaciones"  onclick="#{evaluacionesBean.evaluaciones.mostrarevaua(sucursalesBean.sucursales.registrosuc)}"  oncomplete="PF('evaluaciones').show();"  class="  btn-img"  /></h2>
-                                <h3 class="ca-sub">Registra Y gestiona las evaluaciones</h3>
+                                <h2 class="ca-main"><p:commandButton value="EVALUACIONES"  onclick="#{evaluacionesBean.evaluaciones.mostrarevaua(sucursalesBean.sucursales.registrosuc)}"  oncomplete="PF('evaluaciones').show();"  class="  btn-img"  /></h2>
+                                <h3 class="ca-sub">Registrar y gestionar las evaluaciones</h3>
                             </div>
                         </a>
                     </li>
-                            <li>
+                         <li class="animate-in"  data-anim-type="bounce-in-left" data-anim-delay="600">
                         <a >
                             <span  ><i class="icon icon-calendar ca-icon"></i></span>
                             <div class="ca-content">
-                                <h2 class="ca-main"><p:commandButton value="Actividades"  onclick="#{actividadesBean.actividades.mostraract(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('actividades').show();"  class="  btn-img"  /></h2>
-                                <h3 class="ca-sub">Registra Y gestiona las actividades</h3>
+                                <h2 class="ca-main"><p:commandButton value="ACTIVIDADES"  onclick="#{actividadesBean.actividades.mostraract(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('actividades').show();"  class="  btn-img"  /></h2>
+                                <h3 class="ca-sub">Registrar y gestionar las actividades</h3>
                             </div>
                         </a>
                     </li>
-                           <li>
+                           <li class="animate-in"  data-anim-type="bounce-in-down" data-anim-delay="600">
                         <a >
                             <span  ><i class="icon icon-document-diagrams ca-icon"></i></span>
                             <div class="ca-content">
-                                <h2 class="ca-main"><p:commandButton value="Asignar Evaluacion" onclick="#{evaluaxCursoBean.evaluaxcurso.mostrarexc(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('evaluaxcurso').show();"  class="  btn-img"  /></h2>
-                                <h3 class="ca-sub">Registrar y asigna evaluaciones a los cursos</h3>
+                                <h2 class="ca-main"><p:commandButton value="ASIGNAR EVALUACION" onclick="#{evaluaxCursoBean.evaluaxcurso.mostrarexc(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('evaluaxcurso').show();"  class="  btn-img"  /></h2>
+                                <h3 class="ca-sub">Registrar y asignar evaluaciones a los cursos</h3>
                             </div>
                         </a>
                     </li>
-                           <li>
+                          <li class="animate-in"  data-anim-type="bounce-in-down" data-anim-delay="600">
                         <a >
                             <span  ><i class="icon icon-chronometer ca-icon"></i></span>
                             <div class="ca-content">
-                                <h2 class="ca-main"><p:commandButton value="Turnos" onclick="#{turnosBean.turnos.mostrartur()}"  oncomplete="PF('turnos').show();"  class="  btn-img"  /></h2>
-                                <h3 class="ca-sub">Registra Y gestiona turnos</h3>
+                                <h2 class="ca-main"><p:commandButton value="TURNOS" onclick="#{turnosBean.turnos.mostrartur()}"  oncomplete="PF('turnos').show();"  class="  btn-img"  /></h2>
+                                <h3 class="ca-sub">Registrar y gestionar turnos</h3>
                             </div>
                         </a>
                     </li>
-                           <li>
+                          <li class="animate-in"  data-anim-type="bounce-in-right" data-anim-delay="600">
                         <a >
                             <span  ><i class="icon icon-explicit ca-icon"></i></span>
                             <div class="ca-content">
-                                <h2 class="ca-main"><p:commandButton value="Secciones"   onclick="#{seccionesBean.secciones.mostrarsec()}"  oncomplete="PF('secciones').show();"  class="  btn-img"  /></h2>
-                                <h3 class="ca-sub">Registra Y gestiona secciones</h3>
+                                <h2 class="ca-main"><p:commandButton value="SECCIONES"   onclick="#{seccionesBean.secciones.mostrarsec()}"  oncomplete="PF('secciones').show();"  class="  btn-img"  /></h2>
+                                <h3 class="ca-sub">Registrar y gestionar secciones</h3>
                             </div>
                         </a>
                     </li>
@@ -114,14 +120,14 @@ and open the template in the editor.
                                          update="txtcodigocarrera,txtnombrecarrera,txtsemestrescarrera,tblcarreras,cmbcarrera" />   
                           </h:panelGrid>
                         <h:panelGrid columns="1" class="carreras">
-                        <p:dataTable id="tblcarreras" var="carrera" value="#{carrerasBean.carreras.listacarreras}" filteredValue="#{carrerasBean.carreras.filtrocarreras}" >
+                        <p:dataTable id="tblcarreras" var="carrera" value="#{carrerasBean.carreras.listacarreras}" filteredValue="#{carrerasBean.carreras.filtrocarreras}"  paginator="true" paginatorPosition="top" rows="5">
                               <p:column headerText="Codigo" filterBy="#{carrera.codigocarrera}"   filterMatchMode="contains" >
                                     <h:outputText value="#{carrera.codigocarrera}" rendered="#{carrera.flag}" />
-                             <h:inputText value="#{carrera.codigocarrera}" rendered="#{ not carrera.flag}" />
+                             <h:inputText value="#{carrera.codigocarrera}" rendered="#{ not carrera.flag}" class="texto2" />
                         </p:column>
                               <p:column headerText="Carrera" filterBy="#{carrera.nombrecarrera}" filterFunction="#{carrera.filterByName}" filterMatchMode="contains">
                                     <h:outputText value="#{carrera.nombrecarrera}" rendered="#{carrera.flag}" />
-                             <h:inputText value="#{carrera.nombrecarrera}" rendered="#{ not carrera.flag}" />
+                             <h:inputText value="#{carrera.nombrecarrera}" rendered="#{ not carrera.flag}" class="texto2" />
                         </p:column>
                             <p:column>
                              <p:commandButton icon="ui-icon-close" actionListener="#{carrerasBean.carreras.cancelar(carrera)}"  rendered="#{ not carrera.flag}" update="tblcarreras" class="btn-dialog" />
@@ -135,7 +141,7 @@ and open the template in the editor.
                 </p:dialog>
 
                 <p:dialog  header="Registrar Curso"  widgetVar="Cursos"   showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false"   >
-                    <h:panelGrid columns="6" cellspacing="5" class="input-cursos">
+                    <h:panelGrid columns="6" cellspacing="5" class="inputs">
                         <p:outputLabel value="Codigo: " for="txtcodigocurso" />
                         <p:inputText id="txtcodigocurso" value="#{cursosBean.cursos.codigocurso}"    class="texto" ></p:inputText>
                         <p:outputLabel value="Nombre: " for="txtnombrecurso" />
@@ -172,20 +178,20 @@ and open the template in the editor.
                         <p:outputLabel value="Fecha de Inicio: " />       
                         <p:calendar value="#{cursosBean.cursos.fechainiciocurso}" pattern="dd/MM/yyyy" mask="true" class="datos"    ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>          
 
-                        <p:commandButton value="Guardar" actionListener="#{cursosBean.registrar(login.user.registro)}"  class="boton-ingresar"
+                        <p:commandButton value="Guardar" actionListener="#{cursosBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}"  class="boton-ingresar"
                                          update="txtcodigocurso,txtnombrecurso,cmbcarrera,txtsemestrescurso,txtcreditos,txtht,txthp,cmbalcancec,cmbxcurso,tblcursos" />
                     </h:panelGrid>
                     <h:panelGrid columns="1"  class="cursos">
                         
-                        <p:dataTable id="tblcursos" var="cursos" value="#{cursosBean.cursos.listacursos}" filteredValue="#{cursosBean.cursos.filtrocursos}" >
+                        <p:dataTable id="tblcursos" var="cursos" value="#{cursosBean.cursos.listacursos}" filteredValue="#{cursosBean.cursos.filtrocursos}"  paginator="true" paginatorPosition="top" rows="5">
                             <p:column headerText="Codigo" filterBy="#{cursos.codigocurso}"   filterMatchMode="contains"  class="c1">
                                     <h:outputText value="#{cursos.codigocurso}" rendered="#{cursos.flag}" />
-                             <h:inputText value="#{cursos.codigocurso}" rendered="#{ not cursos.flag}" />
+                             <h:inputText value="#{cursos.codigocurso}" rendered="#{ not cursos.flag}" class="texto2" />
                         </p:column>
                             
                             <p:column headerText="Nombre" filterBy="#{cursos.nombrecurso}" filterFunction="#{cursos.filterByName}" filterMatchMode="contains" >
                                     <h:outputText value="#{cursos.nombrecurso}" rendered="#{cursos.flag}" />
-                             <h:inputText value="#{cursos.nombrecurso}" rendered="#{ not cursos.flag}" />
+                             <h:inputText value="#{cursos.nombrecurso}" rendered="#{ not cursos.flag}" class="texto2" />
                         </p:column>
                             
                             <p:column headerText="Carrera" filterBy="#{cursos.ncarrerra}" filterFunction="#{cursos.filterByName}" filterMatchMode="contains" >
@@ -196,21 +202,21 @@ and open the template in the editor.
                                 </p:selectOneMenu>
                         </p:column>
                             
-                            <p:column headerText="Semestre" filterBy="#{cursos.semestrecurso}"  filterMatchMode="contains" class="c1">
+                            <p:column headerText="Semestre" filterBy="#{cursos.semestrecurso}"  filterMatchMode="contains" class="c0">
                                     <h:outputText value="#{cursos.semestrecurso}" rendered="#{cursos.flag}" />
-                             <h:inputText value="#{cursos.semestrecurso}" rendered="#{ not cursos.flag}" />
+                             <h:inputText value="#{cursos.semestrecurso}" rendered="#{ not cursos.flag}" class="texto2" />
                         </p:column>
-                            <p:column headerText="Creditos" filterBy="#{cursos.creditoscurso}" filterMatchMode="contains"  class="c1">
+                            <p:column headerText="Creditos" filterBy="#{cursos.creditoscurso}" filterMatchMode="contains"  class="c0">
                                     <h:outputText value="#{cursos.creditoscurso}" rendered="#{cursos.flag}" />
-                             <h:inputText value="#{cursos.creditoscurso}" rendered="#{ not cursos.flag}" />
+                             <h:inputText value="#{cursos.creditoscurso}" rendered="#{ not cursos.flag}" class="texto2" />
                         </p:column>
-                            <p:column headerText="Horas Teoria" filterBy="#{cursos.htcurso}" filterMatchMode="contains"  class="c1">
+                            <p:column headerText="Horas Teoria" filterBy="#{cursos.htcurso}" filterMatchMode="contains"  class="c0">
                                     <h:outputText value="#{cursos.htcurso}" rendered="#{cursos.flag}" />
-                             <h:inputText value="#{cursos.htcurso}" rendered="#{ not cursos.flag}" />
+                             <h:inputText value="#{cursos.htcurso}" rendered="#{ not cursos.flag}" class="texto2" />
                         </p:column>
-                            <p:column headerText="Horas Practica" filterBy="#{cursos.hpcurso}"  filterMatchMode="contains" class="c1">
+                            <p:column headerText="Horas Practica" filterBy="#{cursos.hpcurso}"  filterMatchMode="contains" class="c0">
                                     <h:outputText value="#{cursos.hpcurso}" rendered="#{cursos.flag}" />
-                             <h:inputText value="#{cursos.hpcurso}" rendered="#{ not cursos.flag}" />
+                             <h:inputText value="#{cursos.hpcurso}" rendered="#{ not cursos.flag}" class="texto2" />
                         </p:column>
 
                             <p:column>
@@ -230,10 +236,10 @@ and open the template in the editor.
                         <p:commandButton value="Guardar" actionListener="#{evaluacionesBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar" update="txtnombreval,tblevalua,cmbevaluacion" />
                     </h:panelGrid>
                     <h:panelGrid columns="1" class="evaluacion">
-                        <p:dataTable id="tblevalua" var="evalua" value="#{evaluacionesBean.evaluaciones.listaevalua}" filteredValue="#{evaluacionesBean.evaluaciones.filtroevalua}" >
+                        <p:dataTable id="tblevalua" var="evalua" value="#{evaluacionesBean.evaluaciones.listaevalua}" filteredValue="#{evaluacionesBean.evaluaciones.filtroevalua}"  paginator="true" paginatorPosition="top" rows="5">
                             <p:column headerText="Nombre" filterBy="#{evalua.nombreeval}" filterFunction="#{evalua.filterByName}" filterMatchMode="contains"  >
                                 <h:outputText value="#{evalua.nombreeval}" rendered="#{evalua.flag}" />
-                                <h:inputText value="#{evalua.nombreeval}" rendered="#{ not evalua.flag}" />
+                                <h:inputText value="#{evalua.nombreeval}" rendered="#{ not evalua.flag}" class="texto2" />
                             </p:column>
                             <p:column>
                                 <p:commandButton icon="ui-icon-close" actionListener="#{evaluacionesBean.evaluaciones.cancelar(evalua)}"  rendered="#{ not evalua.flag}" update="tblevalua" class="btn-dialog" />
@@ -263,14 +269,14 @@ and open the template in the editor.
                                          update="cmbalcance,txtnombreact,txtfecha,tblact,cmbxactividad" />
                     </h:panelGrid>
                     <h:panelGrid columns="1" class="actividades">
-                        <p:dataTable id="tblact" var="act" value="#{actividadesBean.actividades.listaact}" filteredValue="#{actividadesBean.actividades.filtroact}" >
+                        <p:dataTable id="tblact" var="act" value="#{actividadesBean.actividades.listaact}" filteredValue="#{actividadesBean.actividades.filtroact}"  paginator="true" paginatorPosition="top" rows="5">
                             <p:column headerText="Nombre" filterBy="#{act.nombreact}" filterFunction="#{act.filterByName}" filterMatchMode="contains" >
                                 <h:outputText value="#{act.nombreact}" rendered="#{act.flag}" />
-                                <h:inputText value="#{act.nombreact}" rendered="#{ not act.flag}" />
+                                <h:inputText value="#{act.nombreact}" rendered="#{ not act.flag}" class="texto2" />
                             </p:column>
                             <p:column headerText="Inicio" filterBy="#{act.fechainicioact}" filterMatchMode="contains">
                                 <h:outputText value="#{act.fechainicioact}" rendered="#{act.flag}" ><f:convertDateTime type="date" pattern="yyyy-MM-dd"/></h:outputText>
-                                  <p:calendar id="txtfecha2" value="#{act.fechainicioact}" pattern="dd/MM/yyyy" mask="true" class="datos" placeholder="Fecha de Inicio" rendered="#{ not act.flag}" ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>
+                                  <p:calendar id="txtfecha2" value="#{act.fechainicioact}" pattern="dd/MM/yyyy" mask="true" class="datos texto2" placeholder="Fecha de Inicio" rendered="#{ not act.flag}"  ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>
                             </p:column>
                             <p:column headerText="Alcance">
                                  <p:selectOneMenu id="cmbalcance2" value="#{act.alcanceact}" disabled="#{act.flag}">
@@ -294,10 +300,11 @@ and open the template in the editor.
                         <p:outputLabel value="Curso y Profesor: " for="cmbcursoxprofesor" />
                              <p:outputLabel value="Evaluacion: " for="cmbevaluacion" />
                                   <p:outputLabel value="Peso: " for="txtpeso" />
-                        <p:selectOneMenu id="cmbcursoxprofesor" value="#{evaluaxCursoBean.evaluaxcurso.profesorxcurso}" >
-                            <f:selectItem itemLabel="-Seleccionar Curso y Profesor-" itemValue="0" itemDisabled="true" />
-                            <f:selectItems value="#{sucursalesBean.listacxp}" />
-                        </p:selectOneMenu>
+               
+                                  
+                      <p:selectOneListbox  id="cmbcursoxprofesor" value="#{evaluaxCursoBean.evaluaxcurso.profesorxcurso}" filterMatchMode="contains" filter="true" class="list-box"  >
+                          <f:selectItems value="#{sucursalesBean.listacxp}"   />
+                         </p:selectOneListbox>
                    
                         <p:selectOneMenu id="cmbevaluacion" value="#{evaluaxCursoBean.evaluaxcurso.evaluacion}" >
                             <f:selectItem itemLabel="-Seleccionar Evaluacion-" itemValue="0" itemDisabled="true" />
@@ -309,7 +316,7 @@ and open the template in the editor.
                                          update="txtpeso,cmbcursoxprofesor,cmbevaluacion,tblexc"/>
                     </h:panelGrid>
                     <h:panelGrid columns="1" class="asignar-evaluacion">
-                        <p:dataTable id="tblexc" var="exc" value="#{evaluaxCursoBean.evaluaxcurso.listaexc}" filteredValue="#{evaluaxCursoBean.evaluaxcurso.filtroexc}" >
+                        <p:dataTable id="tblexc" var="exc" value="#{evaluaxCursoBean.evaluaxcurso.listaexc}" filteredValue="#{evaluaxCursoBean.evaluaxcurso.filtroexc}"  paginator="true" paginatorPosition="top" rows="5" >
                             <p:column headerText="Evaluacion" filterBy="#{exc.nevaluacion}" filterFunction="#{exc.filterByName}" filterMatchMode="contains"  >
                                 <h:outputText value="#{exc.nevaluacion}" rendered="#{exc.flag}" />
                                 <p:selectOneMenu id="cmbevaluacion2" value="#{exc.evaluacion}" rendered="#{not exc.flag}" >
@@ -319,14 +326,14 @@ and open the template in the editor.
                             </p:column>
                             <p:column headerText="Docente - Curso" filterBy="#{exc.nprofesorxcurso}" filterFunction="#{exc.filterByName}" filterMatchMode="contains"  >
                                 <h:outputText value="#{exc.nprofesorxcurso}" rendered="#{exc.flag}" />
-                                <p:selectOneMenu id="cursoxprofesor2" value="#{exc.profesorxcurso}" rendered="#{not exc.flag}" >
-                                    <f:selectItem itemLabel="-Seleccionar Profesor-Curso-" itemValue="0" itemDisabled="true" />
-                                    <f:selectItems value="#{sucursalesBean.listacxp}" />
-                                </p:selectOneMenu>
+                                 <p:selectOneListbox  id="cmbcursoxprofesor2"  value="#{exc.profesorxcurso}" rendered="#{not exc.flag}" filterMatchMode="contains" filter="true" class="list-box"  >
+                          <f:selectItems value="#{sucursalesBean.listacxp}"   />
+                         </p:selectOneListbox>
+     
                             </p:column >
                              <p:column headerText="Peso" filterBy="#{exc.peso}">
                                  <h:outputText value="#{exc.peso}" rendered="#{exc.flag}" />
-                                   <h:inputText value="#{exc.peso}" rendered="#{ not exc.flag}" />
+                                   <h:inputText value="#{exc.peso}" rendered="#{ not exc.flag}" class="texto2" />
                             </p:column>
                             <p:column>
                                 <p:commandButton icon="ui-icon-close" actionListener="#{evaluaxCursoBean.evaluaxcurso.cancelar(exc)}"  rendered="#{ not exc.flag}" update="tblexc" class="btn-dialog" />
@@ -362,7 +369,7 @@ and open the template in the editor.
                                          update="cmbxcurso,cmbxprofesor,cmbxactividad,cmbcursoxprofesor,tblprofesorcursos" />
                          </h:panelGrid>   
                     <h:panelGrid columns="1" class="curso-profesor">  
-                        <p:dataTable id="tblprofesorcursos" var="pxc" value="#{cursoxProfesorBean.cursoxprofesor.listapxc}" filteredValue="#{cursoxProfesorBean.cursoxprofesor.filtropxc}" >
+                        <p:dataTable id="tblprofesorcursos" var="pxc" value="#{cursoxProfesorBean.cursoxprofesor.listapxc}" filteredValue="#{cursoxProfesorBean.cursoxprofesor.filtropxc}"  paginator="true" paginatorPosition="top" rows="5" >
                             
                         <p:column headerText="Curso" filterBy="#{pxc.ncurso}" filterFunction="#{pxc.filterByName}" filterMatchMode="contains" >
                             <h:outputText value="#{pxc.ncurso}" rendered="#{pxc.flag}"  />
@@ -374,10 +381,10 @@ and open the template in the editor.
                             
                             <p:column headerText="Docente" filterBy="#{pxc.nprofesor}" filterFunction="#{pxc.filterByName}" filterMatchMode="contains">
                             <h:outputText value="#{pxc.nprofesor}" rendered="#{pxc.flag}"  />
-                            <p:selectOneMenu id="cmbxprofesor2" value="#{pxc.profesor}" rendered="#{ not pxc.flag}" >
-                                <f:selectItem itemLabel="-Seleccionar Curso-" itemValue="0" itemDisabled="true" />
-                                  <f:selectItems value="#{cursoxProfesorBean.listaprofesor}" />
-                            </p:selectOneMenu>
+                            
+                             <p:selectOneListbox id="cmbxprofesor2" value="#{pxc.profesor}" rendered="#{ not pxc.flag}" filterMatchMode="contains" filter="true" class="list-box"  >
+                             <f:selectItems value="#{cursoxProfesorBean.listaprofesor}" itemLabel="#{cursoxProfesorBean.cursoxprofesor.nprofesor}" />
+                         </p:selectOneListbox>
                         </p:column>
                             
                             <p:column headerText="Actividad" filterBy="#{pxc.nactividad}">
@@ -409,14 +416,14 @@ and open the template in the editor.
                 update="txtcodigotur,txtnombretur,tblturnos" />
                     </h:panelGrid>    
                     <h:panelGrid columns="1" class="turno">    
-                        <p:dataTable id="tblturnos" var="turno" value="#{turnosBean.turnos.listaturnos}" filteredValue="#{turnosBean.turnos.filtroturnos}" >
+                        <p:dataTable id="tblturnos" var="turno" value="#{turnosBean.turnos.listaturnos}" filteredValue="#{turnosBean.turnos.filtroturnos}"  paginator="true" paginatorPosition="top" rows="5">
                             <p:column headerText="Codigo" filterBy="#{turno.codigotur}">
                                  <h:outputText value="#{turno.codigotur}" rendered="#{turno.flag}" />
-                                   <h:inputText value="#{turno.codigotur}" rendered="#{ not turno.flag}" />
+                                   <h:inputText value="#{turno.codigotur}" rendered="#{ not turno.flag}" class="texto2" />
                             </p:column>
                             <p:column headerText="Nombre" filterBy="#{turno.nombretur}">
                                  <h:outputText value="#{turno.nombretur}" rendered="#{turno.flag}" />
-                                   <h:inputText value="#{turno.nombretur}" rendered="#{ not turno.flag}" />
+                                   <h:inputText value="#{turno.nombretur}" rendered="#{ not turno.flag}" class="texto2" />
                             </p:column>
                               <p:column>
                                   <p:commandButton icon="ui-icon-close" actionListener="#{turnosBean.turnos.cancelar(turno)}"  rendered="#{ not turno.flag}" update="tblturnos" class="btn-dialog"/>
@@ -431,7 +438,7 @@ and open the template in the editor.
                 <p:dialog header="Secciones" widgetVar="secciones"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >
                     <h:panelGrid columns="2" class="inputs">
                         <p:outputLabel value="Codigo: " for="txtcodigosec" />
-                         <p:outputLabel value="Nombre: " for="txtnombresec" />º
+                         <p:outputLabel value="Nombre: " for="txtnombresec" />
                         <p:inputText id="txtcodigosec" value="#{seccionesBean.secciones.codigosec}" placeholder="Codigo" class="texto"></p:inputText>
               
                         <p:inputText id="txtnombresec" value="#{seccionesBean.secciones.nombresec}" placeholder="Nombre" class="texto"></p:inputText>
@@ -439,14 +446,14 @@ and open the template in the editor.
                             update="txtcodigosec,txtnombresec,tblseccion" />
                     </h:panelGrid>
                     <h:panelGrid columns="1" class="secciones">    
-                               <p:dataTable id="tblseccion" var="seccion" value="#{seccionesBean.secciones.listasec}" filteredValue="#{seccionesBean.secciones.filtrosec}" >
+                               <p:dataTable id="tblseccion" var="seccion" value="#{seccionesBean.secciones.listasec}" filteredValue="#{seccionesBean.secciones.filtrosec}"  paginator="true" paginatorPosition="top" rows="5" >
                                    <p:column headerText="Codigo" filterBy="#{seccion.codigosec}">
                                  <h:outputText value="#{seccion.codigosec}" rendered="#{seccion.flag}" />
-                                   <h:inputText value="#{seccion.codigosec}" rendered="#{ not seccion.flag}" />
+                                   <h:inputText value="#{seccion.codigosec}" rendered="#{ not seccion.flag}" class="texto2" />
                             </p:column>
                             <p:column headerText="Nombre" filterBy="#{seccion.nombresec}">
                                 <h:outputText value="#{seccion.nombresec}" rendered="#{seccion.flag}" />
-                                   <h:inputText value="#{seccion.nombresec}" rendered="#{ not seccion.flag}" />
+                                   <h:inputText value="#{seccion.nombresec}" rendered="#{ not seccion.flag}" class="texto2" />
                             </p:column>
                               <p:column>
                                   <p:commandButton icon="ui-icon-close" actionListener="#{seccionesBean.secciones.cancelar(seccion)}"  rendered="#{ not seccion.flag}" update="tblseccion" class="btn-dialog" />

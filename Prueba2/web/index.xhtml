@@ -11,6 +11,11 @@
         <h:outputStylesheet library="css" name="style.css"  />
                <h:outputStylesheet name="fonts.css"  />
         <h:outputScript library="js" name="bg.js"   />
+                    <h:outputStylesheet library="assets" name="animations.min.css"  />
+        <h:outputScript library="assets" name="smoothscroll.min.js"   />
+        <h:outputScript library="assets" name="appear.min.js"   />
+        <h:outputScript library="assets" name="animations.min.js"   />
+        <h:outputScript library="assets" name="backbone.js"   />
 
     </h:head>
 
@@ -18,7 +23,7 @@
         <f:view>
            <h:graphicImage id="bg" value="resources/img/bg.jpg" />
             <h:form class="login">
-               <table class="title-login">
+               <table class="title-login animate-in"  data-anim-type="fade-in-right" data-anim-delay="800">
                    <tr> 
                         <td><i class="icon icon-shield logo-login"></i>
                        </td> 
@@ -28,13 +33,13 @@
                    </tr>
                  </table>
 
-                <table class="panel-login">
+                <table class="panel-login animate-in"  data-anim-type="fade-in-left" data-anim-delay="800">
                     <tr>
                         <td > <p:outputLabel value="Usuario:  " class="label-login" />  </td>
                         <td > <p:outputLabel value="Contraseña:  " class="label-login" /></td>
                         <td> </td>
                     </tr>
-                    <tr>
+                    <tr >
                         <td > <i class="icon icon-user2 icono-login"></i><p:inputText value="#{login.user.usuario}"   class="texto texto-login" ></p:inputText></td>
                         <td > <i class="icon icon-pass icono-login"></i><p:password value="#{login.user.password}"   class="texto texto-login"></p:password></td>
                         <td> <p:commandButton value="INGRESAR" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages"  class=" boton-login"  /></td>

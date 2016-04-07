@@ -15,6 +15,7 @@ and open the template in the editor.
         <h:outputStylesheet library="css" name="style.css"  />
                 <h:outputStylesheet name="fonts.css"  />
          <h:outputScript library="js" name="bg.js"   />
+          <h:outputScript library="js" name="load.js"   />
 
     </h:head>
     <h:body style="background-color:white;">
@@ -52,7 +53,7 @@ and open the template in the editor.
                 <h:panelGrid id="matriculaxcurso" columns="1" class="matricula" >
                     <p:outputLabel value="Matricula por Curso"/>
                     <p:selectOneListbox value="#{matriculaxCursosBean.matriculaxcursos.matricula}" filterMatchMode="contains" filter="true" class="list-box" >
-                        <f:selectItems value="#{matriculaBean.listamatricula}" itemLabel="#{matriculaBean.matricula.matriculado}" />
+                        <f:selectItems value="#{sucursalesBean.listamatricula}" itemLabel="#{matriculaBean.matricula.matriculado}" />
                     </p:selectOneListbox>
 
                     <p:selectOneListbox value="#{matriculaxCursosBean.matriculaxcursos.curso}" filterMatchMode="contains" filter="true" class="list-box" >

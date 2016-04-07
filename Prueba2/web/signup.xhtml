@@ -11,6 +11,12 @@
                 <h:outputStylesheet name="fonts.css"  />
            <h:outputStylesheet library="css" name="submenu.css"  />
          <h:outputScript library="js" name="bg.js"   />
+            <h:outputScript library="js" name="load.js"   />
+            <h:outputStylesheet library="assets" name="animations.min.css"  />
+        <h:outputScript library="assets" name="smoothscroll.min.js"   />
+        <h:outputScript library="assets" name="appear.min.js"   />
+        <h:outputScript library="assets" name="animations.min.js"   />
+        <h:outputScript library="assets" name="backbone.js"   />
     </h:head>
 
     <h:body style="background-color:white;">
@@ -18,31 +24,31 @@
             <h:form id="usuarios">
                 
                 <ul class="ca-menu">
-                    <li>
+                     <li class="animate-in"  data-anim-type="bounce-in-up" data-anim-delay="600">
                         <a>
                             <span> <i class="icon icon-user ca-icon"></i></span>
                             <div class="ca-content">
-                                <h2 class="ca-main"><p:commandButton value="Nuevo Usuario" 
+                                <h2 class="ca-main"><p:commandButton value="NUEVO USUARIO" 
               oncomplete="PF('usuarionuevo').show();"  class="btn-img"  /></h2>
                                 <h3 class="ca-sub">Registra nuevos usuarios al sistema</h3>
                             </div>
                         </a>
                     </li>
-                    <li>
+                     <li class="animate-in"  data-anim-type="bounce-in-down" data-anim-delay="600">
                         <a >
                             <span  ><i class="icon icon-group ca-icon"></i></span>
                             <div class="ca-content">
-                                <h2 class="ca-main"><p:commandButton value="Alumnos" 
+                                <h2 class="ca-main"><p:commandButton value="ALUMNOS" 
               onclick="#{usersBean.user.mostraralumnos(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('alumno').show();"   class="btn-img"  /></h2>
                                 <h3 class="ca-sub">Gestiona la informacion de los alumnos</h3>
                             </div>
                         </a>
                     </li>
-                      <li>
+                       <li class="animate-in"  data-anim-type="bounce-in-up" data-anim-delay="600">
                         <a >
                             <span  ><i class="icon icon-user3 ca-icon"></i></span>
                             <div class="ca-content">
-                                <h2 class="ca-main"><p:commandButton value="Docente" 
+                                <h2 class="ca-main"><p:commandButton value="DOCENTES" 
               onclick="#{usersBean.user.mostrardocente(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('docente').show();"  class="btn-img"   /></h2>
                                 <h3 class="ca-sub">Gestiona la informacion de los docentes</h3>
                             </div>

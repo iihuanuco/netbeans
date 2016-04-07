@@ -39,16 +39,16 @@ public class SqlMatricula implements DaoMatricula{
     }
 
     @Override
-    public List<Matricula> MostrarMatricula() {
+    public List<Matricula> MostrarMatricula(int suc) {
            List<Matricula> listaeval=new ArrayList<Matricula>();
         try {
             Connection conn=Postgresql.conexion();
-            String aql = "select m.registro,concat(u.nombre,' - ',c.nombre) "
-                    + "from matricula m "
-                    + "inner join users u "
-                    + "on u.registro=m.alumno "
-                    + "inner join carreras c "
-                    + "on c.registro=m.carrera";
+            String aql = "select m.registro,concat(u.nombre,' - ',c.nombre)  " +
+"                    from matricula m " +
+"                    inner join users u on u.registro=m.alumno  " +
+"                    inner join carreras c on c.registro=m.carrera  " +
+"                    inner join sucursales su on su.registro=c.sucursal " +
+"                    where sucursal="+suc;
             Statement st=conn.createStatement();
             ResultSet rs=null;
             rs=st.executeQuery(aql);

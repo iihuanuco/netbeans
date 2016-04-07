@@ -3,9 +3,6 @@
                         screenHeight = $(window).height();
                         var bg = jQuery("#bg");
                     
-                        var submenu = jQuery(".submenu");
-                          var submenu2 = jQuery(".submenu2");
-                           var submenu3 = jQuery(".submenu3");
                           var font = jQuery(".btn-img");
 
                         // Proporcion horizontal/vertical. En este caso la imagen es cuadrada
@@ -24,12 +21,10 @@
                               $(bg).css('left', (screenWidth - $(bg).width()) / 2);
                         }
                      
-                         $(submenu).css('height',(screenHeight/2)); 
-                           $(submenu2).css('height',(screenHeight/2)); 
-                            $(submenu3).css('height',(screenHeight)); 
                            $(font).css('font-size',(screenHeight/40)); 
                           
                         }
+                        
     $(document).ready(function () {
     
             updateBackground();
@@ -40,30 +35,8 @@
             });
             
             
-            
-
-            $("body").css({"overflow-y": "hidden"});
-
-            var alto = $(window).height();
-
-            $("body").append("<div id='pre-load-web'><div id='imagen-load'><img src='http://preloaders.net/preloaders/359/Filling%20circles.gif'  /><br />Cargando...</div>");
-
-            $("#pre-load-web").css({height: alto + "px"});
-
-            $("#imagen-load").css({"margin-top": (alto / 2) - 30 + "px"});
-
+         
 
 });
  
- 
-
-        $(window).load(function(){
-           $("#pre-load-web").fadeOut(2000,function()
-           { 
-            
-               $(this).remove();
   
-               $("body").css({"overflow-y":"auto"}); 
-
-           });        
-        }); 

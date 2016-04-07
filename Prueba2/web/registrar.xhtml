@@ -15,20 +15,81 @@ and open the template in the editor.
         <h:outputStylesheet library="css" name="style.css"  />
                 <h:outputStylesheet name="fonts.css"  />
         <h:outputScript library="js" name="bg.js"   />
- 
+   <h:outputStylesheet library="css" name="submenu3.css"  />
 
     </h:head>
     <h:body style="background-color:white;">
         <h:form class="registro" >
               <p:growl id="messages" showDetail="true" />
-            <div columns="1" class="registro-menu">
-                <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/1.jpg"/><p:commandButton value="Departamentos" onclick="#{departamentosBean.departamentos.mostrar()}" oncomplete="PF('departamentos').show();"  class="  btn-img"  /></div>
+       
+                
+                
+                   <ul class="ca-menu">
+                    <li>
+                        <a>
+                            <span> <i class="icon icon-pin-alt ca-icon"></i></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main"><p:commandButton value="Departamentos" onclick="#{departamentosBean.departamentos.mostrar()}" oncomplete="PF('departamentos').show();"  class="btn-img"  /></h2>
+                                <h3 class="ca-sub">Registra Y gestiona las carreras</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a >
+                            <span  ><i class="icon icon-pin ca-icon"></i></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main"><p:commandButton value="Provincias" oncomplete="PF('provincias').show();"  class="btn-img"  /></h2>
+                                <h3 class="ca-sub">Registra Y gestiona los cursos</h3>
+                            </div>
+                        </a>
+                    </li>
+                      <li>
+                        <a >
+                            <span  ><i class="icon icon-my_location ca-icon"></i></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main"><p:commandButton value="Distritos" oncomplete="PF('distritos').show();" class="btn-img"  /> </h2>
+                                <h3 class="ca-sub">Asigna cursos a los docentes</h3>
+                            </div>
+                        </a>
+                    </li>
+                            <li>
+                        <a >
+                            <span  ><i class="icon icon-office ca-icon"></i></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main"><p:commandButton value="Empresas" onclick="#{empresasBean.empresas.mostrar()}" oncomplete="PF('empresas').show();" class="btn-img"  /></h2>
+                                <h3 class="ca-sub">Registra Y gestiona las evaluaciones</h3>
+                            </div>
+                        </a>
+                    </li>
+                            <li>
+                        <a >
+                            <span  ><i class="icon icon-location3 ca-icon"></i></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main"><p:commandButton value="Sucursales" onclick="#{sucursalesBean.sucursales.mostrar3()}" oncomplete="PF('sucursales').show();"  class="btn-img"  /></h2>
+                                <h3 class="ca-sub">Registra Y gestiona las actividades</h3>
+                            </div>
+                        </a>
+                    </li>
+                           <li>
+                        <a >
+                            <span  ><i class="icon icon-group ca-icon"></i></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main"><p:commandButton value="Asignar Usuario"  onclick="#{userxSucuBean.userxsucu.mostraruxs(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('sxu').show();"  class="btn-img"  /></h2>
+                                <h3 class="ca-sub">Registrar y asigna evaluaciones a los cursos</h3>
+                            </div>
+                        </a>
+                    </li>
+                            
+                </ul>
+                
+                
+             <!--   <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/1.jpg"/><p:commandButton value="Departamentos" onclick="#{departamentosBean.departamentos.mostrar()}" oncomplete="PF('departamentos').show();"  class="  btn-img"  /></div>
                 <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/2.jpg"/><p:commandButton value="Provincias" oncomplete="PF('provincias').show();"  class="  btn-img"  /></div>
                 <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/3r.jpg"/><p:commandButton value="Distritos" oncomplete="PF('distritos').show();" class="  btn-img"  /></div>
                 <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/4.jpg"/><p:commandButton value="Empresas" onclick="#{empresasBean.empresas.mostrar()}" oncomplete="PF('empresas').show();" class="  btn-img"  /></div>
                 <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/5.jpg"/><p:commandButton value="Sucursales" onclick="#{sucursalesBean.sucursales.mostrar3()}" oncomplete="PF('sucursales').show();"  class=" btn-img"  /></div>
                 <div class="submenu"><h:graphicImage class="imagen-reg" value="resources/img/6.jpg"/><p:commandButton value="Asignar Usuario"  onclick="#{userxSucuBean.userxsucu.mostraruxs(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('sxu').show();"  class=" btn-img"  /></div>
-            </div>
+            </div>-->
 
               <div class="registrar"> 
             <p:dialog  header="Registrar departamentos"  widgetVar="departamentos"   showEffect="clip" hideEffect="clip" position="absolute" height="auto" width="100%" rendered="true"  modal="true" draggable="false" resizable="false" >

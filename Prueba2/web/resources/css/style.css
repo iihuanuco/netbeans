@@ -1,5 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Dosis);
 @import url(https://fonts.googleapis.com/css?family=Glegoo);
+*{
+    margin: 0;
+    padding: 0;
+}
+.a1{
+    height: 9.5vh;
+}
+
+#iframe-custom{
+    width: 100%;
+    height: 90vh;
+}
+
+
 .login{
     position: relative;
     margin: 0 auto;
@@ -107,36 +121,8 @@ display: block;
     color: #009999;
 }
 
-#iframe-custom{
-    width: 100%;
-    position: relative;
-}
 
-.submenu{
- height: 270px;
-    width: 33.33333%;
-    background-color: #5f5e5e;
-    display: block;
-    float: left;
-    text-align: center;
-}
-.submenu2{
-    height: 270px;
-    width: 25%;
-    background-color: #5f5e5e;
-    display: block;
-    float: left;
-    text-align: center;
-}
-.submenu3{
-    height: 270px;
-    width: 33.33333%;
-    background-color: #5f5e5e;
-    display: block;
-    float: left;
-    text-align: center;
-}
-
+ 
  
 .registro{
      position: relative;
@@ -154,45 +140,44 @@ display: block;
 .btn-img{
   font-family: "Dosis",sans-serif !important;
   font-weight:  normal;
-     background: rgba(0,0,0,.9) -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+     background: rgba(0,0,0,5) -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
     top: -60%;
      box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
-     border:2px solid rgba(255,255,255,0) !important;
-     font-size:20px;
+     border:1px solid rgba(255,255,255,1) !important;
+     font-size:22px !important ;
      color:rgba(255,255,255,1);
      text-shadow: none !important;
-      width: 80%;
-      height: 60px;
-     -webkit-transition: all .4s ease-in-out;
-    -moz-transition: all .4s ease-in-out;
-    -ms-transition: all .4s ease-in-out;
-    -o-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
-
+     -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+ 
 }
 
 .btn-img:hover{
+     font-size:23px !important ;
+     border:1px solid #009999 !important ; 
+     color:  #009999;
+}
  
-      background:  rgba(0,0,0,.9) -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
-        font-weight:  normal;
-       top: -100%;
-       margin-top: -1%;
-      width: 100%;
-      height: 100%;
-           
+.btn-sucursal{
+   background: rgba(0,0,0,0) -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+    border:1px solid rgba(255,255,255,0) !important;
+       color:rgba(255,255,255,1);
+     text-shadow: none !important;
+       box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
+         font-family: "Dosis",sans-serif !important;
+  font-weight:  normal;
 }
 
-div.submenu:hover .btn-img{
-    animation: moveFromTop 400ms ease-in-out;
+.btn-sucursal:hover{
+ 
+       color:#009999  !important;
+ 
 }
 
-div.submenu2:hover .btn-img{
-    animation: moveFromTop 400ms ease-in-out;
-}
-
-div.submenu3:hover .btn-img{
-    animation: moveFromTop 400ms ease-in-out;
-}
+ 
 .boton-login{
     background: #009999 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
     text-shadow: none !important;
@@ -720,7 +705,7 @@ border-bottom: 1px solid black;
 .ui-datatable thead th{
     color: black !important;
     font-weight:  normal;
-    border: 0px solid rgba(0,0,0,0) !important;
+ 
     padding-bottom: 10px;
 padding-top: 10px;
 }

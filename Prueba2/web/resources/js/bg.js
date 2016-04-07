@@ -2,7 +2,7 @@
                         screenWidth = $(window).width();
                         screenHeight = $(window).height();
                         var bg = jQuery("#bg");
-                        var iframe = jQuery("#iframe-custom");
+                    
                         var submenu = jQuery(".submenu");
                           var submenu2 = jQuery(".submenu2");
                            var submenu3 = jQuery(".submenu3");
@@ -23,7 +23,7 @@
                         if ($(bg).width() > 0) {
                               $(bg).css('left', (screenWidth - $(bg).width()) / 2);
                         }
-                         $(iframe).css('height',(screenHeight)); 
+                     
                          $(submenu).css('height',(screenHeight/2)); 
                            $(submenu2).css('height',(screenHeight/2)); 
                             $(submenu3).css('height',(screenHeight)); 

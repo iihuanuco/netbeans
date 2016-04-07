@@ -16,23 +16,88 @@ and open the template in the editor.
         <h:outputStylesheet library="css" name="style.css"  />
         <h:outputStylesheet name="fonts.css"  />
         <h:outputScript library="js" name="bg.js"   />
+        <h:outputStylesheet library="css" name="submenu2.css"  />
     </h:head>
     <h:body  style="background-color:white;">
         <f:view>
             <h:form class="academico" >
-                <div columns="1" class="registro-menu">
-                    <div class="submenu2"><h:graphicImage class="imagen-reg" value="resources/img/7.jpg"/><p:commandButton value="Carreras" onclick="#{carrerasBean.carreras.mostrarcarreras(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('Carreras').show();"  class="  btn-img"  /></div>
-                    <div class="submenu2"><h:graphicImage class="imagen-reg" value="resources/img/8.jpg"/><p:commandButton value="Cursos" onclick="#{cursosBean.cursos.mostrarcursos(sucursalesBean.sucursales.registrosuc)}"  oncomplete="PF('Cursos').show();"  class="  btn-img"  /></div>
-                    <div class="submenu2"><h:graphicImage class="imagen-reg" value="resources/img/12.jpg"/><p:commandButton value="Asignar Cursos" onclick="#{cursoxProfesorBean.cursoxprofesor.mostrarpxc(sucursalesBean.sucursales.registrosuc)}"  oncomplete="PF('cursoxprofesor').show();"  class="  btn-img"  /></div>
-                    <div class="submenu2"><h:graphicImage class="imagen-reg" value="resources/img/9.jpg"/><p:commandButton value="Evaluaciones"  onclick="#{evaluacionesBean.evaluaciones.mostrarevaua(sucursalesBean.sucursales.registrosuc)}"  oncomplete="PF('evaluaciones').show();"  class="  btn-img"  /></div>
-                    <div class="submenu2"><h:graphicImage class="imagen-reg" value="resources/img/10.jpg"/><p:commandButton value="Actividades"  onclick="#{actividadesBean.actividades.mostraract(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('actividades').show();"  class="  btn-img"  /></div>
-                    <div class="submenu2"><h:graphicImage class="imagen-reg" value="resources/img/11.jpg"/><p:commandButton value="Asignar Evaluacion" onclick="#{evaluaxCursoBean.evaluaxcurso.mostrarexc(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('evaluaxcurso').show();"  class="  btn-img"  /></div>
-                                     <div class="submenu2"><h:graphicImage class="imagen-reg" value="resources/img/14.jpg"/><p:commandButton value="Turnos" onclick="#{turnosBean.turnos.mostrartur()}"  oncomplete="PF('turnos').show();"  class="  btn-img"  /></div>
-                                     <div class="submenu2"><h:graphicImage class="imagen-reg" value="resources/img/13.jpg"/><p:commandButton value="Secciones"   onclick="#{seccionesBean.secciones.mostrarsec()}"  oncomplete="PF('secciones').show();"  class="  btn-img"  /></div>
-
-                 
-                </div>
-
+                
+                    <ul class="ca-menu">
+                    <li>
+                        <a>
+                            <span> <i class="icon icon-graduate ca-icon"></i></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main"><p:commandButton value="Carreras" onclick="#{carrerasBean.carreras.mostrarcarreras(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('Carreras').show();"  class="  btn-img"  /></h2>
+                                <h3 class="ca-sub">Registra Y gestiona las carreras</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a >
+                            <span  ><i class="icon icon-archive ca-icon"></i></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main"><p:commandButton value="Cursos" onclick="#{cursosBean.cursos.mostrarcursos(sucursalesBean.sucursales.registrosuc)}"  oncomplete="PF('Cursos').show();"  class="  btn-img"  /></h2>
+                                <h3 class="ca-sub">Registra Y gestiona los cursos</h3>
+                            </div>
+                        </a>
+                    </li>
+                      <li>
+                        <a >
+                            <span  ><i class="icon icon-sitemap ca-icon"></i></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main"><p:commandButton value="Asignar Cursos" onclick="#{cursoxProfesorBean.cursoxprofesor.mostrarpxc(sucursalesBean.sucursales.registrosuc)}"  oncomplete="PF('cursoxprofesor').show();"  class="  btn-img"  /></h2>
+                                <h3 class="ca-sub">Asigna cursos a los docentes</h3>
+                            </div>
+                        </a>
+                    </li>
+                            <li>
+                        <a >
+                            <span  ><i class="icon icon-document-edit ca-icon"></i></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main"><p:commandButton value="Evaluaciones"  onclick="#{evaluacionesBean.evaluaciones.mostrarevaua(sucursalesBean.sucursales.registrosuc)}"  oncomplete="PF('evaluaciones').show();"  class="  btn-img"  /></h2>
+                                <h3 class="ca-sub">Registra Y gestiona las evaluaciones</h3>
+                            </div>
+                        </a>
+                    </li>
+                            <li>
+                        <a >
+                            <span  ><i class="icon icon-calendar ca-icon"></i></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main"><p:commandButton value="Actividades"  onclick="#{actividadesBean.actividades.mostraract(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('actividades').show();"  class="  btn-img"  /></h2>
+                                <h3 class="ca-sub">Registra Y gestiona las actividades</h3>
+                            </div>
+                        </a>
+                    </li>
+                           <li>
+                        <a >
+                            <span  ><i class="icon icon-document-diagrams ca-icon"></i></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main"><p:commandButton value="Asignar Evaluacion" onclick="#{evaluaxCursoBean.evaluaxcurso.mostrarexc(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('evaluaxcurso').show();"  class="  btn-img"  /></h2>
+                                <h3 class="ca-sub">Registrar y asigna evaluaciones a los cursos</h3>
+                            </div>
+                        </a>
+                    </li>
+                           <li>
+                        <a >
+                            <span  ><i class="icon icon-chronometer ca-icon"></i></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main"><p:commandButton value="Turnos" onclick="#{turnosBean.turnos.mostrartur()}"  oncomplete="PF('turnos').show();"  class="  btn-img"  /></h2>
+                                <h3 class="ca-sub">Registra Y gestiona turnos</h3>
+                            </div>
+                        </a>
+                    </li>
+                           <li>
+                        <a >
+                            <span  ><i class="icon icon-explicit ca-icon"></i></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main"><p:commandButton value="Secciones"   onclick="#{seccionesBean.secciones.mostrarsec()}"  oncomplete="PF('secciones').show();"  class="  btn-img"  /></h2>
+                                <h3 class="ca-sub">Registra Y gestiona secciones</h3>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                
+ 
                 <div class="dialog-academico">
                 
                     <p:dialog  header="Registrar Carreras"  widgetVar="Carreras"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >

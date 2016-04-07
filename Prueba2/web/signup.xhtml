@@ -9,22 +9,49 @@
         <title>Registrar Usuario</title>
          <h:outputStylesheet library="css" name="style.css"  />
                 <h:outputStylesheet name="fonts.css"  />
+           <h:outputStylesheet library="css" name="submenu.css"  />
          <h:outputScript library="js" name="bg.js"   />
     </h:head>
 
     <h:body style="background-color:white;">
         <f:view>
             <h:form id="usuarios">
-                <div columns="1" class="registro-menu">
-                    
-                    <div class="submenu3"><h:graphicImage class="imagen-reg" value="resources/img/1u.jpg"/><p:commandButton value="Nuevo Usuario" 
-              oncomplete="PF('usuarionuevo').show();"  class="  btn-img"  /></div>
-                    <div class="submenu3"><h:graphicImage class="imagen-reg" value="resources/img/2u.jpg"/><p:commandButton value="Gestionar Alumnos" 
-              onclick="#{usersBean.user.mostraralumnos(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('alumno').show();"  class="  btn-img"  /></div>
-                    <div class="submenu3"><h:graphicImage class="imagen-reg" value="resources/img/3u.jpg"/><p:commandButton value="Gestionar Docente" 
-              onclick="#{usersBean.user.mostrardocente(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('docente').show();"  class="  btn-img"  /></div>
-
-                </div>
+                
+                <ul class="ca-menu">
+                    <li>
+                        <a>
+                            <span> <i class="icon icon-user ca-icon"></i></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main"><p:commandButton value="Nuevo Usuario" 
+              oncomplete="PF('usuarionuevo').show();"  class="btn-img"  /></h2>
+                                <h3 class="ca-sub">Registra nuevos usuarios al sistema</h3>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a >
+                            <span  ><i class="icon icon-group ca-icon"></i></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main"><p:commandButton value="Alumnos" 
+              onclick="#{usersBean.user.mostraralumnos(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('alumno').show();"   class="btn-img"  /></h2>
+                                <h3 class="ca-sub">Gestiona la informacion de los alumnos</h3>
+                            </div>
+                        </a>
+                    </li>
+                      <li>
+                        <a >
+                            <span  ><i class="icon icon-user3 ca-icon"></i></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main"><p:commandButton value="Docente" 
+              onclick="#{usersBean.user.mostrardocente(sucursalesBean.sucursales.registrosuc)}" oncomplete="PF('docente').show();"  class="btn-img"   /></h2>
+                                <h3 class="ca-sub">Gestiona la informacion de los docentes</h3>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                
+                
+          
                 <div class="dialog-alumno"> 
             <p:dialog header="Registrar Usuario Nuevo" widgetVar="usuarionuevo" showEffect="clip" hideEffect="clip"   rendered="true" height="auto" width="100%" modal="true" draggable="false" resizable="false" position="absolute"  >
                 <h:panelGrid columns="2" style="margin: 0 auto;" >

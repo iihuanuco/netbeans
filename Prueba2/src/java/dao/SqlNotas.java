@@ -78,7 +78,7 @@ public class SqlNotas implements DaoNotas{
                     + "left join notas as b on a.matriculaxcurso=b.matriculaxcurso and b.evalucionxcurso="+eva+")  "
                     + "select * from notas_temp;";
   
-             Statement st=conn.createStatement();
+            Statement st=conn.createStatement();
             ResultSet rs=null;
             rs=st.executeQuery(sql);
             while (rs.next()) {
@@ -96,6 +96,40 @@ public class SqlNotas implements DaoNotas{
         }
         
         return listaalum;
+    }
+
+    @Override
+    public List<Notas> Mostrarnotaintranet(int reg) {
+        List<Notas> listanotasint=new ArrayList<Notas>();
+        try {
+            Connection conn=Postgresql.conexion();
+            String sql="select c.nombre as curso,p.nombre as profesor,e.nombre as tipoeval,n.nota from notas n " +
+            "inner join matriculaxcursos mc on mc.registro=n.matriculaxcurso " +
+            "inner join profesorxcursos pc on pc.registro=mc.profesorxcurso " +
+            "inner join cursos c on c.registro=pc.curso " +
+            "inner join users p on p.registro=pc.profesor " +
+            "inner join evalucionesxcursos ec on ec.registro=n.evalucionxcurso " +
+            "inner join evaluaciones e on e.registro=ec.evaluacion " +
+            "inner join matricula m on m.registro=mc.matricula " +
+            "inner join users a on a.registro=m.alumno " +
+            "where a.registro='"+reg+"';";
+            
+            Statement st=conn.createStatement();
+            ResultSet rs=null;
+            rs=st.executeQuery(sql);
+            while (rs.next()) {
+                Notas n=new Notas();
+                n.setCursoint(rs.getString(1));
+                n.setProfesorint(rs.getString(2));
+                n.setTipoevalint(rs.getString(3));
+                n.setNotanot(rs.getDouble(4));
+                
+                listanotasint.add(n);
+            }
+            
+        } catch (Exception e) {
+        }
+        return listanotasint;
     }
 
 }

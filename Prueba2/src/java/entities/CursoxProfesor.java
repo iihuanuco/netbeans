@@ -10,7 +10,7 @@ import java.util.Locale;
 
  
 public class CursoxProfesor {
-   private int registro,profesor,curso,actividad,userc,userm;  
+   private int registro,profesor,curso,actividad,userc,userm,creditos;  
    private String ncurso,nprofesor,nactividad,view="margin: 20% auto; text-align: center;";
    private Date fecham;
       private List <CursoxProfesor> lista;
@@ -171,7 +171,15 @@ public class CursoxProfesor {
     public void setView(String view) {
         this.view = view;
     }
-    
+
+    public int getCreditos() {
+        return creditos;
+    }
+
+    public void setCreditos(int creditos) {
+        this.creditos = creditos;
+    }
+ 
     
     
     
@@ -201,6 +209,11 @@ public class CursoxProfesor {
                       }
                      
       }
+               
+         
+               
+               
+               
                        public void mostrarpxc(int suc) {
                 listapxc=new ArrayList();  
                 SqlCursoxProfesor pu = new SqlCursoxProfesor();

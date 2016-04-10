@@ -36,16 +36,29 @@ public class SqlMatriculaxCursos implements DaoMatriculaxCursos{
     }
 
     @Override
-    public List<MatriculaxCursos> MostrarMatriculaxCursos() {
+    public List<MatriculaxCursos> MostrarMatriculaxCursos(int reg) {
         List<MatriculaxCursos> listamxc=new ArrayList<MatriculaxCursos>();
         try {
             Connection conn=Postgresql.conexion();
-            String sql="";
+            String sql = "select mc.registro,pc.registro,c.nombre,p.nombre,c.creditos "
+                    + "from users u "
+                    + "inner join matricula m on m.alumno=u.registro "
+                    + "inner join matriculaxcursos mc on mc.matricula=m.registro "
+                    + "inner join profesorxcursos pc on pc.registro=mc.profesorxcurso "
+                    + "inner join cursos c on c.registro=pc.curso "
+                    + "inner join users p on p.registro=pc.profesor "
+                    + "where m.registro=" + reg;
             Statement st=conn.createStatement();
             ResultSet rs=null;
             rs=st.executeQuery(sql);
             while (rs.next()) {
                 MatriculaxCursos mxc=new MatriculaxCursos();
+                mxc.setMatricula(rs.getInt(1));
+                 mxc.setCurso(rs.getInt(2));
+                 mxc.setCursos(rs.getString(3));
+                 mxc.setProfesor(rs.getString(4));
+                  mxc.setCreditos(rs.getInt(5));
+         listamxc.add(mxc);
                 
             }
             

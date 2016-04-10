@@ -1,7 +1,11 @@
 package entities;
 
 import dao.SqlMatriculaxCursos;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
 
 public class MatriculaxCursos {
     //variables de registro de cambios
@@ -12,20 +16,34 @@ public class MatriculaxCursos {
     //atributos formareos
     private int padre; //curso anterior en caso de recuperacion
     private int matricula;
-    private int curso;
+    private int curso,creditos,alumno;
+    private String cursos,profesor;
+    private List<MatriculaxCursos> listamxc;
+    private List<MatriculaxCursos> listafiltro;
+ 
 
     public MatriculaxCursos() {
     }
 
-    public MatriculaxCursos(int userc, int userm, Date fecham, int registromxc, int padre, int matricula, int curso) {
-        this.userc = userc;
-        this.userm = userm;
-        this.fecham = fecham;
-        this.registromxc = registromxc;
-        this.padre = padre;
-        this.matricula = matricula;
-        this.curso = curso;
+           public boolean filterByName(Object value, Object filter, Locale locale) {
+    String filterText = (filter == null) ? null : filter.toString().trim();
+    if (filterText == null || filterText.equals("")) {
+        return true;
     }
+
+    if (value == null) {
+        return false;
+    }
+
+    String Name = value.toString().toUpperCase();
+    filterText = filterText.toUpperCase();
+
+    if (Name.contains(filterText)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
     public int getUserc() {
         return userc;
@@ -82,6 +100,57 @@ public class MatriculaxCursos {
     public void setCurso(int curso) {
         this.curso = curso;
     }
+
+    public String getCursos() {
+        return cursos;
+    }
+
+    public void setCursos(String cursos) {
+        this.cursos = cursos;
+    }
+
+    public String getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(String profesor) {
+        this.profesor = profesor;
+    }
+
+    public int getCreditos() {
+        return creditos;
+    }
+
+    public void setCreditos(int creditos) {
+        this.creditos = creditos;
+    }
+
+    public List<MatriculaxCursos> getListamxc() {
+        return listamxc;
+    }
+
+    public void setListamxc(List<MatriculaxCursos> listamxc) {
+        this.listamxc = listamxc;
+    }
+
+    public int getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(int alumno) {
+        this.alumno = alumno;
+    }
+
+    public List<MatriculaxCursos> getListafiltro() {
+        return listafiltro;
+    }
+
+    public void setListafiltro(List<MatriculaxCursos> listafiltro) {
+        this.listafiltro = listafiltro;
+    }
+
+ 
+    
     
     public void registrar(int reg){
         SqlMatriculaxCursos smc=new SqlMatriculaxCursos();
@@ -90,7 +159,19 @@ public class MatriculaxCursos {
         mc.setCurso(curso);
         mc.setUserc(reg);
         smc.InsertarMatriculaxCursos(mc);
-    
     }
     
+    public void mostrar(int reg){
+          listamxc=new ArrayList();
+        SqlMatriculaxCursos sc=new SqlMatriculaxCursos();
+        List<MatriculaxCursos> listacar=sc.MostrarMatriculaxCursos(reg);
+        Iterator<MatriculaxCursos> iter=listacar.iterator();
+        while (iter.hasNext()) {
+            MatriculaxCursos c = iter.next();
+            listamxc.add(c);
+        }
+       
+    }
 }
+    
+  

@@ -7,15 +7,18 @@ import entities.Users;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class MatriculaBean {
     private Matricula matricula=new Matricula();
     private List<SelectItem> listaalumnos;
      
+ 
+
     
     public MatriculaBean() {
     }
@@ -44,7 +47,7 @@ public class MatriculaBean {
     
     
     
-    public void registrar(int reg){
+    public void registrar(int reg,int suc,int carr){
         matricula.registrar(reg);
         matricula.setAlumno(0);
         matricula.setCodigomat("");
@@ -52,6 +55,7 @@ public class MatriculaBean {
         matricula.setCarrera(0);
         matricula.setTurno(0);
         matricula.setSeccion(0);
+        matricula.mostrar(suc, carr);
         
     }
     

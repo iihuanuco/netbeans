@@ -24,12 +24,13 @@
 
 
     <h:body   onload="#{login.user.load()} and #{sucursalesBean.sucursales.mostrar()} and #{sucursalesBean.sucursales.mostrar2(login.user.registro)}" style="background-color: rgba(255,255,255,1);">
-      
+ 
+        
         <c:choose>
             <c:when test="#{login.user.nombre==null}">
                   <h:graphicImage id="bg"  value="resources/img/bg.jpg" />
                 <h:form   class="login">
-                            <table class="title-login animate-in"  data-anim-type="fade-in-right" data-anim-delay="800">
+                        <table class="title-login animate-in"  data-anim-type="fade-in-right" data-anim-delay="800">
                    <tr> 
                         <td><i class="icon icon-shield logo-login"></i>
                        </td> 
@@ -51,7 +52,7 @@
                         <td> <p:commandButton value="INGRESAR" action="#{login.validardatos(login.user.usuario,login.user.password)}" update="messages"  class=" boton-login"  /></td>
                     </tr>
                     <p:growl id="messages" showDetail="true" />
-                </table>
+                </table>>
 
                 </h:form>
             </c:when>

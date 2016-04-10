@@ -1,11 +1,12 @@
 package bean;
 
+
 import entities.MatriculaxCursos;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class MatriculaxCursosBean {
     private MatriculaxCursos matriculaxcursos=new MatriculaxCursos();
     
@@ -20,10 +21,11 @@ public class MatriculaxCursosBean {
         this.matriculaxcursos = matriculaxcursos;
     }
     
-    public void registrar(int reg){
+    public void registrar(int reg,int mat){
         matriculaxcursos.registrar(reg);
         matriculaxcursos.setMatricula(0);
         matriculaxcursos.setCurso(0);
+        matriculaxcursos.mostrar(mat);
     }
     
 }

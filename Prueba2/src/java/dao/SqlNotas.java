@@ -113,7 +113,7 @@ public class SqlNotas implements DaoNotas{
             "inner join matricula m on m.registro=mc.matricula " +
             "inner join users a on a.registro=m.alumno " +
             "where a.registro='"+reg+"';";
-            
+            System.out.println(""+reg);
             Statement st=conn.createStatement();
             ResultSet rs=null;
             rs=st.executeQuery(sql);

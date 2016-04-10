@@ -14,7 +14,7 @@ public class Sucursales {
     private int userc,userm;
     private Date fechac,fecham;
     //propios de la clase
-    private int registrosuc;
+    private int registrosuc,actividad;
     private String nombresuc;
     private String direccionsuc;
     private int alcancesuc;
@@ -244,6 +244,14 @@ public class Sucursales {
 
     public void setLista3(List<Sucursales> lista3) {
         this.lista3 = lista3;
+    }
+
+    public int getActividad() {
+        return actividad;
+    }
+
+    public void setActividad(int actividad) {
+        this.actividad = actividad;
     }
 
     

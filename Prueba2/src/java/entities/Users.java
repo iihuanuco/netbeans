@@ -306,7 +306,7 @@ public class Users {
  
     public String signout() {
         this.nombre=null;
-        return "index";
+        return "index?faces-redirect=true";
     }
     
     public int dentro_de(int[] a)

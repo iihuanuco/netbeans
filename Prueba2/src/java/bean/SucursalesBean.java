@@ -7,19 +7,18 @@ import dao.SqlCursos;
 import dao.SqlCursoxProfesor;
 import dao.SqlMatricula;
 import dao.SqlSucursales;
-import dao.SqlUsers;
 import entities.Actividades;
 import entities.Carreras;
 import entities.Cursos;
 import entities.CursoxProfesor;
 import entities.Matricula;
 import entities.Sucursales;
-import entities.Users;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
+
 
 @ManagedBean
 @SessionScoped
@@ -27,15 +26,27 @@ public class SucursalesBean {
 
     private Sucursales sucursales=new Sucursales();
       private List <SelectItem> listaSucursales;
-       List<SelectItem> listacarreras;
+       private List<SelectItem> listacarreras;
            private List<SelectItem> listaactividades;
-                 private List<SelectItem> listacxp;
                      private List<SelectItem> listaCursos;
-                       private List<SelectItem> listamatricula;
+                          private List<SelectItem> listamatriculados;
+                           private List<SelectItem> cursodisponible;
+                          private int codcarrera,mat;
+                            private List<SelectItem> listacxp;
+ 
     
     public SucursalesBean() {
     }
 
+    public int getCodcarrera() {
+        return codcarrera;
+    }
+
+    public void setCodcarrera(int codcarrera) {
+        this.codcarrera = codcarrera;
+    }
+
+    
     public Sucursales getSucursales() {
         return sucursales;
     }
@@ -82,18 +93,7 @@ public class SucursalesBean {
         return listaactividades;
     }
          
-          public List<SelectItem> getListacxp() {
-         this.listacxp=new ArrayList<SelectItem>();
-        SqlCursoxProfesor sc=new SqlCursoxProfesor();
-            List<CursoxProfesor>  listacar=sc.MostrarCursoxProfesor(sucursales.getRegistrosuc());
-            listacxp.clear();
-            for (CursoxProfesor c : listacar) {
-               SelectItem caritem=new SelectItem(c.getRegistro(),c.getNcurso()+" - "+c.getNprofesor());
-               this.listacxp.add(caritem);
-    
-            }  
-        return listacxp;
-    }
+      
           
               public List<SelectItem> getListaCursos() {
           this.listaCursos=new ArrayList<SelectItem>();
@@ -108,17 +108,63 @@ public class SucursalesBean {
         return listaCursos;
     }
               
-                  public List<SelectItem> getListamatricula() {
-         this.listamatricula=new ArrayList<SelectItem>();
-        SqlMatricula su=new SqlMatricula();
-            List<Matricula> listamat=su.MostrarMatricula(sucursales.getRegistrosuc());
-            listamatricula.clear();
-            for (Matricula u : listamat) {
-            SelectItem matitem=new SelectItem(u.getRegistromat(), u.getMatriculado());
-            this.listamatricula.add(matitem);
-        }   
-        return listamatricula;
+  public List<SelectItem> getListacxp() {
+         this.listacxp=new ArrayList<SelectItem>();
+        SqlCursoxProfesor sc=new SqlCursoxProfesor();
+            List<CursoxProfesor>  listacar=sc.MostrarCursoxProfesor(sucursales.getRegistrosuc());
+            listacxp.clear();
+            for (CursoxProfesor c : listacar) {
+               SelectItem caritem=new SelectItem(c.getRegistro(),c.getNcurso()+" - "+c.getNprofesor());
+               this.listacxp.add(caritem);
+    
+            }  
+        return listacxp;
     }
+    
+    public List<SelectItem> getListamatriculados() {
+        
+          this.listamatriculados=new ArrayList<SelectItem>();
+          
+        SqlMatricula sc=new SqlMatricula();
+        
+            List<Matricula>  listacar=sc.MostrarMatricula(sucursales.getRegistrosuc(),codcarrera);
+            listamatriculados.clear();
+            for (Matricula c : listacar) {
+               SelectItem caritem=new SelectItem(c.getRegistromat(),c.getMatriculado());
+               this.listamatriculados.add(caritem);
+    
+            }  
+        return listamatriculados;
+        
+    }
+
+    public List<SelectItem> getCursodisponible() {
+         this.cursodisponible=new ArrayList<SelectItem>();
+          
+        SqlCursoxProfesor sc=new SqlCursoxProfesor();
+            List<CursoxProfesor>  listacar=sc.MostrarCursoDisponibles(mat,sucursales.getRegistrosuc(),codcarrera);
+            cursodisponible.clear();
+            for (CursoxProfesor c : listacar) {
+               SelectItem caritem=new SelectItem(c.getRegistro(),c.getNcurso()+" - "+c.getNprofesor());
+               this.cursodisponible.add(caritem);
+    
+            }  
+        return cursodisponible;
+    }
+    
+    
+              
+    
+    public void obtener(int carrera){
+        this.codcarrera=carrera;
+    }
+    
+       public void obtener2(int mat,int carrera){
+        this.codcarrera=carrera;
+        this.mat=mat;
+    }
+    
+ 
     
     
     public void registrar(int reg){

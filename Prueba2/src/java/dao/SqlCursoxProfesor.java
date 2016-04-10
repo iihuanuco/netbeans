@@ -132,5 +132,36 @@ public class SqlCursoxProfesor implements DaoCursoxProfesor{
         } catch (Exception e) {
         }
     }
+
+    @Override
+    public List<CursoxProfesor> MostrarCursoDisponibles(int mat, int suc, int carr) {
+       List<CursoxProfesor> listacur=new ArrayList<CursoxProfesor>();
+        try {
+            Connection conn=Postgresql.conexion();
+            String sql = "select pc.registro,c.nombre,u.nombre,c.creditos "
+                    + "from profesorxcursos pc  "
+                    + "inner join users u on u.registro=pc.profesor "
+                    + "inner join cursos c on c.registro=pc.curso "
+                    + "inner join carreras ca on c.carrera=ca.registro "
+                    + "inner join sucursales su on su.registro=ca.sucursal  "
+                    + "where not exists(select * from matriculaxcursos mc where mc.profesorxcurso=pc.registro and mc.matricula="+mat+") "
+                    + "and su.registro="+suc+" and ca.registro="+carr;
+            Statement st=conn.createStatement();
+            ResultSet rs=null;
+            rs=st.executeQuery(sql);
+            while (rs.next()) {
+                CursoxProfesor d=new CursoxProfesor();
+                d.setRegistro(rs.getInt(1));
+                d.setNcurso(rs.getString(2));
+                d.setNprofesor(rs.getString(3));  
+                d.setCreditos(rs.getInt(4));
+                listacur.add(d);
+            }
+            
+        } catch (Exception e) {
+        }
+        
+        return listacur;
+    }
     
 }

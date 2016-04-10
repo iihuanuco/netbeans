@@ -183,7 +183,7 @@ and open the template in the editor.
                     </h:panelGrid>
                     <h:panelGrid columns="1"  class="cursos">
                         
-                        <p:dataTable id="tblcursos" var="cursos" value="#{cursosBean.cursos.listacursos}" filteredValue="#{cursosBean.cursos.filtrocursos}"  paginator="true" paginatorPosition="top" rows="5">
+                        <p:dataTable id="tblcursos" var="cursos" value="#{cursosBean.cursos.listacursos}" filteredValue="#{cursosBean.cursos.filtrocursos}"  paginator="true" paginatorPosition="top" rows="4">
                             <p:column headerText="Codigo" filterBy="#{cursos.codigocurso}"   filterMatchMode="contains"  class="c1">
                                     <h:outputText value="#{cursos.codigocurso}" rendered="#{cursos.flag}" />
                              <h:inputText value="#{cursos.codigocurso}" rendered="#{ not cursos.flag}" class="texto2" />

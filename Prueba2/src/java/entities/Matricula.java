@@ -1,7 +1,11 @@
 package entities;
 
+ 
 import dao.SqlMatricula;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 public class Matricula {
 
@@ -18,23 +22,14 @@ public class Matricula {
     private int turno;
     private int seccion;
     private String matriculado;
+    private List <Matricula> lista;
+    private List <Matricula> listafiltrar;
+    private boolean flag=true;
 
     public Matricula() {
     }
 
-    public Matricula(int userc, int userm, Date fechac, Date fecham, int registromat, String codigomat, int alumno, int actividad, int carrera, int turno, int seccion) {
-        this.userc = userc;
-        this.userm = userm;
-        this.fechac = fechac;
-        this.fecham = fecham;
-        this.registromat = registromat;
-        this.codigomat = codigomat;
-        this.alumno = alumno;
-        this.actividad = actividad;
-        this.carrera = carrera;
-        this.turno = turno;
-        this.seccion = seccion;
-    }
+ 
 
     public int getUserc() {
         return userc;
@@ -131,6 +126,32 @@ public class Matricula {
     public void setMatriculado(String matriculado) {
         this.matriculado = matriculado;
     }
+
+    public List<Matricula> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Matricula> lista) {
+        this.lista = lista;
+    }
+
+    public List<Matricula> getListafiltrar() {
+        return listafiltrar;
+    }
+
+    public void setListafiltrar(List<Matricula> listafiltrar) {
+        this.listafiltrar = listafiltrar;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+    
+    
     
     
     public void registrar(int reg){
@@ -146,5 +167,43 @@ public class Matricula {
        
         sm.InsertarMatricula(m);
     }
+    
+       public void mostrar(int suc, int carr) {
+        lista = new ArrayList();
+        SqlMatricula pu = new SqlMatricula();
+        List<Matricula> listaEmp = pu.MostrarMatricula(suc, carr);
+        Iterator<Matricula> iter = listaEmp.iterator();
+        while (iter.hasNext()) {
+            Matricula e = iter.next();
+            lista.add(e);
+        }
+
+    }
+       
+       
+        public void actualizar(Matricula matricula,int reg,int suc,int carr){
+           SqlMatricula sm= new SqlMatricula();
+            Matricula m= new Matricula();
+            m.setCodigomat(matricula.codigomat);
+            m.setAlumno(matricula.alumno);
+            m.setUserm(reg);
+            m.setRegistromat(matricula.registromat);
+            sm.ActualizarMatricula(m);
+            matricula.flag=true;
+            mostrar(suc, carr);
+          
+   }
+     
+     
+    
+   
+   public void editar(Matricula matricula){
+       matricula.flag=false;
+   }
+  
+       public void cancelar(Matricula matricula){
+        matricula.flag=true;
+   }
+    
     
 }

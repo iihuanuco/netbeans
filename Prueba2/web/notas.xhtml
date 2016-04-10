@@ -36,7 +36,7 @@ and open the template in the editor.
                         <f:selectItem itemLabel="-Seleccione Carrera- "   itemValue="0"/>
                         <f:selectItems value="#{sucursalesBean.listacarreras}" />
                     </p:selectOneMenu>
-                    <p:commandButton value="Filtrar"  actionListener="#{cursoxProfesorBean.cursoxprofesor.mostrar(carrerasBean.carreras.registrocarrera,sucursalesBean.sucursales.registrosuc,sucursalesBean.sucursales.actividad)}"  update="listnotas,view" class="boton-ingresar" />
+                    <p:commandButton value="FILTRAR"  actionListener="#{cursoxProfesorBean.cursoxprofesor.mostrar(carrerasBean.carreras.registrocarrera,sucursalesBean.sucursales.registrosuc,sucursalesBean.sucursales.actividad)}"  update="listnotas,view" class="boton-ingresar" />
                 </h:panelGrid>
             </div>
 

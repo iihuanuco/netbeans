@@ -31,7 +31,7 @@ and open the template in the editor.
                <ul class="ca-menu">
                     <li class="animate-in"  data-anim-type="bounce-in-up" data-anim-delay="600">
                         <a>
-                            <span> <i class="icon icon-archive ca-icon"></i></span>
+                            <span> <i class="icon icon-graduate ca-icon"></i></span>
                             <div class="ca-content">
                                 <h2 class="ca-main"><p:commandButton value="MATRICULAR EN CARRERA" oncomplete="PF('matricula').show();" class="btn-img"  /></h2>
                                 <h3 class="ca-sub">Matricular a los usuarios en las carreras</h3>
@@ -40,7 +40,7 @@ and open the template in the editor.
                     </li>
                     <li class="animate-in"  data-anim-type="bounce-in-down" data-anim-delay="600">
                         <a >
-                            <span  ><i class="icon icon-notebook-list ca-icon"></i></span>
+                            <span  ><i class="icon icon-archive ca-icon"></i></span>
                             <div class="ca-content">
                                 <h2 class="ca-main"><p:commandButton value="MATRICULAR EN CURSOS"  oncomplete="PF('matriculac').show();"   class="btn-img"  /></h2>
                                 <h3 class="ca-sub">Matricular a los alumnos en los cursos </h3>
@@ -50,65 +50,82 @@ and open the template in the editor.
                 </ul>
             <div class="dialog-academico">
             <p:dialog header="Matricula en Carrera" widgetVar="matricula" showEffect="clip" hideEffect="clip" rendered="true" height="100vh" width="100%" modal="true" draggable="false" resizable="false" position="absolute" >
-                <h:panelGrid columns="2" >  
-                    <h:panelGrid columns="1" id="matricular" class="matricula inputs ">    
-                    
-        
-                              
-                                <p:selectOneMenu id="txtcarrerap" value="#{matriculaBean.matricula.carrera}" >
+
+               
+                <table class="from-matricula inputs" style="margin: 5% auto;">
+                                  <tr>
+                                    <td ><p:outputLabel value="Carrera: " class="label-app"/></td>
+                                    <td ><p:selectOneMenu id="txtcarrerap" value="#{matriculaBean.matricula.carrera2}" >
                                     <f:selectItem itemLabel="-Selecionar Carrera-" itemValue="0" itemDisabled="true" />
                                     <f:selectItems value="#{sucursalesBean.listacarreras}" />
-                                    <p:ajax listener="#{matriculaBean.matricula.mostrar(sucursalesBean.sucursales.registrosuc,matriculaBean.matricula.carrera)}" process="txtcarrerap" update="tblmatricula" />
-                                </p:selectOneMenu>
-                                <p:selectOneMenu id="txtactividadp" value="#{matriculaBean.matricula.actividad}" >
+                                    <p:ajax listener="#{matriculaBean.matricula.mostrar(sucursalesBean.sucursales.registrosuc,matriculaBean.matricula.carrera2)}" process="txtcarrerap" update="listamatricula" />
+                                </p:selectOneMenu></td>
+                                    <td  rowspan="7">  
+                                        <h:panelGroup id="listamatricula" class="listanotas">
+                                            <c:choose>
+                                                <c:when test="#{matriculaBean.matricula.carrera2>0}">
+                                                    <p:dataTable id="tblmatricula" class="tblmatricula" var="matricula" value="#{matriculaBean.matricula.lista}"  filteredValue="#{matriculaBean.matricula.listafiltrar}" emptyMessage="" paginator="true" paginatorPosition="top" rows="5">
+
+                                                        <p:column headerText="Codigo" filterBy="#{matricula.codigomat}"     >
+                                                            <h:outputText value="#{matricula.codigomat}" rendered="#{matricula.flag}" />
+                                                            <h:inputText value="#{matricula.codigomat}" rendered="#{ not matricula.flag}" class="texto2" />
+                                                        </p:column>
+                                                        <p:column headerText="Alumno" filterBy="#{matricula.matriculado}"   >
+                                                            <h:outputText value="#{matricula.matriculado}" rendered="#{matricula.flag}"  />
+
+                                                            <p:selectOneListbox value="#{matricula.alumno}" filter="true" filterMatchMode="contains" rendered="#{ not matricula.flag}"  class="list-box">
+                                                                <f:selectItems value="#{matriculaBean.listaalumnos}" itemLabel="#{matriculaBean.matricula.alumno}" />
+                                                            </p:selectOneListbox>
+                                                        </p:column>
+                                                        <p:column>
+                                                            <p:commandButton icon="ui-icon-close" actionListener="#{matriculaBean.matricula.cancelar(matricula)}"  rendered="#{ not matricula.flag}" update="tblmatricula" class="btn-dialog" />
+                                                            <p:commandButton icon="ui-icon-check" actionListener="#{matriculaBean.matricula.actualizar(matricula,login.user.registro,sucursalesBean.sucursales.registrosuc,matriculaBean.matricula.carrera2)}" rendered="#{ not matricula.flag}" update="tblmatricula" class="btn-dialog"/>
+                                                            <p:commandButton icon="ui-icon-pencil" actionListener="#{matriculaBean.matricula.editar(matricula)}"  rendered="#{matricula.flag}" update="tblmatricula" class="btn-dialog"/>
+                                                        </p:column>
+
+                                                    </p:dataTable>
+                                                </c:when>
+                                            </c:choose>
+                                        </h:panelGroup>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td  > <p:outputLabel value="Actividad: " class="label-app"/></td>
+                                    <td  >   <p:selectOneMenu id="txtactividadp" value="#{matriculaBean.matricula.actividad}" >
                                     <f:selectItem itemLabel="-Selecionar Actividad-" itemValue="0" itemDisabled="true" />
                                     <f:selectItems value="#{sucursalesBean.listaactividades}" />
-                                </p:selectOneMenu>
-                           <p:selectOneMenu id="txtturnop" value="#{matriculaBean.matricula.turno}" >
+                                </p:selectOneMenu></td>
+                                  </tr>
+                                  <tr>
+                                    <td  ><p:outputLabel value="Turno: " class="label-app"/></td>
+                                    <td  >  <p:selectOneMenu id="txtturnop" value="#{matriculaBean.matricula.turno}" >
                                     <f:selectItem itemLabel="-Selecionar Turno-" itemValue="0" itemDisabled="true" />
                                     <f:selectItems value="#{turnosBean.listaturnos}" />
-                                </p:selectOneMenu>
-                       
-                            <p:outputLabel value="Alumno: " />
-     
-                                <p:selectOneListbox value="#{matriculaBean.matricula.alumno}" filter="true" filterMatchMode="contains" class="list-box">
-                                    <f:selectItems value="#{matriculaBean.listaalumnos}" itemLabel="#{matriculaBean.matricula.alumno}" />
-                                </p:selectOneListbox>
-                         <p:outputLabel value="Codigo de Matricula: " />
-                                <p:inputText id="txtcodigomat" value="#{matriculaBean.matricula.codigomat}"  class="texto" ></p:inputText>                    
-                                <p:selectOneMenu id="txtseccion" value="#{matriculaBean.matricula.seccion}" >
+                                </p:selectOneMenu></td>
+                                  </tr>
+                                  <tr>
+                                    <td  ><p:outputLabel value="Seccion: " class="label-app"/></td>
+                                    <td  >    <p:selectOneMenu id="txtseccion" value="#{matriculaBean.matricula.seccion}" >
                                     <f:selectItem itemLabel="-Selecionar Seccion-" itemValue="0" itemDisabled="true" />
                                     <f:selectItems value="#{seccionesBean.listasecciones}" />
-                                </p:selectOneMenu>
-                                <p:commandButton value="Guardar" actionListener="#{matriculaBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc,matriculaBean.matricula.carrera)}" class="boton-ingresar" update="tblmatricula,matricular"  />
-                    
-                </h:panelGrid>  
-                
-                
-                    <h:panelGrid columns="1" id="listamatricula" class="listanotas">
-
-                    <p:dataTable id="tblmatricula" var="matricula" value="#{matriculaBean.matricula.lista}"  filteredValue="#{matriculaBean.matricula.listafiltrar}" emptyMessage="" paginator="true" paginatorPosition="top" rows="5">
-
-                              <p:column headerText="Codigo" filterBy="#{matricula.codigomat}"     >
-                                    <h:outputText value="#{matricula.codigomat}" rendered="#{matricula.flag}" />
-                              <h:inputText value="#{matricula.codigomat}" rendered="#{ not matricula.flag}" class="texto2" />
-                              </p:column>
-                        <p:column headerText="Alumno" filterBy="#{matricula.matriculado}"   >
-                              <h:outputText value="#{matricula.matriculado}" rendered="#{matricula.flag}"  />
-                              <p:selectOneListbox value="#{matricula.alumno}" filter="true" filterMatchMode="contains" rendered="#{ not matricula.flag}"  class="list-box">
+                                </p:selectOneMenu></td>
+                                  </tr>
+                                  <tr>
+                                    <td  >  <p:outputLabel value="Alumno: " class="label-app"/> </td>
+                                    <td  >   <p:selectOneListbox id="txtalumnos" value="#{matriculaBean.matricula.alumno}" filter="true" filterMatchMode="contains" class="list-box">
                                     <f:selectItems value="#{matriculaBean.listaalumnos}" itemLabel="#{matriculaBean.matricula.alumno}" />
-                                </p:selectOneListbox>
-                                </p:column>
-                                <p:column>
-                             <p:commandButton icon="ui-icon-close" actionListener="#{matriculaBean.matricula.cancelar(matricula)}"  rendered="#{ not matricula.flag}" update="tblmatricula" class="btn-dialog" />
-                            <p:commandButton icon="ui-icon-check" actionListener="#{matriculaBean.matricula.actualizar(matricula,login.user.registro,sucursalesBean.sucursales.registrosuc,matriculaBean.matricula.carrera)}" rendered="#{ not matricula.flag}" update="tblmatricula" class="btn-dialog"/>
-                            <p:commandButton icon="ui-icon-pencil" actionListener="#{matriculaBean.matricula.editar(matricula)}"  rendered="#{matricula.flag}" update="tblmatricula" class="btn-dialog"/>
-                            </p:column>
-
-                            </p:dataTable>
-
-                </h:panelGrid>
-                  </h:panelGrid>  
+                                </p:selectOneListbox></td>
+                                  </tr>
+                                  <tr>
+                                    <td  ><p:outputLabel value="Codigo: " class="label-app" /></td>
+                                    <td  > <p:inputText id="txtcodigomat" value="#{matriculaBean.matricula.codigomat}"  class="texto" ></p:inputText></td>
+                                  </tr>
+                                  <tr>
+                                    <td  ></td>
+                                    <td  ><div class="boton" ><i class="icon icon-my_location logo-boton"></i><p:commandButton value="Guardar" actionListener="#{matriculaBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc,matriculaBean.matricula.carrera2)}" 
+                                                                                  class="boton-ingresar" update="listamatricula,txtactividadp,txtseccion,txtalumnos,txtcodigomat,txtturnop"  /></div></td>
+                                  </tr>
+                         </table>
                 
             </p:dialog>
             
@@ -116,50 +133,63 @@ and open the template in the editor.
             
             <p:dialog header="Matricula en Cursos" widgetVar="matriculac" showEffect="clip" hideEffect="clip" rendered="true" height="100vh" width="100%" modal="true" draggable="false" resizable="false" position="absolute" >
                  
-                    <h:panelGrid columns="3" class="inputs">
-                              <p:outputLabel value=" " />
-                              <p:outputLabel value="Alumno: " />
-                              <p:outputLabel value="Curso: " />
-                     <p:selectOneMenu id="txtcarrerap2" value="#{matriculaBean.matricula.carrera}" >
+                
+                    <table class="inputs " style="margin: 5% auto;">
+                        <tr>
+                            <th > <p:outputLabel value="Carrera:  " class="label-app" /></th>
+                            <th > <p:selectOneMenu id="txtcarrerap2" value="#{matriculaBean.matricula.carrera}" >
                                     <f:selectItem itemLabel="-Selecionar Carrera-" itemValue="0" itemDisabled="true" />
                                     <f:selectItems value="#{sucursalesBean.listacarreras}" />
                                     <p:ajax  listener="#{sucursalesBean.obtener(matriculaBean.matricula.carrera)}" process="txtcarrerap2" update="lstmatricula" />
                     </p:selectOneMenu>
-                    
-                        <p:selectOneListbox id="lstmatricula" value="#{matriculaxCursosBean.matriculaxcursos.matricula}" filterMatchMode="contains" filter="true" class="list-box" >
+                            </th>
+                            <th rowspan="4">
+                                <h:panelGroup id="listamatriculacurso" class="listanotas">
+                                  <c:choose>
+                                      <c:when test="#{matriculaxCursosBean.matriculaxcursos.matricula>0}">
+                                          <p:dataTable id="tblinscrito" class="tblmatricula" var="mxc" value="#{matriculaxCursosBean.matriculaxcursos.listamxc}"  filteredValue="#{matriculaxCursosBean.matriculaxcursos.listafiltro}" emptyMessage=""  paginator="true" paginatorPosition="top" rows="8">
+
+                                              <p:column headerText="Curso" filterBy="#{mxc.cursos}"  filterFunction="#{mxc.filterByName}" filterMatchMode="contains" >
+                                                  <h:outputText value="#{mxc.cursos}"  />                
+                                              </p:column>
+
+                                              <p:column headerText="Docente" filterBy="#{mxc.profesor}"  filterFunction="#{mxc.filterByName}" filterMatchMode="contains" >
+                                                  <h:outputText value="#{mxc.profesor}"  />        
+                                              </p:column>
+                                              <p:column headerText="Creditos"  filterBy="#{mxc.creditos}"   >
+                                                  <h:outputText value="#{mxc.creditos}"  />        
+                                              </p:column>
+
+                                          </p:dataTable>
+                                      </c:when>
+                                  </c:choose>
+                              </h:panelGroup></th>
+                        </tr>
+                        <tr>
+                            <td ><p:outputLabel value="Alumno: " class="label-app" /></td>
+                            <td ><p:selectOneListbox id="lstmatricula" value="#{matriculaxCursosBean.matriculaxcursos.matricula}" filterMatchMode="contains" filter="true" class="list-box" >
                         <f:selectItems value="#{sucursalesBean.listamatriculados}"  itemLabel="#{matriculaBean.matricula.matriculado}" />
-                        <p:ajax  listener="#{matriculaxCursosBean.matriculaxcursos.mostrar(matriculaxCursosBean.matriculaxcursos.matricula)}"  process="lstmatricula"  update="tblinscrito" />     
+                        <p:ajax  listener="#{matriculaxCursosBean.matriculaxcursos.mostrar(matriculaxCursosBean.matriculaxcursos.matricula)}"  process="lstmatricula"  update="listamatriculacurso" />     
                         <p:ajax  listener="#{sucursalesBean.obtener2(matriculaxCursosBean.matriculaxcursos.matricula,matriculaBean.matricula.carrera)}" process="lstmatricula" update="txtcd" />
-                    </p:selectOneListbox>
-                        
-                        <p:selectOneListbox id="txtcd" value="#{matriculaxCursosBean.matriculaxcursos.curso}" filterMatchMode="contains" filter="true" class="list-box" >
+                    </p:selectOneListbox></td>
+                        </tr>
+                        <tr>
+                            <td > <p:outputLabel value="Curso: " class="label-app"/></td>
+                            <td > <p:selectOneListbox id="txtcd" value="#{matriculaxCursosBean.matriculaxcursos.curso}" filterMatchMode="contains" filter="true" class="list-box" >
                             <f:selectItems value="#{sucursalesBean.cursodisponible}" itemLabel="#{cursoxProfesorBean.cursoxprofesor.ncurso+' - '+cursoxProfesorBean.cursoxprofesor.nprofesor}" />
-                                    <p:ajax  listener="#{sucursalesBean.obtener(matriculaBean.matricula.carrera)}" process="txtcd"  />
+                                    <p:ajax  listener="#{sucursalesBean.obtener(matriculaBean.matricula.carrera)}"   />
                     </p:selectOneListbox>
-                        
-                        <p:commandButton value="Guardar" actionListener="#{matriculaxCursosBean.registrar(login.user.registro,matriculaxCursosBean.matriculaxcursos.matricula)}" 
-               class="boton-ingresar" update="tblinscrito,txtcd"  />
-                        </h:panelGrid> 
+                        </td>
+                        </tr>
+                        <tr>
+                            <td ></td>
+                            <td > <div class="boton" ><i class="icon icon-my_location logo-boton"></i>  <p:commandButton value="Guardar" actionListener="#{matriculaxCursosBean.registrar(login.user.registro,matriculaxCursosBean.matriculaxcursos.matricula)}" 
+                       class="boton-ingresar" update="listamatriculacurso,txtcd"  /></div></td>
+                        </tr>
+                    </table>
+                
+                
                    
-                    <h:panelGrid id="listamatriculacurso" class="listanotas"> 
- 
-                                <p:dataTable id="tblinscrito" var="mxc" value="#{matriculaxCursosBean.matriculaxcursos.listamxc}"  filteredValue="#{matriculaxCursosBean.matriculaxcursos.listafiltro}" emptyMessage=""  paginator="true" paginatorPosition="top" rows="5">
-
-                                    <p:column headerText="Curso" filterBy="#{mxc.cursos}"  filterFunction="#{mxc.filterByName}" filterMatchMode="contains" >
-                                <h:outputText value="#{mxc.cursos}"  />                
-                            </p:column>
-
-                                    <p:column headerText="Docente" filterBy="#{mxc.profesor}"  filterFunction="#{mxc.filterByName}" filterMatchMode="contains" >
-                                <h:outputText value="#{mxc.profesor}"  />        
-                            </p:column>
-                                    <p:column headerText="Creditos"  filterBy="#{mxc.creditos}"   >
-                                <h:outputText value="#{mxc.creditos}"  />        
-                            </p:column>
-            
-                              </p:dataTable>
- 
-
-                    </h:panelGrid>     
 
                 
                 </p:dialog>

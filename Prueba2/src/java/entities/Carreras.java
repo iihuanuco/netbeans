@@ -13,9 +13,9 @@ public class Carreras {
     private int userc,userm;
     private Date fechac,fecham;
     //propios de la clase
-    private int registrocarrera;
+    private int registrocarrera,registrocarrera2;
     private String codigocarrera;
-    private String nombrecarrera;
+    private String nombrecarrera,nombrecarrera2;
     private int semestrescarrera;
     private int estadocarrera; //estado: *null=activo; !null=debaja,suspendido,etc.
     //atributo foraneo
@@ -153,6 +153,23 @@ public class Carreras {
     public void setFlag(boolean flag) {
         this.flag = flag;
     }
+
+    public int getRegistrocarrera2() {
+        return registrocarrera2;
+    }
+
+    public void setRegistrocarrera2(int registrocarrera2) {
+        this.registrocarrera2 = registrocarrera2;
+    }
+
+    public String getNombrecarrera2() {
+        return nombrecarrera2;
+    }
+
+    public void setNombrecarrera2(String nombrecarrera2) {
+        this.nombrecarrera2 = nombrecarrera2;
+    }
+    
     
     
     

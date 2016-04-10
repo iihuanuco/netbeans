@@ -12,7 +12,10 @@
     width: 100%;
     height: 90vh;
 }
-
+.tblmatricula{
+   width: 90% !important ;
+margin: 0 auto !important;
+}
 
 .login{
     position: relative;
@@ -86,13 +89,43 @@ padding-right: 20px;
 
 }
 
-
+.boton{
+    display: table-cell;
+    position: relative;
+}
 .logo-login{
     font-size:  60px;
     color: white;
     margin-left: 20%;
 margin-top: 30%;
 display: block;
+}
+
+.logo-boton{
+color: white;
+position: absolute;
+display: block;
+left: 30px;
+z-index: 100;
+float: left;
+margin-top: 15px;
+}
+
+.boton-ingresar{
+    background: #333333 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+    text-shadow: none !important;
+    font-weight: normal;
+    font-family: "Dosis",sans-serif !important;
+    box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    color: white !important;
+    width: 200px;
+    height: 50px;
+    float: left;
 }
 
 .signup{
@@ -102,18 +135,7 @@ display: block;
 }
  
 
-.boton-ingresar{
-    background: #333333 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
-    text-shadow: none !important;
-    font-family: "Dosis",sans-serif !important;
-    box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -ms-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-    color: white !important;
-}
+
 
 .boton-ingresar:hover{
     -webkit-box-shadow:  none !important;
@@ -300,15 +322,11 @@ div.dialog-sucursal .btn-dialog{
     text-shadow: none !important;
     box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
     height: 50px;
-    width: 300px;
+    width: 50px;
     font-family: "Dosis",sans-serif !important;
     font-weight:  normal;
      border: 1px solid #009999;
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    -ms-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
+     border-radius: 0px;
 }
 
 div.dialog-sucursal .btn-dialog:hover{
@@ -371,7 +389,7 @@ div.list-box2 .ui-selectlistbox-listcontainer{
     width: auto !important;
 }
 
-.matricula .ui-icon-search {
+.matricula .ui-icon-search,.registrar .ui-icon-search {
     margin-right: 40px;
 }
 
@@ -458,18 +476,23 @@ border-bottom: 1px solid black !important;
      width: auto !important;
 
 }
-.cursos  .ui-inputfield, .curso-profesor  .ui-inputfield, .evaluacion .ui-inputfield,.turno .ui-inputfield, .secciones .ui-inputfield {
+.cursos  .ui-inputfield, .curso-profesor  .ui-inputfield, .listanotas  .ui-inputfield,.evaluacion .ui-inputfield,.turno .ui-inputfield, .secciones .ui-inputfield {
     box-shadow: inset 0 2px 2px rgba(0,0,0,0) !important;
      font-family: "Dosis",sans-serif !important;
      text-align: center !important;
      background-color: white !important;
      color: #333333 !important;
     width: 90% !important;
+    
 }
 
 .cursos .ui-widget-header,.curso-profesor .ui-widget-header,.listanotas  .ui-widget-header ,.evaluacion .ui-widget-header,.turno .ui-widget-header,.secciones .ui-widget-header,.asignar-evaluacion .ui-widget-header,.carreras .ui-widget-header,.actividades .ui-widget-header{
 border-bottom: 0px solid black !important;
 
+}
+
+.cursos .ui-selectonemenu,.curso-profesor .ui-selectonemenu, .sucursal  .ui-selectonemenu,.userxsucu .ui-selectonemenu, .actividades .ui-selectonemenu,.asignar-evaluacion .ui-selectonemenu{
+  display: block   !important;  
 }
 
  .actividades .ui-inputfield  {
@@ -478,6 +501,7 @@ border-bottom: 0px solid black !important;
      text-align: center !important;
      background-color: white !important;
      color: #333333 !important;
+     width: 90% !important;
 
 }
 
@@ -487,7 +511,7 @@ border-bottom: 0px solid black !important;
      text-align: center !important;
      background-color: white !important;
      color: #333333 !important;
-
+     width:90% !important;
 }
  
  
@@ -533,6 +557,7 @@ text-shadow:  none;
     font-family: "Dosis",sans-serif !important;
     font-weight:  normal;
      border: 1px solid #009999;
+     border-radius: 0px;
   
 }
 
@@ -560,7 +585,7 @@ text-shadow:  none;
 
 
 
- .departamento .ui-widget-header,.provincias .ui-widget-header,.distrito .ui-widget-header,.empresa .ui-widget-header,.sucursal .ui-widget-header,.userxsucu .ui-widget-header{
+ .listausers .ui-widget-header,.departamento .ui-widget-header,.provincias .ui-widget-header,.distrito .ui-widget-header,.empresa .ui-widget-header,.sucursal .ui-widget-header,.userxsucu .ui-widget-header{
 border-bottom: 0px solid black !important;
 
 }
@@ -569,6 +594,10 @@ border-bottom: 0px solid black !important;
     overflow: hidden;
 }
  
+.listausers  .ui-paginator-next,.listausers .ui-paginator-last,.listausers .ui-paginator-prev,.listausers .ui-paginator-first {
+    height: 19px !important;
+    overflow: hidden;
+}
 
 
 div.registrar .ui-selectonemenu{
@@ -637,6 +666,16 @@ border-bottom: 1px solid black;
     width: 90% !important;
 }
 
+ .sucursal .ui-inputfield {
+    box-shadow: inset 0 2px 2px rgba(0,0,0,0) !important;
+     font-family: "Dosis",sans-serif !important;
+     text-align: center !important;
+     background-color: white !important;
+     color: #333333 !important;
+    width: 90% !important;
+}
+
+
 div.registrar .btn-dialog{
      background: #ffffff -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
     text-shadow: none !important;
@@ -646,6 +685,7 @@ div.registrar .btn-dialog{
     font-family: "Dosis",sans-serif !important;
     font-weight:  normal;
      border: 1px solid #009999;
+     border-radius: 0px;
 }
 
 div.registrar .btn-dialog:hover{
@@ -782,6 +822,7 @@ border-bottom: 1px solid black;
         border-left: 1px solid #bdbdbd !important;
 border-right: 1px solid #bdbdbd !important;
     text-align: center;
+        font-weight:  normal;
  
 }
 .dialog-notas  .ui-datatable-odd {
@@ -811,6 +852,7 @@ text-shadow:  none;
     font-family: "Dosis",sans-serif !important;
     font-weight:  normal;
      border: 1px solid #009999;
+     border-radius: 0px;
 }
 .notas .btn-dialog:hover{
      border: 2px solid #333333;
@@ -966,7 +1008,9 @@ border-right: 1px solid #bdbdbd !important;
     text-align: center;
 }
 
-
+div.dialog-gestion-alumnos .ui-state-hover,.ui-state-focus {
+    box-shadow: 0 0 0 rgba(0,0,0,0) !important;
+}
 
 
 

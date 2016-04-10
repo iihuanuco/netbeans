@@ -18,7 +18,7 @@ public class Matricula {
     //atributos foraneos
     private int alumno;
     private int actividad;
-    private int carrera;
+    private int carrera,carrera2;
     private int turno;
     private int seccion;
     private String matriculado;
@@ -150,21 +150,29 @@ public class Matricula {
     public void setFlag(boolean flag) {
         this.flag = flag;
     }
+
+    public int getCarrera2() {
+        return carrera2;
+    }
+
+    public void setCarrera2(int carrera2) {
+        this.carrera2 = carrera2;
+    }
     
     
     
     
-    public void registrar(int reg){
+    public void registrar(int reg,int carr){
         SqlMatricula sm=new SqlMatricula();
         Matricula m=new Matricula();
         m.setAlumno(alumno);
         m.setCodigomat(codigomat);
         m.setActividad(actividad);
-        m.setCarrera(carrera);
+        m.setCarrera(carr);
         m.setTurno(turno);
         m.setSeccion(seccion);
         m.setUserc(reg);
-       
+        System.out.println(""+carr);
         sm.InsertarMatricula(m);
     }
     
@@ -177,7 +185,7 @@ public class Matricula {
             Matricula e = iter.next();
             lista.add(e);
         }
-
+          
     }
        
        

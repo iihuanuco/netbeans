@@ -1,13 +1,13 @@
 package bean;
 
-import dao.SqlMatricula;
+ 
 import dao.SqlUsers;
 import entities.Matricula;
 import entities.Users;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
+ ;
 import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 
@@ -48,11 +48,10 @@ public class MatriculaBean {
     
     
     public void registrar(int reg,int suc,int carr){
-        matricula.registrar(reg);
+        matricula.registrar(reg,carr);
         matricula.setAlumno(0);
         matricula.setCodigomat("");
         matricula.setActividad(0);
-        matricula.setCarrera(0);
         matricula.setTurno(0);
         matricula.setSeccion(0);
         matricula.mostrar(suc, carr);

@@ -23,7 +23,6 @@ public class MatriculaxCursosBean {
     
     public void registrar(int reg,int mat){
         matriculaxcursos.registrar(reg);
-        matriculaxcursos.setMatricula(0);
         matriculaxcursos.setCurso(0);
         matriculaxcursos.mostrar(mat);
     }

@@ -13,7 +13,9 @@ import entities.Cursos;
 import entities.CursoxProfesor;
 import entities.Matricula;
 import entities.Sucursales;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -22,7 +24,7 @@ import javax.faces.model.SelectItem;
 
 @ManagedBean
 @SessionScoped
-public class SucursalesBean {
+public class SucursalesBean implements Serializable {
 
     private Sucursales sucursales=new Sucursales();
       private List <SelectItem> listaSucursales;
@@ -37,6 +39,9 @@ public class SucursalesBean {
     
     public SucursalesBean() {
     }
+
+  
+    
 
     public int getCodcarrera() {
         return codcarrera;
@@ -155,6 +160,7 @@ public class SucursalesBean {
     
               
     
+    
     public void obtener(int carrera){
         this.codcarrera=carrera;
     }
@@ -181,6 +187,9 @@ public class SucursalesBean {
         sucursales.setTipodegestionsuc(0);    
         sucursales.mostrar3();
     }
+    
+    
+    
     
     
 }

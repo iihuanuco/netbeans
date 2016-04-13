@@ -113,6 +113,7 @@ margin-top: 15px;
 
 .boton-ingresar{
     background: #333333 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+      background: #333333 -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
     text-shadow: none !important;
     font-weight: normal;
     font-family: "Dosis",sans-serif !important;
@@ -143,6 +144,7 @@ margin-top: 15px;
     box-shadow:  none !important;
     border:1px solid #009999 !important;
     background: #009999 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+    background: #009999  -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
     color: white;
 }
 .link-regsitrar{
@@ -171,6 +173,8 @@ margin-top: 15px;
   font-family: "Dosis",sans-serif !important;
   font-weight:  normal;
      background: rgba(0,0,0,5) -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+      background: rgba(0,0,0,5) -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+     
     top: -60%;
      box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
      border:1px solid rgba(255,255,255,1) !important;
@@ -194,6 +198,7 @@ margin-top: 15px;
  
 .btn-sucursal{
    background: rgba(0,0,0,0) -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+   background: rgba(0,0,0,0) -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
     border:1px solid rgba(255,255,255,0) !important;
        color:rgba(255,255,255,1);
      text-shadow: none !important;
@@ -211,6 +216,7 @@ margin-top: 15px;
  
 .boton-login{
     background: #009999 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+      background: #009999 -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
     text-shadow: none !important;
     font-family: "Dosis",sans-serif !important;
     font-weight:  normal;
@@ -291,8 +297,12 @@ margin: 10px 10px;
     display:none;
 }
 
-
-
+.nota-alumno thead {
+        display:none;
+    }
+.nota-alumno{
+        width: 100%;
+    }
 
 
 .dialog-session .ui-shadow{
@@ -310,6 +320,7 @@ div.dialog-sucursal .ui-shadow{
 
 div.dialog-sucursal .ui-widget-header{
     background: white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+     background: white -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
 color: white;
 text-shadow: none;
 font-weight: normal;
@@ -319,6 +330,7 @@ font-weight: normal;
 
 div.dialog-sucursal .btn-dialog{
      background: #ffffff -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+     background: #ffffff -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
     text-shadow: none !important;
     box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
     height: 50px;
@@ -399,6 +411,7 @@ div.list-box2 .ui-selectlistbox-listcontainer{
 
 .matricula  .ui-state-default{
 background: #ffffff -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
+background: #ffffff -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
 }
 
 .matricula  .ui-state-hover,.ui-state-focus {
@@ -447,6 +460,7 @@ background: #ffffff -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,
 
 .dialog-academico .ui-widget-header{
     background: white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+    background: white -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
 color: black;
 text-shadow: none;
 font-weight: normal;
@@ -544,12 +558,14 @@ border-right: 1px solid #bdbdbd !important;
 
 .dialog-academico .ui-state-default{
 background: #f6f6f6 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
+background: #f6f6f6 -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
 text-shadow:  none;
 
 }
 
 .dialog-academico  .btn-dialog{
      background: #ffffff -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+     background: #ffffff -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
     text-shadow: none !important;
     box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
     height: 50px;
@@ -620,6 +636,7 @@ div.registrar  .ui-shadow{
 
 div.registrar .ui-state-default{
 background: #f6f6f6 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
+background: #f6f6f6 -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
 text-shadow:  none;
 
 }
@@ -649,6 +666,7 @@ div.registrar  .ui-datatable-odd {
 
 div.registrar .ui-widget-header{
     background: white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+     background: white -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
 color: black;
 text-shadow: none;
 font-weight: normal;
@@ -678,6 +696,7 @@ border-bottom: 1px solid black;
 
 div.registrar .btn-dialog{
      background: #ffffff -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+     background: #ffffff -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
     text-shadow: none !important;
     box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
     height: 50px;
@@ -714,6 +733,7 @@ div.registrar .btn-dialog:hover{
 
  .notas2 .ui-state-default{
 background:  white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
+background:  white -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
 text-shadow:  none;
 
 }
@@ -725,6 +745,7 @@ text-shadow:  none;
 
 .notas .ui-state-default{
 background: #f6f6f6 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
+background: #f6f6f6 -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
 text-shadow:  none;
 
 }
@@ -739,6 +760,7 @@ text-shadow:  none;
  
 .notas .ui-widget-header{
     background: white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+     background: white -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
 color: black;
 text-shadow: none;
 font-weight: normal;
@@ -794,6 +816,7 @@ padding-top: 10px;
  
 .dialog-notas .ui-widget-header{
     background: white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+      background: white -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
 color: black;
 text-shadow: none;
 font-weight: normal;
@@ -835,7 +858,8 @@ border-right: 1px solid #bdbdbd !important;
 }
 
 .dialog-notas .ui-state-default{
-background: #f6f6f6 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
+background: #f6f6f6 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) ;
+background: #f6f6f6 -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
 text-shadow:  none;
 
 }
@@ -845,6 +869,7 @@ text-shadow:  none;
 
 .notas  .btn-dialog{
      background: #ffffff -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+      background: #ffffff -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
     text-shadow: none !important;
     box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
     height: 50px;
@@ -859,7 +884,22 @@ text-shadow:  none;
 }
 
  
+.nota-alumno  .btn-dialog{
+     background: #ffffff -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+      background: #ffffff -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+    text-shadow: none !important;
+    box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
+    height: 50px;
+    width: 100px;
+    font-family: "Dosis",sans-serif !important;
+    font-weight:  normal;
+     border: 1px solid #009999;
+     border-radius: 0px;
+}
 
+.nota-alumno .btn-dialog:hover{
+     border: 2px solid #333333;
+}
 
 
 
@@ -884,6 +924,7 @@ div.dialog-alumno .ui-shadow{
 
 div.dialog-alumno .ui-widget-header{
     background: white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+    background: white -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
 color: black;
 text-shadow: none;
 font-weight: normal;
@@ -898,6 +939,7 @@ div.dialog-alumno .ui-widget-content{
 
 div.dialog-alumno .ui-state-default{
 background: #ffffff -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
+background: #ffffff -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
 
 }
 div.dialog-alumno .ui-state-hover,.ui-state-focus {
@@ -944,7 +986,8 @@ div.dialog-gestion-alumnos .ui-inputfield:focus {
 
 div.dialog-gestion-alumnos .btn-dialog{
      background: #ffffff -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
-    text-shadow: none !important;
+        background: #ffffff -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+     text-shadow: none !important;
     box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
     height: 50px;
     font-family: "Dosis",sans-serif !important;
@@ -955,6 +998,8 @@ div.dialog-gestion-alumnos .btn-dialog{
 }
 div.dialog-gestion-alumnos .ui-state-default{
 background: #f6f6f6 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
+background: #f6f6f6 -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
+
 text-shadow:  none;
 
 }
@@ -970,6 +1015,7 @@ div.dialog-gestion-alumnos .btn-dialog:hover{
  
 div.dialog-gestion-alumnos .ui-state-active{
 background: white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0));
+background: white -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0));
 }
 
 div.dialog-gestion-alumnos .ui-radiobutton .ui-radiobutton-box{
@@ -982,7 +1028,9 @@ div.dialog-gestion-alumnos  .ui-shadow{
 
 div.dialog-gestion-alumnos .ui-widget-header{
     background: white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
-color: black;
+    background: white -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+
+    color: black;
 text-shadow: none;
 font-weight: normal;
 font-family: "Dosis",sans-serif !important;

@@ -9,6 +9,6 @@ public interface DaoNotas {
     void ActualizarNotas(Notas notas);
     List<Notas> MostrarNotas();
     List<Notas> MostrarMatriculado(int profesor,int eva);
-    List<Notas> Mostrarnotaintranet(int reg);
+    List<Notas> Mostrarnotaintranet(int reg,int curso);
     
 }

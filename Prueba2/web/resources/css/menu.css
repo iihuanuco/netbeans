@@ -4,12 +4,13 @@
   padding: 0;
 }
 
+ 
+
 header{
   position: relative;
   margin-top: 0px;
   width: 100%;
     z-index: 1000;
-
 }
 
 nav{
@@ -29,6 +30,7 @@ nav > ul {
   width: 100%;
   background-color:black;
   position: relative;
+
 }
 
 nav > ul li {
@@ -100,19 +102,21 @@ nav > ul > li > a:hover > span{
 }
 .menu-salir{
     text-align: center; 
+    
 }
 
 .boton-salir{
     border-radius: 0px;
-        font-weight:normal;
+    font-weight:normal;
     background: white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+    background: white -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
     text-shadow: none !important;
-       font-family: "Dosis",sans-serif !important;
-       -webkit-transition: all .5s ease-in-out;
--moz-transition: all .5s ease-in-out;
--ms-transition: all .5s ease-in-out;
--o-transition: all .5s ease-in-out;
-transition: all .5s ease-in-out;
+    font-family: "Dosis",sans-serif !important;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 
 .boton-salir:hover{

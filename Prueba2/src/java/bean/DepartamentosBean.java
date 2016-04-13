@@ -6,6 +6,7 @@ import dao.SqlProvincias;
 import entities.Departamentos;
 import entities.Provincias;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -18,11 +19,13 @@ public class DepartamentosBean {
 
          private Departamentos departamentos= new Departamentos();
          private List <SelectItem> listaDepartamento;
-             private List <SelectItem> listaProvincias;
-    
-   
+         private List <SelectItem> listaProvincias;
+         
+            
     public DepartamentosBean() {
+       
     }
+
 
     public Departamentos getDepartamentos() {
         return departamentos;
@@ -59,6 +62,7 @@ public class DepartamentosBean {
         return listaProvincias;
     }
     
+ 
       
 
     

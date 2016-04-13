@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:head>
         <title>Inicio</title>
@@ -20,8 +21,21 @@
         <h:outputScript library="assets" name="backbone.js"   />
 
     </h:head>
+        
+  
+ 
+                        <p:idleMonitor timeout="600000"   
+                                       onidle="PF('idleDialog').show()" />  
 
-
+                        <p:dialog header="What's happening?" resizable="false"  
+                                  widgetVar="idleDialog" modal="true" closable="false" height="100vh" width="100%" >  
+                            <h:outputText value="Su session a caducado , por favor , pulsa el boton para volver a acceder a la aplicacion" />  
+                            <input id="confirmBackToLogin" type="button" value="VOLVER"
+			        onclick="window.location='#{facesContext.externalContext.requestContextPath}/page/index.xhtml';" />
+                        </p:dialog>  
+             
+	
+ 
 
     <h:body   onload="#{login.user.load()} and #{sucursalesBean.sucursales.mostrar()} and #{sucursalesBean.sucursales.mostrar2(login.user.registro)}" style="background-color: rgba(255,255,255,1);">
  
@@ -30,6 +44,7 @@
             <c:when test="#{login.user.nombre==null}">
                   <h:graphicImage id="bg"  value="resources/img/bg.jpg" />
                 <h:form   class="login">
+            
                         <table class="title-login animate-in"  data-anim-type="fade-in-right" data-anim-delay="800">
                    <tr> 
                         <td><i class="icon icon-shield logo-login"></i>
@@ -66,17 +81,16 @@
                             <ul> 
                                  <li style="color:white;  float: left; padding-left: 15px; background-color: #009999; width: 100%;" class="menu-salir"><i class="icon icon-location"></i>#{sucursalesBean.sucursales.nombre}</li>
                             </ul>
-                            <ul >
-
-                                <li><a href="inicio.xhtml" target="academico"  ><span class="c1"><i class="icon icon-home"></i></span>Inicio</a></li>
-                                <li><a href="pnlalumno.xhtml" target="academico"  ><span class="c1"><i class="icon icon-home"></i></span>Intranet</a></li>
-                                <li><a href="signup.xhtml"  target="academico" ><span class="c2"><i class="icon icon-user"></i></span>Usuarios</a></li>
-                                <li><a href="matricula.xhtml"  target="academico" ><span class="c2"><i class="icon icon-matricula"></i></span>Matricula</a></li>
-                                  <li><a href="notas.xhtml"  target="academico" ><span class="c2"><i class="icon icon-notebook-list"></i></span>Notas</a></li>
-                                 <li><a href="academicos.xhtml"  target="academico" ><span class="c2"><i class="icon icon-storage"></i></span>Academico</a></li>
-                                     <li><a href="registrar.xhtml"  target="academico" ><span class="c3"><i class="icon icon-storage"></i></span>Registrar</a></li>
-                                <li><a href="personalizar.xhtml"  target="academico"><span class="c4"><i class="icon icon-cogs"></i></span><i class="icon icon-user3" style="padding-right: 5px;"></i>#{login.user.usuario}</a></li>
-                                <li class="menu-salir"><p:commandButton value="Salir" action="#{login.user.signout()}" ajax="false" icon="ui-icon-close"  class="boton-salir"  /></li>
+                            <ul class="conteiner">
+                                <li class="item"><a href="inicio.xhtml"         target="academico"  ><span class="c2"><i class="icon icon-home"></i></span>Inicio</a></li>
+                                <li class="item"><a href="pnlalumno.xhtml"   target="academico"  ><span class="c2"><i class="icon icon-home"></i></span>Intranet</a></li>
+                                <li class="item"><a href="signup.xhtml"       target="academico" ><span class="c2"><i class="icon icon-user"></i></span>Usuarios</a></li>
+                                <li class="item"><a href="matricula.xhtml"     target="academico" ><span class="c2"><i class="icon icon-matricula"></i></span>Matricula</a></li>
+                                <li class="item"><a href="notas.xhtml"        target="academico" ><span class="c2"><i class="icon icon-notebook-list"></i></span>Notas</a></li>
+                                <li class="item"><a href="academicos.xhtml"  target="academico" ><span class="c2"><i class="icon icon-storage"></i></span>Academico</a></li>
+                                <li class="item"><a href="registrar.xhtml"      target="academico" ><span class="c2"><i class="icon icon-storage"></i></span>Registrar</a></li>
+                                <li class="item"><a href="personalizar.xhtml"  target="academico"><span class="c2"><i class="icon icon-cogs"></i></span><i class="icon icon-user3" style="padding-right: 5px;"></i>#{login.user.usuario}</a></li>
+                                <li class="item menu-salir"><p:commandButton value="Salir" action="#{login.user.signout()}" ajax="false" icon="ui-icon-close"  class="boton-salir"  /></li>
                             </ul>
                         </nav>
                     </header>

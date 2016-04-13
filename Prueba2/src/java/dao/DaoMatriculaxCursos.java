@@ -7,5 +7,6 @@ public interface DaoMatriculaxCursos {
 
     void InsertarMatriculaxCursos(MatriculaxCursos matriculaxCursos);
     List<MatriculaxCursos> MostrarMatriculaxCursos(int reg);
+     List<MatriculaxCursos> MostrarCursosAlumno(int reg);
     
 }

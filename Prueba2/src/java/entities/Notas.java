@@ -228,18 +228,19 @@ public class Notas {
         filtro = false;
     }
 
-    public void motrarnotasint(int reg){
+    public void motrarnotasint(int reg,MatriculaxCursos item){
         listanotas = new ArrayList();
         SqlNotas sn=new SqlNotas();
-        List<Notas> listanotasint=sn.Mostrarnotaintranet(reg);
+        List<Notas> listanotasint=sn.Mostrarnotaintranet(reg,item.getCurso());
         Iterator<Notas> iterator=listanotasint.iterator();
         listanotas.clear();
         while (iterator.hasNext()) {
             Notas n = iterator.next();
             listanotas.add(n);
         }
-        
     }
+    
+    
     
     
 }

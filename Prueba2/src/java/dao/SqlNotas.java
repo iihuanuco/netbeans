@@ -99,21 +99,21 @@ public class SqlNotas implements DaoNotas{
     }
 
     @Override
-    public List<Notas> Mostrarnotaintranet(int reg) {
+    public List<Notas> Mostrarnotaintranet(int reg,int curso) {
         List<Notas> listanotasint=new ArrayList<Notas>();
         try {
             Connection conn=Postgresql.conexion();
-            String sql="select c.nombre as curso,p.nombre as profesor,e.nombre as tipoeval,n.nota from notas n " +
-            "inner join matriculaxcursos mc on mc.registro=n.matriculaxcurso " +
-            "inner join profesorxcursos pc on pc.registro=mc.profesorxcurso " +
-            "inner join cursos c on c.registro=pc.curso " +
-            "inner join users p on p.registro=pc.profesor " +
-            "inner join evalucionesxcursos ec on ec.registro=n.evalucionxcurso " +
-            "inner join evaluaciones e on e.registro=ec.evaluacion " +
-            "inner join matricula m on m.registro=mc.matricula " +
-            "inner join users a on a.registro=m.alumno " +
-            "where a.registro='"+reg+"';";
-            System.out.println(""+reg);
+            String sql="select c.nombre as curso,p.nombre as profesor,e.nombre as tipoeval,n.nota from notas n  " +
+"            inner join matriculaxcursos mc on mc.registro=n.matriculaxcurso  " +
+"            inner join profesorxcursos pc on pc.registro=mc.profesorxcurso " +
+"            inner join cursos c on c.registro=pc.curso  " +
+"            inner join users p on p.registro=pc.profesor " +
+"            inner join evalucionesxcursos ec on ec.registro=n.evalucionxcurso  " +
+"            inner join evaluaciones e on e.registro=ec.evaluacion  " +
+"            inner join matricula m on m.registro=mc.matricula  " +
+"            inner join users a on a.registro=m.alumno  " +
+"            where a.registro="+reg+" and pc.registro="+curso;
+
             Statement st=conn.createStatement();
             ResultSet rs=null;
             rs=st.executeQuery(sql);

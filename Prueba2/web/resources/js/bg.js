@@ -2,6 +2,7 @@
                         screenWidth = $(window).width();
                         screenHeight = $(window).height();
                         var bg = jQuery("#bg");
+        
                     
                           var font = jQuery(".btn-img");
 
@@ -20,6 +21,7 @@
                         if ($(bg).width() > 0) {
                               $(bg).css('left', (screenWidth - $(bg).width()) / 2);
                         }
+                    
                      
                            $(font).css('font-size',(screenHeight/40)); 
                           

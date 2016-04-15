@@ -1,12 +1,13 @@
 package bean;
 
 import entities.UserxSucu;
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 @ManagedBean
 @ViewScoped
-public class UserxSucuBean {
+public class UserxSucuBean implements Serializable {
 
     private UserxSucu userxsucu=new UserxSucu();
   

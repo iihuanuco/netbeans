@@ -2,6 +2,7 @@ package bean;
 
 import dao.SqlEvaluaciones;
 import entities.Evaluaciones;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -10,7 +11,7 @@ import javax.faces.model.SelectItem;
 
 @ManagedBean
 @ViewScoped
-public class EvaluacionesBean {
+public class EvaluacionesBean implements Serializable {
     private Evaluaciones evaluaciones=new Evaluaciones();
     private List<SelectItem> listaevaluaciones;
     

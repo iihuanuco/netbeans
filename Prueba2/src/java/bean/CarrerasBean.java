@@ -1,12 +1,13 @@
 package bean;
 
 import entities.Carreras; 
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 @ManagedBean
 @ViewScoped
-public class CarrerasBean {
+public class CarrerasBean implements Serializable {
     private Carreras carreras=new Carreras();
     
     public CarrerasBean() {

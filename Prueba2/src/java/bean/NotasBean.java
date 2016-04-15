@@ -1,14 +1,14 @@
 package bean;
 
 import entities.Notas;
-import java.util.ArrayList;
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 
 @ManagedBean
 @ViewScoped
-public class NotasBean {
+public class NotasBean implements Serializable {
     private Notas notas=new Notas();
     
     public NotasBean() {

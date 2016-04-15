@@ -2,15 +2,15 @@
 package bean;
 
 import entities.EvaluaxCurso;
-import java.util.List;
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.model.SelectItem;
+
 
  
 @ManagedBean
 @ViewScoped
-public class EvaluaxCursoBean {
+public class EvaluaxCursoBean implements Serializable {
     private EvaluaxCurso evaluaxcurso= new EvaluaxCurso();
 
   

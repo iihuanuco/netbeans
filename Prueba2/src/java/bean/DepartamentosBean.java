@@ -5,8 +5,8 @@ import dao.SqlDepartamentos;
 import dao.SqlProvincias;
 import entities.Departamentos;
 import entities.Provincias;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -15,7 +15,7 @@ import javax.faces.model.SelectItem;
  
 @ManagedBean
 @ViewScoped
-public class DepartamentosBean {
+public class DepartamentosBean implements Serializable {
 
          private Departamentos departamentos= new Departamentos();
          private List <SelectItem> listaDepartamento;

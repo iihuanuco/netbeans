@@ -21,25 +21,15 @@
         <h:outputScript library="assets" name="backbone.js"   />
 
     </h:head>
-        
-  
- 
-                        <p:idleMonitor timeout="600000"   
-                                       onidle="PF('idleDialog').show()" />  
-
-                        <p:dialog header="What's happening?" resizable="false"  
-                                  widgetVar="idleDialog" modal="true" closable="false" height="100vh" width="100%" >  
-                            <h:outputText value="Su session a caducado , por favor , pulsa el boton para volver a acceder a la aplicacion" />  
-                            <input id="confirmBackToLogin" type="button" value="VOLVER"
-			        onclick="window.location='#{facesContext.externalContext.requestContextPath}/page/index.xhtml';" />
-                        </p:dialog>  
+    <p:idleMonitor timeout="600000"  onidle="PF('idleDialog').show()" />  
+    <p:dialog header="What's happening?" resizable="false" widgetVar="idleDialog" modal="true" closable="false" height="100vh" width="100%" >  
+        <h:outputText value="Su session a caducado , por favor , pulsa el boton para volver a acceder a la aplicacion" />  
+        <input id="confirmBackToLogin" type="button" value="VOLVER"
+               onclick="window.location='#{facesContext.externalContext.requestContextPath}/page/index.xhtml';" />
+    </p:dialog>  
              
-	
- 
-
     <h:body   onload="#{login.user.load()} and #{sucursalesBean.sucursales.mostrar()} and #{sucursalesBean.sucursales.mostrar2(login.user.registro)}" style="background-color: rgba(255,255,255,1);">
- 
-        
+
         <c:choose>
             <c:when test="#{login.user.nombre==null}">
                   <h:graphicImage id="bg"  value="resources/img/bg.jpg" />

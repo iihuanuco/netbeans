@@ -350,7 +350,7 @@ div.dialog-sucursal .ui-datatable-odd {
 }
 
 div.dialog-sucursal .ui-widget-content{
-    border: 2px solid #ffffff !important;
+    border: 0px solid #ffffff !important;
     text-align: center;
 }
 
@@ -361,9 +361,29 @@ opacity: 1 !important;
 
 
 
+.dialog-allnotas .ui-shadow{
+    box-shadow: 0px 5px 10px rgba(0,0,0,0) !important;
+}
 
+ .dialog-allnotas .ui-state-default{
+background: #ffffff -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
+background: #ffffff -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0))  ;
+}
 
+ .dialog-allnotas .ui-widget-header{
+    background: white -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+    background: white -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
+color: black;
+text-shadow: none;
+font-weight: normal;
+font-family: "Dosis",sans-serif !important;
+border-bottom: 1px solid black !important;
 
+}
+
+ .dialog-allnotas .ui-widget-content{
+    border: 0px solid white ;
+}
 
 
 
@@ -432,7 +452,6 @@ background: #ffffff -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,2
 
 
 
-
 .dialog-academico  .ui-paginator-next,.dialog-academico .ui-paginator-last,.dialog-academico .ui-paginator-prev,.dialog-academico .ui-paginator-first {
     height: 19px !important;
     overflow: hidden;
@@ -471,7 +490,7 @@ border-bottom: 1px solid black !important;
 
 
 .dialog-academico .ui-widget-content{
-    border: 2px solid white ;
+    border: 0px solid white ;
 }
 
 .inputs .ui-widget-content{
@@ -655,7 +674,7 @@ border-right: 1px solid #bdbdbd !important;
 }
 
 div.registrar  .ui-widget-content{
-    border: 2px solid white ;
+    border: 0px solid white ;
 }
 
 div.registrar  .ui-datatable-odd {
@@ -769,8 +788,7 @@ border-bottom: 1px solid black;
 
 }
 .notas .ui-widget-content{
-    border: 2px solid white ;
-    text-align: center;
+    border: 0px solid white ;
 }
 
 .notas  .ui-inputfield {
@@ -825,8 +843,7 @@ border-bottom: 1px solid black;
 
 }
 .dialog-notas .ui-widget-content{
-    border: 2px solid white ;
-    text-align: center;
+    border: 0px solid white ;
     
 }
 
@@ -933,8 +950,7 @@ font-weight: normal;
 }
 
 div.dialog-alumno .ui-widget-content{
-    border: 2px solid #ffffff !important;
-    text-align: center;
+    border: 0px solid #ffffff !important;
 }
 
 div.dialog-alumno .ui-state-default{
@@ -1038,8 +1054,7 @@ border-bottom: 1px solid black;
 
 }
 div.dialog-gestion-alumnos .ui-widget-content{
-    border: 2px solid white ;
-    text-align: center;
+    border: 0px solid white ;
 }
 
 div.dialog-gestion-alumnos  .ui-datatable-odd {

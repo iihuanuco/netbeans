@@ -2,6 +2,7 @@ package bean;
 
 import dao.SqlTurnos;
 import entities.Turnos;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -10,7 +11,7 @@ import javax.faces.model.SelectItem;
 
 @ManagedBean
 @ViewScoped
-public class TurnosBean {
+public class TurnosBean implements Serializable {
     private Turnos turnos=new Turnos();
     private List<SelectItem> listaturnos;
     

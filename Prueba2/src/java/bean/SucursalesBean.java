@@ -13,13 +13,28 @@ import entities.Cursos;
 import entities.CursoxProfesor;
 import entities.Matricula;
 import entities.Sucursales;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import util.Postgresql;
 
 
 @ManagedBean
@@ -188,6 +203,32 @@ public class SucursalesBean implements Serializable {
         sucursales.mostrar3();
     }
     
+     	 public void generateReport() throws JRException, IOException 
+    {
+ 
+    // InputStream input = new FileInputStream(new File("C:\\Users\\omarbenjamin\\Documents\\NetBeansProjects\\Academico3\\Prueba2\\src\\java\\report\\report1.jrxml"));
+      //  JasperDesign design = JRXmlLoader.load(input);
+ 
+        JasperReport report = JasperCompileManager.compileReport(getClass().getResourceAsStream("/report/report1.jrxml"));
+        Map<String,Object> parametros= new HashMap<>();
+		parametros.put("sucursal", sucursales.getRegistrosuc());
+ 
+        JasperPrint print = JasperFillManager.fillReport(report, parametros, Postgresql.conexion());
+        OutputStream output = new FileOutputStream(new File("c:/report/reportealumnos.pdf"));
+        //JasperExportManager.exportReportToPdfStream(print, output);
+        
+        HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+		response.addHeader("Content-disposition","attachment; filename=jsfReporte.pdf");
+        try (ServletOutputStream stream = response.getOutputStream()) {
+            JasperExportManager.exportReportToPdfStream(print, stream);
+            
+            stream.flush();
+        }
+		FacesContext.getCurrentInstance().responseComplete();
+        
+        
+        
+    }
     
     
     

@@ -2,6 +2,7 @@ package bean;
 
 import dao.SqlSecciones;
 import entities.Secciones;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -10,7 +11,7 @@ import javax.faces.model.SelectItem;
 
 @ManagedBean
 @ViewScoped
-public class SeccionesBean {
+public class SeccionesBean implements Serializable {
     private Secciones secciones=new Secciones();
     private List<SelectItem> listasecciones;
     

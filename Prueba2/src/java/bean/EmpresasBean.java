@@ -2,6 +2,7 @@ package bean;
 
 import dao.SqlEmpresas;
 import entities.Empresas;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -11,7 +12,7 @@ import javax.faces.model.SelectItem;
  
 @ManagedBean
 @ViewScoped
-public class EmpresasBean {
+public class EmpresasBean implements Serializable {
 
     private Empresas empresas=new Empresas();
     private List<SelectItem> listaEmpresas;

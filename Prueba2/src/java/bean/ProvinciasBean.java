@@ -3,6 +3,7 @@ package bean;
 
 import dao.SqlProvincias;
 import entities.Provincias;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -11,7 +12,7 @@ import javax.faces.model.SelectItem;
 
 @ManagedBean
 @ViewScoped
-public class ProvinciasBean {
+public class ProvinciasBean implements Serializable {
         
     private Provincias provincias= new Provincias();
     private List <SelectItem> listaProvincias;

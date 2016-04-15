@@ -4,8 +4,8 @@ package bean;
 
 import dao.SqlUsers;
 import entities.Users;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -15,7 +15,7 @@ import javax.faces.model.SelectItem;
  
 @ManagedBean
 @ViewScoped
-public class UsersBean {
+public class UsersBean implements Serializable {
     private Users user=new Users();
     private List<SelectItem> listausuarios;
 

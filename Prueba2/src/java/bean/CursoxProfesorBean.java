@@ -1,12 +1,12 @@
  
 package bean;
 
-import dao.SqlCursoxProfesor;
 import dao.SqlEvaluaciones;
 import dao.SqlUsers;
 import entities.CursoxProfesor;
 import entities.Evaluaciones;
 import entities.Users;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -16,7 +16,7 @@ import javax.faces.model.SelectItem;
  
 @ManagedBean
 @ViewScoped
-public class CursoxProfesorBean {
+public class CursoxProfesorBean implements Serializable {
 
        private CursoxProfesor cursoxprofesor=new CursoxProfesor();
        private List<SelectItem> listaprofesor;

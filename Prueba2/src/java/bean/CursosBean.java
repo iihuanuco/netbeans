@@ -1,11 +1,9 @@
 package bean;
 
 import dao.SqlCarreras;
-import dao.SqlCursos;
-import dao.SqlUsers;
 import entities.Carreras;
 import entities.Cursos;
-import entities.Users;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -14,7 +12,7 @@ import javax.faces.model.SelectItem;
 
 @ManagedBean
 @ViewScoped
-public class CursosBean {
+public class CursosBean implements Serializable{
     private Cursos cursos=new Cursos();
     private List<SelectItem> listaSemestres;
 

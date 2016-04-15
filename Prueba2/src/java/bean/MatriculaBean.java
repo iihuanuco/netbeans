@@ -4,6 +4,7 @@ package bean;
 import dao.SqlUsers;
 import entities.Matricula;
 import entities.Users;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -13,7 +14,7 @@ import javax.faces.model.SelectItem;
 
 @ManagedBean
 @ViewScoped
-public class MatriculaBean {
+public class MatriculaBean implements Serializable{
     private Matricula matricula=new Matricula();
     private List<SelectItem> listaalumnos;
      

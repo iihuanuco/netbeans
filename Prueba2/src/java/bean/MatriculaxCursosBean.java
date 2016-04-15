@@ -2,12 +2,13 @@ package bean;
 
 
 import entities.MatriculaxCursos;
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 @ManagedBean
 @ViewScoped
-public class MatriculaxCursosBean {
+public class MatriculaxCursosBean implements Serializable {
     private MatriculaxCursos matriculaxcursos=new MatriculaxCursos();
     
     public MatriculaxCursosBean() {

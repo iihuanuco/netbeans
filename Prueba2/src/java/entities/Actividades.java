@@ -15,7 +15,7 @@ public class Actividades {
     //propios de la clase
     private int registroact;
     private Date fechainicioact;
-    private String nombreact;
+    private String nombreact,nombreact2;
     private int alcanceact;
     //atributo foraneo
     private int sucursal;
@@ -142,6 +142,14 @@ public class Actividades {
     public void setFlag(boolean flag) {
         this.flag = flag;
     }
+
+    public String getNombreact2() {
+        return nombreact2;
+    }
+
+    public void setNombreact2(String nombreact2) {
+        this.nombreact2 = nombreact2;
+    }
     
     
     
@@ -150,7 +158,7 @@ public class Actividades {
         Actividades a=new Actividades();
         
         a.setFechainicioact(fechainicioact);
-        a.setNombreact(nombreact);
+        a.setNombreact(nombreact2);
         a.setSucursal(suc);
         a.setAlcanceact(alcanceact);
         a.setUserc(reg);
@@ -198,5 +206,11 @@ public class Actividades {
         act.flag=true;
    }
     
+  public void obtener(int reg,String nom){
+      this.nombreact=nom;
+      this.registroact=reg;
+  }     
+       
+       
     
 }

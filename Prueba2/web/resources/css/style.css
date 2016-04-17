@@ -300,6 +300,11 @@ margin: 10px 10px;
 .nota-alumno thead {
         display:none;
     }
+    
+ .lista-act  thead {
+        display:none;
+    }
+    
 .nota-alumno{
         width: 100%;
     }

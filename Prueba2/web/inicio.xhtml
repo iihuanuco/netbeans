@@ -19,7 +19,8 @@ and open the template in the editor.
     <h:body>
         
         <h:form>
-            <p:commandButton value="generate_report"  actionListener="#{sucursalesBean.generateReport()}" />  
+            <p:commandButton value="alumnos"  actionListener="#{sucursalesBean.generateReport('report1')}" />  
+            <p:commandButton value="docentes"  actionListener="#{sucursalesBean.generateReport('report2')}" />  
         </h:form>
       
     </h:body>

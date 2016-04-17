@@ -162,12 +162,12 @@ public class Matricula {
     
     
     
-    public void registrar(int reg,int carr){
+    public void registrar(int reg,int carr,int act){
         SqlMatricula sm=new SqlMatricula();
         Matricula m=new Matricula();
         m.setAlumno(alumno);
         m.setCodigomat(codigomat);
-        m.setActividad(actividad);
+        m.setActividad(act);
         m.setCarrera(carr);
         m.setTurno(turno);
         m.setSeccion(seccion);

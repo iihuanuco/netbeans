@@ -1,19 +1,16 @@
 package bean;
 
 import entities.Actividades;
-import entities.Cursos;
 import java.io.Serializable;
-import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class ActividadesBean implements Serializable {
+    
     private Actividades actividades=new Actividades();
 
-
-    
     public ActividadesBean() {
     }
 
@@ -24,9 +21,6 @@ public class ActividadesBean implements Serializable {
     public void setActividades(Actividades actividades) {
         this.actividades = actividades;
     }
-    
-    
-  
     
     public void registrar(int reg,int suc){
         actividades.registrar(reg, suc);

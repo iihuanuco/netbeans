@@ -60,7 +60,7 @@ and open the template in the editor.
                                     <f:selectItems value="#{sucursalesBean.listacarreras}" />
                                     <p:ajax listener="#{matriculaBean.matricula.mostrar(sucursalesBean.sucursales.registrosuc,matriculaBean.matricula.carrera2)}" process="txtcarrerap" update="listamatricula" />
                                 </p:selectOneMenu></td>
-                                    <td  rowspan="7">  
+                                    <td  rowspan="6">  
                                         <h:panelGroup id="listamatricula" class="listanotas">
                                             <c:choose>
                                                 <c:when test="#{matriculaBean.matricula.carrera2>0}">
@@ -89,13 +89,7 @@ and open the template in the editor.
                                         </h:panelGroup>
                                     </td>
                                   </tr>
-                                  <tr>
-                                    <td  > <p:outputLabel value="Actividad: " class="label-app"/></td>
-                                    <td  >   <p:selectOneMenu id="txtactividadp" value="#{matriculaBean.matricula.actividad}" >
-                                    <f:selectItem itemLabel="-Selecionar Actividad-" itemValue="0" itemDisabled="true" />
-                                    <f:selectItems value="#{sucursalesBean.listaactividades}" />
-                                </p:selectOneMenu></td>
-                                  </tr>
+                  
                                   <tr>
                                     <td  ><p:outputLabel value="Turno: " class="label-app"/></td>
                                     <td  >  <p:selectOneMenu id="txtturnop" value="#{matriculaBean.matricula.turno}" >
@@ -122,8 +116,8 @@ and open the template in the editor.
                                   </tr>
                                   <tr>
                                     <td  ></td>
-                                    <td  ><div class="boton" ><i class="icon icon-my_location logo-boton"></i><p:commandButton value="Guardar" actionListener="#{matriculaBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc,matriculaBean.matricula.carrera2)}" 
-                                                                                  class="boton-ingresar" update="listamatricula,txtactividadp,txtseccion,txtalumnos,txtcodigomat,txtturnop"  /></div></td>
+                                    <td  ><div class="boton" ><i class="icon icon-my_location logo-boton"></i><p:commandButton value="Guardar" actionListener="#{matriculaBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc,matriculaBean.matricula.carrera2,actividadesBean.actividades.registroact)}" 
+                                                                                  class="boton-ingresar" update="listamatricula,txtseccion,txtalumnos,txtcodigomat,txtturnop"  /></div></td>
                                   </tr>
                          </table>
                 
@@ -140,7 +134,7 @@ and open the template in the editor.
                             <th > <p:selectOneMenu id="txtcarrerap2" value="#{matriculaBean.matricula.carrera}" >
                                     <f:selectItem itemLabel="-Selecionar Carrera-" itemValue="0" itemDisabled="true" />
                                     <f:selectItems value="#{sucursalesBean.listacarreras}" />
-                                    <p:ajax  listener="#{sucursalesBean.obtener(matriculaBean.matricula.carrera)}" process="txtcarrerap2" update="lstmatricula" />
+                                    <p:ajax  listener="#{sucursalesBean.obtener(matriculaBean.matricula.carrera,actividadesBean.actividades.registroact)}" process="txtcarrerap2" update="lstmatricula" />
                     </p:selectOneMenu>
                             </th>
                             <th rowspan="4">
@@ -177,7 +171,7 @@ and open the template in the editor.
                             <td > <p:outputLabel value="Curso: " class="label-app"/></td>
                             <td > <p:selectOneListbox id="txtcd" value="#{matriculaxCursosBean.matriculaxcursos.curso}" filterMatchMode="contains" filter="true" class="list-box" >
                             <f:selectItems value="#{sucursalesBean.cursodisponible}" itemLabel="#{cursoxProfesorBean.cursoxprofesor.ncurso+' - '+cursoxProfesorBean.cursoxprofesor.nprofesor}" />
-                                    <p:ajax  listener="#{sucursalesBean.obtener(matriculaBean.matricula.carrera)}"   />
+                          
                     </p:selectOneListbox>
                         </td>
                         </tr>

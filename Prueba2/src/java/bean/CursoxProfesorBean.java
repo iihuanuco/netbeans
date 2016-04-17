@@ -61,8 +61,8 @@ public class CursoxProfesorBean implements Serializable {
     
      
   
-     public void  registrar(int reg,int suc){
-         cursoxprofesor.registrar(reg);
+     public void  registrar(int reg,int suc,int act){
+         cursoxprofesor.registrar(reg,act);
          cursoxprofesor.setProfesor(0);
          cursoxprofesor.setCurso(0);
          cursoxprofesor.setActividad(0);

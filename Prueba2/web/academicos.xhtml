@@ -256,7 +256,7 @@ and open the template in the editor.
                         <p:outputLabel value="Nombre de Actividad: " for="txtnombreact" />
                          <p:outputLabel value="Alcance: " for="cmbalcance" />
                          <p:outputLabel value="Fecha de Inicio: " for="txtfecha" />
-                        <p:inputText id="txtnombreact" value="#{actividadesBean.actividades.nombreact}" placeholder="Nombre de Actividad" class="texto"></p:inputText>
+                        <p:inputText id="txtnombreact" value="#{actividadesBean.actividades.nombreact2}" placeholder="Nombre de Actividad" class="texto"></p:inputText>
                         <p:selectOneMenu id="cmbalcance" value="#{actividadesBean.actividades.alcanceact}">
                             <f:selectItem itemLabel="-Seleccionar Alcance-" itemValue="0" itemDisabled="true" />
                             <f:selectItem itemLabel="Alcance 1" itemValue="1" />
@@ -266,7 +266,7 @@ and open the template in the editor.
                         
                         <p:calendar id="txtfecha" value="#{actividadesBean.actividades.fechainicioact}" pattern="dd/MM/yyyy" mask="true" class="datos" placeholder="Fecha de Inicio"  ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>
                         <p:commandButton value="Guardar" actionListener="#{actividadesBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar" 
-                                         update="cmbalcance,txtnombreact,txtfecha,tblact,cmbxactividad" />
+                                         update="cmbalcance,txtnombreact,txtfecha,tblact" />
                     </h:panelGrid>
                     <h:panelGrid columns="1" class="actividades">
                         <p:dataTable id="tblact" var="act" value="#{actividadesBean.actividades.listaact}" filteredValue="#{actividadesBean.actividades.filtroact}"  paginator="true" paginatorPosition="top" rows="5">
@@ -345,10 +345,9 @@ and open the template in the editor.
                 </p:dialog>
          
                 <p:dialog header="Asignar Curso" widgetVar="cursoxprofesor"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >
-                    <h:panelGrid columns="3" class="inputs">         
+                    <h:panelGrid columns="2" class="inputs">         
                             <p:outputLabel value="Profesor: " for="cmbxprofesor" />
                         <p:outputLabel value="Curso: " for="cmbxcurso" />
-                         <p:outputLabel value="Actividad: " for="cmbxactividad" />
                          
                          <p:selectOneListbox id="cmbxprofesor"   value="#{cursoxProfesorBean.cursoxprofesor.profesor}" filterMatchMode="contains" filter="true" class="list-box"  >
                              <f:selectItems value="#{cursoxProfesorBean.listaprofesor}" itemLabel="#{cursoxProfesorBean.cursoxprofesor.nprofesor}" />
@@ -360,13 +359,9 @@ and open the template in the editor.
                          </p:selectOneMenu>
 
 
-
-                         <p:selectOneMenu id="cmbxactividad" value="#{cursoxProfesorBean.cursoxprofesor.actividad}"  >
-                             <f:selectItem itemLabel="-Seleccionar Actividad-" itemValue="0" itemDisabled="true" />
-                             <f:selectItems value="#{sucursalesBean.listaactividades}" />
-                         </p:selectOneMenu>
-                        <p:commandButton value="Guardar" actionListener="#{cursoxProfesorBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar" 
-                                         update="cmbxcurso,cmbxprofesor,cmbxactividad,cmbcursoxprofesor,tblprofesorcursos" />
+                         
+                        <p:commandButton value="Guardar" actionListener="#{cursoxProfesorBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc,actividadesBean.actividades.registroact)}" class="boton-ingresar" 
+                                         update="cmbxcurso,cmbxprofesor,cmbcursoxprofesor,tblprofesorcursos" />
                          </h:panelGrid>   
                     <h:panelGrid columns="1" class="curso-profesor">  
                         <p:dataTable id="tblprofesorcursos" var="pxc" value="#{cursoxProfesorBean.cursoxprofesor.listapxc}" filteredValue="#{cursoxProfesorBean.cursoxprofesor.filtropxc}"  paginator="true" paginatorPosition="top" rows="5" >

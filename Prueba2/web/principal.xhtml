@@ -28,7 +28,7 @@
                onclick="window.location='#{facesContext.externalContext.requestContextPath}/page/index.xhtml';" />
     </p:dialog>  
              
-    <h:body   onload="#{login.user.load()} and #{sucursalesBean.sucursales.mostrar()} and #{sucursalesBean.sucursales.mostrar2(login.user.registro)}" style="background-color: rgba(255,255,255,1);">
+    <h:body   onload="#{login.user.load()} and #{sucursalesBean.sucursales.mostrar()} and #{sucursalesBean.sucursales.mostrar2(login.user.registro)}}" style="background-color: rgba(255,255,255,1);">
 
         <c:choose>
             <c:when test="#{login.user.nombre==null}">
@@ -98,17 +98,41 @@
                                         <a>
                                             <span> <i class="icon icon-location3 ca-icon"></i></span>
                                             <div class="ca-content">
-                                                <h2 class="ca-main">  <p:commandButton value="#{sucursales.nombresuc}"   update=":menu2" action="#{sucursalesBean.sucursales.obtener(sucursales.registrosuc,sucursales.nombresuc)}" oncomplete="PF('sucursales').hide();"  class="btn-sucursal" />  </h2>
+                                                <h2 class="ca-main">  <p:commandButton value="#{sucursales.nombresuc}"   update=":menu2" actionListener="#{sucursalesBean.sucursales.obtener(sucursales.registrosuc,sucursales.nombresuc)}" oncomplete="PF('sucursales').hide();" onclick="PF('actividad').show();"  class="btn-sucursal" >
+                                                        <p:ajax listener="#{actividadesBean.actividades.mostraract(sucursalesBean.sucursales.registrosuc)}"  update=":menu:tblact" />
+                                                    </p:commandButton>  </h2>
                                                 <h3 class="ca-sub">#{sucursales.nempresa}</h3>
                                             </div>
                                         </a>
                                     </li>
                                 </ul>
-                              
                             </p:column>   
-
+ 
                         </p:dataTable>  
                     </p:dialog>
+                        
+                         <p:dialog  widgetVar="actividad" rendered="true" height="100%" width="100%"  showEffect="clip" hideEffect="clip" modal="true" closable="false" draggable="false" resizable="false" position="absolute" >
+                             <h:panelGroup id="tblact" >
+                              <p:dataTable  var="act" class="lista-act"  value="#{actividadesBean.actividades.listaact}">
+                                      
+                                  <p:column headerText="Nombre"  >
+                                      <ul class="ca-menu">
+                                          <li>
+                                              <a>
+                                                  <span> <i class="icon icon-location3 ca-icon"></i></span>
+                                                  <div class="ca-content">
+                                                      <h2 class="ca-main">
+                                                          <p:commandButton value="#{act.nombreact}" actionListener="#{actividadesBean.actividades.obtener(act.registroact,act.nombreact)}"   update=":menu2"   oncomplete="PF('actividad').hide();"    class="btn-sucursal" />       
+                                                      </h2>
+                                                      <h3 class="ca-sub"></h3>
+                                                  </div>
+                                              </a>
+                                          </li>
+                                      </ul>
+                                  </p:column>
+                            </p:dataTable>
+                            </h:panelGroup>
+                         </p:dialog>
       
                     
                     <p:dialog    visible="#{login.user.flag2}" widgetVar="sucursales2" rendered="true" height="100%" width="100%" showEffect="clip" hideEffect="clip" modal="true" closable="false" draggable="false" resizable="false" position="absolute" >
@@ -120,7 +144,9 @@
                                         <a>
                                             <span> <i class="icon icon-location3 ca-icon"></i></span>
                                             <div class="ca-content">
-                                                <h2 class="ca-main">  <p:commandButton icon="ui-icon-check"  value="#{sucursales.nombresuc}"  update=":menu2" action="#{sucursalesBean.sucursales.obtener(sucursales.registrosuc,sucursales.nombresuc)}" oncomplete="PF('sucursales2').hide();"    class="btn-sucursal"  />    </h2>
+                                                <h2 class="ca-main">  <p:commandButton icon="ui-icon-check"  value="#{sucursales.nombresuc}"  update=":menu2" action="#{sucursalesBean.sucursales.obtener(sucursales.registrosuc,sucursales.nombresuc)}" oncomplete="PF('sucursales2').hide();"   onclick="PF('actividad').show();"  class="btn-sucursal" >
+                                                        <p:ajax listener="#{actividadesBean.actividades.mostraract(sucursalesBean.sucursales.registrosuc)}"  update=":menu:tblact" />
+                                                    </p:commandButton>    </h2>
                                                 <h3 class="ca-sub"> #{sucursales.nempresa}</h3>
                                             </div>
                                         </a>

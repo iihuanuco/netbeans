@@ -134,7 +134,7 @@ public class SqlCursoxProfesor implements DaoCursoxProfesor{
     }
 
     @Override
-    public List<CursoxProfesor> MostrarCursoDisponibles(int mat, int suc, int carr) {
+    public List<CursoxProfesor> MostrarCursoDisponibles(int mat, int suc, int carr,int act) {
        List<CursoxProfesor> listacur=new ArrayList<CursoxProfesor>();
         try {
             Connection conn=Postgresql.conexion();
@@ -144,8 +144,9 @@ public class SqlCursoxProfesor implements DaoCursoxProfesor{
                     + "inner join cursos c on c.registro=pc.curso "
                     + "inner join carreras ca on c.carrera=ca.registro "
                     + "inner join sucursales su on su.registro=ca.sucursal  "
+                    +"inner join actividades at on at.registro=pc.actividad  "
                     + "where not exists(select * from matriculaxcursos mc where mc.profesorxcurso=pc.registro and mc.matricula="+mat+") "
-                    + "and su.registro="+suc+" and ca.registro="+carr;
+                    + "and su.registro="+suc+" and ca.registro="+carr+"  and at.registro="+act ;
             Statement st=conn.createStatement();
             ResultSet rs=null;
             rs=st.executeQuery(sql);

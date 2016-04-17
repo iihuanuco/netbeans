@@ -317,6 +317,7 @@ public class Sucursales {
     public void obtener(int cod,String nom){
         this.registrosuc=cod;
         this.nombre=nom;
+        
     }
     
     public void actualizar(Sucursales suc,int reg){

@@ -48,8 +48,8 @@ public class MatriculaBean implements Serializable{
     
     
     
-    public void registrar(int reg,int suc,int carr){
-        matricula.registrar(reg,carr);
+    public void registrar(int reg,int suc,int carr,int act){
+        matricula.registrar(reg,carr,act);
         matricula.setAlumno(0);
         matricula.setCodigomat("");
         matricula.setActividad(0);

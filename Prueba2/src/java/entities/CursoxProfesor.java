@@ -185,30 +185,30 @@ public class CursoxProfesor {
     
     
    
-    public void  registrar(int reg){
+    public void  registrar(int reg,int act){
          SqlCursoxProfesor scp= new SqlCursoxProfesor();
          CursoxProfesor cp=new CursoxProfesor();
          cp.setProfesor(profesor);
          cp.setCurso(curso);
-         cp.setActividad(actividad);
+         cp.setActividad(act);
          cp.setUserc(reg);
          scp.InsertarCursoxProfesor(cp);
     }
     
             
-               public void mostrar(int carr,int suc,int act) {
-                lista=new ArrayList();  
-                SqlCursoxProfesor pu = new SqlCursoxProfesor();
-                List<CursoxProfesor> listaCurso = pu.MostrarCursos(carr,suc,act);
-                Iterator<CursoxProfesor> iter = listaCurso.iterator();
-                      while (iter.hasNext()) {
-                          CursoxProfesor e = iter.next();
-                          lista.add(e);
-                          sw=true;
-                          view="margin: 20px auto; text-align: center;";
-                      }
-                     
-      }
+           public void mostrar(int carr, int suc, int act) {
+        lista = new ArrayList();
+        SqlCursoxProfesor pu = new SqlCursoxProfesor();
+        List<CursoxProfesor> listaCurso = pu.MostrarCursos(carr, suc, act);
+        Iterator<CursoxProfesor> iter = listaCurso.iterator();
+        while (iter.hasNext()) {
+            CursoxProfesor e = iter.next();
+            lista.add(e);
+            sw = true;
+            view = "margin: 20px auto; text-align: center;";
+        }
+
+    }
                
          
                

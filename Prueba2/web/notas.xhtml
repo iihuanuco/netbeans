@@ -28,16 +28,12 @@ and open the template in the editor.
             <h:form id="notas" >
                 <div class="animate-in"  data-anim-type="bounce-in-up" data-anim-delay="600">
                 <h:panelGrid id="view" class="notas2" style="#{cursoxProfesorBean.cursoxprofesor.view}">
-                    <p:selectOneMenu id="cmbactividades" value="#{sucursalesBean.sucursales.actividad}"   > 
-                        <f:selectItem itemLabel="-Seleccione Actividad- "   itemValue="0"/>
-                        <f:selectItems value="#{sucursalesBean.listaactividades}" />
-                    </p:selectOneMenu>
                     <p:selectOneMenu id="cmbcarreras"  value="#{carrerasBean.carreras.registrocarrera}"   > 
                         <f:selectItem itemLabel="-Seleccione Carrera- "   itemValue="0"/>
                         <f:selectItems value="#{sucursalesBean.listacarreras}" />
                     </p:selectOneMenu>
                     <div class="boton" ><i class="icon icon-my_location logo-boton"></i><p:commandButton value="FILTRAR"  
-           actionListener="#{cursoxProfesorBean.cursoxprofesor.mostrar(carrerasBean.carreras.registrocarrera,sucursalesBean.sucursales.registrosuc,sucursalesBean.sucursales.actividad)}"  
+           actionListener="#{cursoxProfesorBean.cursoxprofesor.mostrar(carrerasBean.carreras.registrocarrera,sucursalesBean.sucursales.registrosuc,actividadesBean.actividades.registroact)}"  
            update="listnotas,view" class="boton-ingresar" /></div>
                 </h:panelGrid>
             </div>

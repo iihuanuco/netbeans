@@ -9,12 +9,13 @@
 
     <h:head>
         <title>Inicio</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <h:outputStylesheet library="css" name="menu.css"  />
         <h:outputStylesheet library="css" name="submenu4.css"  />
         <h:outputStylesheet library="css" name="style.css"  />
         <h:outputStylesheet name="fonts.css"  />
         <h:outputScript library="js" name="bg.js"   />
-            <h:outputStylesheet library="assets" name="animations.min.css"  />
+          <h:outputStylesheet library="assets" name="animations.min.css"  />
         <h:outputScript library="assets" name="smoothscroll.min.js"   />
         <h:outputScript library="assets" name="appear.min.js"   />
         <h:outputScript library="assets" name="animations.min.js"   />
@@ -66,26 +67,29 @@
                 <h:form id="menu2"  >
                     <p:growl id="messages" showDetail="true" />
                      
-                    <header class="a1"  >
+                    <header class="a1" >
                         <nav>
                             <ul> 
                                  <li style="color:white;  float: left; padding-left: 15px; background-color: #009999; width: 100%;" class="menu-salir"><i class="icon icon-location"></i>#{sucursalesBean.sucursales.nombre}</li>
                             </ul>
                             <ul class="conteiner">
-                                <li class="item"><a href="inicio.xhtml"         target="academico"  ><span class="c2"><i class="icon icon-home"></i></span>Inicio</a></li>
-                                <li class="item"><a href="pnlalumno.xhtml"   target="academico"  ><span class="c2"><i class="icon icon-home"></i></span>Intranet</a></li>
-                                <li class="item"><a href="signup.xhtml"       target="academico" ><span class="c2"><i class="icon icon-user"></i></span>Usuarios</a></li>
-                                <li class="item"><a href="matricula.xhtml"     target="academico" ><span class="c2"><i class="icon icon-matricula"></i></span>Matricula</a></li>
-                                <li class="item"><a href="notas.xhtml"        target="academico" ><span class="c2"><i class="icon icon-notebook-list"></i></span>Notas</a></li>
-                                <li class="item"><a href="academicos.xhtml"  target="academico" ><span class="c2"><i class="icon icon-storage"></i></span>Academico</a></li>
-                                <li class="item"><a href="registrar.xhtml"      target="academico" ><span class="c2"><i class="icon icon-storage"></i></span>Registrar</a></li>
-                                <li class="item"><a href="personalizar.xhtml"  target="academico"><span class="c2"><i class="icon icon-cogs"></i></span><i class="icon icon-user3" style="padding-right: 5px;"></i>#{login.user.usuario}</a></li>
+                                <li class="item"><a href="inicio.xhtml"     class="c2"    target="academico"  ><span ><i class="icon icon-home icon-menu"></i></span>Inicio</a></li>
+                                <li class="item"><a href="pnlalumno.xhtml" class="c2"  target="academico"  ><span  ><i class="icon icon-home icon-menu"></i></span>Intranet</a></li>
+                                <li class="item"><a href="signup.xhtml"    class="c2"   target="academico" ><span  ><i class="icon icon-user icon-menu"></i></span>Usuarios</a></li>
+                                <li class="item"><a href="matricula.xhtml"  class="c2"   target="academico" ><span  ><i class="icon icon-matricula icon-menu"></i></span>Matricula</a></li>
+                                <li class="item"><a href="notas.xhtml"     class="c2"   target="academico" ><span  ><i class="icon icon-notebook-list icon-menu"></i></span>Notas</a></li>
+                                <li class="item"><a href="academicos.xhtml" class="c2" target="academico" ><span  ><i class="icon icon-storage icon-menu"></i></span>Academico</a></li>
+                                <li class="item"><a href="registrar.xhtml"  class="c2"    target="academico" ><span  ><i class="icon icon-storage icon-menu"></i></span>Registrar</a></li>
+                                <li class="item"><a href="personalizar.xhtml" class="c2" target="academico"><span  ><i class="icon icon-cogs icon-menu"></i></span><i class="icon icon-user3" style="padding-right: 5px;"></i>#{login.user.usuario}</a></li>
                                 <li class="item menu-salir"><p:commandButton value="Salir" action="#{login.user.signout()}" ajax="false" icon="ui-icon-close"  class="boton-salir"  /></li>
                             </ul>
                         </nav>
                     </header>
+                    
+               
                     <iframe src="inicio.xhtml" frameborder="0" name="academico"  scrolling="no" id="iframe-custom"   ></iframe>
-                  
+              
+                    
                 </h:form  >
                 <h:form id="menu"   >
                     <div class="dialog-sucursal"> 
@@ -96,7 +100,7 @@
                                 <ul class="ca-menu">
                                     <li>
                                         <a>
-                                            <span> <i class="icon icon-location3 ca-icon"></i></span>
+                                            <span> <i class="icon icon-location3 ca-icon2"></i></span>
                                             <div class="ca-content">
                                                 <h2 class="ca-main">  <p:commandButton value="#{sucursales.nombresuc}"   update=":menu2" actionListener="#{sucursalesBean.sucursales.obtener(sucursales.registrosuc,sucursales.nombresuc)}" oncomplete="PF('sucursales').hide();" onclick="PF('actividad').show();"  class="btn-sucursal" >
                                                         <p:ajax listener="#{actividadesBean.actividades.mostraract(sucursalesBean.sucursales.registrosuc)}"  update=":menu:tblact" />
@@ -119,7 +123,7 @@
                                       <ul class="ca-menu">
                                           <li>
                                               <a>
-                                                  <span> <i class="icon icon-location3 ca-icon"></i></span>
+                                                  <span> <i class="icon icon-location3 ca-icon2"></i></span>
                                                   <div class="ca-content">
                                                       <h2 class="ca-main">
                                                           <p:commandButton value="#{act.nombreact}" actionListener="#{actividadesBean.actividades.obtener(act.registroact,act.nombreact)}"   update=":menu2"   oncomplete="PF('actividad').hide();"    class="btn-sucursal" />       
@@ -142,7 +146,7 @@
                                   <ul class="ca-menu">
                                     <li>
                                         <a>
-                                            <span> <i class="icon icon-location3 ca-icon"></i></span>
+                                            <span> <i class="icon icon-location3 ca-icon2"></i></span>
                                             <div class="ca-content">
                                                 <h2 class="ca-main">  <p:commandButton icon="ui-icon-check"  value="#{sucursales.nombresuc}"  update=":menu2" action="#{sucursalesBean.sucursales.obtener(sucursales.registrosuc,sucursales.nombresuc)}" oncomplete="PF('sucursales2').hide();"   onclick="PF('actividad').show();"  class="btn-sucursal" >
                                                         <p:ajax listener="#{actividadesBean.actividades.mostraract(sucursalesBean.sucursales.registrosuc)}"  update=":menu:tblact" />

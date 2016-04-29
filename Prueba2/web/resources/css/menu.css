@@ -43,9 +43,10 @@ nav > ul li {
 
    color: white;
    font-size: 18px;
+   min-width: 80px;
    display: block;
-   line-height: 20px;
-   padding: 15px;
+   height: 6vh;
+   padding: 1.5vh;
    position: relative;
    text-align: center;
    text-decoration: none;
@@ -65,7 +66,7 @@ nav > ul > li a span{
   width:100%;
   left:0;
   position: absolute;
-  top: 60px;
+ top: 70px;
 
 
   -webkit-transition: all .3s ease-out;
@@ -80,7 +81,7 @@ nav > ul > li a span .icon{
 
 display: block;
 line-height: 50px;
-font-size: 30px;
+font-size: 25px;
 color: rgba(51,51,51,1);
 -webkit-transition: all .5s ease-in-out;
 -moz-transition: all .5s ease-in-out;
@@ -91,7 +92,7 @@ transition: all .5s ease-in-out;
 }
 
 nav > ul > li > a:hover > span{
-  top: 0;
+  top:0px;
 }
 
  
@@ -117,12 +118,16 @@ nav > ul > li > a:hover > span{
     -ms-transition: all .5s ease-in-out;
     -o-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
+      border-radius: 50px;
+       border:1px solid #009999 !important;
+        color: #009999;
 }
 
 .boton-salir:hover{
     -webkit-box-shadow:  none !important;
     -moz-box-shadow:  none !important;
     box-shadow:  none !important;
-    border:1px solid #009999 !important;
-    color: #009999;
+    border:1px solid #ff3300 !important;
+    color: #ff3300;
+ 
 }

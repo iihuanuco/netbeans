@@ -69,19 +69,33 @@
                      
                     <header class="a1" >
                         <nav>
-                            <ul> 
-                                 <li style="color:white;  float: left; padding-left: 15px; background-color: #009999; width: 100%;" class="menu-salir"><i class="icon icon-location"></i>#{sucursalesBean.sucursales.nombre}</li>
-                            </ul>
+                               <ul> 
+                                               <li style="color:white;  float: left; height: 2.5vh; font-size: 2vh; background-color: #009999; width: 100%;" class="menu-salir"><i class="icon icon-location"></i>#{sucursalesBean.sucursales.nombre}</li>
+                                </ul>
+                            
+                           
+                      
                             <ul class="conteiner">
-                                <li class="item"><a href="inicio.xhtml"     class="c2"    target="academico"  ><span ><i class="icon icon-home icon-menu"></i></span>Inicio</a></li>
+                                  <c:choose>
+                                 <c:when test="#{login.user.nivel eq 1}">
+                                          <li class="item"><a href="inicio.xhtml"     class="c2"    target="academico"  ><span ><i class="icon icon-home icon-menu"></i></span>Inicio</a></li>
+                                         <li class="item"><a href="signup.xhtml"    class="c2"   target="academico" ><span  ><i class="icon icon-user icon-menu"></i></span>Usuarios</a></li>
+                                         <li class="item"><a href="matricula.xhtml"  class="c2"   target="academico" ><span  ><i class="icon icon-matricula icon-menu"></i></span>Matricula</a></li>
+                                         <li class="item"><a href="notas.xhtml"     class="c2"   target="academico" ><span  ><i class="icon icon-notebook-list icon-menu"></i></span>Notas</a></li>
+                                         <li class="item"><a href="academicos.xhtml" class="c2" target="academico" ><span  ><i class="icon icon-storage icon-menu"></i></span>Academico</a></li>
+                                         <li class="item"><a href="registrar.xhtml"  class="c2"    target="academico" ><span  ><i class="icon icon-storage icon-menu"></i></span>Registrar</a></li>
+                                          <li class="item"><a href="personalizar.xhtml" class="c2" target="academico"><span  ><i class="icon icon-cogs icon-menu"></i></span><i class="icon icon-user3" style="padding-right: 5px;"></i>#{login.user.usuario} </a></li>
+                                          <li class="item menu-salir"><p:commandButton value="Salir" action="#{login.user.signout()}" ajax="false" icon="ui-icon-close"  class="boton-salir"  /></li>
+                                 </c:when>  
+                                  <c:when test="#{login.user.nivel eq 5}">
+                                 <li class="item"><a href="inicio.xhtml"     class="c2"    target="academico"  ><span ><i class="icon icon-home icon-menu"></i></span>Inicio</a></li>
                                 <li class="item"><a href="pnlalumno.xhtml" class="c2"  target="academico"  ><span  ><i class="icon icon-home icon-menu"></i></span>Intranet</a></li>
-                                <li class="item"><a href="signup.xhtml"    class="c2"   target="academico" ><span  ><i class="icon icon-user icon-menu"></i></span>Usuarios</a></li>
-                                <li class="item"><a href="matricula.xhtml"  class="c2"   target="academico" ><span  ><i class="icon icon-matricula icon-menu"></i></span>Matricula</a></li>
-                                <li class="item"><a href="notas.xhtml"     class="c2"   target="academico" ><span  ><i class="icon icon-notebook-list icon-menu"></i></span>Notas</a></li>
-                                <li class="item"><a href="academicos.xhtml" class="c2" target="academico" ><span  ><i class="icon icon-storage icon-menu"></i></span>Academico</a></li>
-                                <li class="item"><a href="registrar.xhtml"  class="c2"    target="academico" ><span  ><i class="icon icon-storage icon-menu"></i></span>Registrar</a></li>
                                 <li class="item"><a href="personalizar.xhtml" class="c2" target="academico"><span  ><i class="icon icon-cogs icon-menu"></i></span><i class="icon icon-user3" style="padding-right: 5px;"></i>#{login.user.usuario}</a></li>
                                 <li class="item menu-salir"><p:commandButton value="Salir" action="#{login.user.signout()}" ajax="false" icon="ui-icon-close"  class="boton-salir"  /></li>
+                                 </c:when>  
+                             
+                             </c:choose>
+                            
                             </ul>
                         </nav>
                     </header>

@@ -305,11 +305,12 @@ public class Users {
         }
         else{
           
-            if(dentro_de(new int [] {1})>=0){
+          if(dentro_de(new int [] {1,2,3,4,6})>=0){
                 flag = true;
                 flag2 = false;
             }
-            else if(nivel!=1){
+          
+            else if(nivel==5){
                  flag2=true;
                 flag = false;
             }

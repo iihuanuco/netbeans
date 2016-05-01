@@ -51,6 +51,7 @@ public class SqlSecciones implements DaoSecciones{
                 
                 listasec.add(s);
             }
+            conn.close();
         } catch (Exception e) {
         }
         

@@ -17,8 +17,8 @@ public class SqlDepartamentos implements DaoDepartamentos{
         try {
             conn=Postgresql.conexion();
             
-            String sql="insert into departamentos(nombre,fechac,userc)"   //,userc,fecham,userm
-                     + " values(?,now(),?)" ; //,?,?,?
+            String sql="insert into departamentos(nombre,fechac,userc)"   
+                     + " values(?,now(),?)" ;  
             
             PreparedStatement pst=null; 
             pst = conn.prepareStatement(sql);
@@ -51,7 +51,7 @@ public class SqlDepartamentos implements DaoDepartamentos{
 
                listaDepa.add(c);
             }      
-            
+            cn.close();
         } catch (Exception e) {
         }
         

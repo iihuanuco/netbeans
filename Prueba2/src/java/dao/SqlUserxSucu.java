@@ -16,49 +16,7 @@ public class SqlUserxSucu implements DaoUserxSucu{
     public void InsertarUserxSucu(UserxSucu userxSucu) {
         
         Connection conn=null;
-        /*
-        //obtebgo lista de usuarios(registro)
-        ArrayList<Integer> listauser = new ArrayList<>();
-        try {
-            conn = Postgresql.conexion();
-            String user = "select usuario from usersxsucu";
-            Statement stu = conn.createStatement();
-            ResultSet rsu = null;
-            rsu = stu.executeQuery(user);
-            while (rsu.next()) {
-                UserxSucu u = new UserxSucu();
-                u.setUsuario(rsu.getInt(1));
-                listauser.add(u);
-            }
-            conn.close();
-        } catch (Exception ee) {
-            System.out.println(""+ee);
-        }
-        //obtengo lista de sucursales(registro) 
-        ArrayList<Integer> listasucursal = new ArrayList<>();
-        try {
-            conn = Postgresql.conexion();
-            String sucursal = "select sucursal from usersxsucu";
-            Statement sts = conn.createStatement();
-            ResultSet rss = null;
-            rss = sts.executeQuery(sucursal);
-            while (rss.next()) {
-                UserxSucu s = new UserxSucu();
-                s.setSucursal(rss.getInt(1));
-                listasucursal.add(s);
-            }
-
-            conn.close();
-        } catch (Exception eee) {
-            System.out.println(""+eee);
-        }
-        
-    */
-        /*
-        for(int useract : listauser; int sucursalact : listasucursal){
-           
-            if(useract.equals(userxSucu.getUsuario()); sucursalact.equals(userxSucu.getSucursal())){
-        */
+       
                 try {
                     conn=Postgresql.conexion();
                     String sql="insert into usersxsucu(usuario,sucursal,fechac,userc)"
@@ -76,26 +34,7 @@ public class SqlUserxSucu implements DaoUserxSucu{
                         conn.close();
                 } catch (Exception e) {
                 }
-        /*
-            }
-           
-        }
-     
-            
-        for (Iterator iterator = listauser.iterator(); iterator.hasNext();) {
-            int usuarioact = (int) iterator.next();
-            if(usuarioact==userxSucu.getUsuario()){
-                for (Iterator iterator1 = listasucursal.iterator(); iterator1.hasNext();) {
-                    int sucursalact = (int) iterator1.next();
-                    if (sucursalact==userxSucu.getSucursal()) {
-                        System.out.println("El usuario ya se registro en esta sucursal");
-                    }
-                }
-            }
-        }
-        
-                    
-      */  
+    
     }
 
     @Override
@@ -121,7 +60,7 @@ public class SqlUserxSucu implements DaoUserxSucu{
                 
                 listaemp.add(e);
             }
-            
+            conn.close();
         } catch (Exception e) {
         }
         

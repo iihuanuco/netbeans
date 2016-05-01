@@ -1,7 +1,6 @@
 package dao;
 
 import entities.Notas;
-import entities.Users;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,11 +35,7 @@ public class SqlNotas implements DaoNotas{
         
     }
 
-    @Override
-    public List<Notas> MostrarNotas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+  
     @Override
     public void ActualizarNotas(Notas notas) {
             Connection conn=null;
@@ -91,7 +86,7 @@ public class SqlNotas implements DaoNotas{
                 u.setNotanot(rs.getDouble(6));
                 listaalum.add(u);
             }
-            
+            conn.close();
         } catch (Exception e) {
         }
         
@@ -126,7 +121,7 @@ public class SqlNotas implements DaoNotas{
                 
                 listanotasint.add(n);
             }
-            
+            conn.close();
         } catch (Exception e) {
         }
         return listanotasint;

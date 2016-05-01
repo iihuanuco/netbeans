@@ -4,7 +4,6 @@
                         var bg = jQuery("#bg");
                           var font = jQuery(".ca-icon");
                            var font2 = jQuery(".btn-img");
-                            var font4 = jQuery(".icon-menu"); 
 
                         // Proporcion horizontal/vertical. En este caso la imagen es cuadrada
                         ratio = 1;
@@ -25,8 +24,20 @@
                        
                     
                      
-                           $(font).css('font-size',(screenHeight/10)); 
+                            $(font).css('font-size',(screenHeight/10)); 
                             $(font2).css('font-size',(screenHeight/35)); 
+                            
+                            $(font2).css('font-size',(screenHeight/35)); 
+                            
+                            $(font2).hover(
+                                function() {
+                                  $( this ).css('font-size',(screenHeight/35)+1 );
+                                }, function() {
+                                  $( this ).css('font-size',(screenHeight/35) );
+                                }
+                              );
+                            
+                            $(font2).hover();
                            
                              
                           

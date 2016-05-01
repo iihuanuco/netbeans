@@ -6,12 +6,22 @@ import dao.SqlUsers;
 import entities.CursoxProfesor;
 import entities.Evaluaciones;
 import entities.Users;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.JasperRunManager;
+import util.Postgresql;
 
  
 @ManagedBean
@@ -74,5 +84,26 @@ public class CursoxProfesorBean implements Serializable {
             }
          
     
+          public void desplegarReport(String reportes) throws JRException, IOException,Exception {
+
+        JasperReport report = JasperCompileManager.compileReport(getClass().getResourceAsStream("/report/" + reportes + ".jrxml"));
+        Map<String, Object> parametros = new HashMap<>();
+        parametros.put("profesor", cursoxprofesor.getPprofesor());
+        byte[] reporte = null;
+        reporte = JasperRunManager.runReportToPdf(report, parametros, Postgresql.conexion());
+        HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        response.setContentLength(reporte.length);
+          try {
+               response.getOutputStream().write(reporte, 0, reporte.length);
+              response.getOutputStream().flush();
+              response.getOutputStream().close();
+          } catch (Exception e) {
+          }
+          FacesContext.getCurrentInstance().responseComplete();
+          FacesContext.getCurrentInstance().renderResponse();
+        
+
+    }
+         
     
 }

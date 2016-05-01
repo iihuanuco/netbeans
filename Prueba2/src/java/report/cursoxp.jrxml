@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1411a116-1a04-4f6d-9200-e41df35a7ad2">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="profesor" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[select c.registro as codcurso ,c.nombre,ca.nombre as carrera from cursos c  
+                    inner join profesorxcursos pc  
+                    on pc.curso=c.registro   
+                    inner join users u  
+                    on u.registro=pc.profesor  
+                    inner join carreras ca  
+                    on ca.registro=c.carrera  
+                    inner join actividades ac 
+                    on ac.registro=pc.actividad 
+                     where u.registro= $P{profesor}]]>
+	</queryString>
+	<field name="codcurso" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="carrera" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="23" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="80" y="2" width="100" height="20" uuid="89e0c9f7-4b7f-437a-9004-75df6e7cd072"/>
+				<text><![CDATA[codcurso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="385" y="2" width="100" height="20" uuid="f71640fe-1028-409a-950f-9ec2949c351f"/>
+				<text><![CDATA[carrera]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="243" y="2" width="100" height="20" uuid="3a6fae83-6111-48c9-942c-634a3a1ae88a"/>
+				<text><![CDATA[nombre]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="80" y="5" width="100" height="20" uuid="732eb8c5-6e03-43d0-95dc-ad3d1804672b"/>
+				<textFieldExpression><![CDATA[$F{codcurso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="385" y="5" width="100" height="20" uuid="1ac024aa-24e9-4063-a3a1-9263ae799734"/>
+				<textFieldExpression><![CDATA[$F{carrera}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="243" y="5" width="100" height="20" uuid="98af8189-ab4e-4c30-9528-ad01b9af279c"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

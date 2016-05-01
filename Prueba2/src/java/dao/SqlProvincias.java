@@ -51,7 +51,7 @@ public class SqlProvincias implements DaoProvincias{
 
                listaPro.add(c);
             }      
-            
+            cn.close();
         } catch (Exception e) {
         }
         
@@ -79,7 +79,7 @@ public class SqlProvincias implements DaoProvincias{
 
                listaPro.add(c);
             }      
-            
+            cn.close();
         } catch (Exception e) {
         }
         

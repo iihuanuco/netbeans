@@ -61,6 +61,7 @@ public class SqlMatricula implements DaoMatricula{
                 e.setCarrera(rs.getInt(5));
                 listaeval.add(e);
             }
+            conn.close();
         } catch (Exception e) {
         }
         

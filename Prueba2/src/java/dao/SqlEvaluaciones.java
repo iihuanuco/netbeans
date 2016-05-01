@@ -49,6 +49,7 @@ public class SqlEvaluaciones implements DaoEvaluaciones{
                 e.setNombreeval(rs.getString(2));
                 listaeval.add(e);
             }
+            conn.close();
         } catch (Exception e) {
         }
         
@@ -76,6 +77,7 @@ public class SqlEvaluaciones implements DaoEvaluaciones{
                 e.setNombreeval(rs.getString(2));
                 listaeval.add(e);
             }
+            conn.close();
         } catch (Exception e) {
         }
         

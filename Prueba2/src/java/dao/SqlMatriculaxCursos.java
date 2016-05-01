@@ -12,7 +12,7 @@ import util.Postgresql;
 public class SqlMatriculaxCursos implements DaoMatriculaxCursos{
 
     @Override
-    //InsertarMatricula es el modo normal de matricula a un curso que no se ha llevado anteriormente
+     
     public void InsertarMatriculaxCursos(MatriculaxCursos matriculaxCursos) {
         Connection conn=null;
         try {
@@ -61,7 +61,7 @@ public class SqlMatriculaxCursos implements DaoMatriculaxCursos{
          listamxc.add(mxc);
                 
             }
-            
+            conn.close();
         } catch (Exception e) {
         }
         return listamxc;
@@ -93,7 +93,7 @@ public class SqlMatriculaxCursos implements DaoMatriculaxCursos{
          listamxc.add(mxc);
                 
             }
-            
+            conn.close();
         } catch (Exception e) {
         }
         return listamxc;

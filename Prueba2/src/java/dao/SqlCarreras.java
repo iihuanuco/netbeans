@@ -60,7 +60,7 @@ public class SqlCarreras implements DaoCarreras{
                 listacar.add(c);
                        
             }
-            
+          conn.close();  
         } catch (Exception e) {
         }
         return listacar;
@@ -83,7 +83,7 @@ public class SqlCarreras implements DaoCarreras{
                 listacar.add(c);
                        
             }
-            
+          conn.close();  
         } catch (Exception e) {
         }
         return listacar;

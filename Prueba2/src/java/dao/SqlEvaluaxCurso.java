@@ -88,7 +88,7 @@ public class SqlEvaluaxCurso implements DaoEvaluaxCurso{
                 
                 listaexc.add(a);
             }
-            
+            conn.close();
         } catch (Exception e) {
         }
         

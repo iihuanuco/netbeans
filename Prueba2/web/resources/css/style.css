@@ -184,7 +184,6 @@ margin-top: 15px;
     top: -60%;
      box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
      border:1px solid rgba(255,255,255,1) !important;
-     font-size:22px ;
      color:rgba(255,255,255,1);
      border-radius: 0;
      text-shadow: none !important;
@@ -197,7 +196,6 @@ margin-top: 15px;
 }
 
 .btn-img:hover{
-     font-size:23px !important ;
      border:1px solid #009999 !important ; 
      color:  #009999;
 }

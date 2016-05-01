@@ -116,8 +116,11 @@ and open the template in the editor.
                         <p:inputText id="txtnombrecarrera" value="#{carrerasBean.carreras.nombrecarrera}" placeholder="Nombre" class="texto" ></p:inputText>
                       
                         <p:inputText id="txtsemestrescarrera" value="#{carrerasBean.carreras.semestrescarrera}" placeholder="Semestre" class="texto" ></p:inputText>
+                        
                         <p:commandButton value="Guardar" actionListener="#{carrerasBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar"
-                                         update="txtcodigocarrera,txtnombrecarrera,txtsemestrescarrera,tblcarreras,cmbcarrera" />   
+                                         update="txtcodigocarrera,txtnombrecarrera,txtsemestrescarrera,tblcarreras,cmbcarrera" />
+                   
+                        
                           </h:panelGrid>
                         <h:panelGrid columns="1" class="carreras">
                         <p:dataTable id="tblcarreras" var="carrera" value="#{carrerasBean.carreras.listacarreras}" filteredValue="#{carrerasBean.carreras.filtrocarreras}"  paginator="true" paginatorPosition="top" rows="5">
@@ -135,10 +138,17 @@ and open the template in the editor.
                             <p:commandButton icon="ui-icon-pencil" actionListener="#{carrerasBean.carreras.editar(carrera)}"  rendered="#{carrera.flag}" update="tblcarreras" class="btn-dialog"/>
                             </p:column>
                         </p:dataTable>
-                        
+                             <p:commandButton value="Reportes"  class="boton-ingresar" oncomplete="PF('report_carrera').show();"/>
+                            
                     </h:panelGrid>
                     
                 </p:dialog>
+                    
+                    <p:dialog widgetVar="report_carrera" width="100%" height="100vh" showEffect="clip" hideEffect="clip"  rendered="true" modal="true" position="absolute" >   
+                   <iframe src="reportes.xhtml" frameborder="0" name="academicos"    scrolling="no" class="test"   ></iframe>
+                 </p:dialog>
+                    
+                 
 
                 <p:dialog  header="Registrar Curso"  widgetVar="Cursos"   showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false"   >
                     <h:panelGrid columns="6" cellspacing="5" class="inputs">
@@ -225,9 +235,14 @@ and open the template in the editor.
                             <p:commandButton icon="ui-icon-pencil" actionListener="#{cursosBean.cursos.editar(cursos)}"  rendered="#{cursos.flag}" update="tblcursos" class="btn-dialog"/>
                             </p:column>
                         </p:dataTable>
-                        
+                          <p:commandButton value="Reportes"  class="boton-ingresar" oncomplete="PF('report_curso').show();"/>
                     </h:panelGrid>
                 </p:dialog>
+                    
+                        <p:dialog widgetVar="report_curso" width="100%" height="100vh" showEffect="clip" hideEffect="clip"  rendered="true" modal="true" position="absolute" >   
+                   <iframe src="reporte_curso.xhtml" frameborder="0" name="academicos"    scrolling="no" class="test"   ></iframe>
+                 </p:dialog>
+                    
 
                 <p:dialog header="Evaluaciones" widgetVar="evaluaciones"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >
                     <h:panelGrid columns="1" class="inputs">
@@ -398,8 +413,14 @@ and open the template in the editor.
                             
                         </p:dataTable>
                         
-                    </h:panelGrid>   
+                   <p:commandButton value="Reportes"  class="boton-ingresar" oncomplete="PF('report_cursoxp').show();"/>
+                    </h:panelGrid>
                 </p:dialog>
+                    
+                        <p:dialog widgetVar="report_cursoxp" width="100%" height="100vh" showEffect="clip" hideEffect="clip"  rendered="true" modal="true" position="absolute" >   
+                   <iframe src="reporte_cxp.xhtml" frameborder="0" name="academicos"    scrolling="no" class="test"   ></iframe>
+                 </p:dialog>
+                    
                 
                 <p:dialog header="Turnos" widgetVar="turnos"  showEffect="clip" hideEffect="clip" rendered="true" height="auto" width="100%" position="absolute" modal="true" draggable="false" resizable="false" >
                     <h:panelGrid columns="2" class="inputs">

@@ -70,7 +70,7 @@ public class SqlSucursales implements DaoSucursales{
 
                listaSucur.add(c);
             }      
-            
+            cn.close();
         } catch (Exception e) {
         }
         
@@ -102,7 +102,7 @@ public class SqlSucursales implements DaoSucursales{
 
                listaSucur.add(c);
             }      
-            
+            cn.close();
         } catch (Exception e) {
         }
         
@@ -172,7 +172,7 @@ public class SqlSucursales implements DaoSucursales{
 
                listaSucur.add(c);
             }      
-            
+            cn.close();
         } catch (Exception e) {
             util.creararchivotexto("La conexion lista sucursales:"+cn.toString()+ " error:"+e.toString());
         }

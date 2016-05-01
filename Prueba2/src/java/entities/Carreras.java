@@ -24,6 +24,8 @@ public class Carreras {
     private List<Carreras> listacarreras;
     private List<Carreras> filtrocarreras;
     private boolean flag=true;
+    //parametros
+    int pcarrera;
 
     public Carreras() {
     }
@@ -168,6 +170,14 @@ public class Carreras {
 
     public void setNombrecarrera2(String nombrecarrera2) {
         this.nombrecarrera2 = nombrecarrera2;
+    }
+
+    public int getPcarrera() {
+        return pcarrera;
+    }
+
+    public void setPcarrera(int pcarrera) {
+        this.pcarrera = pcarrera;
     }
     
     

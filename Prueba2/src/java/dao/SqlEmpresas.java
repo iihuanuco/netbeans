@@ -54,7 +54,7 @@ public class SqlEmpresas implements DaoEmpresas{
                 
                 listaemp.add(e);
             }
-            
+           conn.close();
         } catch (Exception e) {
         }
         

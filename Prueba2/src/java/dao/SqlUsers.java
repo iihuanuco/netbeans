@@ -63,7 +63,7 @@ public class SqlUsers implements DaoUsers {
                listaUsuario.add(c);
             }
                   
-            
+          cn.close();
         } catch (Exception e) {
               util.creararchivotexto("La conexion:"+cn.toString()+ " error:"+e.toString());
         }
@@ -87,7 +87,7 @@ public class SqlUsers implements DaoUsers {
                 
                 listausers.add(u);
             }
-            
+            conn.close();
         } catch (Exception e) {
         }
         
@@ -110,7 +110,7 @@ public class SqlUsers implements DaoUsers {
                 
                 listausers.add(u);
             }
-            
+            conn.close();
         } catch (Exception e) {
         }
         
@@ -135,7 +135,7 @@ public class SqlUsers implements DaoUsers {
                 
                 listaalum.add(u);
             }
-            
+            conn.close();
         } catch (Exception e) {
         }
         
@@ -166,7 +166,7 @@ public class SqlUsers implements DaoUsers {
                 
                 listaalum.add(u);
             }
-            
+           conn.close();
         } catch (Exception e) {
         }
         
@@ -196,7 +196,7 @@ public class SqlUsers implements DaoUsers {
                 
                 listaprof.add(u);
             }
-            
+         conn.close();
         } catch (Exception e) {
         }
         

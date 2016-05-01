@@ -67,7 +67,7 @@ public class SqlCursoxProfesor implements DaoCursoxProfesor{
                 d.setNactividad(rs.getString(7));
                 listacur.add(d);
             }
-            
+            conn.close();
         } catch (Exception e) {
         }
         
@@ -101,7 +101,7 @@ public class SqlCursoxProfesor implements DaoCursoxProfesor{
                 d.setNprofesor(rs.getString(3));  
                 listacur.add(d);
             }
-            
+            conn.close();
         } catch (Exception e) {
         }
         
@@ -158,7 +158,7 @@ public class SqlCursoxProfesor implements DaoCursoxProfesor{
                 d.setCreditos(rs.getInt(4));
                 listacur.add(d);
             }
-            
+        conn.close();    
         } catch (Exception e) {
         }
         

@@ -17,6 +17,8 @@ public class CursoxProfesor {
        private List <CursoxProfesor> listapxc;
        private List<Carreras> filtropxc;
       private boolean flag=true,sw=false;
+      //parametros 
+      private int pprofesor;
 
     public CursoxProfesor() {
     }
@@ -178,6 +180,14 @@ public class CursoxProfesor {
 
     public void setCreditos(int creditos) {
         this.creditos = creditos;
+    }
+
+    public int getPprofesor() {
+        return pprofesor;
+    }
+
+    public void setPprofesor(int pprofesor) {
+        this.pprofesor = pprofesor;
     }
  
     

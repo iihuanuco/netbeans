@@ -57,7 +57,7 @@ public class SqlDistritos implements DaoDistritos{
                 
                 listadis.add(d);
             }
-            
+            conn.close();
         } catch (Exception e) {
         }
         
@@ -102,7 +102,7 @@ public class SqlDistritos implements DaoDistritos{
                 
                 listadis.add(d);
             }
-            
+            conn.close();
         } catch (Exception e) {
         }
         

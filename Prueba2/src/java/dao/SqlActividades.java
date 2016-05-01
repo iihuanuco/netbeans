@@ -56,7 +56,7 @@ public class SqlActividades implements DaoActividades{
                 
                 listaact.add(a);
             }
-            
+        conn.close();    
         } catch (Exception e) {
         }
         

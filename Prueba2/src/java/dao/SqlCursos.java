@@ -70,7 +70,7 @@ public class SqlCursos implements DaoCursos{
                 
                 listacur.add(d);
             }
-            
+            conn.close();
         } catch (Exception e) {
         }
         

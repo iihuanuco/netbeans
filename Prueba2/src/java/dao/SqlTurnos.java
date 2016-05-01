@@ -52,6 +52,7 @@ public class SqlTurnos implements DaoTurnos{
                 
                 listatur.add(t);
             }
+            conn.close();
         } catch (Exception e) {
         }
         return listatur;

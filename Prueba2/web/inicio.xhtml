@@ -7,20 +7,23 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <head>
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+                <h:outputStylesheet library="css" name="style.css"  />
+    </h:head>
     
     <h:body>
         
         <h:form>
-            <p:commandButton value="alumnos"  actionListener="#{sucursalesBean.generateReport('report1')}" />  
-            <p:commandButton value="docentes"  actionListener="#{sucursalesBean.generateReport('report2')}" />  
+               <p:commandButton value="alumnos"  oncomplete="PF('test').show();"/>  
+         
+               <p:dialog widgetVar="test" width="100%" height="100vh" showEffect="clip" hideEffect="clip"  rendered="true" modal="true" position="absolute" >
+                   
+                   <iframe src="personalizar.xhtml" frameborder="0" name="academicos"    scrolling="no" class="test"   ></iframe>
+                  
+               </p:dialog>
         </h:form>
       
     </h:body>

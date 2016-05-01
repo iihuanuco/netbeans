@@ -16,7 +16,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.io.Serializable;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,12 +29,16 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.JasperRunManager;
+import net.sf.jasperreports.view.JasperViewer;
 import util.Postgresql;
 
 @ManagedBean
@@ -189,26 +195,48 @@ public class SucursalesBean implements Serializable {
     }
 
     public void generateReport(String reportes) throws JRException, IOException {
-
-    // InputStream input = new FileInputStream(new File("C:\\Users\\omarbenjamin\\Documents\\NetBeansProjects\\Academico3\\Prueba2\\src\\java\\report\\report1.jrxml"));
-        //  JasperDesign design = JRXmlLoader.load(input);
+        
         JasperReport report = JasperCompileManager.compileReport(getClass().getResourceAsStream("/report/"+reportes+".jrxml"));
         Map<String, Object> parametros = new HashMap<>();
         parametros.put("sucursal", sucursales.getRegistrosuc());
 
         JasperPrint print = JasperFillManager.fillReport(report, parametros, Postgresql.conexion());
-        //OutputStream output = new FileOutputStream(new File("c:/report/reportealumnos.pdf"));
-        //JasperExportManager.exportReportToPdfStream(print, output);
-
+     
         HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
         response.addHeader("Content-disposition", "attachment; filename="+reportes+".pdf");
         try (ServletOutputStream stream = response.getOutputStream()) {
             JasperExportManager.exportReportToPdfStream(print, stream);
-
             stream.flush();
+            stream.close();
         }
         FacesContext.getCurrentInstance().responseComplete();
 
+
     }
+    
+    
+      public void desplegarReport(String reportes) throws JRException, IOException,Exception {
+
+        JasperReport report = JasperCompileManager.compileReport(getClass().getResourceAsStream("/report/" + reportes + ".jrxml"));
+        Map<String, Object> parametros = new HashMap<>();
+        parametros.put("sucursal", sucursales.getRegistrosuc());
+        byte[] reporte = null;
+        reporte = JasperRunManager.runReportToPdf(report, parametros, Postgresql.conexion());
+        HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+        response.setContentLength(reporte.length);
+          try {
+               response.getOutputStream().write(reporte, 0, reporte.length);
+              response.getOutputStream().flush();
+              response.getOutputStream().close();
+          } catch (Exception e) {
+          }
+          FacesContext.getCurrentInstance().responseComplete();
+          FacesContext.getCurrentInstance().renderResponse();
+        
+
+    }
+        
+
+    
 
 }

@@ -10,7 +10,7 @@
         width: 100%;
     }
     .ca-menu li{
-        width: 33.333333%;
+        width: 25%;
         min-height: 100vh;
         overflow: hidden;
         position: relative;

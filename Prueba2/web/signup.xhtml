@@ -54,21 +54,30 @@
                             </div>
                         </a>
                     </li>
+                      <li class="animate-in"  data-anim-type="bounce-in-up" data-anim-delay="600">
+                        <a >
+                            <span  ><i class="icon icon-user3 ca-icon"></i></span>
+                            <div class="ca-content">
+                                <h2 class="ca-main"><p:commandButton value="OTROS"  class="btn-img"   /></h2>
+                                <h3 class="ca-sub">Gestiona la informacion de los  empleados</h3>
+                            </div>
+                        </a>
+                    </li>
                 </ul>
                 
                 
           
                 <div class="dialog-alumno"> 
-            <p:dialog header="Registrar Usuario Nuevo" widgetVar="usuarionuevo" showEffect="clip" hideEffect="clip"   rendered="true" height="auto" width="100%" modal="true" draggable="false" resizable="false" position="absolute"  >
+                    <p:dialog header="Registrar Usuario Nuevo" widgetVar="usuarionuevo" showEffect="clip" hideEffect="clip"   rendered="true" height="auto" width="100%" modal="true" draggable="false" resizable="false" position="absolute"  closeOnEscape="true" >
              
 
                 <table class="form-alumno" style="margin: 5% auto;">
                               <tr>
-                                <th>  <p:outputLabel value="Usuario:  " class="label-app" /></th>
+                                <th>  <p:outputLabel value="USUARIO:  " class="label-app" /></th>
                                 <th >    <p:inputText id="txtusuario" value="#{usersBean.user.usuario}"  class="texto"  ></p:inputText></th>
                               </tr>
                               <tr>
-                                  <td ><p:outputLabel value="Contraseña:  " class="label-app" /></td>
+                                  <td ><p:outputLabel value="CONTRASEÑA:  " class="label-app" /></td>
                                 <td ><p:password id="password" value="#{usersBean.user.password}"   class="texto"></p:password></td>
                               </tr>
                               <tr>
@@ -76,11 +85,11 @@
                                 <td ><p:inputText id="txtdni" value="#{usersBean.user.dni}" class="texto"></p:inputText></td>
                               </tr>
                               <tr>
-                                <td  > <p:outputLabel value="Nombre:  " class="label-app" /></td>
+                                <td  > <p:outputLabel value="NOMBRE:  " class="label-app" /></td>
                                 <td  ><p:inputText id="txtnombreu" value="#{usersBean.user.nombre}"   class="texto"></p:inputText></td>
                               </tr>
                               <tr>
-                                <td  > <p:outputLabel value="Nivel:  " class="label-app" /></td>
+                                <td  > <p:outputLabel value="NIVEL:  " class="label-app" /></td>
                                 <td  > <p:selectOneMenu id="cmdnivel"   value="#{usersBean.user.nivel}" >
                     <f:selectItem itemLabel="-Seleccionar Nivel-" itemValue="0" itemDisabled="true" />
                     <f:selectItem itemLabel="Administrador" itemValue="1" />
@@ -93,20 +102,20 @@
                 </p:selectOneMenu></td>
                               </tr>
                               <tr>
-                                <td  ><p:outputLabel for="sexo" value="Sexo: "  class="label-app" /></td>
+                                <td  ><p:outputLabel for="sexo" value="SEXO: "  class="label-app" /></td>
                                 <td  ><p:selectOneRadio id="sexo" value="#{usersBean.user.sexo}">
                     <f:selectItem itemLabel="Masculino" itemValue="1" />
                     <f:selectItem itemLabel="Femenino" itemValue="2" />
                 </p:selectOneRadio></td>
                               </tr>
                               <tr>
-                                <td  ><p:outputLabel value="Email:  " class="label-app" /></td>
+                                <td  ><p:outputLabel value="EMAIL:  " class="label-app" /></td>
                                 <td ><p:inputText id="txtemail" value="#{usersBean.user.email}"  class="texto"></p:inputText></td>
                               </tr>
                               <tr>
                                 <td  ></td>
-                                <td  >  <div class="boton" ><i class="icon icon-my_location logo-boton"></i><p:commandButton value="Registrar" actionListener="#{usersBean.registrar(login.user.registro)}" 
-                                                       class="boton-ingresar" update="txtusuario,password,txtdni,txtnombreu,cmdnivel,txtemail"/></div></td>
+                                <td class="boton-usuario" > <p:commandButton value="REGISTRAR" actionListener="#{usersBean.registrar(login.user.registro)}" 
+                                                       class="boton-ingresar" update="txtusuario,password,txtdni,txtnombreu,cmdnivel,txtemail"  type="button" icon="ui-icon-check" /></td>
                               </tr>
                             </table>   
                 

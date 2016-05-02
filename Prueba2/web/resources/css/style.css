@@ -99,12 +99,13 @@ padding-right: 20px;
     display: table-cell;
     position: relative;
 }
+
+
 .logo-login{
     font-size:  60px;
     color: white;
     margin-left: 20%;
-margin-top: 30%;
-display: block;
+ display: block;
 }
 
 .logo-boton{
@@ -121,7 +122,7 @@ margin-top: 15px;
     background: #333333 -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
       background: #333333 -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0)) !important;
     text-shadow: none !important;
-    font-weight: normal;
+    font-weight: normal  !important ;
     font-family: "Dosis",sans-serif !important;
     box-shadow: inset 0px 1px 0px rgba(0,0,0,0) !important;
     -webkit-transition: all .5s ease-in-out;
@@ -130,7 +131,7 @@ margin-top: 15px;
     -o-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
     color: white !important;
-    width: 200px;
+    width: 100%;
     height: 50px;
     float: left;
 }
@@ -273,7 +274,8 @@ margin-top: 15px;
      font-weight:  normal !important ;
      margin-left: 5px;
     color: black;
-    float:left;
+    float:right;
+    padding-right: 10px;
 }
 
 .icono-login{
@@ -561,7 +563,7 @@ border-bottom: 0px solid black !important;
 
 .inputs .ui-inputfield {
     box-shadow: inset 0 2px 2px rgba(0,0,0,0) !important;
-    width: 250px !important;
+    width: 300px !important;
      font-family: "Dosis",sans-serif !important;
      text-align: center !important;
 }
@@ -939,7 +941,6 @@ text-shadow:  none;
 
 
 
-
 div.dialog-alumno .ui-selectonemenu{
     width: auto !important;
 }
@@ -976,17 +977,23 @@ div.dialog-alumno .ui-state-hover,.ui-state-focus {
 
 div.dialog-alumno .ui-inputfield {
     box-shadow: inset 0 2px 2px rgba(0,0,0,0) !important;
-    width: 250px !important;
-     font-family: "Dosis",sans-serif !important;
-     text-align: center !important;
+    width: 400px !important;
+    font-family: "Dosis",sans-serif !important;
+    text-align: center !important;
+    border-bottom: 3px #0fadb3 solid;
+    height: 40px;
+    font-size: 20px;
 }
 
  div.ui-selectonemenu-list-item{
     font-family: "Dosis",sans-serif !important;
 }
 
+ 
 
-
+ div.dialog-alumno .ui-selectoneradio label {
+    margin-right: 50%;
+}
 
 
 
@@ -1121,6 +1128,11 @@ div.dialog-gestion-alumnos .ui-state-hover,.ui-state-focus {
    }
 
 
+   .boton-usuario .ui-icon{
+       background-image: url("/Academico/page/javax.faces.resource/images/ui-icons_ffffff_256x240.png?ln=primefaces-aristo") !important;
+   }
+ 
+   
 @keyframes moveFromTop {
     from {
         opacity: 0;

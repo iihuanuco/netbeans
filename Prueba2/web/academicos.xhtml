@@ -117,9 +117,10 @@ and open the template in the editor.
                       
                         <p:inputText id="txtsemestrescarrera" value="#{carrerasBean.carreras.semestrescarrera}" placeholder="Semestre" class="texto" ></p:inputText>
                         
-                        <p:commandButton value="Guardar" actionListener="#{carrerasBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar"
-                                         update="txtcodigocarrera,txtnombrecarrera,txtsemestrescarrera,tblcarreras,cmbcarrera" />
-                   
+                            <h:panelGroup class="boton-usuario" >
+                        <p:commandButton value="GUARDAR" actionListener="#{carrerasBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}" class="boton-ingresar"
+                                         update="txtcodigocarrera,txtnombrecarrera,txtsemestrescarrera,tblcarreras,cmbcarrera"  type="button" icon="ui-icon-check" />
+                     </h:panelGroup>
                         
                           </h:panelGrid>
                         <h:panelGrid columns="1" class="carreras">
@@ -138,8 +139,9 @@ and open the template in the editor.
                             <p:commandButton icon="ui-icon-pencil" actionListener="#{carrerasBean.carreras.editar(carrera)}"  rendered="#{carrera.flag}" update="tblcarreras" class="btn-dialog"/>
                             </p:column>
                         </p:dataTable>
-                             <p:commandButton value="Reportes"  class="boton-ingresar" oncomplete="PF('report_carrera').show();"/>
-                            
+                            <h:panelGroup class="boton-usuario" >
+                             <p:commandButton value="REPORTES"  class="boton-ingresar" oncomplete="PF('report_carrera').show();"  type="button" icon="ui-icon-document"  />
+                            </h:panelGroup>
                     </h:panelGrid>
                     
                 </p:dialog>
@@ -187,9 +189,10 @@ and open the template in the editor.
                         <p:inputText id="txthp" value="#{cursosBean.cursos.hpcurso}"   class="texto" ></p:inputText>
                         <p:outputLabel value="Fecha de Inicio: " />       
                         <p:calendar value="#{cursosBean.cursos.fechainiciocurso}" pattern="dd/MM/yyyy" mask="true" class="datos"    ><f:convertDateTime type="date" pattern="dd/MM/yyyy"/></p:calendar>          
-
-                        <p:commandButton value="Guardar" actionListener="#{cursosBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}"  class="boton-ingresar"
-                                         update="txtcodigocurso,txtnombrecurso,cmbcarrera,txtsemestrescurso,txtcreditos,txtht,txthp,cmbalcancec,cmbxcurso,tblcursos" />
+                        <h:panelGroup class="boton-usuario" >
+                        <p:commandButton value="GUARDAR" actionListener="#{cursosBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc)}"  class="boton-ingresar"
+                                         update="txtcodigocurso,txtnombrecurso,cmbcarrera,txtsemestrescurso,txtcreditos,txtht,txthp,cmbalcancec,cmbxcurso,tblcursos" type="button" icon="ui-icon-check"  />
+                        </h:panelGroup>
                     </h:panelGrid>
                     <h:panelGrid columns="1"  class="cursos">
                         
@@ -235,7 +238,9 @@ and open the template in the editor.
                             <p:commandButton icon="ui-icon-pencil" actionListener="#{cursosBean.cursos.editar(cursos)}"  rendered="#{cursos.flag}" update="tblcursos" class="btn-dialog"/>
                             </p:column>
                         </p:dataTable>
-                          <p:commandButton value="Reportes"  class="boton-ingresar" oncomplete="PF('report_curso').show();"/>
+                        <h:panelGroup class="boton-usuario" >
+                          <p:commandButton value="REPORTES"  class="boton-ingresar" oncomplete="PF('report_curso').show();" type="button" icon="ui-icon-document" />
+                          </h:panelGroup>
                     </h:panelGrid>
                 </p:dialog>
                     
@@ -374,9 +379,11 @@ and open the template in the editor.
                          </p:selectOneMenu>
 
 
-                         
-                        <p:commandButton value="Guardar" actionListener="#{cursoxProfesorBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc,actividadesBean.actividades.registroact)}" class="boton-ingresar" 
-                                         update="cmbxcurso,cmbxprofesor,cmbcursoxprofesor,tblprofesorcursos" />
+                        <h:panelGroup class="boton-usuario" >
+                        <p:commandButton value="GUARDAR" actionListener="#{cursoxProfesorBean.registrar(login.user.registro,sucursalesBean.sucursales.registrosuc,actividadesBean.actividades.registroact)}" class="boton-ingresar" 
+                                         update="cmbxcurso,cmbxprofesor,cmbcursoxprofesor,tblprofesorcursos" type="button" icon="ui-icon-check" />
+                        </h:panelGroup>
+                        
                          </h:panelGrid>   
                     <h:panelGrid columns="1" class="curso-profesor">  
                         <p:dataTable id="tblprofesorcursos" var="pxc" value="#{cursoxProfesorBean.cursoxprofesor.listapxc}" filteredValue="#{cursoxProfesorBean.cursoxprofesor.filtropxc}"  paginator="true" paginatorPosition="top" rows="5" >
@@ -413,7 +420,10 @@ and open the template in the editor.
                             
                         </p:dataTable>
                         
-                   <p:commandButton value="Reportes"  class="boton-ingresar" oncomplete="PF('report_cursoxp').show();"/>
+                        <h:panelGroup class="boton-usuario" >
+                   <p:commandButton value="REPORTES"  class="boton-ingresar" oncomplete="PF('report_cursoxp').show();" type="button" icon="ui-icon-document"/>
+                   </h:panelGroup>
+                        
                     </h:panelGrid>
                 </p:dialog>
                     

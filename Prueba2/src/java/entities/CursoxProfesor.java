@@ -207,6 +207,7 @@ public class CursoxProfesor {
     
             
            public void mostrar(int carr, int suc, int act) {
+  
         lista = new ArrayList();
         SqlCursoxProfesor pu = new SqlCursoxProfesor();
         List<CursoxProfesor> listaCurso = pu.MostrarCursos(carr, suc, act);
